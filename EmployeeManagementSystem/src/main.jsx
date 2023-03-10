@@ -6,14 +6,16 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import {ChakraProvider} from "@chakra-ui/react";
 import {ColorModeScript} from "@chakra-ui/color-mode";
+import {ProSidebarProvider} from "react-pro-sidebar";
 import theme from "../theam";
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <Prov>
-    <ChakraProvider>
+  <ChakraProvider>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
-  // </Prov/ider>
+  <ProSidebarProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ProSidebarProvider>
+  </ChakraProvider>
 );
