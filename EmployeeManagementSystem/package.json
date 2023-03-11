@@ -23,6 +23,7 @@
     "react-router-dom": "^6.8.2",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "sweetalert2": "^11.7.3",
     "yup": "^1.0.2"
   },
   "devDependencies": {

@@ -5,6 +5,8 @@ const Home = () => {
     <div>
       
       <Text> Welcome To My Employee Managment app</Text>
+
+      
     </div>
   )
 }

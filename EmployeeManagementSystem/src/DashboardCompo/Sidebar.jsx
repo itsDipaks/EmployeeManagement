@@ -10,7 +10,7 @@ import {
 import {MdDashboardCustomize} from "react-icons/md";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
 import {RiListCheck2} from "react-icons/ri";
-import {BsPersonFillAdd,BsGraphUpArrow} from "react-icons/bs";
+import {BsPersonFillAdd, BsGraphUpArrow} from "react-icons/bs";
 
 import {Link} from "react-router-dom";
 const Sidebarcompo = () => {
@@ -33,8 +33,8 @@ const Sidebarcompo = () => {
       icon: <BsPersonFillAdd />,
     },
     {
-      Menuname: "Graphs",
-      linkto: "/",
+      Menuname: "empprofile",
+      linkto: "/empprofile",
       icon: <BsGraphUpArrow />,
     },
   ];
@@ -43,10 +43,11 @@ const Sidebarcompo = () => {
       <div style={{display: "flex", height: "100%"}}>
         <Sidebar
           rootStyles={{
-           
-            color: "black",
+            color: "white",
+            backgroundColor: "black",
           }}
           collapsedWidth="70px"
+          backgroundColor="black"
         >
           <Image
             borderRadius="full"
@@ -58,8 +59,8 @@ const Sidebarcompo = () => {
           <Text ml="2rem">Dipak</Text>
           <Menu>
             {sidebarmenu?.map((el) => (
-              <MenuItem icon={el.icon} component={<Link to={el.linkto} style={{borderBottom:"1px solid gray"}} />}>
-                <Text ml="1rem" textDecoration="none">
+              <MenuItem icon={el.icon} component={<Link to={el.linkto} />}>
+                <Text ml="1rem" textDecoration="none" textAlign={"start"}>
                   {el.Menuname}
                 </Text>
               </MenuItem>
