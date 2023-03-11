@@ -10,7 +10,7 @@ import {ProSidebarProvider} from "react-pro-sidebar";
 import theme from "../theam";
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <Prov>
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
   <ProSidebarProvider>
     <BrowserRouter>

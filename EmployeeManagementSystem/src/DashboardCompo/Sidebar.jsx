@@ -10,6 +10,8 @@ import {
 import {MdDashboardCustomize} from "react-icons/md";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
 import {RiListCheck2} from "react-icons/ri";
+import {BsPersonFillAdd,BsGraphUpArrow} from "react-icons/bs";
+
 import {Link} from "react-router-dom";
 const Sidebarcompo = () => {
   const {collapseSidebar, toggled, toggleSidebar} = useProSidebar();
@@ -21,19 +23,19 @@ const Sidebarcompo = () => {
       icon: <MdDashboardCustomize />,
     },
     {
-      Menuname: "Employees",
-      linkto: "/employeepannel",
+      Menuname: "List",
+      linkto: "/employeelist",
       icon: <RiListCheck2 />,
     },
     {
-      Menuname: "Profile",
-      linkto: "/adminprofile",
-      icon: <RiListCheck2 />,
+      Menuname: "Add Employee",
+      linkto: "/addemp",
+      icon: <BsPersonFillAdd />,
     },
     {
-      Menuname: "Employees",
-      linkto: "/employe",
-      icon: <RiListCheck2 />,
+      Menuname: "Graphs",
+      linkto: "/",
+      icon: <BsGraphUpArrow />,
     },
   ];
   return (
