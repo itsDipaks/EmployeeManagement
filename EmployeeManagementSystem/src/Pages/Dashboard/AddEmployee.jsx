@@ -57,11 +57,25 @@ const AddEmployee = () => {
             </FormControl>
           </HStack>
 
+
+          <HStack>
           <FormControl isRequired>
             <FormLabel> Joining Date</FormLabel>
             <Input type="date" />
           </FormControl>
 
+          
+
+          
+          <FormControl isRequired>
+              <FormLabel> Gender</FormLabel>
+              <Select placeholder="Select Gender">
+                <option value="male">MALE</option>
+                <option value="female">FEMALE</option>
+                <option value="other">OTHER</option>
+              </Select>
+            </FormControl>
+          </HStack>
           <Button>Add </Button>
         </Stack>
       </Box>

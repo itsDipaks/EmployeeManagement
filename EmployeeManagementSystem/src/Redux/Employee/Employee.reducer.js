@@ -1,26 +1,27 @@
-import {AUTH_GET_ERROR, AUTH_GET_LOADING, AUTH_GET_SUCESS} from "./Auth.type";
+import { EMPLOYEE_GET_LOADING,EMPLOYEE_GET_ERROR,EMPLOYEE_GET_SUCESS } from "./Employee.type";
 
 let initialstate = {
   loading: false,
   error: false,
-  token: "",
+  employeeData: []
 };
 
-export const AuthReducer = (state = initialstate, {type, payload}) => {
+export const EmployeeReducer = (state = initialstate, {type, payload}) => {
   switch (type) {
-    case AUTH_GET_LOADING: {
+    case EMPLOYEE_GET_LOADING: {
       return {
         ...state,
         loading: true,
       };
     }
-    case AUTH_GET_SUCESS: {
+    case EMPLOYEE_GET_SUCESS: {
       return {
         ...state,
         loading: false,
+        employeeData:payload
       };
     }
-    case AUTH_GET_ERROR: {
+    case EMPLOYEE_GET_ERROR: {
       return {
         ...state,
         loading: false,

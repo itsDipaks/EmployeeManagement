@@ -1,5 +1,7 @@
 const express = require("express");
 const {Connection} = require("./Config/db");
+const { AuthRouter } = require("./Routes/AuthRoutes");
+const { EmployeeRouter } = require("./Routes/EmployesRoutes");
 // ........Env FileSystem.apply........
 require("dotenv").config();
 let port = process.env.PORT;
@@ -7,6 +9,8 @@ let port = process.env.PORT;
 
 const app = express();
 
+app.use("/auth",AuthRouter)
+app.use("/empl",EmployeeRouter)
 // ----Convert Files In Json -----
 
 app.use(express.json());

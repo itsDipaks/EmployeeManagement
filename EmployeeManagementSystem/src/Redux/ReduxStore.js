@@ -1,9 +1,13 @@
 import {legacy_createStore,applyMiddleware,combineReducers,compose} from "redux"
 import thunk from "redux-thunk"
+import { AuthReducer } from "./Auth/Auth.reducer"
+import { EmployeeReducer } from "./Employee/Employee.reducer"
 
 let RootReducers=combineReducers({
-
+Auth:AuthReducer,
+Employedata:EmployeeReducer
 })
-let Enhancer=window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()|| compose
-export let store=legacy_createStore(RootReducers,Enhancer(applyMiddleware(thunk)))
 
+const createComposer=Window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const store = legacy_createStore(RootReducers, createComposer(applyMiddleware(thunk)));
