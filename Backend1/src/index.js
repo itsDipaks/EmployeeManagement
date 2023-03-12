@@ -12,7 +12,9 @@ const app = express();
 app.use("/auth",AuthRouter)
 app.use("/empl",EmployeeRouter)
 // ----Convert Files In Json -----
-
+app.get("/",(req,res)=>{
+  res.send("yes")
+})
 app.use(express.json());
 
 app.listen(port, async () => {
@@ -23,3 +25,4 @@ app.listen(port, async () => {
     console.log("Error in Connections", error);
   }
 });
+

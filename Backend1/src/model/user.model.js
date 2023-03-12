@@ -2,12 +2,14 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-  firstname: { type: String,required: true},
-  lastname: { type: String,required: true},
+  firstname: { type: String},
+  lastname: { type: String},
   email: { type: String,required: true},
   password: { type: String,required: true},
-  mobile: { type: Number,required: true,min:10},
-//   country: { type: String,required: true,enum:["india","usa","china","russia"],default:"india"},
+  mobile: { type: Number,min:10},
+  salary: { type: Number },
+  position: { type: String },
+  joiningDate: { type: String },
   gender: { type: String,enum:["male","female","Unspecifide"],required: true,default:"male"},
 });
 
