@@ -11,7 +11,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
   let isexist = await UserModel.findOne({email});
   if (isexist) {
     res
-      .status(502)
+      .status(200)
       .send({msg: "User Already Exist With this Email Plase Login !!"});
   } else {
     const {

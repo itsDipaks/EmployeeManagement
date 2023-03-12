@@ -2,20 +2,27 @@ const express = require("express");
 const {Connection} = require("./Config/db");
 const { AuthRouter } = require("./Routes/AuthRoutes");
 const { EmployeeRouter } = require("./Routes/EmployesRoutes");
+const cors =require("cors")
 // ........Env FileSystem.apply........
 require("dotenv").config();
 let port = process.env.PORT;
 
 
+
+
 const app = express();
+// ----Imp Middleweare----
+app.use(cors())
+app.use(express.json());
+
 
 app.use("/auth",AuthRouter)
-app.use("/empl",EmployeeRouter)
-// ----Convert Files In Json -----
+app.use("/employee",EmployeeRouter)
+
 app.get("/",(req,res)=>{
   res.send("yes")
 })
-app.use(express.json());
+
 
 app.listen(port, async () => {
   try {
