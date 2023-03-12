@@ -17,19 +17,21 @@ import {
   Select,
   Input,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AllEmployee } from "../../Redux/Employee/Employee.action";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { Link } from "react-router-dom";
+import {AllEmployee} from "../../Redux/Employee/Employee.action";
 const ListEmp = () => {
+  let dispatch = useDispatch();
 
-  let dispatch=useDispatch()
-
-  useEffect(()=>{
-    dispatch(AllEmployee())
-  },[])
-
-  let {employeeData,loading,error}=useSelector(store=>store.Storedata)
-  console.log(employeeData)
+  useEffect(() => {
+    dispatch(AllEmployee());
+  }, []);
+let selectedemployee=(el)=>{
+console.log(el)
+}
+  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
+  console.log(employeeData);
   return (
     <>
       <Box>
@@ -78,27 +80,23 @@ const ListEmp = () => {
               </Tr>
             </Thead>
             <Tbody>
-             
-
-             {employeeData && employeeData?.map((el,index)=>
-             
-             <Tr key={index} >
-             <Td>{el._v}</Td>
-             <Td>{el.firstname + el.lastname}</Td>
-             <Td>{el.email}</Td>
-             <Td>{el.salary}</Td>
-             <Td>{el.position}</Td>
-             <Td>{el.joiningDate}</Td>
-             <Td>
-               <HStack>
-                 <Button>Edit</Button>
-                 <Button>Delete</Button>
-               </HStack>
-             </Td>
-           </Tr>
-             ) }
-             
-           
+              {employeeData &&
+                employeeData?.map((el, index) => (
+                  <Tr key={index} >
+                    <Td>{el._v}</Td>
+                    <Td>{el.firstname + el.lastname}</Td>
+                    <Td>{el.email}</Td>
+                    <Td>{el.salary}</Td>
+                    <Td>{el.position}</Td>
+                    <Td>{el.joiningDate}</Td>
+                    <Td>
+                      <HStack>
+                        <Link to={`/empProfile/${el._id}`}><Button>Edit</Button></Link>
+                        <Button>Delete</Button>
+                      </HStack>
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </TableContainer>

@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import {useDispatch, useSelector} from "react-redux"
 import { addEmployee } from "../../Redux/Auth/Auth.action";
+
+import Swal from 'sweetalert2'
 const AddEmployee = () => {
   let [formdata, setformdata] = useState({});
   const dispatch=useDispatch()
@@ -22,18 +24,32 @@ const AddEmployee = () => {
     setformdata({...formdata,[name]:value})
   }
 
+
   const SubmitFormData=(e)=>{
     console.log("yes",formdata)
     e.preventDefault()
     dispatch(addEmployee(formdata))
+   
+
+
   }
 
+  let {loading,error,done}=useSelector(store=>store.Auth)
+{done?
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    timer: 1500
+  }):""
+}
   return (
     <div>
       <Text textAlign={"center"} p="2rem" semibold fontSize="3xl">
         Add Employee{" "}
       </Text>
-      <Box w="80%" m={"auto"}>
+      <Box w="60%" m={"auto"}>
         <form onSubmit={SubmitFormData}>
           <Stack>
             <HStack>

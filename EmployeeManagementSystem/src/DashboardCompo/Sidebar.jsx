@@ -49,14 +49,14 @@ const Sidebarcompo = () => {
           collapsedWidth="70px"
           backgroundColor="black"
         >
-          <Image
+          {/* <Image
             borderRadius="full"
             boxSize="80px"
             src="https://bit.ly/dan-abramov"
             alt="Dan Abramov"
             ml="1rem"
           />
-          <Text ml="2rem">Dipak</Text>
+          <Text ml="2rem">Dipak</Text> */}
           <Menu>
             {sidebarmenu?.map((el) => (
               <MenuItem icon={el.icon} component={<Link to={el.linkto} />}>

@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
 <AdminDashboard/>
-<Navbar/>
-<CombineRoutes/>
+{/* <Navbar/>
+<CombineRoutes/> */}
     </div>
   )
 }

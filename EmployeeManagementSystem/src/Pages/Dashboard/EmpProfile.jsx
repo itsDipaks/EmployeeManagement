@@ -1,8 +1,22 @@
-import {Box, Button, Container, Flex, Image, Text} from "@chakra-ui/react";
-import React from "react";
+import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import ProfileIntro from "../../DashboardCompo/ProfileIntro";
+import { SingleEmployee } from "../../Redux/Employee/Employee.action";
 
 const EmpProfile = () => {
+
+  const param = useParams();
+  const dispatch=useDispatch()
+
+  useEffect(()=>{
+    dispatch(SingleEmployee(param.id))
+  },[])
+
+  let {employeeData,loading,error}=useSelector(store=>store.Storedata)
+  console.log(employeeData+"profile")
+
   return (
     <div>
       <Box border={"1px"}>

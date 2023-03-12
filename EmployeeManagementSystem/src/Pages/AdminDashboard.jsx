@@ -8,11 +8,11 @@ const AdminDashboard = () => {
   return (
     <div>
       <Topbar />
-      <Box w="100%" display={"flex"}>
-        <Box w="20%">
+      <Box w="100%" display={"flex"} justifyContent="space-btween">
+        <Box>
           <Sidebarcompo />
         </Box>
-        <Box width={"75%"} margin="auto">
+        <Box width={"90%"} margin="auto">
           <DashbordRoutes />
         </Box>
       </Box>
