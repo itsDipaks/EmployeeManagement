@@ -10,17 +10,26 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import {useDispatch, useSelector} from "react-redux"
+import { addEmployee } from "../../Redux/Auth/Auth.action";
 const AddEmployee = () => {
   let [formdata, setformdata] = useState({});
+  const dispatch=useDispatch()
 
   const Handeldinput=(e)=>{
+    e.preventDefault()
     let {name,value}=e.target
     setformdata({...formdata,[name]:value})
   }
 
+  const SubmitFormData=(e)=>{
+    console.log("yes",formdata)
+    e.preventDefault()
+    dispatch(addEmployee(formdata))
+  }
 
   return (
-    <>
+    <div>
       <Text textAlign={"center"} p="2rem" semibold fontSize="3xl">
         Add Employee{" "}
       </Text>
@@ -114,12 +123,12 @@ const AddEmployee = () => {
                 </Select>
               </FormControl>
             </HStack>
-            <Button type="submit">Add </Button>
+            <Input type="submit" value="add"/>
           </Stack>
         </form>
       </Box>
-    </>
-  );
+    </div>
+  )
 };
 
 export default AddEmployee;
