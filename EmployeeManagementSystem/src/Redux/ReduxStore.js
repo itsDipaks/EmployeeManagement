@@ -5,7 +5,7 @@ import { EmployeeReducer } from "./Employee/Employee.reducer"
 
 let RootReducers=combineReducers({
 Auth:AuthReducer,
-Employedata:EmployeeReducer
+Storedata:EmployeeReducer
 })
 
 const createComposer=Window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

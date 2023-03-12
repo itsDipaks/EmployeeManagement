@@ -17,8 +17,19 @@ import {
   Select,
   Input,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AllEmployee } from "../../Redux/Employee/Employee.action";
 const ListEmp = () => {
+
+  let dispatch=useDispatch()
+
+  useEffect(()=>{
+    dispatch(AllEmployee())
+  },[])
+
+  let {employeeData,loading,error}=useSelector(store=>store.Storedata)
+  console.log(employeeData)
   return (
     <>
       <Box>
@@ -67,34 +78,27 @@ const ListEmp = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>1</Td>
-                <Td>Dipak Pawar</Td>
-                <Td>Dipak@gmail.com</Td>
-                <Td>45000</Td>
-                <Td>Full stack Developer</Td>
-                <Td>23rd narch 2022</Td>
-                <Td>
-                  <HStack>
-                    <Button>Edit</Button>
-                    <Button>Delete</Button>
-                  </HStack>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>1</Td>
-                <Td>Dipak Pawar</Td>
-                <Td>Dipak@gmail.com</Td>
-                <Td>45000</Td>
-                <Td>Full stack Developer</Td>
-                <Td>23rd narch 2022</Td>
-                <Td>
-                  <HStack>
-                    <Button>Edit</Button>
-                    <Button>Delete</Button>
-                  </HStack>
-                </Td>
-              </Tr>
+             
+
+             {employeeData && employeeData?.map((el,index)=>
+             
+             <Tr key={index} >
+             <Td>{el._v}</Td>
+             <Td>{el.firstname + el.lastname}</Td>
+             <Td>{el.email}</Td>
+             <Td>{el.salary}</Td>
+             <Td>{el.position}</Td>
+             <Td>{el.joiningDate}</Td>
+             <Td>
+               <HStack>
+                 <Button>Edit</Button>
+                 <Button>Delete</Button>
+               </HStack>
+             </Td>
+           </Tr>
+             ) }
+             
+           
             </Tbody>
           </Table>
         </TableContainer>
