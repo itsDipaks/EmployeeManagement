@@ -1,14 +1,12 @@
 import { Box, Button, useColorMode } from "@chakra-ui/react"
+import SwitchTheam from "../Components/SwitchTheam"
 
 const Topbar = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
     return (
     <>
  <Box border="1px" height="50px">
 
- <Button onClick={toggleColorMode}>
-         {colorMode === 'light' ?"Dark": "light"}
-      </Button>
+<SwitchTheam/>
  </Box>
     </>
   )
