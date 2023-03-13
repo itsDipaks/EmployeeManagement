@@ -91,7 +91,7 @@ console.log(el)
                     <Td>{el.joiningDate}</Td>
                     <Td>
                       <HStack>
-                        <Link to={`/empProfile/${el._id}`}><Button>Edit</Button></Link>
+                        <Link to={`/empProfile/${el._id}`}><Button>View/Change</Button></Link>
                         <Button>Delete</Button>
                       </HStack>
                     </Td>

@@ -6,7 +6,8 @@ const Navbar = () => {
     <div>
       
       <Flex border={"1px"}>
-        Employee Managment Sysytem
+        <Text>Home</Text>
+        <Text>Home</Text>
         <Text>Home</Text>
       </Flex>
     </div>
