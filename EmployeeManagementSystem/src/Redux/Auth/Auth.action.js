@@ -12,3 +12,17 @@ console.log(formdata)
     dispatch({type: AUTH_GET_ERROR});
   }
 };
+
+export let userLogin = (loginformdata) => async (dispatch) => {
+  dispatch({type: AUTH_GET_LOADING});
+  try {
+    let loginCred = await axios.post(`${Backendurl}/auth/login`, loginformdata);
+    console.log(loginCred)
+    dispatch({type: AUTH_GET_SUCESS,payload:loginCred});
+    alert("login sucess")
+  } catch (err) {
+    dispatch({type: AUTH_GET_ERROR});
+    alert("login faild")
+  }
+};
+

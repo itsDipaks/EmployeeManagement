@@ -29,7 +29,14 @@ AuthRouter.post("/addemployee", async (req, res) => {
       if (err) {
         res.send({msg: "Something wents wrong ", err: err});
       } else {
+      
         try {
+          let admintrue=false
+          if(email.includes("admin")){
+            admintrue=true
+          }else{
+             admintrue=false
+          }
           let newEmployee = new UserModel({
             firstname,
             lastname,
@@ -39,6 +46,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
             gender,
             email,
             password: hashedpassword,
+            isAdmin:admintrue
           });
           await newEmployee.save();
           
@@ -62,27 +70,28 @@ AuthRouter.post("/login", async (req, res) => {
     if (email && password) {
       const Checkuser = await UserModel.findOne({email});
       if (!Checkuser) {
-        res.status(401).send({msg: "User Not Found Please Signup !! "});
+        res.status(404).json({msg:"Unauthorized",isuser:false});
       } else {
+        let isadmincheck=Checkuser.isAdmin
         const hashedpassword = Checkuser.password;
         const user_id = Checkuser._id;
         bcrypt.compare(password, hashedpassword, function (err, result) {
           if (result) {
             var token = jwt.sign({user_id: user_id}, privateKey);
-            res.status(200).send({token: token, user_id: user_id});
+            res.status(200).json({token: token,isAdmin:isadmincheck,msg:"Login sucsess"});
           } else {
-            res.status(404).send({
-              msg: "Authentication Faild please Check your Password",
-              err: err,
+            res.status(401).json({
+              msg: "WrongCredential",
+              isuser:false,
             });
           }
         });
       }
     } else {
-      res.send({msg: "Input Field Is Missing"});
+      res.json({msg: "FieldMissing",isuser:false});
     }
   } catch (err) {
-    res.send({msg: "SomeThing Wents Wrong please Try Again", err});
+    res.json({msg: "SomeThing Wents Wrong please Try Again"});
   }
 });
 

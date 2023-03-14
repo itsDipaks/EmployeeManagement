@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
   position: { type: String },
   joiningDate: { type: String },
   gender: { type: String,enum:["male","female","Unspecifide"],required: true,default:"male"},
+  isAdmin:{type:Boolean,enum:[true,false],required:true,default:false}
 });
 
 const UserModel = mongoose.model("userdata", UserSchema);

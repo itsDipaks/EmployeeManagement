@@ -10,6 +10,7 @@ import Dashboardpanel from '../Pages/Dashboard/Dashboardpanel'
 import EmpProfile from '../Pages/Dashboard/EmpProfile'
 import ListEmp from '../Pages/Dashboard/ListEmp'
 import AdminDashboard from '../Pages/AdminDashboard'
+import { AdminPrivate, EmployeePrivate } from './PrivateRoutes'
 const CombineRoutes = () => {
   return (
     <div>
@@ -19,8 +20,8 @@ const CombineRoutes = () => {
       {/* -------------Pages------------ */}
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
-      <Route path='/employdashbord' element={<EmployePgae/>}/>
-      <Route path='/Admindashboard' element={<AdminDashboard/>}/>
+      <Route path='/employdashbord' element={<EmployeePrivate><EmployePgae/></EmployeePrivate>}/>
+      <Route path='/Admindashboard' element={<AdminPrivate><AdminDashboard/></AdminPrivate>}/>
       {/* -------------Dashbord Routes------------ */}
 
       <Route path='/adminprofile' element={<AdminProfile/>}/>

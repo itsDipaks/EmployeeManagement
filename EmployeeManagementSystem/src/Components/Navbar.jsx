@@ -12,11 +12,11 @@ import {Link} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 const Navbar = () => {
-  let islogin = true;
-  let isadmin = true;
+  let islogin = false;
+  let isadmin = false;
   return (
     <>
-      <Box w="100%" border="1px">
+      <Box w="100%" borderBottom={"0.5px solid gray"}>
         <Flex
           p={"0.51rem"}
           justifyContent="space-between"
