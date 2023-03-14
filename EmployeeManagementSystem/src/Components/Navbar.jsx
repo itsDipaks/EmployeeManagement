@@ -7,8 +7,8 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import React from "react";
-import {Link, Navigate} from "react-router-dom";
+import React, { useEffect } from "react";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const Navbar = () => {
   
   let {isadmin} =useSelector(store=>store.Auth)
   let dispatch=useDispatch()
-
+  const navigate = useNavigate();
 
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
@@ -26,12 +26,10 @@ const Navbar = () => {
   let token=getlocalsdata("token")
 
 
-
-
-
   
   let logoutuser=()=>{
   dispatch(userLogout())
+  navigate("/login")
   }
   return (
     <>
