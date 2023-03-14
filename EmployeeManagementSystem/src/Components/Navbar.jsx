@@ -8,15 +8,35 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { getlocalsdata } from "../assets/Localstorage";
+import { userLogout } from "../Redux/Auth/Auth.action";
 const Navbar = () => {
-  let islogin = false;
-  let isadmin = false;
+  
+  let {isadmin} =useSelector(store=>store.Auth)
+  let dispatch=useDispatch()
+
+
+  // -----If tiken avilable in local storqge that defins user login in sysytem-----
+
+
+  let token=getlocalsdata("token")
+
+
+
+
+
+  
+  let logoutuser=()=>{
+  dispatch(userLogout())
+  }
   return (
     <>
       <Box w="100%" borderBottom={"0.5px solid gray"}>
+       
         <Flex
           p={"0.51rem"}
           justifyContent="space-between"
@@ -28,7 +48,7 @@ const Navbar = () => {
           <Flex w="20%" justifyContent="space-between" alignItems={"center"}>
             <Text>Home</Text>
 
-            {islogin ? (
+            {token ? (
               isadmin ? (
                 <Text>Admin Panel</Text>
               ) : (
@@ -40,7 +60,7 @@ const Navbar = () => {
           </Flex>
 
           <Flex w="20%" justifyContent="space-evenly" alignItems={"center"}>
-            {islogin ? (
+            {token ? (
               <Tooltip
                 hasArrow
                 label=" View Profile"
@@ -61,8 +81,8 @@ const Navbar = () => {
               ""
             )}
 
-            {islogin ? (
-              <Button style={{marginLeft: "0.7rem"}}>
+            {token ? (
+              <Button style={{marginLeft: "0.7rem"}} onClick={logoutuser}>
                 Logout <BiLogOutCircle />
               </Button>
             ) : (

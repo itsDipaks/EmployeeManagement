@@ -46,6 +46,7 @@ const AddEmployee = () => {
 }
   return (
     <div>
+      
       <Text textAlign={"center"} p="2rem" semibold fontSize="3xl">
         Add Employee{" "}
       </Text>
