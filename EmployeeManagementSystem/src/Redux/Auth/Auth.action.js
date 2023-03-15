@@ -39,22 +39,31 @@ export let userLogin = (loginformdata) => async (dispatch) => {
 export let userLogout = () => (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   try {
-    Swal.fire({
-      title: "Are you sure?",
-      // text: "",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Logout!",
-    }).then((result) => {
-      if (result.isConfirmed) {
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   // text: "",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, Logout!",
+    // }).then((result) => {
+      // if (result.isConfirmed) {
         dispatch({type: AUTH_LOGOUT});
-        
-        Swal.fire("Logout Sucessfully!", "", "success");
-      }
-    });
+
+      //   Swal.fire("Logout Sucessfully!", "", "success");
+      // }
+    // });
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
   }
 };
+var str="dipak"
+
+let func=()=>{
+  
+
+  let func=()=>{
+  
+  }
+}

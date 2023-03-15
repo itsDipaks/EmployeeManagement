@@ -1,13 +1,16 @@
 import React from 'react'
-import {Button, Flex, Text} from "@chakra-ui/react"
+import {Button, Flex, Text, useDisclosure} from "@chakra-ui/react"
 import { useDispatch } from 'react-redux';
 import { userLogout } from '../Redux/Auth/Auth.action';
+import AlertCompo from '../Components/AlertCompo';
 const Home = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   let dispatch = useDispatch();
-  let logoutuser = () => {
-    dispatch(userLogout());
-    navigate("/login");
-  };
+  // let logoutuser = () => {
+  //   onOpen()
+  // };
+
+
   return (
     <div>
       <Flex justifyContent={"center"} alignItems="center" marginTop={"30vh"}>
@@ -16,12 +19,13 @@ const Home = () => {
      <Text  fontSize={"4xl"}>
       Employee Managment System
       </Text>
-      <Button onClick={logoutuser}>Logout</Button>
+      <Button onClick={()=>onOpen()}>Logout</Button>
     </Text>
 
       </Flex>
 
-      
+<AlertCompo onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
+    
     </div>
   )
 }
