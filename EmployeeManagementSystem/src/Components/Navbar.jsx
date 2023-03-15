@@ -7,50 +7,48 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
-import { getlocalsdata } from "../assets/Localstorage";
-import { userLogout } from "../Redux/Auth/Auth.action";
+import {useDispatch, useSelector} from "react-redux";
+import {getlocalsdata} from "../assets/Localstorage";
+import {userLogout} from "../Redux/Auth/Auth.action";
 const Navbar = () => {
-  
-  let {isadmin} =useSelector(store=>store.Auth)
-  let dispatch=useDispatch()
+  let {isadmin} = useSelector((store) => store.Auth);
+  let dispatch = useDispatch();
   const navigate = useNavigate();
 
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
+  let token = getlocalsdata("token");
 
-  let token=getlocalsdata("token")
-
-
-  
-  let logoutuser=()=>{
-  dispatch(userLogout())
-  navigate("/login")
-  }
+  let logoutuser = () => {
+    navigate("/login");
+    dispatch(userLogout());
+   
+  };
   return (
     <>
       <Box w="100%" borderBottom={"0.5px solid gray"}>
-       
         <Flex
           p={"0.51rem"}
           justifyContent="space-between"
           alignItems={"center"}
           w="100%"
         >
-          <Text>@DevelopWithDipak </Text>
+          <Link to={"/"}> <Text>@DevelopWithDipak </Text></Link>
 
           <Flex w="20%" justifyContent="space-between" alignItems={"center"}>
-            <Text>Home</Text>
+            <Link to={"/"}>
+              <Text>Home</Text>
+            </Link>
 
             {token ? (
               isadmin ? (
-                <Text>Admin Panel</Text>
+               <Link to={"/Admindashboard"}> <Text>Admin Panel</Text></Link>
               ) : (
-                <Text>Employee Panel</Text>
+               <Link to={"/employdashbord"}><Text>Employee Panel</Text></Link> 
               )
             ) : (
               ""

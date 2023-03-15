@@ -5,10 +5,15 @@ import Swal from 'sweetalert2';
 const EmployeePrivate = ({children}) => {
   let {isadmin,token}=useSelector(store=>store.Auth)
 console.log(isadmin)
-  if(isadmin==false && token){
+  if(!isadmin && token){
     return children
   }else{
-    alert("only for employee")
+    Swal.fire({
+      icon: 'error',
+      title: 'Access Denied',
+      text: 'Only For Employee',
+      // footer: '<a href="">Why do I have this issue?</a>'
+    })
     return <Navigate to="/login"/>
   }
 
@@ -19,6 +24,7 @@ const AdminPrivate = ({children}) => {
   if(isadmin && token){
     return children
   }else{
+
     Swal.fire({
       icon: 'error',
       title: 'Access Denied',

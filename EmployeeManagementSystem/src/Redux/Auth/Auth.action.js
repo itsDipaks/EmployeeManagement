@@ -7,6 +7,8 @@ import {
 } from "./Auth.type";
 import axios from "axios";
 import Swal from "sweetalert2";
+
+
 export let addEmployee = (formdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   console.log(formdata);

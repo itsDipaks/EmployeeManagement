@@ -7,7 +7,7 @@ import DashbordRoutes from "../Routes/DashbordRoutes";
 const AdminDashboard = () => {
   return (
     <div>
-      <Topbar />
+      {/* <Topbar /> */}
       <Box w="100%" display={"flex"} justifyContent="space-btween">
         <Box>
           <Sidebarcompo />

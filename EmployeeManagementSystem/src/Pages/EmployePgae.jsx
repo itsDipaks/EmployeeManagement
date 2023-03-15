@@ -5,7 +5,6 @@ const EmployePgae = () => {
   return (
     <div>
       EmployePgae
-      <Navbar />
     </div>
   );
 };
