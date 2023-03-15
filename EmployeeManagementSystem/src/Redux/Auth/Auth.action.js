@@ -23,7 +23,7 @@ export let addEmployee = (formdata) => async (dispatch) => {
 export let userLogin = (loginformdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   try {
-    let loginCred = await axios.post(`${Backendurl}/auth/login`, loginformdata);
+    let loginCred = await axios.post(`${Backendurl}/auth/login`,loginformdata);
     dispatch({type: AUTH_GET_SUCESS, payload: loginCred});
     Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
@@ -50,6 +50,7 @@ export let userLogout = () => (dispatch) => {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch({type: AUTH_LOGOUT});
+        
         Swal.fire("Logout Sucessfully!", "", "success");
       }
     });

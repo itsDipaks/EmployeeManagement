@@ -4,10 +4,10 @@ import Sidebarcompo from "../DashboardCompo/Sidebar";
 import Topbar from "../DashboardCompo/Topbar";
 import DashbordRoutes from "../Routes/DashbordRoutes";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({setispanel}) => {
   return (
     <div>
-      {/* <Topbar /> */}
+      <Topbar pannel={setispanel} />
       <Box w="100%" display={"flex"} justifyContent="space-btween">
         <Box>
           <Sidebarcompo />

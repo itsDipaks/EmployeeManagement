@@ -14,19 +14,16 @@ import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
-const Navbar = () => {
+const Navbar = ({setispanel}) => {
   let {isadmin} = useSelector((store) => store.Auth);
   let dispatch = useDispatch();
   const navigate = useNavigate();
-
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
   let token = getlocalsdata("token");
-
   let logoutuser = () => {
-    navigate("/login");
     dispatch(userLogout());
-   
+    navigate("/login");
   };
   return (
     <>
@@ -41,12 +38,12 @@ const Navbar = () => {
 
           <Flex w="20%" justifyContent="space-between" alignItems={"center"}>
             <Link to={"/"}>
-              <Text>Home</Text>
+              <Text >Home</Text>
             </Link>
 
             {token ? (
               isadmin ? (
-               <Link to={"/Admindashboard"}> <Text>Admin Panel</Text></Link>
+               <Link to={"/Admindashboard"}> <Text onClick={()=>setispanel(true)}>Admin Panel</Text></Link>
               ) : (
                <Link to={"/employdashbord"}><Text>Employee Panel</Text></Link> 
               )

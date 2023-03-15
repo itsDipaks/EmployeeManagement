@@ -11,6 +11,7 @@ let initialstate = {
   error: false,
   token: token,
   isadmin: false,
+
 };
 
 export const AuthReducer = (state = initialstate, {type, payload}) => {
@@ -31,6 +32,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         loading: false,
         token: payload.data.token,
         isadmin: payload.data.isAdmin,
+        
       };
     }
     case AUTH_GET_ERROR: {

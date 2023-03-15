@@ -101,9 +101,9 @@ let universalroutes=[
       {EmployeeBoard?.map((el)=>
       <Route path={el.path} element={<EmployeePrivate>{el.element}</EmployeePrivate>}/>
       )}
-      {Admindashboard?.map((el)=>
+      {/* {Admindashboard?.map((el)=>
       <Route path={el.path} element={<AdminPrivate>{el.element}</AdminPrivate>}/>
-      )}
+      )} */}
 
 
 
