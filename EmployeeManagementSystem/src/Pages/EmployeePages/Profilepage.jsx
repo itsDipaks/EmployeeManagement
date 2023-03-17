@@ -12,12 +12,16 @@ let dispatch=useDispatch()
     dispatch(SingleEmployee(token))
   }
 
-  let {employeeData}=useSelector(state=>state.Storedata)
-  console.log(employeeData[0].data)
+  let {employeeData,loading}=useSelector(state=>state.Storedata)
+  console.log(employeeData[0]?.data)
+
 
   useEffect(()=>{
     getuserprofile()
+
   },[])
+
+  
   return (
     <div>
         
