@@ -12,10 +12,9 @@ let dispatch=useDispatch()
     dispatch(SingleEmployee(token))
   }
 
-  let {employeeData} =useSelector(state=>state.Storedata)
-  console.log(employeeData[0].data
-    )
-  let {}=employeeData[0]
+  let {employeeData}=useSelector(state=>state.Storedata)
+  console.log(employeeData[0].data)
+
   useEffect(()=>{
     getuserprofile()
   },[])
@@ -24,7 +23,7 @@ let dispatch=useDispatch()
         
         
     <Text>
-
+yes
 
        </Text>
     </div>
