@@ -2,6 +2,7 @@ import { Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getlocalsdata } from '../../assets/Localstorage'
+import Loader from '../../Components/Loader'
 import { SingleEmployee } from '../../Redux/Employee/Employee.action'
 
 const Profilepage = () => {
@@ -21,11 +22,10 @@ let dispatch=useDispatch()
 
   },[])
 
-  
+
   return (
     <div>
-        
-        
+      {/* {loading?<Loader/>:""} */}
     <Text>
 yes
 
