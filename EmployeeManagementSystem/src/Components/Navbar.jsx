@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CircularProgress,
   Container,
   Flex,
   Image,
@@ -15,7 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
 const Navbar = ({setispanel}) => {
-  let {isadmin} = useSelector((store) => store.Auth);
+  let {isadmin,loading} = useSelector((store) => store.Auth);
   let dispatch = useDispatch();
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
@@ -23,7 +24,7 @@ const Navbar = ({setispanel}) => {
   let token = getlocalsdata("token");
   let logoutuser = () => {
     dispatch(userLogout());
-    navigate("/login");
+    navigate("/");
   };
   return (
     <>

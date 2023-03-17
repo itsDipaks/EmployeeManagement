@@ -43,6 +43,10 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
     }
     case AUTH_LOGOUT: {
       localStorage.removeItem("token");
+      return{
+        ...state,
+        loading:false
+      }
     }
 
     default:

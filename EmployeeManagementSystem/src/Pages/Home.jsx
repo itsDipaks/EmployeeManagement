@@ -5,12 +5,7 @@ import { userLogout } from '../Redux/Auth/Auth.action';
 import AlertCompo from '../Components/AlertCompo';
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  let dispatch = useDispatch();
-  // let logoutuser = () => {
-  //   onOpen()
-  // };
-
-
+  
   return (
     <div>
       <Flex justifyContent={"center"} alignItems="center" marginTop={"30vh"}>
@@ -19,7 +14,6 @@ const Home = () => {
      <Text  fontSize={"4xl"}>
       Employee Managment System
       </Text>
-      <Button onClick={()=>onOpen()}>Logout</Button>
     </Text>
 
       </Flex>

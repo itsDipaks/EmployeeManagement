@@ -9,20 +9,20 @@ import {
 } from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
-import { getlocalsdata } from "../assets/Localstorage";
+import {getlocalsdata} from "../assets/Localstorage";
 import {userLogin} from "../Redux/Auth/Auth.action";
 
 const Login = () => {
   // ----Hooks----
-  
+
   const islogin = getlocalsdata("token");
-console.log(islogin)
+  console.log(islogin);
   let [loginformdata, setloginformdata] = useState({});
   let dispatch = useDispatch();
-  const navigate=useNavigate()
-  let {token,loading,error} = useSelector((store) => store.Auth);
+  const navigate = useNavigate();
+  let {token, loading, error} = useSelector((store) => store.Auth);
 
   let handeldinputs = (e) => {
     let {name, value} = e.target;
@@ -34,7 +34,7 @@ console.log(islogin)
 
   let logintoportal = (e) => {
     e.preventDefault();
-    dispatch(userLogin(loginformdata)); 
+    dispatch(userLogin(loginformdata));
   };
 
   return (
@@ -47,7 +47,7 @@ console.log(islogin)
         p="4rem"
         rounded="md"
       >
-        {islogin?<Navigate to={"/"}/>:""}
+        {islogin ? <Navigate to={"/"} /> : ""}
         <Stack spacing={4} align="stretch">
           <Text fontSize={"2xl"}> Login</Text>
           <form onSubmit={logintoportal}>
