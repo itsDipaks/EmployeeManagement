@@ -15,6 +15,7 @@ export const EmployeeReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case EMPLOYEE_GET_SUCESS: {
+      console.log(payload)
       return {
         ...state,
         loading: false,
