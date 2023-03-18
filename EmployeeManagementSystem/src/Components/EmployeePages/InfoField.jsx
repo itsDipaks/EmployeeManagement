@@ -5,7 +5,7 @@ const InfoField = ({title,value}) => {
     // console.log(data)
   return (
     <>
-   <Flex border="1px solid red" p={4} gap={4}>
+   <Flex border="1px solid red" p={2} gap={4}>
             <Text color={"tomato"} fontWeight={800}>{title } : </Text>
             <Text>
               {value}
