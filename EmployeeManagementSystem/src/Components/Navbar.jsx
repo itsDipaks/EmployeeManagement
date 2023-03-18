@@ -16,7 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
 const Navbar = ({setispanel}) => {
-  let {isadmin,loading} = useSelector((store) => store.Auth);
+  let {isadmin, loading} = useSelector((store) => store.Auth);
   let dispatch = useDispatch();
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
@@ -35,18 +35,26 @@ const Navbar = ({setispanel}) => {
           alignItems={"center"}
           w="100%"
         >
-          <Link to={"/"}> <Text>@DevelopWithDipak </Text></Link>
+          <Link to={"/"}>
+            {" "}
+            <Text>@DevelopWithDipak </Text>
+          </Link>
 
           <Flex w="20%" justifyContent="space-between" alignItems={"center"}>
             <Link to={"/"}>
-              <Text >Home</Text>
+              <Text>Home</Text>
             </Link>
 
             {token ? (
               isadmin ? (
-               <Link to={"/Admindashboard"}> <Text onClick={()=>setispanel(true)}>Admin Panel</Text></Link>
+                <Link to={"/Admindashboard"}>
+                  {" "}
+                  <Text onClick={() => setispanel(true)}>Admin Panel</Text>
+                </Link>
               ) : (
-               <Link to={"/employdashbord"}><Text>Employee Panel</Text></Link> 
+                <Link to={"/employdashbord"}>
+                  <Text>Employee Panel</Text>
+                </Link>
               )
             ) : (
               ""
@@ -61,15 +69,17 @@ const Navbar = ({setispanel}) => {
                 bg="gray.300"
                 color="black"
               >
-                <Image
-                  cursor={"pointer"}
-                  w="2.5rem"
-                  h="2.5rem"
-                  border={"2px solid white"}
-                  borderRadius={"full"}
-                  src="https://media.istockphoto.com/id/1309084016/photo/a-happy-farmer-talking-on-phone-smiling.jpg?b=1&s=170667a&w=0&k=20&c=pt6DqXyi6JKhaqt8ezKpUbzy8aI9BB-Ef8FwITvf2-8="
-                  alt="profile image"
-                />
+                <Link to={"/eminfo"}>
+                  <Image
+                    cursor={"pointer"}
+                    w="2.5rem"
+                    h="2.5rem"
+                    border={"2px solid white"}
+                    borderRadius={"full"}
+                    src="https://media.istockphoto.com/id/1309084016/photo/a-happy-farmer-talking-on-phone-smiling.jpg?b=1&s=170667a&w=0&k=20&c=pt6DqXyi6JKhaqt8ezKpUbzy8aI9BB-Ef8FwITvf2-8="
+                    alt="profile image"
+                  />
+                </Link>
               </Tooltip>
             ) : (
               ""
