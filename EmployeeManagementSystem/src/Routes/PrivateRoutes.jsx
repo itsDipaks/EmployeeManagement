@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 const EmployeePrivate = ({children}) => {
   let {isadmin,token}=useSelector(store=>store.Auth)
-console.log(isadmin)
+// console.log(isadmin)
   if(!isadmin && token){
     return children
   }else{

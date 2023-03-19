@@ -43,7 +43,7 @@ export let SingleEmployee = (token) => async (dispatch) => {
         "Authorization": token
     },
     });
-    console.log(EmData);
+    // console.log(EmData);
     dispatch({type: EMPLOYEE_GET_SUCESS,payload: [ EmData.data]
     }
     );

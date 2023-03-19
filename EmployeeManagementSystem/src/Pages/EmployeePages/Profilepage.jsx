@@ -19,42 +19,51 @@ import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
 import {getlocalsdata} from "../../assets/Localstorage";
 import InfoField from "../../Components/EmployeePages/InfoField";
+import {ChangedPassword} from "../../Redux/Auth/Auth.action";
 import {SingleEmployee} from "../../Redux/Employee/Employee.action";
 
 const Profilepage = () => {
   let [formdata, setformdata] = useState({});
   let token = getlocalsdata("token");
   let dispatch = useDispatch();
+
+
   let getuserprofile = () => {
     dispatch(SingleEmployee(token));
   };
 
+
   let {employeeData, loading} = useSelector((state) => state.Storedata);
-  console.log(employeeData[0]?.data);
+  // console.log(employeeData[0]?.data);
   let em = employeeData[0]?.data;
+
 
   let Handeldinput = (e) => {
     e.preventDefault();
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
+
+
   let submitChangedPasswor = (e) => {
     e.preventDefault();
     let {oldpassword, newpassword, conformpassword} = formdata;
     if (newpassword != conformpassword) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Password Should Be Match!',
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Password Should Be Match!",
+      });
     } else {
-      alert("yes");
+      dispatch(ChangedPassword(token, formdata));
     }
   };
+
 
   useEffect(() => {
     getuserprofile();
   }, []);
+
 
   return (
     <>

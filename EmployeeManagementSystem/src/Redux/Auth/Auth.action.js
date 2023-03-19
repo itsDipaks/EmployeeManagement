@@ -8,7 +8,6 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 export let addEmployee = (formdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   console.log(formdata);
@@ -23,7 +22,7 @@ export let addEmployee = (formdata) => async (dispatch) => {
 export let userLogin = (loginformdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   try {
-    let loginCred = await axios.post(`${Backendurl}/auth/login`,loginformdata);
+    let loginCred = await axios.post(`${Backendurl}/auth/login`, loginformdata);
     dispatch({type: AUTH_GET_SUCESS, payload: loginCred});
     Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
@@ -41,7 +40,6 @@ export let userLogout = () => (dispatch) => {
   try {
     Swal.fire({
       title: "Are you sure?",
-      // text: "",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -59,3 +57,18 @@ export let userLogout = () => (dispatch) => {
   }
 };
 
+export let ChangedPassword = (token, formdata) => async (dispatch) => {
+  dispatch({type: AUTH_GET_LOADING});
+
+  try {
+    let EmData = await axios.patch(`${Backendurl}/auth/editpass`, formdata, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log(EmData);
+    dispatch({type: AUTH_GET_SUCESS});
+  } catch (err) {
+    dispatch({type: AUTH_GET_ERROR});
+  }
+};
