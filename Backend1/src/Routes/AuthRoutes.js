@@ -96,6 +96,7 @@ AuthRouter.post("/login", async (req, res) => {
     res.json({msg: "SomeThing Wents Wrong please Try Again"});
   }
 });
+let add=""
 AuthRouter.patch("/editpass", async (req, res) => {
   const {newpassword, oldpassword} = req.body;
   let {authorization} = req.headers;
