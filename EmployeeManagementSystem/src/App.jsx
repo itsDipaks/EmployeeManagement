@@ -13,7 +13,6 @@ let [ispanel,setispanel]=useState(false)
 {ispanel?<AdminDashboard setispanel={setispanel}/> :<div><Navbar ispanel={ispanel} setispanel={setispanel}/>
 <CombineRoutes/></div>}
 
-
     </div>
   )
 }
