@@ -29,13 +29,12 @@ AuthRouter.post("/addemployee", async (req, res) => {
       if (err) {
         res.send({msg: "Something wents wrong ", err: err});
       } else {
-      
         try {
-          let admintrue=false
-          if(email.includes("admin")){
-            admintrue=true
-          }else{
-             admintrue=false
+          let admintrue = false;
+          if (email.includes("admin")) {
+            admintrue = true;
+          } else {
+            admintrue = false;
           }
           let newEmployee = new UserModel({
             firstname,
@@ -46,10 +45,9 @@ AuthRouter.post("/addemployee", async (req, res) => {
             gender,
             email,
             password: hashedpassword,
-            isAdmin:admintrue
+            isAdmin: admintrue,
           });
           await newEmployee.save();
-          
 
           res.status(201).json({msg: "Signup Sucessfully"});
         } catch (err) {
@@ -70,28 +68,64 @@ AuthRouter.post("/login", async (req, res) => {
     if (email && password) {
       const Checkuser = await UserModel.findOne({email});
       if (!Checkuser) {
-        res.status(404).json({msg:"Unauthorized",isuser:false});
+        res.status(404).json({msg: "Unauthorized", isuser: false});
       } else {
-        let isadmincheck=Checkuser.isAdmin
+        let isadmincheck = Checkuser.isAdmin;
         const hashedpassword = Checkuser.password;
         const user_id = Checkuser._id;
         bcrypt.compare(password, hashedpassword, function (err, result) {
           if (result) {
             var token = jwt.sign({user_id: user_id}, privateKey);
-            res.status(200).json({token: token,isAdmin:isadmincheck,msg:"Login sucsess"});
+            res.status(200).json({
+              token: token,
+              isAdmin: isadmincheck,
+              msg: "Login sucsess",
+            });
           } else {
             res.status(401).json({
               msg: "WrongCredential",
-              isuser:false,
+              isuser: false,
             });
           }
         });
       }
     } else {
-      res.json({msg: "FieldMissing",isuser:false});
+      res.json({msg: "FieldMissing", isuser: false});
     }
   } catch (err) {
     res.json({msg: "SomeThing Wents Wrong please Try Again"});
+  }
+});
+AuthRouter.patch("/editpass", async (req, res) => {
+  const {newpassword, oldpassword} = req.body;
+  let {authorization} = req.headers;
+  try {
+    jwt.verify(authorization, privateKey, async function (err, decoded) {
+      let user_id = decoded.user_id;
+      let employeefind = await UserModel.findById({_id: user_id});
+      if (employeefind) {
+        let {password} = employeefind;
+
+        bcrypt.compare(oldpassword, password, async function (err, result) {
+          if (result) {
+            let EmployeeInfo = await UserModel.findOneAndUpdate(
+              {_id: user_id},
+              {password: newpassword}
+            );
+            console.log(EmployeeInfo);
+            res.status(200).send({
+              msg: "Password Changed Sucess",
+            });
+          } else {
+            res.status(400).send({
+              msg: "Something Wents Wrong",
+            });
+          }
+        });
+      }
+    });
+  } catch (err) {
+    res.status(400).send({msg: "Something Wents Wrong"});
   }
 });
 
