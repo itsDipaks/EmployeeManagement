@@ -66,9 +66,20 @@ export let ChangedPassword = (token, formdata) => async (dispatch) => {
         Authorization: token,
       },
     });
-    console.log(EmData);
+    Swal.fire(
+      'Sucess!',
+      'Password Changed !! ',
+      'success'
+    )
     dispatch({type: AUTH_GET_SUCESS});
+   
   } catch (err) {
+    Swal.fire({
+      icon: 'error',
+      title: err,
+      text: 'Entered Password is Wrong !',
+    })
+
     dispatch({type: AUTH_GET_ERROR});
   }
 };

@@ -4,7 +4,6 @@ import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 const EmployeePrivate = ({children}) => {
   let {isadmin,token}=useSelector(store=>store.Auth)
-// console.log(isadmin)
   if(!isadmin && token){
     return children
   }else{
@@ -12,7 +11,6 @@ const EmployeePrivate = ({children}) => {
       icon: 'error',
       title: 'Access Denied',
       text: 'Only For Employee',
-      // footer: '<a href="">Why do I have this issue?</a>'
     })
     return <Navigate to="/login"/>
   }
@@ -29,7 +27,6 @@ const AdminPrivate = ({children}) => {
       icon: 'error',
       title: 'Access Denied',
       text: 'Only For Admin',
-      // footer: '<a href="">Why do I have this issue?</a>'
     })
     return <Navigate to="/login"/>
   }
