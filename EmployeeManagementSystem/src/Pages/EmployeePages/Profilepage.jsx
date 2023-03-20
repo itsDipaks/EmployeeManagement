@@ -52,7 +52,7 @@ const Profilepage = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Password Should Be Match!",
+        text: "New And Conform Password should be match!",
       });
     } else {
       dispatch(ChangedPassword(token, formdata));
@@ -62,6 +62,7 @@ const Profilepage = () => {
 
   useEffect(() => {
     getuserprofile();
+    
   }, []);
 
 

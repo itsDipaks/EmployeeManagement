@@ -40,7 +40,7 @@ const Navbar = ({setispanel}) => {
             <Text>@DevelopWithDipak </Text>
           </Link>
 
-          <Flex w="20%" justifyContent="space-between" alignItems={"center"}>
+          <Flex w="40%" gap={4} justifyContent="space-evenly" alignItems={"center"}>
             <Link to={"/"}>
               <Text>Home</Text>
             </Link>
@@ -52,9 +52,14 @@ const Navbar = ({setispanel}) => {
                   <Text onClick={() => setispanel(true)}>Admin Panel</Text>
                 </Link>
               ) : (
-                <Link to={"/employdashbord"}>
-                  <Text>Employee Panel</Text>
-                </Link>
+                <Flex gap={4} w="80%" justifyContent="space-evenly">
+                  <Link to={"/employdashbord"}>
+                    <Text>Employee Panel</Text>
+                  </Link>
+                  <Link to={"/employdashbord"}>
+                    <Text>Project Dashboard</Text>
+                  </Link>
+                </Flex>
               )
             ) : (
               ""
@@ -97,7 +102,6 @@ const Navbar = ({setispanel}) => {
                 </Button>{" "}
               </Link>
             )}
-
             <SwitchTheam />
           </Flex>
         </Flex>

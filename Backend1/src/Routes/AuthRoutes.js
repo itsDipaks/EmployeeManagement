@@ -109,7 +109,7 @@ AuthRouter.patch("/editpass", async (req, res) => {
 
         bcrypt.compare(oldpassword, password, async function (err, result) {
           if (result) {
-            bcrypt.hash(oldpassword, 4, async function (err, hashedpassword) {
+            bcrypt.hash(newpassword, 4, async function (err, hashedpassword) {
               if (!err) {
                 let EmployeeInfo = await UserModel.findOneAndUpdate(
                   {_id: user_id},
@@ -120,6 +120,7 @@ AuthRouter.patch("/editpass", async (req, res) => {
                   msg: "Password Changed Sucess",
                 });
               }
+              
             });
           } else {
             res.status(400).send({

@@ -11,15 +11,18 @@ import theme from "../theam";
 import { store } from "./Redux/ReduxStore";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
+<React.StrictMode> 
   <ChakraProvider theme={theme}>
   <ColorModeScript initialColorMode={theme.config.initialColorMode} />
   <ProSidebarProvider>
     <BrowserRouter>
+    
     <Provider store={store}>
       <App />
+      
       </Provider>
     </BrowserRouter>
   </ProSidebarProvider>
   </ChakraProvider>
+  </React.StrictMode>
 );

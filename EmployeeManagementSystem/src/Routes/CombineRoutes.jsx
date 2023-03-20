@@ -90,27 +90,13 @@ let universalroutes=[
     <Routes>
 
       {/* -------------Pages------------ */}
-      {/* <Route path='/' element={<Home/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/employdashbord' element={<EmployeePrivate><EmployePgae/></EmployeePrivate>}/>
-      <Route path='/Admindashboard' element={<AdminPrivate><AdminDashboard/></AdminPrivate>}/> */}
-      {/* -------------Dashbord Routes------------ */}
-
-     {/* <Route path='/adminprofile' element={<AdminPrivate><AdminProfile/></AdminPrivate>}/>
-      <Route path='/dashpanel' element={<AdminPrivate><Dashboardpanel/></AdminPrivate>}/>
-      <Route path='/employeelist' element={<AdminPrivate><ListEmp/></AdminPrivate>}/>
-      <Route path='/addemp' element={<AdminPrivate><AddEmployee/></AdminPrivate>}/>
-      <Route path='/empProfile/:id' element={<AdminPrivate><EmpProfile/></AdminPrivate>}/> */}
 
       {universalroutes?.map((el)=>
-      <Route path={el.path} element={el.element}/>
+      <Route key={el.id} path={el.path} element={el.element}/>
       )}
       {EmployeeBoard?.map((el)=>
-      <Route path={el.path} element={<EmployeePrivate>{el.element}</EmployeePrivate>}/>
+      <Route  key={el.id} path={el.path} element={<EmployeePrivate>{el.element}</EmployeePrivate>}/>
       )}
-      {/* {Admindashboard?.map((el)=>
-      <Route path={el.path} element={<AdminPrivate>{el.element}</AdminPrivate>}/>
-      )} */}
 
 
 

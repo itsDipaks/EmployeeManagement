@@ -112,8 +112,8 @@ const AddEmployee = () => {
                   name="position"
                   onChange={Handeldinput}
                 >
-                  <option value="hr">HR (Human resource )</option>
-                  <option value="frontend">Frontend Developer</option>
+                  <option value="HR">HR (Human resource )</option>
+                  <option value="FRONTEND DEVELOPER">Frontend Developer</option>
                   <option value="backend">Backend Developer</option>
                   <option value="fullstack">Full stack Developer</option>
                   <option value="node">Nodejs Developer</option>
