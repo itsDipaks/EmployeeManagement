@@ -1,6 +1,7 @@
 import {Backendurl} from "../../assets/Urls";
 import { PROJECT_GET_SUCESS,PROJECT_GET_ERROR,PROJECT_GET_LOADING } from "./Project.type";
 import axios from "axios"
+import Swal from "sweetalert2";
 
 
 
@@ -12,8 +13,19 @@ export let AddNewProject = (Projectdata) => async (dispatch) => {
     let Projectadded = await axios.post(`${Backendurl}/project/Addproject`, Projectdata);
     console.log(Projectadded)
     dispatch({type: PROJECT_GET_SUCESS});
+
+    Swal.fire(
+      'Sucess!',
+      'Project Added Succesfully !! ',
+      'success'
+    )
   } catch (err) {
     dispatch({type: PROJECT_GET_ERROR});
+    Swal.fire({
+      icon: 'error',
+      title: "Faild !! ",
+      text: 'Entered Old Password is Wrong !',
+    })
   }
 };
 

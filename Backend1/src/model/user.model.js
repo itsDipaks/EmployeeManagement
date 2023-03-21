@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String,required: true},
   password: { type: String,required: true},
   mobile: { type: Number,min:10},
+  
   salary: { type: Number },
   position: { type: String },
   joiningDate: { type: String },

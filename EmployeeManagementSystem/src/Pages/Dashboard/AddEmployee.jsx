@@ -112,11 +112,11 @@ const AddEmployee = () => {
                   name="position"
                   onChange={Handeldinput}
                 >
-                  <option value="HR">HR (Human resource )</option>
-                  <option value="FRONTEND DEVELOPER">Frontend Developer</option>
-                  <option value="backend">Backend Developer</option>
-                  <option value="fullstack">Full stack Developer</option>
-                  <option value="node">Nodejs Developer</option>
+                  <option value="HR (Hiring Resources)">HR (Human resource )</option>
+                  <option value="Frontend Developer">Frontend Developer</option>
+                  <option value="Backend Developer">Backend Developer</option>
+                  <option value="Full Stack Developer">Full stack Developer</option>
+                  <option value="NodeJs Developer">Nodejs Developer</option>
                 </Select>
               </FormControl>
             </HStack>

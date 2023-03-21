@@ -30,6 +30,7 @@ ProjectRouter.post("/Addproject", async (req, res) => {
     Status,
     AssignedTeam,
     ProjectimaageUrl,
+    ProjectType
   } = req.body;
   try {
     let addMyproject = new ProjectModel({
@@ -40,6 +41,7 @@ ProjectRouter.post("/Addproject", async (req, res) => {
       Status,
       AssignedTeam,
       ProjectimaageUrl,
+      ProjectType
     });
     await addMyproject.save();
     res.status(200).json({msg: "Project Added Sucessfully"});

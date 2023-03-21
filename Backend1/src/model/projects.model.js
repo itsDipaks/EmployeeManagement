@@ -10,11 +10,11 @@ const projectSchema = new mongoose.Schema({
     required: true
   },
   StartDate: {
-    type: Date,
+    type: String,
     required: true
   },
   EndDate: {
-    type: Date,
+    type: String,
     required: true
   },
   Status: {
@@ -23,6 +23,10 @@ const projectSchema = new mongoose.Schema({
     default: 'Active'
   },
   ProjectimaageUrl: {
+    type: String,
+    required: true
+  },
+  ProjectType: {
     type: String,
     required: true
   },

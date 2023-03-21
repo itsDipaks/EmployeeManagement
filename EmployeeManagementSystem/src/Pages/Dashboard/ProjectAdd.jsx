@@ -33,6 +33,7 @@ const ProjectAdd = () => {
   );
   let [AssignEmployee, setAssignEmployee] = useState([]);
   const [status, setprojectstatus] = React.useState('1')
+  let [actionhandeld,setactionhandeld]=useState(false)
   useEffect(() => {
     dispatch(AllEmployee());
   }, []); 
@@ -63,11 +64,10 @@ const ProjectAdd = () => {
 
   let submitform=(e)=>{
     e.preventDefault()
+    setactionhandeld(true)
     let AllProjectFiledData={...otherdata,AssignedTeam:AssignEmployee,ProjectimaageUrl:privewurl,Status:status}
-console.log(AllProjectFiledData)
-
 dispatch(AddNewProject(AllProjectFiledData))
-// console.log(AssignEmployee)
+
   }
 
   // ------------Multiselect options -----------
@@ -83,7 +83,7 @@ dispatch(AddNewProject(AllProjectFiledData))
       {/* --------Display All Projects------------- */}
       <Box>
 
-        <DisplayProjects/>
+        <DisplayProjects triggerdaction={actionhandeld}/>
       </Box>
 
       {/* -----Add New Projects------------- */}
@@ -109,9 +109,9 @@ dispatch(AddNewProject(AllProjectFiledData))
                 <FormControl isRequired>
                   <FormLabel> Select Project Type </FormLabel>
                   <Select placeholder="Select option" name="ProjectType"   onChange={Handeldinputvalue}>
-                    <option value="option1">Full Stack </option>
-                    <option value="option2">Frontend</option>
-                    <option value="option3">Backend</option>
+                    <option value="Full Stack">Full Stack </option>
+                    <option value="Frontend ">Frontend</option>
+                    <option value="Backend">Backend</option>
                   </Select>
                 </FormControl>
 
@@ -183,7 +183,6 @@ dispatch(AddNewProject(AllProjectFiledData))
       <Stack direction='row' gap={4}>
         <Radio value='Active'>Active</Radio>
         <Radio value='Completed'>Completed</Radio>
-        <Radio value='Cancelled'>Cancelled</Radio>
       </Stack>
     </RadioGroup>
             </FormControl>
