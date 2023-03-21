@@ -1,64 +1,64 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-  name: {
+    ProjectTitle: {
     type: String,
     required: true
   },
-  description: {
+  Description: {
     type: String,
     required: true
   },
-  startDate: {
+  StartDate: {
     type: Date,
     required: true
   },
-  endDate: {
+  EndDate: {
     type: Date,
     required: true
   },
-  status: {
+  Status: {
     type: String,
-    enum: ['active', 'completed', 'cancelled'],
-    default: 'active'
+    enum: ['Active', 'Completed', 'Cancelled'],
+    default: 'Active'
   },
-  tasks: [
-    {
-      name: {
-        type: String,
-        required: true
-      },
-      description: {
-        type: String,
-        required: true
-      },
-      startDate: {
-        type: Date,
-        required: true
-      },
-      endDate: {
-        type: Date,
-        required: true
-      },
-      status: {
-        type: String,
-        enum: ['not started', 'in progress', 'completed'],
-        default: 'not started'
-      },
-    }
-  ],
+  ProjectimaageUrl: {
+    type: String,
+    required: true
+  },
+//   tasks: [
+//     {
+//       name: {
+//         type: String,
+//         required: true
+//       },
+//       description: {
+//         type: String,
+//         required: true
+//       },
+//       startDate: {
+//         type: Date,
+//         required: true
+//       },
+//       endDate: {
+//         type: Date,
+//         required: true
+//       },
+   
+//     }
+//   ],
   AssignedTeam:[
+
   ],
-  createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  createdAt: {
+//   createdBy: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'User'
+//   },
+  ProjectCreatedAt: {
     type: Date,
     default: Date.now()
   }
 });
 
-const Project = mongoose.model('Project', projectSchema);
-
-module.exports = Project;
+const ProjectModel = mongoose.model('Project', projectSchema);
+module.exports ={ProjectModel}
