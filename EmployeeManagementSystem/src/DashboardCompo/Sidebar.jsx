@@ -8,8 +8,8 @@ import {
   useProSidebar,
 } from "react-pro-sidebar";
 import {MdDashboardCustomize} from "react-icons/md";
-import {AiOutlineMenuUnfold} from "react-icons/ai";
-import {RiListCheck2} from "react-icons/ri";
+import {AiOutlineFundProjectionScreen, AiOutlineMenuUnfold} from "react-icons/ai";
+import {FaUsers} from "react-icons/fa";
 import {BsPersonFillAdd, BsGraphUpArrow} from "react-icons/bs";
 
 import {Link} from "react-router-dom";
@@ -25,7 +25,7 @@ const Sidebarcompo = () => {
     {
       Menuname: "List",
       linkto: "/employeelist",
-      icon: <RiListCheck2 />,
+      icon: <FaUsers/>,
     },
     {
       Menuname: "Add Employee",
@@ -37,17 +37,23 @@ const Sidebarcompo = () => {
       linkto: "/empprofile",
       icon: <BsGraphUpArrow />,
     },
+    {
+      Menuname: "Projects",
+      linkto: "/addprojects",
+      icon: <AiOutlineFundProjectionScreen />,
+    },
   ];
   return (
     <>
       <div style={{display: "flex", height: "100%"}}>
         <Sidebar
           rootStyles={{
-            color: "white",
-            backgroundColor: "black",
+            color: "black",
+            
+            // backgroundColor: "black",
           }}
           collapsedWidth="70px"
-          backgroundColor="black"
+          backgroundColor="tomato"
         >
           {/* <Image
             borderRadius="full"
@@ -58,6 +64,7 @@ const Sidebarcompo = () => {
           />
           <Text ml="2rem">Dipak</Text> */}
           <Menu>
+            
             {sidebarmenu?.map((el) => (
               <MenuItem icon={el.icon} component={<Link to={el.linkto} />}>
                 <Text ml="1rem" textDecoration="none" textAlign={"start"}>

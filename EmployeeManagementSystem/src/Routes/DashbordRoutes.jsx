@@ -5,6 +5,7 @@ import AdminProfile from "../Pages/Dashboard/AdminProfile";
 import Dashboardpanel from "../Pages/Dashboard/Dashboardpanel";
 import EmpProfile from "../Pages/Dashboard/EmpProfile";
 import ListEmp from "../Pages/Dashboard/ListEmp";
+import ProjectAdd from "../Pages/Dashboard/ProjectAdd";
 const DashbordRoutes = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const DashbordRoutes = () => {
         <Route path="/employeelist" element={<ListEmp />} />
         <Route path="/addemp" element={<AddEmployee />} />
         <Route path="/empProfile/:id" element={<EmpProfile />} />
+        <Route path="/addprojects" element={<ProjectAdd />} />
       </Routes>
     </div>
   );

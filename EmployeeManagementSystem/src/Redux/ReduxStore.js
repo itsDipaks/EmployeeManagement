@@ -8,6 +8,6 @@ Auth:AuthReducer,
 Storedata:EmployeeReducer
 })
 
-const createComposer=Window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const createComposer= compose;
 
 export const store = legacy_createStore(RootReducers, createComposer(applyMiddleware(thunk)));
