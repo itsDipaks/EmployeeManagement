@@ -16,6 +16,9 @@ import {
   FormLabel,
   Select,
   Input,
+  Image,
+  Flex,
+  Heading,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -34,14 +37,21 @@ console.log(el)
   console.log(employeeData);
   return (
     <>
-      <Box>
-        <Text fontSize="2xl" m="1rem">
+     <Heading Size={"sm" }m="1rem">
           {" "}
-          Employee Data
-        </Text>
-        <HStack mt={"2rem"} w="70%">
+      Employee Data Managment
+        </Heading>
+   
+      {/* -----Table ---- */}
+      
+      <Box>
+       
+        <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}>    Employee List</Text>
+        <Flex align={"center"} justifyContent="space-between" w={"95%"}>
+
+        <HStack  w="40%">
           <FormControl>
-            <FormLabel> Filter By Position </FormLabel>
+            <FormLabel fontSize={"sm"}>  Filter Position </FormLabel>
             <Select placeholder="Select Position">
               <option value="hr">HR (Human resource )</option>
               <option value="frontend">Frontend Developer</option>
@@ -51,31 +61,37 @@ console.log(el)
             </Select>
           </FormControl>
           <FormControl>
-            <FormLabel> Sort by </FormLabel>
+            <FormLabel fontSize={"sm"}> Sort Name </FormLabel>
             <Select placeholder="Select Position">
               <option value="hr">A to Z</option>
               <option value="hr">Z to A</option>
             </Select>
           </FormControl>
+          <FormControl>
+            <FormLabel fontSize={"sm"}> Serch Name  </FormLabel>
+          <Input placeholder="Search"/>
+          </FormControl>
         </HStack>
+
+        <Link to={"/addemp"}><Button  colorScheme='green'>Add Employee</Button>
+        </Link>
+        </Flex>
+      
       </Box>
-      {/* -----Table ---- */}
-      <Text fontSize="2xl" m="2rem">
-        {" "}
-        List
-      </Text>
-      <Box mt={"1rem"}>
-        <TableContainer width="100%" maxWidth="100%">
+      <Box mt={"1rem"} >
+        <TableContainer width="100%" maxWidth="98%">
           <Table variant="simple" colorScheme="gray" size="sm">
-            <TableCaption>Imperial to metric conversion factors</TableCaption>
+            <TableCaption>Employee Managment Sysytem</TableCaption>
             <Thead border={"2px"} fontSize="2rem">
-              <Tr margin="1rem">
+              <Tr margin="1rem" textAlign={"start"}>
                 <Th>Sr.No</Th>
+                <Th></Th>
                 <Th>Employee Name</Th>
                 <Th>Email</Th>
-                <Th>Salery in Rs</Th>
+                {/* <Th>Salery in Rs</Th> */}
                 <Th>Position</Th>
                 <Th>Joining Date</Th>
+                <Th>Status</Th>
                 <Th>Action </Th>
               </Tr>
             </Thead>
@@ -83,16 +99,25 @@ console.log(el)
               {employeeData &&
                 employeeData?.map((el, index) => (
                   <Tr key={index} >
-                    <Td>{el._v}</Td>
-                    <Td>{el.firstname + el.lastname}</Td>
+                    <Td>{index+1}</Td>
+                    <Td>
+                    <Image borderRadius={"full"}  border={"1px"} w="100%" src="https://cdn.pixabay.com/photo/2016/03/31/18/26/coding-1294361__340.png" alt="Employee Image"/>
+                      </Td>
+                    <Td>
+                    
+                      <Text>  {el.firstname + el.lastname}</Text>
+                      
+                     
+                      </Td>
                     <Td>{el.email}</Td>
-                    <Td>{el.salary}</Td>
+                    {/* <Td>{el.salary}</Td> */}
                     <Td>{el.position}</Td>
                     <Td>{el.joiningDate}</Td>
+                    <Td>Active</Td>
                     <Td>
                       <HStack>
                         <Link to={`/empProfile/${el._id}`}><Button>View/Change</Button></Link>
-                        <Button>Delete</Button>
+                        {/* <Button>Delete</Button> */}
                       </HStack>
                     </Td>
                   </Tr>

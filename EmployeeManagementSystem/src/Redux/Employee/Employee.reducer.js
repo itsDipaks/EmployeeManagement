@@ -3,7 +3,8 @@ import { EMPLOYEE_GET_LOADING,EMPLOYEE_GET_ERROR,EMPLOYEE_GET_SUCESS } from "./E
 let initialstate = {
   loading: false,
   error: false,
-  employeeData: []
+  employeeData: [],
+  singledata:{}
 };
 
 export const EmployeeReducer = (state = initialstate, {type, payload}) => {
@@ -15,7 +16,6 @@ export const EmployeeReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case EMPLOYEE_GET_SUCESS: {
-      // console.log(payload)
       return {
         ...state,
         loading: false,

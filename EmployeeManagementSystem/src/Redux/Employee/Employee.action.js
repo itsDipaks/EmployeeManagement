@@ -10,24 +10,24 @@ export let AllEmployee = () => async (dispatch) => {
 
   try {
     let EmData = await axios.get(`${Backendurl}/employee/allempolyees`);
-    console.log(EmData);
+   
     dispatch({type: EMPLOYEE_GET_SUCESS, payload: EmData.data.Employees});
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});
   }
 };
 
-export let SingleEmployee = (token) => async (dispatch) => {
+export let SingleEmployee = (id) => async (dispatch) => {
   dispatch({type: EMPLOYEE_GET_LOADING});
 
   try {
     let EmData = await axios.get(`${Backendurl}/employee/singleemployee`,{
       headers: {
-        "Authorization": token
+        "user_id": id
     },
     });
-    // console.log(EmData);
-    dispatch({type: EMPLOYEE_GET_SUCESS,payload: [ EmData.data]
+    console.log(EmData);
+    dispatch({type: EMPLOYEE_GET_SUCESS,payload:EmData.data
     }
     );
   } catch (err) {

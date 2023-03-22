@@ -27,16 +27,16 @@ const Sidebarcompo = () => {
       linkto: "/employeelist",
       icon: <FaUsers/>,
     },
-    {
-      Menuname: "Add Employee",
-      linkto: "/addemp",
-      icon: <BsPersonFillAdd />,
-    },
-    {
-      Menuname: "empprofile",
-      linkto: "/empprofile",
-      icon: <BsGraphUpArrow />,
-    },
+    // {
+    //   Menuname: "Add Employee",
+    //   linkto: "/addemp",
+    //   icon: <BsPersonFillAdd />,
+    // },
+    // {
+    //   Menuname: "empprofile",
+    //   linkto: "/empprofile",
+    //   icon: <BsGraphUpArrow />,
+    // },
     {
       Menuname: "Projects",
       linkto: "/addprojects",
@@ -53,7 +53,7 @@ const Sidebarcompo = () => {
             // backgroundColor: "black",
           }}
           collapsedWidth="70px"
-          backgroundColor="tomato"
+          backgroundColor="lightgreen"
         >
           {/* <Image
             borderRadius="full"
@@ -63,7 +63,7 @@ const Sidebarcompo = () => {
             ml="1rem"
           />
           <Text ml="2rem">Dipak</Text> */}
-          <Menu>
+          <Menu >
             
             {sidebarmenu?.map((el) => (
               <MenuItem icon={el.icon} component={<Link to={el.linkto} />}>

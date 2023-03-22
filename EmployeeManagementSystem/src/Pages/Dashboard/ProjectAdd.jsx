@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Heading,
   HStack,
   Image,
   Input,
@@ -79,19 +80,21 @@ dispatch(AddNewProject(AllProjectFiledData))
   };
   return (
     <>
-      <Text fontSize={"1.5rem"}>Project Managment</Text>
+      <Heading Size={"lg"} p={4}>Project Managment</Heading>
       {/* --------Display All Projects------------- */}
-      <Box>
+
+      <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}>All Projects</Text>
+      <Box >
 
         <DisplayProjects triggerdaction={actionhandeld}/>
       </Box>
 
       {/* -----Add New Projects------------- */}
       <Divider w={"90%"} m={4} />
-      <Text fontSize={"1.5rem"}>Add New Project</Text>
+      <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}>Add New Project</Text>
      
      
-      <Box w={"80%"} m="auto" pb={14} pt={14}>
+      <Box w={"75%"} m="auto" p={14} pb={14} pt={14} boxShadow='dark-lg' rounded='md' >
         <form onSubmit={submitform} >
           <VStack gap={2}>
             <Flex w={"100%"} gap={4}>
@@ -115,7 +118,7 @@ dispatch(AddNewProject(AllProjectFiledData))
                   </Select>
                 </FormControl>
 
-                <Flex gap={4}>
+                <Flex gap={4} alignItems="center">
                   <FormControl>
                     <FormLabel> Project Image </FormLabel>
                     <Input
@@ -133,18 +136,20 @@ dispatch(AddNewProject(AllProjectFiledData))
                 </Flex>
               </VStack>
 
-              <Box w={"30%"} border="1px solid gray">
+              <Box w={"30%"} border="1px solid gray" p={4}>
+              <Flex gap={2} alignItems="center" justifyContent={"space-between"} flexDirection={"column"}>
                 <Image
-                  w={"80%"}
+                  w={"100%"}
                   m="auto"
-                  h={"150px"}
+                  h={"100%"}
                   src={onclickprivew}
                   alt={"Not A Valid Image Url "}
                 />
-                <Flex gap={2} alignItems="center"></Flex>
+            
                 <Button mt={2} onClick={PriviewProjectImage}>
                   Preview Image
                 </Button>
+                </Flex>
               </Box>
             </Flex>
 

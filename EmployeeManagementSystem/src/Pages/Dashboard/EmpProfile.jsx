@@ -7,11 +7,11 @@ import { SingleEmployee } from "../../Redux/Employee/Employee.action";
 
 const EmpProfile = () => {
 
-  const param = useParams();
+  const {id} = useParams();
   const dispatch=useDispatch()
-
+console.log(id)
   useEffect(()=>{
-    dispatch(SingleEmployee(param.id))
+    dispatch(SingleEmployee(id))
   },[])
 
   let {employeeData,loading,error}=useSelector(store=>store.Storedata)

@@ -8,7 +8,7 @@ const privateKey = process.env.PRIVATEKEY;
 
 EmployeeRouter.get("/allempolyees", async (req, res) => {
   try {
-    let AllEmployeedata = await UserModel.find();
+    let AllEmployeedata = await UserModel.find({isAdmin:false});
 
     res
       .status(200)
@@ -32,18 +32,17 @@ EmployeeRouter.get("/allempolyees", async (req, res) => {
 //   }
 // });
 
-EmployeeRouter.get("/singleemployee", (req, res) => {
-  let {authorization} = req.headers;
-  // console.log(authorization)
+EmployeeRouter.get("/singleemployee",async (req, res) => {
+  let {user_id} = req.headers;
+  console.log(user_id)
   try {
-    jwt.verify(authorization, privateKey, async function (err, decoded) {
-      let user_id = decoded.user_id;
+    
 
       let EmployeeInfo = await UserModel.findById({_id: user_id});
       res.send({
         data: EmployeeInfo,
-      });
     });
+    console.log(EmployeeInfo)
   } catch (err) {
     res.send({msg: "Something Wents Wrong"});
   }

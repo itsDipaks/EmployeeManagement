@@ -10,7 +10,7 @@ const Topbar = ({pannel}) => {
   };
   return (
     <>
-      <Box border="1px" height="50px">
+      <Box border="1px" height="50px" position={"sticky"} zIndex="1">
         <Flex alignItems={"center"}>
           <Flex w="20%">Dipak</Flex>
           <Spacer />
