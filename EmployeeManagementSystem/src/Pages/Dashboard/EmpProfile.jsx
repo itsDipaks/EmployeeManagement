@@ -47,11 +47,6 @@ console.log(id)
 
         <Box>
             <Text>EMPLOYEE DETAILS</Text>
-
-            
-
-
-
         </Box>
       </Box>
     </div>

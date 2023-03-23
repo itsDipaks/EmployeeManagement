@@ -22,7 +22,7 @@ const Login = () => {
   let [loginformdata, setloginformdata] = useState({});
   let dispatch = useDispatch();
   const navigate = useNavigate();
-  let {token, loading, error} = useSelector((store) => store.Auth);
+  let {token , loading, error} = useSelector((store) => store.Auth);
 
   let handeldinputs = (e) => {
     let {name, value} = e.target;
@@ -35,6 +35,12 @@ const Login = () => {
   let logintoportal = (e) => {
     e.preventDefault();
     dispatch(userLogin(loginformdata));
+    console.log(token)
+    if(token){
+      navigate("/")
+    }else{
+      // navigate("/login")
+    }
   };
 
   return (

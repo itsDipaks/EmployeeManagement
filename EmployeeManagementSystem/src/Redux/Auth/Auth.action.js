@@ -13,8 +13,9 @@ export let addEmployee = (formdata) => async (dispatch) => {
   console.log(formdata);
   try {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
+    console.log(Employee)
     dispatch({type: AUTH_GET_SUCESS});
-    Swal.fire("Done !", "Employee Added Successfully!", "success");
+  
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
     
@@ -25,7 +26,10 @@ export let userLogin = (loginformdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   try {
     let loginCred = await axios.post(`${Backendurl}/auth/login`, loginformdata);
+    
     dispatch({type: AUTH_GET_SUCESS, payload: loginCred});
+
+    
     Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});

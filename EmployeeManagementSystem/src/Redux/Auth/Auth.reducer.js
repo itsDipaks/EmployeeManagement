@@ -39,6 +39,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         ...state,
         loading: false,
         isuser: false,
+        error:true
       };
     }
     case AUTH_LOGOUT: {

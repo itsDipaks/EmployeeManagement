@@ -26,23 +26,21 @@ const AddEmployee = () => {
 
 
   const SubmitFormData=(e)=>{
-    console.log("yes",formdata)
+    // console.log("yes",formdata)
     e.preventDefault()
     dispatch(addEmployee(formdata))
-   
 
 
   }
 
   let {loading,error,done}=useSelector(store=>store.Auth)
-{done?
+  // let {loading,error,done}=useSelector(store=>store.Auth)
+if(error){
   Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Your work has been saved',
-    showConfirmButton: false,
-    timer: 1500
-  }):""
+    icon: "error",
+    title: "Oops...",
+    text: "Faild ! Please Check Your Credentials !",
+  });
 }
   return (
     <>

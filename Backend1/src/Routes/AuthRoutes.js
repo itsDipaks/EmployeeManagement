@@ -5,13 +5,16 @@ var jwt = require("jsonwebtoken");
 require("dotenv").config;
 
 let AuthRouter = Router();
+
+
 const privateKey = process.env.PRIVATEKEY;
+
 AuthRouter.post("/addemployee", async (req, res) => {
   let {email} = req.body;
   let isexist = await UserModel.findOne({email});
   if (isexist) {
     res
-      .status(200)
+      .status(400)
       .send({msg: "User Already Exist With this Email Plase Login !!"});
   } else {
     const {
@@ -52,7 +55,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
           res.status(201).json({msg: "Signup Sucessfully"});
         } catch (err) {
           res
-            .status(500)
+            .status(400)
             .json({msg: "something wents wrong to uploading the data"});
         }
       }
@@ -71,6 +74,7 @@ AuthRouter.post("/login", async (req, res) => {
         res.status(404).json({msg: "Unauthorized", isuser: false});
       } else {
         let isadmincheck = Checkuser.isAdmin;
+        
         const hashedpassword = Checkuser.password;
         const user_id = Checkuser._id;
         bcrypt.compare(password, hashedpassword, function (err, result) {
