@@ -1,7 +1,7 @@
 import {Box, Button, Flex, Spacer, useColorMode} from "@chakra-ui/react";
 import {Navigate, useNavigate} from "react-router-dom";
 import SwitchTheam from "../Components/SwitchTheam";
-import {FcHome} from "react-icons/fc"
+import { AiTwotoneHome } from "react-icons/ai";
 const Topbar = ({pannel}) => {
   let navigate = useNavigate();
   let RedirecttoHome = () => {
@@ -10,14 +10,14 @@ const Topbar = ({pannel}) => {
   };
   return (
     <>
-      <Box border="1px" height="50px" position={"sticky"} zIndex="1">
+      <Box border="1px" height="50px"  zIndex="1" >
         <Flex alignItems={"center"}>
           <Flex w="20%">Dipak</Flex>
           <Spacer />
 
           <Flex alignItems={"center"} w="15%">
             <Button onClick={RedirecttoHome}>
-              <FcHome/>
+              <AiTwotoneHome color="green"/>
             </Button>
             <Spacer />
             <SwitchTheam />

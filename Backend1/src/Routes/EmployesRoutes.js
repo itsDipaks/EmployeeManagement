@@ -34,15 +34,33 @@ EmployeeRouter.get("/allempolyees", async (req, res) => {
 
 EmployeeRouter.get("/singleemployee",async (req, res) => {
   let {user_id} = req.headers;
+  let _id=user_id
   console.log(user_id)
   try {
     
 
       let EmployeeInfo = await UserModel.findById({_id: user_id});
-      res.send({
-        data: EmployeeInfo,
-    });
+      res.status(200).send(
+      EmployeeInfo,
+    );
     console.log(EmployeeInfo)
+  } catch (err) {
+    res.send({msg: "Something Wents Wrong"});
+  }
+});
+
+
+EmployeeRouter.delete("/deleteemployee",async (req, res) => {
+  let {user_id} = req.headers;
+  console.log(user_id)
+  try {
+    
+
+      let DeletedData = await UserModel.findByIdAndDelete({_id: user_id});
+    
+      res.send({
+        msg:"Employee Data Deleted Sucessfully"
+    });
   } catch (err) {
     res.send({msg: "Something Wents Wrong"});
   }

@@ -18,16 +18,25 @@ import {
 import React, {useEffect} from "react";
 import {BsFileX} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
+import { AllEmployee } from "../Redux/Employee/Employee.action";
 import {GetAllProjects} from "../Redux/Project/Project.action";
 
 const DisplayProjects = ({triggerdaction}) => {
   let dispatch = useDispatch();
 
+  
+  // useEffect(() => {
+  //   dispatch(AllEmployee());
+
+  // }, []);
+  let {ProjectsData} = useSelector((store) => store.ProjectsData);
+
   useEffect(() => {
     dispatch(GetAllProjects());
-  }, [triggerdaction]);
-  let {ProjectsData} = useSelector((store) => store.ProjectsData);
-  console.log(ProjectsData);
+  }, []);
+//  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
+// console.log(employeeData+"employee")
+  // console.log(ProjectsData);
   return (
     <div>
       {ProjectsData?.map((el) => (

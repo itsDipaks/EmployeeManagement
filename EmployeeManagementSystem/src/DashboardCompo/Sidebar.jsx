@@ -49,11 +49,13 @@ const Sidebarcompo = () => {
         <Sidebar
           rootStyles={{
             color: "black",
+            fontWeight:"bold"
+            ,fontSize:"1.1rem"
             
             // backgroundColor: "black",
           }}
           collapsedWidth="70px"
-          backgroundColor="lightgreen"
+          backgroundColor="rgb(46,139,87)"
         >
           {/* <Image
             borderRadius="full"
@@ -63,10 +65,10 @@ const Sidebarcompo = () => {
             ml="1rem"
           />
           <Text ml="2rem">Dipak</Text> */}
-          <Menu >
+          <Menu  >
             
             {sidebarmenu?.map((el) => (
-              <MenuItem icon={el.icon} component={<Link to={el.linkto} />}>
+              <MenuItem icon={el.icon} component={<Link to={el.linkto} color="red"/>}>
                 <Text ml="1rem" textDecoration="none" textAlign={"start"}>
                   {el.Menuname}
                 </Text>

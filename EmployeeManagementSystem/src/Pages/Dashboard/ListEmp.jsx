@@ -21,69 +21,82 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
+import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
-import {AllEmployee} from "../../Redux/Employee/Employee.action";
+import {Link} from "react-router-dom";
+import {
+  AllEmployee,
+  DeleteEmployee,
+} from "../../Redux/Employee/Employee.action";
 const ListEmp = () => {
+  let [render,setrender]=useState(false)
   let dispatch = useDispatch();
+  // console.log("rerender display")
 
+  
+  let selectedemployee = (el) => {
+    console.log(el);
+  };
+  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
+  console.log(employeeData);
   useEffect(() => {
     dispatch(AllEmployee());
   }, []);
-let selectedemployee=(el)=>{
-console.log(el)
-}
-  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
-  console.log(employeeData);
+
+  let Deleteemployee = (id) => {
+    dispatch(DeleteEmployee(id));
+
+  };
   return (
     <>
-     <Heading Size={"sm" }m="1rem">
-          {" "}
-      Employee Data Managment
-        </Heading>
-   
+      <Heading Size={"sm"} m="1rem">
+        {" "}
+        Employee Data Managment
+      </Heading>
+
       {/* -----Table ---- */}
-      
+
       <Box>
-       
-        <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}>    Employee List</Text>
+        <Text textAlign={"start"} fontSize={"2xl"} fontWeight="bold" p={4}>
+          {" "}
+          Employee List
+        </Text>
         <Flex align={"center"} justifyContent="space-between" w={"95%"}>
+          <HStack w="40%">
+            <FormControl>
+              <FormLabel fontSize={"sm"}> Filter Position </FormLabel>
+              <Select placeholder="Select Position">
+                <option value="hr">HR (Human resource )</option>
+                <option value="frontend">Frontend Developer</option>
+                <option value="backend">Backend Developer</option>
+                <option value="fullstack">Full stack Developer</option>
+                <option value="node">Nodejs Developer</option>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <FormLabel fontSize={"sm"}> Sort Name </FormLabel>
+              <Select placeholder="Select Position">
+                <option value="hr">A to Z</option>
+                <option value="hr">Z to A</option>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <FormLabel fontSize={"sm"}> Serch Name </FormLabel>
+              <Input placeholder="Search" />
+            </FormControl>
+          </HStack>
 
-        <HStack  w="40%">
-          <FormControl>
-            <FormLabel fontSize={"sm"}>  Filter Position </FormLabel>
-            <Select placeholder="Select Position">
-              <option value="hr">HR (Human resource )</option>
-              <option value="frontend">Frontend Developer</option>
-              <option value="backend">Backend Developer</option>
-              <option value="fullstack">Full stack Developer</option>
-              <option value="node">Nodejs Developer</option>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <FormLabel fontSize={"sm"}> Sort Name </FormLabel>
-            <Select placeholder="Select Position">
-              <option value="hr">A to Z</option>
-              <option value="hr">Z to A</option>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <FormLabel fontSize={"sm"}> Serch Name  </FormLabel>
-          <Input placeholder="Search"/>
-          </FormControl>
-        </HStack>
-
-        <Link to={"/addemp"}><Button  colorScheme='green'>Add Employee</Button>
-        </Link>
+          <Link to={"/addemp"}>
+            <Button colorScheme="green">Add Employee</Button>
+          </Link>
         </Flex>
-      
       </Box>
-      <Box mt={"1rem"} >
+      <Box mt={"1rem"}>
         <TableContainer width="100%" maxWidth="98%">
           <Table variant="simple" colorScheme="gray" size="sm">
             <TableCaption>Employee Managment Sysytem</TableCaption>
             <Thead border={"2px"} fontSize="2rem">
-              <Tr margin="1rem" textAlign={"start"}>
+              <Tr margin="1rem">
                 <Th>Sr.No</Th>
                 <Th></Th>
                 <Th>Employee Name</Th>
@@ -92,23 +105,26 @@ console.log(el)
                 <Th>Position</Th>
                 <Th>Joining Date</Th>
                 <Th>Status</Th>
-                <Th>Action </Th>
+                <Th textAlign={"center"}>Action </Th>
               </Tr>
             </Thead>
             <Tbody>
               {employeeData &&
                 employeeData?.map((el, index) => (
-                  <Tr key={index} >
-                    <Td>{index+1}</Td>
+                  <Tr key={index}>
+                    <Td>{index + 1}</Td>
                     <Td>
-                    <Image borderRadius={"full"}  border={"1px"} w="100%" src="https://cdn.pixabay.com/photo/2016/03/31/18/26/coding-1294361__340.png" alt="Employee Image"/>
-                      </Td>
+                      <Image
+                        borderRadius={"full"}
+                        border={"1px"}
+                        w="50px"
+                        src="https://cdn.pixabay.com/photo/2016/03/31/18/26/coding-1294361__340.png"
+                        alt="Employee Image"
+                      />
+                    </Td>
                     <Td>
-                    
-                      <Text>  {el.firstname + el.lastname}</Text>
-                      
-                     
-                      </Td>
+                      <Text> {el.firstname + el.lastname}</Text>
+                    </Td>
                     <Td>{el.email}</Td>
                     {/* <Td>{el.salary}</Td> */}
                     <Td>{el.position}</Td>
@@ -116,8 +132,12 @@ console.log(el)
                     <Td>Active</Td>
                     <Td>
                       <HStack>
-                        <Link to={`/empProfile/${el._id}`}><Button>View/Change</Button></Link>
-                        {/* <Button>Delete</Button> */}
+                        <Link to={`/empProfile/${el._id}`}>
+                          <Button>View</Button>
+                        </Link>
+                        <Button onClick={()=> Deleteemployee(el._id)}>
+                          Delete
+                        </Button>
                       </HStack>
                     </Td>
                   </Tr>

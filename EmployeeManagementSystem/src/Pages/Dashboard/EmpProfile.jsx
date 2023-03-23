@@ -15,7 +15,7 @@ console.log(id)
   },[])
 
   let {employeeData,loading,error}=useSelector(store=>store.Storedata)
-  console.log(employeeData+"profile")
+  console.log(employeeData[0])
 
   return (
     <div>

@@ -4,7 +4,7 @@ let initialstate = {
   loading: false,
   error: false,
   employeeData: [],
-  singledata:{}
+ 
 };
 
 export const EmployeeReducer = (state = initialstate, {type, payload}) => {

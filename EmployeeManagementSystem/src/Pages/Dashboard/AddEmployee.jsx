@@ -45,12 +45,9 @@ const AddEmployee = () => {
   }):""
 }
   return (
-    <div>
-      
-      <Text textAlign={"center"} p="2rem" semibold fontSize="3xl">
-        Add Employee{" "}
-      </Text>
-      <Box w="60%" m={"auto"}>
+    <>
+      <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}> Add Employee</Text>
+      <Box w="70%" m={"auto"}>
         <form onSubmit={SubmitFormData}>
           <Stack>
             <HStack>
@@ -144,7 +141,7 @@ const AddEmployee = () => {
           </Stack>
         </form>
       </Box>
-    </div>
+    </>
   )
 };
 
