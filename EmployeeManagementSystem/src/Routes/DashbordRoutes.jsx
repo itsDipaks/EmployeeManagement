@@ -6,12 +6,13 @@ import Dashboardpanel from "../Pages/Dashboard/Dashboardpanel";
 import EmpProfile from "../Pages/Dashboard/EmpProfile";
 import ListEmp from "../Pages/Dashboard/ListEmp";
 import ProjectAdd from "../Pages/Dashboard/ProjectAdd";
+import { AdminPrivate } from "./PrivateRoutes";
 const DashbordRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/adminprofile" element={<AdminProfile />} />
-        <Route path="/dashpanel" element={<Dashboardpanel />} />
+        <Route path="/dashpanel" element={<AdminPrivate><Dashboardpanel/></AdminPrivate>} />
         <Route path="/employeelist" element={<ListEmp />} />
         <Route path="/addemp" element={<AddEmployee />} />
         <Route path="/empProfile/:id" element={<EmpProfile />} />

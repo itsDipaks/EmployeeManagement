@@ -35,11 +35,11 @@ const Login = () => {
   let logintoportal = (e) => {
     e.preventDefault();
     dispatch(userLogin(loginformdata));
-    console.log(token)
-    if(token){
-      navigate("/")
+    console.log(token!=null)
+    if(islogin){
+      navigate("/employdashbord")
     }else{
-      // navigate("/login")
+      navigate("/login")
     }
   };
 

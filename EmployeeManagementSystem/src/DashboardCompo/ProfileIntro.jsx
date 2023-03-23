@@ -1,19 +1,27 @@
-import {Box, Flex, Image, Text} from "@chakra-ui/react";
+import {Box, Flex, Image, Radio, Text} from "@chakra-ui/react";
 import React from "react";
 import HighlightBtn from "./HighlightBtn";
-
-const ProfileIntro = () => {
+import {MdOutlineArrowDropDown} from "react-icons/md";
+const ProfileIntro = ({data}) => {
+  console.log(data);
   return (
     <>
       <Flex mt="1rem">
-        <Flex justifyContent={"space-between"} width="100%" border={"1px"}>
-          <Box width={"45%"}>
-            <Text p="1rem">PROFILE IMAGE</Text>
+        <Flex
+          justifyContent={"space-between"}
+          gap={4}
+          width="100%"
+          // border={"1px"}
+        >
+          <Box width={"30%"}>
+            <Text p="1rem" textAlign={"start"}>
+              PROFILE IMAGE
+            </Text>
             <Image
-              width={"70%"}
-              height="auto"
+              width={"90%"}
+              height="16rem"
               margin="auto"
-              borderRadius={"2rem"}
+              rounded={"1rem"}
               src="https://cdn.pixabay.com/photo/2016/03/26/22/13/man-1281562__340.jpg"
               alt=""
             />
@@ -21,15 +29,37 @@ const ProfileIntro = () => {
 
           {/* -------------Role box--------------- */}
 
-          <Box width={"50%"} justifyContent="space-between">
-            <Flex>
+          <Box
+            width={"65%"}
+            // border="1px solid red"
+            justifyContent="space-between"
+            
+          >
+            <Flex justifyContent={"space-between"} textAlign="start">
               <Box width={"40%"}>
-                <Text p="1rem">ROLE</Text>
-                <HighlightBtn />
+                <Box p={4}>
+                  <Text pb={2} >ROLE</Text>
+                  <HighlightBtn
+                    icon={<MdOutlineArrowDropDown />}
+                    title={data.position}
+                    minititle={"position"}
+                  />
+
+                  <Text  pb={4} pt={8}>TEAM</Text>
+                </Box>
               </Box>
-              <Box width={"40%"}>
-                <Text p="1rem">ONBOARDING </Text>
-                <HighlightBtn />
+              <Box width={"40%"} textAlign={"start"}>
+
+                <Box p={4} boxSizing="border-box">
+                  <Text  pb={2} >ONBOARDING </Text>
+                  <HighlightBtn
+                    icon={<MdOutlineArrowDropDown />}
+                    title={data.joiningDate}
+                    minititle={"Starts on"}
+                  />
+                </Box>
+
+
               </Box>
             </Flex>
           </Box>

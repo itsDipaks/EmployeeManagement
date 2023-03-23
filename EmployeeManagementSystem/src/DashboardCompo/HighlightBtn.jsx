@@ -1,20 +1,21 @@
-import {Box, Button, Flex, Stack, Text} from "@chakra-ui/react";
+import {Badge, Box, Button, Flex, Stack, Text} from "@chakra-ui/react";
 import React from "react";
-import {MdOutlineArrowDropDown} from "react-icons/md";
 
-const HighlightBtn = () => {
+
+const HighlightBtn = ({icon,title,minititle}) => {
+  console.log()
   return (
     <>
-      <Button padding={"1rem"} width="90%"  display={"flex"} p={"0px 1rem 0px 1rem"}>
+      <Flex width="100%" alignItems={"center"} justifyContent="space-between" border="1px solid gray" borderRadius={"1rem"} p="0rem 1rem 0rem 1rem">
     
-          <Box width={"80%"} textAlign="start">
-            <Text fontSize={"xs"}>ROLE</Text>
-            <Text>WEB DEVELOPER</Text>
+          <Box width={"90%"} textAlign="start" >
+            <Text fontSize={"0.7rem"}>{minititle}</Text>
+            <Text>{title}</Text>
           </Box>
 
-          <MdOutlineArrowDropDown />
+         {icon}
     
-      </Button>
+      </Flex>
     </>
   );
 };
