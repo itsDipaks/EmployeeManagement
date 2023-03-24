@@ -15,9 +15,15 @@ export let addEmployee = (formdata) => async (dispatch) => {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
     console.log(Employee)
     dispatch({type: AUTH_GET_SUCESS});
-  
+      
+    Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Faild ! Please Check Your Credentials !",
+    });
     
   }
 };
@@ -53,7 +59,7 @@ export let userLogout = () => (dispatch) => {
       confirmButtonText: "Yes, Logout!",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: AUTH_LOGOUT});
+        dispatch({type: AUTH_LOGOUT,payload:null});
 
         Swal.fire("Logout Sucessfully!", "", "success");
       }

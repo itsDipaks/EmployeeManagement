@@ -3,6 +3,7 @@ import {
   EMPLOYEE_GET_LOADING,
   EMPLOYEE_GET_ERROR,
   EMPLOYEE_GET_SUCESS,
+  EMPLOYEE_DELETE
 } from "./Employee.type";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -66,9 +67,9 @@ export let DeleteEmployee = (id) => async (dispatch) => {
       }
     });
 
-    // dispatch({type: EMPLOYEE_GET_SUCESS,payload:EmData.data
-    // }
-    // );
+    dispatch({type: EMPLOYEE_DELETE,payload:{msg:"sucess"}
+    }
+    );
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});
   }

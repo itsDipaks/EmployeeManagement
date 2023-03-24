@@ -17,13 +17,28 @@ import {userLogin} from "../Redux/Auth/Auth.action";
 const Login = () => {
   // ----Hooks----
 
-  const islogin = getlocalsdata("token");
-  console.log(islogin);
+  // const islogin = getlocalsdata("token");
+  // console.log(islogin);
   let [loginformdata, setloginformdata] = useState({});
   let dispatch = useDispatch();
   const navigate = useNavigate();
-  let {token , loading, error} = useSelector((store) => store.Auth);
+  let {token , loading, error,isadmin} = useSelector((store) => store.Auth);
 
+  useEffect(()=>{
+    
+      if(token!=null){
+        if(!isadmin){
+
+          navigate("/employdashbord")
+        }else{
+          navigate("/Admindashboard")
+        }
+      }
+      else{
+        navigate("/login")
+      }
+   
+  },[token])
   let handeldinputs = (e) => {
     let {name, value} = e.target;
     setloginformdata({
@@ -35,12 +50,7 @@ const Login = () => {
   let logintoportal = (e) => {
     e.preventDefault();
     dispatch(userLogin(loginformdata));
-    console.log(token!=null)
-    if(islogin){
-      navigate("/employdashbord")
-    }else{
-      navigate("/login")
-    }
+ 
   };
 
   return (
@@ -53,7 +63,7 @@ const Login = () => {
         p="4rem"
         rounded="md"
       >
-        {islogin ? <Navigate to={"/"} /> : ""}
+        {/* {token ? <Navigate to={"/"} /> : ""} */}
         <Stack spacing={4} align="stretch">
           <Text fontSize={"2xl"}> Login</Text>
           <form onSubmit={logintoportal}>

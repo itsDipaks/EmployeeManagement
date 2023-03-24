@@ -16,12 +16,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
 const Navbar = ({setispanel}) => {
-  let {isadmin, loading} = useSelector((store) => store.Auth);
   let dispatch = useDispatch();
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
-  let token = getlocalsdata("token");
+  let {token , loading, error,isadmin} = useSelector((store) => store.Auth);
   let logoutuser = () => {
     dispatch(userLogout());
     navigate("/");

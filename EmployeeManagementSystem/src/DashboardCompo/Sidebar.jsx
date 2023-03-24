@@ -48,7 +48,7 @@ const Sidebarcompo = () => {
       <div style={{display: "flex", height: "100%"}}>
         <Sidebar
           rootStyles={{
-            color: "black",
+            color: "white",
             fontWeight:"bold"
             ,fontSize:"1.1rem"
             

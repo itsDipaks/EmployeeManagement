@@ -5,11 +5,11 @@ import {
   AUTH_GET_SUCESS,
   AUTH_LOGOUT,
 } from "./Auth.type";
-const token = JSON.parse(localStorage.getItem("token")) || "";
+// const token = JSON.parse(localStorage.getItem("token")) || null
 let initialstate = {
   loading: false,
   error: false,
-  token: token,
+  token: null,
   isadmin: false,
 };
 
@@ -22,9 +22,9 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case AUTH_GET_SUCESS: {
-      if (payload.data.token) {
-        localStorage.setItem("token", JSON.stringify(payload.data.token));
-      }
+      // if (payload.data.token) {
+      //   localStorage.setItem("token", JSON.stringify(payload.data.token));
+      // }
       console.log(payload.data);
       return {
         ...state,
@@ -43,10 +43,9 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case AUTH_LOGOUT: {
-      localStorage.removeItem("token");
       return{
         ...state,
-        loading:false
+        token:payload
       }
     }
 

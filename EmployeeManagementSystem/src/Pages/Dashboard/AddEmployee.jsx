@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
   HStack,
@@ -14,6 +15,8 @@ import {useDispatch, useSelector} from "react-redux"
 import { addEmployee } from "../../Redux/Auth/Auth.action";
 
 import Swal from 'sweetalert2'
+import { Link } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 const AddEmployee = () => {
   let [formdata, setformdata] = useState({});
   const dispatch=useDispatch()
@@ -34,17 +37,13 @@ const AddEmployee = () => {
   }
 
   let {loading,error,done}=useSelector(store=>store.Auth)
-  // let {loading,error,done}=useSelector(store=>store.Auth)
-if(error){
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: "Faild ! Please Check Your Credentials !",
-  });
-}
+
   return (
     <>
+    <Flex alignItems={"center"}>
+    <Link to={"/employeelist"}><BsArrowLeft style={{fontSize:"1.5rem",cursor:"pointer"}}/></Link>
       <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}> Add Employee</Text>
+    </Flex>
       <Box w="70%" m={"auto"}>
         <form onSubmit={SubmitFormData}>
           <Stack>

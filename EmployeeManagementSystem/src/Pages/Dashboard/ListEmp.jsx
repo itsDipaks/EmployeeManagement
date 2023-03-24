@@ -21,6 +21,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
+import { useMemo } from "react";
 import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
@@ -29,23 +30,14 @@ import {
   DeleteEmployee,
 } from "../../Redux/Employee/Employee.action";
 const ListEmp = () => {
-  let [render,setrender]=useState(false)
   let dispatch = useDispatch();
-  // console.log("rerender display")
-
-  
-  let selectedemployee = (el) => {
-    console.log(el);
-  };
-  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
-  console.log(employeeData);
+  let {employeeData, loading, error,msg} = useSelector((store) => store.Storedata);
   useEffect(() => {
-    dispatch(AllEmployee());
+    dispatch(AllEmployee)
   }, []);
 
   let Deleteemployee = (id) => {
     dispatch(DeleteEmployee(id));
-
   };
   return (
     <>
