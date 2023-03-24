@@ -82,24 +82,17 @@ let universalroutes=[
     path:"/login",
     element:<Login/>
   }
- 
 ]
   return (
     <div>
-      
     <Routes>
-
       {/* -------------Pages------------ */}
-
       {universalroutes?.map((el)=>
       <Route key={el.id} path={el.path} element={el.element}/>
       )}
       {EmployeeBoard?.map((el)=>
       <Route  key={el.id} path={el.path} element={<EmployeePrivate>{el.element}</EmployeePrivate>}/>
       )}
-
-
-
     </Routes>
     </div>
   )

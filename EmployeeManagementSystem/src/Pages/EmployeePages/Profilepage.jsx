@@ -20,22 +20,19 @@ import Swal from "sweetalert2";
 import {getlocalsdata} from "../../assets/Localstorage";
 import InfoField from "../../Components/EmployeePages/InfoField";
 import {ChangedPassword} from "../../Redux/Auth/Auth.action";
-import {SingleEmployee} from "../../Redux/Employee/Employee.action";
+import {Employeeprofile} from "../../Redux/Employee/Employee.action";
 
 const Profilepage = () => {
   let [formdata, setformdata] = useState({});
-  let token = getlocalsdata("token");
+  // let token = getlocalsdata("token");
   let dispatch = useDispatch();
-
-
-  let getuserprofile = () => {
-    dispatch(SingleEmployee(token));
-  };
-
-
   let {employeeData, loading} = useSelector((state) => state.Storedata);
-  // console.log(employeeData[0]?.data);
-  let em = employeeData[0]?.data;
+  let {token} = useSelector((store) => store.Auth);
+  let getuserprofile = () => {
+    dispatch(Employeeprofile(token));
+  };
+  console.log(token);
+
 
 
   let Handeldinput = (e) => {
@@ -43,7 +40,6 @@ const Profilepage = () => {
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
-
 
   let submitChangedPasswor = (e) => {
     e.preventDefault();
@@ -59,17 +55,18 @@ const Profilepage = () => {
     }
   };
 
-
   useEffect(() => {
     getuserprofile();
-    
   }, []);
-
 
   return (
     <>
+    <Box w={"90%"} m="auto">
+
+
+ 
       <Flex textAlign={"start"} fontSize="1.5rem" p={2} ml={12} gap={4}>
-        Hellow , <Text color={"red.600"}>{em?.firstname}</Text>
+        Hellow , <Text color={"red.600"}>{employeeData[0].firstname}</Text>
       </Flex>
       <Divider w={"90%"} m={4} />
       <Flex
@@ -91,13 +88,13 @@ const Profilepage = () => {
 
         {/* ------------Left Side Box Emploee show info------------ */}
         <Stack width={"65%"} gap={4}>
-          <InfoField title={"Name "} value={em?.firstname} />
+          <InfoField title={"Name "} value={employeeData[0].firstname+ " "+employeeData[0].lastname} />
           <HStack gap={14}>
-            <InfoField title={"Position / Role "} value={em?.position} />
-            <InfoField title={"Gender"} value={em?.gender} />
+            <InfoField title={"Position / Role "} value={employeeData[0].position} />
+            <InfoField title={"Gender"} value={employeeData[0].gender} />
           </HStack>
 
-          <InfoField title={"Email "} value={em?.email} />
+          <InfoField title={"Email "} value={employeeData[0].email} />
         </Stack>
       </Flex>
       <Flex alignItems={"center"} mt={14} ml={14} gap={4} w={"40%"} p={2}>
@@ -149,6 +146,7 @@ const Profilepage = () => {
           <Button type="submit">Change Password</Button>
         </Flex>
       </form>
+      </Box>
     </>
   );
 };
