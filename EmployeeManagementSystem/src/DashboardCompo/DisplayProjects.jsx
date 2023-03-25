@@ -24,16 +24,21 @@ import {GetAllProjects} from "../Redux/Project/Project.action";
 const DisplayProjects = ({triggerdaction}) => {
   let dispatch = useDispatch();
 
-  
+  useEffect(() => {
+    dispatch(AllEmployee());
+  }, []);
+
+  useEffect(() => {
+    dispatch(GetAllProjects());
+  }, []);
   // useEffect(() => {
   //   dispatch(AllEmployee());
 
   // }, []);
   let {ProjectsData} = useSelector((store) => store.ProjectsData);
+  let {employeeData} = useSelector((store) => store.Storedata);
+console.log(employeeData)
 
-  useEffect(() => {
-    dispatch(GetAllProjects());
-  }, []);
 //  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
 // console.log(employeeData+"employee")
   // console.log(ProjectsData);
@@ -98,9 +103,11 @@ const DisplayProjects = ({triggerdaction}) => {
                 <Badge p={"0.3rem 1.2rem 0.3rem 1.2rem"}>{el.Status}      </Badge>
               </Flex>
               <Divider m={2} />
+              <Button>Remove Project</Button>
+              <Button>Change Status</Button>
             </CardBody>
             <CardFooter>
-             
+           
             </CardFooter>
           </Stack>
 

@@ -33,7 +33,7 @@ const ListEmp = () => {
   let dispatch = useDispatch();
   let {employeeData, loading, error,msg} = useSelector((store) => store.Storedata);
   useEffect(() => {
-    dispatch(AllEmployee)
+    dispatch(AllEmployee())
   }, []);
 
   let Deleteemployee = (id) => {

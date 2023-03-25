@@ -43,6 +43,7 @@ ProjectRouter.post("/Addproject", async (req, res) => {
       ProjectimaageUrl,
       ProjectType
     });
+    
     await addMyproject.save();
     res.status(200).json({msg: "Project Added Sucessfully"});
   } catch (er) {
