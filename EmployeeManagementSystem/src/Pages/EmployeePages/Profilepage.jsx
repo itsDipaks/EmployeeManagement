@@ -118,9 +118,10 @@ let [checkadd,setcheckadd]=useState(false)
 <Flex>
 
 
-        <Button
+        <Button 
+         colorScheme='messenger'
           onClick={() => (showpage ? setshowpage(false) : setshowpage(true))}
-         mt={8}
+         m={4}
         >
           Complete Profile
         </Button>
@@ -131,11 +132,12 @@ let [checkadd,setcheckadd]=useState(false)
 
         {showpage ? (
           <Box>
-            <FormControl isRequired>
+            <FormControl isRequired  w={"40%"}> 
               <FormLabel>Mobile No: </FormLabel>
               <Input
                 placeholder="Enter Nobile Number"
                 name="conformpassword"
+               
                 // onChange={Handeldinput}
                 type="number"
               />
@@ -145,7 +147,8 @@ let [checkadd,setcheckadd]=useState(false)
               textAlign={"start"}
               fontWeight="semibold"
               fontSize="xl"
-              pt={4}
+              m={4}
+              mt={8}
             >
               Address
             </Text>
@@ -162,7 +165,8 @@ let [checkadd,setcheckadd]=useState(false)
               textAlign={"start"}
               fontWeight="semibold"
               fontSize="xl"
-              pt={4}
+              m={4}
+              mt={8}
             >
               Socials
             </Text>
@@ -171,7 +175,7 @@ let [checkadd,setcheckadd]=useState(false)
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    color="gray.300"
+                    color="gray.800"
                     fontSize="1.2em"
                     children={<BsGithub />}
                   />
@@ -180,13 +184,12 @@ let [checkadd,setcheckadd]=useState(false)
                     children={<AiOutlineLink color="green" />}
                   />
                 </InputGroup>
-                <Button onClick={()=>setcheckadd(true)}>Add</Button>
               </Flex>
               <Flex w={"40%"} gap={2}>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    color="gray.300"
+                    color="blue.700"
                     fontSize="1.2em"
                     children={<AiFillLinkedin />}
                   />
@@ -195,9 +198,10 @@ let [checkadd,setcheckadd]=useState(false)
                     children={<AiOutlineLink color="green" />}
                   />
                 </InputGroup>
-                <Button onClick={()=>setcheckadd(true)}>Add</Button>
               </Flex>
             </Flex>
+
+            <Button mt={14} colorScheme='whatsapp'>Update Profile</Button>
           </Box>
         ) : (
           ""
