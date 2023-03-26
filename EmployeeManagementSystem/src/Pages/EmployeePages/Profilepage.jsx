@@ -41,11 +41,11 @@ const Profilepage = () => {
   let [Country, Setcountry] = useState("IN");
   let [state, setstate] = useState("MH");
   let [City, Setcity] = useState("");
-let [checkadd,setcheckadd]=useState(false)
+  let [checkadd, setcheckadd] = useState(false);
   let dispatch = useDispatch();
   let {employeeData, loading} = useSelector((state) => state.Storedata);
   let {token} = useSelector((store) => store.Auth);
-  console.log(token+"tokwen")
+  console.log(token + "tokwen");
   let Handeldinput = (e) => {
     e.preventDefault();
     let {value, name} = e.target;
@@ -69,6 +69,9 @@ let [checkadd,setcheckadd]=useState(false)
     dispatch(Employeeprofile(token));
   }, []);
 
+  let udateprofile = () => {
+    console.log("yes");
+  };
   return (
     <>
       <Box w={"90%"} m="auto">
@@ -113,31 +116,24 @@ let [checkadd,setcheckadd]=useState(false)
 
         <Divider w={"90%"} m={2} mt={8} />
 
-
         {/* --------------Update Profile------------ */}
-<Flex>
-
-
-        <Button 
-         colorScheme='messenger'
-          onClick={() => (showpage ? setshowpage(false) : setshowpage(true))}
-         m={4}
-        >
-          Complete Profile
-        </Button>
-</Flex>
-
-
-
+        <Flex>
+          <Button
+            colorScheme="messenger"
+            onClick={() => (showpage ? setshowpage(false) : setshowpage(true))}
+            m={4}
+          >
+            Complete Profile
+          </Button>
+        </Flex>
 
         {showpage ? (
           <Box>
-            <FormControl isRequired  w={"40%"}> 
+            <FormControl isRequired w={"40%"}>
               <FormLabel>Mobile No: </FormLabel>
               <Input
                 placeholder="Enter Nobile Number"
                 name="conformpassword"
-               
                 // onChange={Handeldinput}
                 type="number"
               />
@@ -201,12 +197,14 @@ let [checkadd,setcheckadd]=useState(false)
               </Flex>
             </Flex>
 
-            <Button mt={14} colorScheme='whatsapp'>Update Profile</Button>
+            <Button mt={14} colorScheme="whatsapp" onClick={udateprofile}>
+              Update Profile
+            </Button>
           </Box>
         ) : (
           ""
         )}
-<Divider w={"90%"} m={4} mt={14} />
+        <Divider w={"90%"} m={4} mt={14} />
         {/* --------------Setting------------ */}
 
         <Flex alignItems={"center"} ml={14} gap={4} w={"40%"} p={2}>
