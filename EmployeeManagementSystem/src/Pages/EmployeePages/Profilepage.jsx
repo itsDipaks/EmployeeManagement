@@ -34,6 +34,8 @@ import {Employeeprofile} from "../../Redux/Employee/Employee.action";
 
 const Profilepage = () => {
   let [formdata, setformdata] = useState({});
+  let [updateform, setupdateform] = useState({});
+  let dispatch = useDispatch();
   // ----------For Show Update profile or not--------
   let [showpage, setshowpage] = useState(false);
 
@@ -41,16 +43,20 @@ const Profilepage = () => {
   let [Country, Setcountry] = useState("IN");
   let [state, setstate] = useState("MH");
   let [City, Setcity] = useState("");
-  let [checkadd, setcheckadd] = useState(false);
-  let dispatch = useDispatch();
+  let [mobileno, setmobileno] = useState(0);
+  let [github, setgithub] = useState("");
+  let [linkdin, setlinkdin] = useState("");
+  let [streataddress, setstreetaddress] = useState("");
+
   let {employeeData, loading} = useSelector((state) => state.Storedata);
   let {token} = useSelector((store) => store.Auth);
-  console.log(token + "tokwen");
+
   let Handeldinput = (e) => {
     e.preventDefault();
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
+
   let submitChangedPasswor = (e) => {
     e.preventDefault();
     let {newpassword, conformpassword} = formdata;
@@ -70,7 +76,31 @@ const Profilepage = () => {
   }, []);
 
   let udateprofile = () => {
-    console.log("yes");
+    if (
+      Country &&
+      state &&
+      City &&
+      mobileno &&
+      github &&
+      linkdin 
+      // streataddress
+    ) {
+
+      let updateData = {
+        Country: Country,
+        state: state,
+        City: City,
+        MobileNumber: mobileno,
+        github: github,
+        linkdin: linkdin,
+        // streataddress: streataddress,
+      };
+
+      console.log(updateData)
+    }
+    else{
+      alert("please fill all fileds")
+    }
   };
   return (
     <>
@@ -129,77 +159,86 @@ const Profilepage = () => {
 
         {showpage ? (
           <Box>
-            <FormControl isRequired w={"40%"}>
-              <FormLabel>Mobile No: </FormLabel>
-              <Input
-                placeholder="Enter Nobile Number"
-                name="conformpassword"
-                // onChange={Handeldinput}
-                type="number"
+            <form>
+              <FormControl isRequired w={"40%"}>
+                <FormLabel>Mobile No: </FormLabel>
+                <Input
+                  placeholder="Enter Nobile Number"
+                  name="conformpassword"
+                  onChange={(e) => setmobileno(e.target.value)}
+                  type="number"
+                />
+              </FormControl>
+
+              <Text
+                textAlign={"start"}
+                fontWeight="semibold"
+                fontSize="xl"
+                m={4}
+                mt={8}
+              >
+                Address
+              </Text>
+              <AddressDetails
+                Country={Country}
+                Setcountry={Setcountry}
+                state={state}
+                setstate={setstate}
+                City={City}
+                Setcity={Setcity}
+                setstreetaddress={setstreetaddress}
               />
-            </FormControl>
 
-            <Text
-              textAlign={"start"}
-              fontWeight="semibold"
-              fontSize="xl"
-              m={4}
-              mt={8}
-            >
-              Address
-            </Text>
-            <AddressDetails
-              Country={Country}
-              Setcountry={Setcountry}
-              state={state}
-              setstate={setstate}
-              City={City}
-              Setcity={Setcity}
-            />
-
-            <Text
-              textAlign={"start"}
-              fontWeight="semibold"
-              fontSize="xl"
-              m={4}
-              mt={8}
-            >
-              Socials
-            </Text>
-            <Flex gap={4} w="100%">
-              <Flex w={"40%"} gap={2}>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    color="gray.800"
-                    fontSize="1.2em"
-                    children={<BsGithub />}
-                  />
-                  <Input placeholder="Enter Url" />
-                  <InputRightElement
-                    children={<AiOutlineLink color="green" />}
-                  />
-                </InputGroup>
+              <Text
+                textAlign={"start"}
+                fontWeight="semibold"
+                fontSize="xl"
+                m={4}
+                mt={8}
+              >
+                Socials
+              </Text>
+              <Flex gap={4} w="100%">
+                <Flex w={"40%"} gap={2}>
+                  <InputGroup>
+                    <InputLeftElement
+                      pointerEvents="none"
+                      color="gray.800"
+                      fontSize="1.2em"
+                      children={<BsGithub />}
+                    />
+                    <Input
+                      placeholder="Enter Url"
+                      onChange={(e) => setgithub(e.target.value)}
+                    />
+                    <InputRightElement
+                      children={<AiOutlineLink color="green" />}
+                    />
+                  </InputGroup>
+                </Flex>
+                <Flex w={"40%"} gap={2}>
+                  <InputGroup>
+                    <InputLeftElement
+                      pointerEvents="none"
+                      color="blue.700"
+                      fontSize="1.2em"
+                      children={<AiFillLinkedin />}
+                    />
+                    <Input
+                      placeholder="Enter Url"
+                      onChange={(e) => setlinkdin(e.target.value)}
+                    />
+                    <InputRightElement
+                      children={<AiOutlineLink color="green" />}
+                    />
+                  </InputGroup>
+                </Flex>
               </Flex>
-              <Flex w={"40%"} gap={2}>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    color="blue.700"
-                    fontSize="1.2em"
-                    children={<AiFillLinkedin />}
-                  />
-                  <Input placeholder="Enter Url" />
-                  <InputRightElement
-                    children={<AiOutlineLink color="green" />}
-                  />
-                </InputGroup>
-              </Flex>
-            </Flex>
 
-            <Button mt={14} colorScheme="whatsapp" onClick={udateprofile}>
-              Update Profile
-            </Button>
+              <Button mt={14} colorScheme="whatsapp" onClick={udateprofile}>
+                Update Profile
+              </Button>
+            </form>
           </Box>
         ) : (
           ""

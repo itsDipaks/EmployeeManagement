@@ -14,10 +14,9 @@ import React, {useEffect, useState} from "react";
 const AddressDetails = ({
   Country,
   Setcountry,
-  state,
   setstate,
-  City,
   Setcity,
+  setstreetaddress
 }) => {
   let [countrydata, setcountrydata] = useState([]);
   let [statesdata, setstatesdata] = useState([]);
@@ -131,21 +130,12 @@ const AddressDetails = ({
             <Input
               placeholder="Enter Streat/Area/Location"
               name="conformpassword"
-              onChange={cityfunc}
+              onChange={(e)=>setstreetaddress(e.target.value)}
               type="number"
               colorScheme={"red"}
             />
           </FormControl>
-          <FormControl isRequired w={"30%"}>
-            <FormLabel>Pincode </FormLabel>
-            <Input
-              placeholder="Enter pincode"
-              name="conformpassword"
-              variant={"outline"}
-              // onChange={Handeldinput}
-              type="number"
-            />
-          </FormControl>
+        
         </Flex>
       </Flex>
     </>
