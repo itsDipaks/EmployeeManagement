@@ -106,7 +106,7 @@ const Profilepage = () => {
     <>
       <Box w={"90%"} m="auto">
         <Flex textAlign={"start"} fontSize="1.5rem" p={2} ml={12} gap={4}>
-          Hellow , <Text color={"red.600"}>{employeeData[0].firstname}</Text>
+          Hellow , <Text color={"red.600"}>{employeeData[0]?.firstname}</Text>
         </Flex>
         <Divider w={"90%"} m={4} />
         <Flex
@@ -130,17 +130,17 @@ const Profilepage = () => {
           <Stack width={"65%"} gap={4}>
             <InfoField
               title={"Name "}
-              value={employeeData[0].firstname + " " + employeeData[0].lastname}
+              value={employeeData[0]?.firstname + " " + employeeData[0]?.lastname}
             />
             <HStack gap={14}>
               <InfoField
                 title={"Position / Role "}
-                value={employeeData[0].position}
+                value={employeeData[0]?.position}
               />
-              <InfoField title={"Gender"} value={employeeData[0].gender} />
+              <InfoField title={"Gender"} value={employeeData[0]?.gender} />
             </HStack>
 
-            <InfoField title={"Email "} value={employeeData[0].email} />
+            <InfoField title={"Email "} value={employeeData[0]?.email} />
           </Stack>
         </Flex>
 

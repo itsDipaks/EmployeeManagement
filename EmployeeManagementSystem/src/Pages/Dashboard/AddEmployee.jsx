@@ -15,12 +15,12 @@ import {useDispatch, useSelector} from "react-redux"
 import { addEmployee } from "../../Redux/Auth/Auth.action";
 
 import Swal from 'sweetalert2'
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 const AddEmployee = () => {
   let [formdata, setformdata] = useState({});
   const dispatch=useDispatch()
-
+let navigate=useNavigate()
   const Handeldinput=(e)=>{
     e.preventDefault()
     let {name,value}=e.target
@@ -33,7 +33,7 @@ const AddEmployee = () => {
     e.preventDefault()
     dispatch(addEmployee(formdata))
 
-
+    // navigate("/")
   }
 
   let {loading,error,done}=useSelector(store=>store.Auth)

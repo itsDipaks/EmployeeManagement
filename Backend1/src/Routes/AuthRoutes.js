@@ -30,7 +30,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
 
     bcrypt.hash(password, 4, async function (err, hashedpassword) {
       if (err) {
-        res.send({msg: "Something wents wrong ", err: err});
+        res.status(400).send({msg: "Something wents wrong ", err: err});
       } else {
         try {
           let admintrue = false;
@@ -52,7 +52,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
           });
           await newEmployee.save();
 
-          res.status(201).json({msg: "Signup Sucessfully"});
+          res.status(200).json({msg: "Signup Sucessfully"});
         } catch (err) {
           res
             .status(400)
