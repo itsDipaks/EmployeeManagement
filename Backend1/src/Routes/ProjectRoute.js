@@ -50,4 +50,21 @@ ProjectRouter.post("/Addproject", async (req, res) => {
     res.status(500).json({msg: "something wents wrong to uploading the data"});
   }
 });
+
+
+
+ProjectRouter.delete("/deleteproject",async (req, res) => {
+  let {user_id} = req.headers;
+  console.log(user_id)
+  try {
+      let DeletedData = await UserModel.findByIdAndDelete({_id: user_id});
+    // let AllEmployeedata = await UserModel.find({isAdmin:false});
+      res.send({
+        msg:"Employee Data Deleted Sucessfully"
+    });
+  } catch (err) {
+    res.send({msg: "Something Wents Wrong"});
+  }
+});
+
 module.exports = {ProjectRouter};

@@ -1,5 +1,5 @@
 import {Backendurl} from "../../assets/Urls";
-import { PROJECT_GET_SUCESS,PROJECT_GET_ERROR,PROJECT_GET_LOADING } from "./Project.type";
+import { PROJECT_GET_SUCESS,PROJECT_GET_ERROR,PROJECT_GET_LOADING, PROJECT_DELETE } from "./Project.type";
 import axios from "axios"
 import Swal from "sweetalert2";
 
@@ -63,3 +63,36 @@ export let SingleEmployee = (token) => async (dispatch) => {
 };
 
 
+
+export const deleteproject=(id)=>(dispatch)=>{
+  console.log(id);
+  dispatch({type: PROJECT_GET_LOADING});
+
+  try {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        let EmData = await axios.delete(
+          `${Backendurl}/project/deleteemployee`,
+          {
+            headers: {
+              user_id: id,
+            },
+          }
+        );
+
+        Swal.fire("Removed Sucessfully!", "", "success");
+      }
+    });
+
+    dispatch({type: PROJECT_DELETE, payload: {msg: "sucess"}});
+  } catch (err) {
+    dispatch({type: PROJECT_GET_ERROR});
+  }
+}
