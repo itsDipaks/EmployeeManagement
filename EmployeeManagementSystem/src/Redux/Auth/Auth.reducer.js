@@ -31,7 +31,6 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         loading: false,
         token: payload.data.token,
         isadmin: payload.data.isAdmin,
-
       };
     }
     case AUTH_GET_ERROR: {
@@ -39,16 +38,15 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         ...state,
         loading: false,
         isuser: false,
-        error:true
+        error: true,
       };
     }
     case AUTH_LOGOUT: {
-      return{
+      return {
         ...state,
-        token:payload
-      }
+        token: payload,
+      };
     }
-
     default:
       return state;
   }

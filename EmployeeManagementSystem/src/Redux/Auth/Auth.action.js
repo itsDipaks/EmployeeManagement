@@ -13,9 +13,8 @@ export let addEmployee = (formdata) => async (dispatch) => {
   console.log(formdata);
   try {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
-    console.log(Employee)
+    console.log(Employee);
     dispatch({type: AUTH_GET_SUCESS});
-      
     Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
@@ -24,7 +23,6 @@ export let addEmployee = (formdata) => async (dispatch) => {
       title: "Oops...",
       text: "Faild ! Please Check Your Credentials !",
     });
-    
   }
 };
 
@@ -32,10 +30,9 @@ export let userLogin = (loginformdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   try {
     let loginCred = await axios.post(`${Backendurl}/auth/login`, loginformdata);
-    
+
     dispatch({type: AUTH_GET_SUCESS, payload: loginCred});
 
-    
     Swal.fire("Welcome Back !", "Login success !", "success");
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
@@ -59,7 +56,7 @@ export let userLogout = () => (dispatch) => {
       confirmButtonText: "Yes, Logout!",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: AUTH_LOGOUT,payload:null});
+        dispatch({type: AUTH_LOGOUT, payload: null});
 
         Swal.fire("Logout Sucessfully!", "", "success");
       }
@@ -71,7 +68,6 @@ export let userLogout = () => (dispatch) => {
 
 export let ChangedPassword = (token, formdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
-
   try {
     let EmData = await axios.patch(`${Backendurl}/auth/editpass`, formdata, {
       headers: {
@@ -80,19 +76,14 @@ export let ChangedPassword = (token, formdata) => async (dispatch) => {
     });
     dispatch({type: AUTH_GET_SUCESS});
     //  if(EmData.status==200){
-      Swal.fire(
-        'Sucess!',
-        'Password Changed !! ',
-        'success'
-      )
+    Swal.fire("Sucess!", "Password Changed !! ", "success");
     // }
   } catch (err) {
     Swal.fire({
-      icon: 'error',
+      icon: "error",
       title: "Faild !! ",
-      text: 'Entered Old Password is Wrong !',
-    })
-
+      text: "Entered Old Password is Wrong !",
+    });
     dispatch({type: AUTH_GET_ERROR});
   }
 };

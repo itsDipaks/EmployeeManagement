@@ -2,7 +2,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -21,8 +20,6 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
-import { useMemo } from "react";
-import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {
@@ -31,9 +28,11 @@ import {
 } from "../../Redux/Employee/Employee.action";
 const ListEmp = () => {
   let dispatch = useDispatch();
-  let {employeeData, loading, error,msg} = useSelector((store) => store.Storedata);
+  let {employeeData, loading, error, msg} = useSelector(
+    (store) => store.Storedata
+  );
   useEffect(() => {
-    dispatch(AllEmployee())
+    dispatch(AllEmployee());
   }, []);
 
   let Deleteemployee = (id) => {
@@ -93,7 +92,6 @@ const ListEmp = () => {
                 <Th></Th>
                 <Th>Employee Name</Th>
                 <Th>Email</Th>
-                {/* <Th>Salery in Rs</Th> */}
                 <Th>Position</Th>
                 <Th>Joining Date</Th>
                 <Th>Status</Th>
@@ -118,16 +116,18 @@ const ListEmp = () => {
                       <Text> {el.firstname + el.lastname}</Text>
                     </Td>
                     <Td>{el.email}</Td>
-                    {/* <Td>{el.salary}</Td> */}
                     <Td>{el.position}</Td>
                     <Td>{el.joiningDate}</Td>
                     <Td>Active</Td>
                     <Td>
                       <HStack>
                         <Link to={`/empProfile/${el._id}`}>
-                          <Button>View</Button>
+                          <Button colorScheme="messenger">View</Button>
                         </Link>
-                        <Button onClick={()=> Deleteemployee(el._id)}>
+                        <Button
+                          onClick={() => Deleteemployee(el._id)}
+                          colorScheme="red"
+                        >
                           Delete
                         </Button>
                       </HStack>

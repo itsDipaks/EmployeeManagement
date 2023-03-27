@@ -11,39 +11,44 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import {useDispatch, useSelector} from "react-redux"
-import { addEmployee } from "../../Redux/Auth/Auth.action";
+import {useDispatch, useSelector} from "react-redux";
+import {addEmployee} from "../../Redux/Auth/Auth.action";
 
-import Swal from 'sweetalert2'
-import { Link, useNavigate, useNavigation } from "react-router-dom";
-import { BsArrowLeft } from "react-icons/bs";
+import Swal from "sweetalert2";
+import {Link, useNavigate} from "react-router-dom";
+import {BsArrowLeft} from "react-icons/bs";
 const AddEmployee = () => {
   let [formdata, setformdata] = useState({});
-  const dispatch=useDispatch()
-let navigate=useNavigate()
-  const Handeldinput=(e)=>{
-    e.preventDefault()
-    let {name,value}=e.target
-    setformdata({...formdata,[name]:value})
-  }
 
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  let {loading, error} = useSelector((store) => store.Auth);
 
-  const SubmitFormData=(e)=>{
-    // console.log("yes",formdata)
-    e.preventDefault()
-    dispatch(addEmployee(formdata))
+  const Handeldinput = (e) => {
+    e.preventDefault();
+    let {name, value} = e.target;
+    setformdata({...formdata, [name]: value});
+  };
 
-    // navigate("/")
-  }
-
-  let {loading,error,done}=useSelector(store=>store.Auth)
+  const SubmitFormData = (e) => {
+    e.preventDefault();
+    dispatch(addEmployee(formdata));
+    if (!loading) {
+      navigate("/employeelist");
+    }
+  };
 
   return (
     <>
-    <Flex alignItems={"center"}>
-    <Link to={"/employeelist"}><BsArrowLeft style={{fontSize:"1.5rem",cursor:"pointer"}}/></Link>
-      <Text textAlign={"start"} fontSize={"2xl"}  fontWeight="bold" p={4}> Add Employee</Text>
-    </Flex>
+      <Flex alignItems={"center"}>
+        <Link to={"/employeelist"}>
+          <BsArrowLeft style={{fontSize: "1.5rem", cursor: "pointer"}} />
+        </Link>
+        <Text textAlign={"start"} fontSize={"2xl"} fontWeight="bold" p={4}>
+          {" "}
+          Add Employee
+        </Text>
+      </Flex>
       <Box w="70%" m={"auto"}>
         <form onSubmit={SubmitFormData}>
           <Stack>
@@ -106,10 +111,14 @@ let navigate=useNavigate()
                   name="position"
                   onChange={Handeldinput}
                 >
-                  <option value="HR (Hiring Resources)">HR (Human resource )</option>
+                  <option value="HR (Hiring Resources)">
+                    HR (Human resource )
+                  </option>
                   <option value="Frontend Developer">Frontend Developer</option>
                   <option value="Backend Developer">Backend Developer</option>
-                  <option value="Full Stack Developer">Full stack Developer</option>
+                  <option value="Full Stack Developer">
+                    Full stack Developer
+                  </option>
                   <option value="NodeJs Developer">Nodejs Developer</option>
                 </Select>
               </FormControl>
@@ -134,12 +143,13 @@ let navigate=useNavigate()
                 </Select>
               </FormControl>
             </HStack>
-            <Input type="submit" value="add"/>
+            {/* <Input type="submit" value="add" /> */}
+            <Button type="submit"> Add </Button>
           </Stack>
         </form>
       </Box>
     </>
-  )
+  );
 };
 
 export default AddEmployee;

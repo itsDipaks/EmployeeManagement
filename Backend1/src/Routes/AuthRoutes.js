@@ -5,9 +5,9 @@ var jwt = require("jsonwebtoken");
 require("dotenv").config;
 
 let AuthRouter = Router();
-
-
 const privateKey = process.env.PRIVATEKEY;
+
+// ----------------------Add Employee ----------------------------
 
 AuthRouter.post("/addemployee", async (req, res) => {
   let {email} = req.body;
@@ -52,18 +52,18 @@ AuthRouter.post("/addemployee", async (req, res) => {
           });
           await newEmployee.save();
 
-          res.status(200).json({msg: "Signup Sucessfully"});
+          res.status(200).send({msg: "Signup Sucessfully"});
         } catch (err) {
           res
             .status(400)
-            .json({msg: "something wents wrong to uploading the data"});
+            .send({msg: "something wents wrong to uploading the data"});
         }
       }
     });
   }
-  //
 });
 
+// ----------------------Login Employee ----------------------------
 
 AuthRouter.post("/login", async (req, res) => {
   const {email, password} = req.body;
@@ -75,7 +75,7 @@ AuthRouter.post("/login", async (req, res) => {
         res.status(404).json({msg: "Unauthorized", isuser: false});
       } else {
         let isadmincheck = Checkuser.isAdmin;
-        
+
         const hashedpassword = Checkuser.password;
         const user_id = Checkuser._id;
         bcrypt.compare(password, hashedpassword, function (err, result) {
@@ -102,6 +102,9 @@ AuthRouter.post("/login", async (req, res) => {
   }
 });
 
+
+// ----------------------Edit Employee Password ----------------------------
+
 AuthRouter.patch("/editpass", async (req, res) => {
   const {newpassword, oldpassword} = req.body;
   let {authorization} = req.headers;
@@ -125,7 +128,6 @@ AuthRouter.patch("/editpass", async (req, res) => {
                   msg: "Password Changed Sucess",
                 });
               }
-              
             });
           } else {
             res.status(400).send({
