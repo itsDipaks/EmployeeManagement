@@ -54,13 +54,12 @@ ProjectRouter.post("/Addproject", async (req, res) => {
 
 
 ProjectRouter.delete("/deleteproject",async (req, res) => {
-  let {user_id} = req.headers;
-  console.log(user_id)
+  let {projectid} = req.headers;
+  console.log(projectid)
   try {
-      let DeletedData = await UserModel.findByIdAndDelete({_id: user_id});
-    // let AllEmployeedata = await UserModel.find({isAdmin:false});
+      let DeletedData = await ProjectModel.findByIdAndDelete({_id: projectid});
       res.send({
-        msg:"Employee Data Deleted Sucessfully"
+        msg:"Project Data Deleted Sucessfully"
     });
   } catch (err) {
     res.send({msg: "Something Wents Wrong"});

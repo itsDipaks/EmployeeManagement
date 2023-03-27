@@ -16,10 +16,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
-import {BsFileX} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import { AllEmployee } from "../Redux/Employee/Employee.action";
-import {GetAllProjects} from "../Redux/Project/Project.action";
+import {deleteproject, GetAllProjects} from "../Redux/Project/Project.action";
 
 const DisplayProjects = ({triggerdaction}) => {
   let dispatch = useDispatch();
@@ -43,9 +42,10 @@ console.log(employeeData)
 // console.log(employeeData+"employee")
   // console.log(ProjectsData);
 
-  let DeleteProject=()=>{
+  let DeleteProject=({_id})=>{
+    // console.log(el)
+    dispatch(deleteproject(_id))
 
-    
   }
   return (
     <div>
