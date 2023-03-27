@@ -69,7 +69,7 @@ const ProjectAdd = () => {
       Status: status,
     };
     dispatch(AddNewProject(AllProjectFiledData));
-    navigate("/employeelist")
+    navigate("/addprojects")
   };
 
   // ------------Multiselect options -----------
@@ -135,7 +135,7 @@ const ProjectAdd = () => {
                   </Select>
                 </FormControl>
 
-                <Flex gap={4} alignItems="center">
+                <Flex gap={4} w={"full"} alignItems="center">
                   <FormControl>
                     <FormLabel> Project Image </FormLabel>
                     <Input
@@ -145,15 +145,15 @@ const ProjectAdd = () => {
                       type="text"
                     />
                   </FormControl>
-                  <Text mt={4}> OR </Text>
+                  {/* <Text mt={4}> OR </Text>
                   <FormControl>
                     <FormLabel> Choose Image </FormLabel>
                     <Input type="file" />
-                  </FormControl>
+                  </FormControl> */}
                 </Flex>
               </VStack>
 
-              <Box w={"30%"} border="1px solid gray" p={4}>
+              <Box w={"30%"}  boxShadow='outline'  rounded='md'  p={4}>
                 <Flex
                   gap={2}
                   alignItems="center"
@@ -168,7 +168,7 @@ const ProjectAdd = () => {
                     alt={"Not A Valid Image Url "}
                   />
 
-                  <Button mt={2} onClick={PriviewProjectImage}>
+                  <Button mt={2} onClick={PriviewProjectImage} colorScheme='messenger'>
                     Preview Image
                   </Button>
                 </Flex>
@@ -231,7 +231,7 @@ const ProjectAdd = () => {
                 onRemove={onRemove}
               />
             </FormControl>
-            <Button type="submit">Add Project</Button>
+            <Button type="submit" colorScheme='messenger'>Add Project</Button>
           </VStack>
         </form>
       </Box>

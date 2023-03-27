@@ -62,9 +62,7 @@ export let SingleEmployee = (token) => async (dispatch) => {
 };
 
 export const deleteproject = (projectid) => (dispatch) => {
-  
   dispatch({type: PROJECT_GET_LOADING});
-
   try {
     Swal.fire({
       title: "Are you sure?",
@@ -84,7 +82,6 @@ export const deleteproject = (projectid) => (dispatch) => {
         Swal.fire("Removed Sucessfully!", "", "success");
       }
     });
-
     dispatch({type: PROJECT_DELETE, payload: {msg: "sucess"}});
   } catch (err) {
     dispatch({type: PROJECT_GET_ERROR});
