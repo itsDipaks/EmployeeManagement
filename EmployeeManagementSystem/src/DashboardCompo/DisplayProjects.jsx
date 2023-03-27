@@ -42,6 +42,11 @@ console.log(employeeData)
 //  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
 // console.log(employeeData+"employee")
   // console.log(ProjectsData);
+
+  let DeleteProject=()=>{
+
+    
+  }
   return (
     <div>
       {ProjectsData?.map((el) => (
@@ -99,15 +104,15 @@ console.log(employeeData)
                 </VStack>
               </Flex>
               <Flex gap={1} alignItems="center" mt={4}>
-                <Text>Project Status :  </Text>
+                <Text> Current Project Status :  </Text>
                 <Badge p={"0.3rem 1.2rem 0.3rem 1.2rem"}>{el.Status}      </Badge>
               </Flex>
-              <Divider m={2} />
-              <Button>Remove Project</Button>
-              <Button>Change Status</Button>
+              <Divider mt={4} />
+            
+              {/* <Button>Change Status</Button> */}
             </CardBody>
             <CardFooter>
-           
+            <Button colorScheme='red' onClick={()=>DeleteProject(el)} >Remove</Button>
             </CardFooter>
           </Stack>
 
