@@ -28,9 +28,9 @@ const Login = () => {
   useEffect(() => {
     if (token != null) {
       if (!isadmin) {
-        navigate("/");
+        navigate("/feedDashbord");
       } else {
-        navigate("/");
+        navigate("/feedDashbord");
       }
     } else {
       navigate("/login");
