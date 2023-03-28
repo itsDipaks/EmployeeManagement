@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <Box p={4}  boxShadow="dark-lg"  m={"auto"} width={{md: "95%", sm: "100%"}}>
+    <Box p={4}  boxShadow="dark-lg"  m={"auto"} width={{md: "95%", sm: "100%"}} data-aos="zoom-in">
       <Box
         width={{md: "95", sm: "100%"}}
         m="auto"
@@ -68,7 +68,7 @@ const Login = () => {
       >
   
         <Box
-          w="45%"
+          w={{md:"45%",sm:"50%"}}
           p={{md: "4rem", sm: "1rem"}}
           m="auto"
           mt={14}
@@ -76,9 +76,10 @@ const Login = () => {
           backdropFilter="auto"
           backdropBlur="8px"
           backdropContrast="20%"
+          data-aos="zoom-in"
         >
                 <Text 
-          fontSize={"3xl"}>Welcome Back !! </Text>
+          fontSize={"3xl"} pb={4}>Welcome Back !! </Text>
           {/* {token ? <Navigate to={"/"} /> : ""} */}
           <Stack spacing={4} align="stretch">
             <form onSubmit={logintoportal}>

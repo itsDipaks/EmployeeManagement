@@ -45,7 +45,7 @@ const Sidebarcompo = () => {
   ];
   return (
     <>
-      <div style={{display: "flex", height: "100%"}}>
+      <div style={{display: "flex", height: "100vh"}}>
         <Sidebar
           rootStyles={{
             color: "white",
@@ -55,7 +55,7 @@ const Sidebarcompo = () => {
             // backgroundColor: "black",
           }}
           collapsedWidth="70px"
-          backgroundColor="rgb(46,139,87)"
+          backgroundColor="rgb(6,9,14)"
         >
           {/* <Image
             borderRadius="full"

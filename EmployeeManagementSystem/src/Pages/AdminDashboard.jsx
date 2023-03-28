@@ -9,10 +9,10 @@ const AdminDashboard = ({setispanel}) => {
     <div>
       <Topbar pannel={setispanel} />
       <Box w="100%" display={"flex"} justifyContent="space-btween">
-        <Box>
+        <Box >
           <Sidebarcompo />
         </Box>
-        <Box width={"90%"} margin="auto">
+        <Box width={"90%"} >
           <DashbordRoutes />
         </Box>
       </Box>

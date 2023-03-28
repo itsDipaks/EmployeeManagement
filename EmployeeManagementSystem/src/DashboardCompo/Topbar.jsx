@@ -10,7 +10,8 @@ const Topbar = ({pannel}) => {
   };
   return (
     <>
-      <Box border="1px" height="50px"  zIndex="1" >
+      <Box  boxShadow='lg'
+p={2} zIndex="1" >
         <Flex alignItems={"center"}>
           <Flex w="20%">Dipak</Flex>
           <Spacer />

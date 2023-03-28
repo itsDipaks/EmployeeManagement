@@ -69,7 +69,7 @@ p={2}
           </Flex>
 
           <Flex w="20%" justifyContent="space-evenly" alignItems={"center"}>
-            {token ? (
+            {token && !isadmin? (
               <Tooltip
                 hasArrow
                 label=" View Profile"

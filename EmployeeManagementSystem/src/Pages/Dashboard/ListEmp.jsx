@@ -26,6 +26,7 @@ import {
   AllEmployee,
   DeleteEmployee,
 } from "../../Redux/Employee/Employee.action";
+import EmpProfile from "./EmpProfile";
 const ListEmp = () => {
   let dispatch = useDispatch();
   let {employeeData, loading, error, msg} = useSelector(
@@ -121,9 +122,10 @@ const ListEmp = () => {
                     <Td>Active</Td>
                     <Td>
                       <HStack>
-                        <Link to={`/empProfile/${el._id}`}>
-                          <Button colorScheme="messenger">View</Button>
-                        </Link>
+                        {/* <Link to={`/empProfile/${el._id}`}>
+                          <Button>View</Button> */}
+                        {/* </Link> */}
+                        <EmpProfile data={el}/>
                         <Button
                           onClick={() => Deleteemployee(el._id)}
                           colorScheme="red"

@@ -35,8 +35,8 @@ const ProfileIntro = ({data}) => {
               PROFILE IMAGE
             </Text>
             <Image
-              width={"90%"}
-              height="16rem"
+              width={"100%"}
+              height="14rem"
               margin="auto"
               rounded={"1rem"}
               src="https://cdn.pixabay.com/photo/2016/03/26/22/13/man-1281562__340.jpg"
@@ -47,17 +47,17 @@ const ProfileIntro = ({data}) => {
           {/* -------------Role box--------------- */}
 
           <Box
-            width={"65%"}
+            width={"70%"}
             // border="1px solid red"
             justifyContent="space-between"
           >
             <Flex justifyContent={"space-between"} textAlign="start">
-              <Box width={"45%"}>
+              <Box width={"55%"}>
                 <Box p={4}>
                   <Text pb={2} fontWeight={"semibold"}>ROLE</Text>
                   <HighlightBtn
                     icon={<MdOutlineArrowDropDown />}
-                    title={data.position}
+                    title={data?.position}
                     minititle={"position"}
                   />
 
@@ -65,7 +65,7 @@ const ProfileIntro = ({data}) => {
                     TEAM
                   </Text>
                   {/* ----------------Team--------- */}
-                  {teamdatat.map((el) => (
+                  {teamdatat?.map((el) => (
                     <Flex
                       display={"flex"}
                       w="100%"
@@ -78,7 +78,7 @@ const ProfileIntro = ({data}) => {
                       m="0.5rem 0rem 0.5rem 0rem"
                     >
                       <Box>
-                        <Text fontSize={"0.7rem"}>{el.designation}</Text>
+                        <Text fontSize={"0.7rem"}>{el?.designation}</Text>
                         <Flex justifyContent={"space-between"}>
                           <Image
                             w={"20px"}
@@ -86,7 +86,7 @@ const ProfileIntro = ({data}) => {
                             src={el.img}
                             alt="image"
                           />
-                          <Text ml={"1rem"}>{el.name} </Text>
+                          <Text ml={"1rem"}>{el?.name} </Text>
                         </Flex>
                       </Box>
                       <MdOutlineArrowDropDown />
@@ -94,12 +94,12 @@ const ProfileIntro = ({data}) => {
                   ))}
                 </Box>
               </Box>
-              <Box width={"45%"} textAlign={"start"}>
+              <Box width={"44%"} textAlign={"start"}>
                 <Box p={4} boxSizing="border-box">
                   <Text pb={2} fontWeight={"semibold"}>ONBOARDING </Text>
                   <HighlightBtn
                     icon={<MdOutlineArrowDropDown />}
-                    title={data.joiningDate}
+                    title={data?.joiningDate}
                     minititle={"Starts on"}
                   />
                 </Box>
