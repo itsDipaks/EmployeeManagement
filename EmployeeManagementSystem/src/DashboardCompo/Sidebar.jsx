@@ -8,9 +8,11 @@ import {
   useProSidebar,
 } from "react-pro-sidebar";
 import {MdDashboardCustomize} from "react-icons/md";
-import {AiOutlineFundProjectionScreen, AiOutlineMenuUnfold} from "react-icons/ai";
+import {
+  AiOutlineFundProjectionScreen,
+  AiOutlineMenuUnfold,
+} from "react-icons/ai";
 import {FaUsers} from "react-icons/fa";
-import {BsPersonFillAdd, BsGraphUpArrow} from "react-icons/bs";
 
 import {Link} from "react-router-dom";
 const Sidebarcompo = () => {
@@ -25,18 +27,8 @@ const Sidebarcompo = () => {
     {
       Menuname: "List",
       linkto: "/employeelist",
-      icon: <FaUsers/>,
+      icon: <FaUsers />,
     },
-    // {
-    //   Menuname: "Add Employee",
-    //   linkto: "/addemp",
-    //   icon: <BsPersonFillAdd />,
-    // },
-    // {
-    //   Menuname: "empprofile",
-    //   linkto: "/empprofile",
-    //   icon: <BsGraphUpArrow />,
-    // },
     {
       Menuname: "Projects",
       linkto: "/addprojects",
@@ -49,26 +41,18 @@ const Sidebarcompo = () => {
         <Sidebar
           rootStyles={{
             color: "white",
-            fontWeight:"bold"
-            ,fontSize:"1.1rem"
-            
-            // backgroundColor: "black",
+            fontWeight: "bold",
+            fontSize: "1.1rem",
           }}
           collapsedWidth="70px"
           backgroundColor="rgb(6,9,14)"
         >
-          {/* <Image
-            borderRadius="full"
-            boxSize="80px"
-            src="https://bit.ly/dan-abramov"
-            alt="Dan Abramov"
-            ml="1rem"
-          />
-          <Text ml="2rem">Dipak</Text> */}
-          <Menu  >
-            
+          <Menu>
             {sidebarmenu?.map((el) => (
-              <MenuItem icon={el.icon} component={<Link to={el.linkto} color="red"/>}>
+              <MenuItem
+                icon={el.icon}
+                component={<Link to={el.linkto} color="red" />}
+              >
                 <Text ml="1rem" textDecoration="none" textAlign={"start"}>
                   {el.Menuname}
                 </Text>

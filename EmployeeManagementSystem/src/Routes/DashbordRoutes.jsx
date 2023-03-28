@@ -14,8 +14,6 @@ const DashbordRoutes = () => {
         <Route path="/adminprofile" element={<AdminProfile />} />
         <Route path="/dashpanel" element={<AdminPrivate><Dashboardpanel/></AdminPrivate>} />
         <Route path="/employeelist" element={<ListEmp />} />
-        <Route path="/addemp" element={<AddEmployee />} />
-        <Route path="/empProfile/:id" element={<EmpProfile />} />
         <Route path="/addprojects" element={<ProjectAdd />} />
       </Routes>
     </div>

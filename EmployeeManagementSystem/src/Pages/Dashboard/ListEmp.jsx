@@ -26,6 +26,7 @@ import {
   AllEmployee,
   DeleteEmployee,
 } from "../../Redux/Employee/Employee.action";
+import AddEmployee from "./AddEmployee";
 import EmpProfile from "./EmpProfile";
 const ListEmp = () => {
   let dispatch = useDispatch();
@@ -77,10 +78,7 @@ const ListEmp = () => {
               <Input placeholder="Search" />
             </FormControl>
           </HStack>
-
-          <Link to={"/addemp"}>
-            <Button colorScheme="green">Add Employee</Button>
-          </Link>
+          <AddEmployee />
         </Flex>
       </Box>
       <Box mt={"1rem"}>
@@ -125,7 +123,7 @@ const ListEmp = () => {
                         {/* <Link to={`/empProfile/${el._id}`}>
                           <Button>View</Button> */}
                         {/* </Link> */}
-                        <EmpProfile data={el}/>
+                        <EmpProfile data={el} />
                         <Button
                           onClick={() => Deleteemployee(el._id)}
                           colorScheme="red"
