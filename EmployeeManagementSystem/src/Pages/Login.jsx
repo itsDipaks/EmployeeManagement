@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Image,
   Input,
   Stack,
   Text,
@@ -22,23 +23,19 @@ const Login = () => {
   let [loginformdata, setloginformdata] = useState({});
   let dispatch = useDispatch();
   const navigate = useNavigate();
-  let {token , loading, error,isadmin} = useSelector((store) => store.Auth);
+  let {token, loading, error, isadmin} = useSelector((store) => store.Auth);
 
-  useEffect(()=>{
-    
-      if(token!=null){
-        if(!isadmin){
-
-          navigate("/employdashbord")
-        }else{
-          navigate("/Admindashboard")
-        }
+  useEffect(() => {
+    if (token != null) {
+      if (!isadmin) {
+        navigate("/employdashbord");
+      } else {
+        navigate("/Admindashboard");
       }
-      else{
-        navigate("/login")
-      }
-   
-  },[token])
+    } else {
+      navigate("/login");
+    }
+  }, [token]);
   let handeldinputs = (e) => {
     let {name, value} = e.target;
     setloginformdata({
@@ -50,48 +47,67 @@ const Login = () => {
   let logintoportal = (e) => {
     e.preventDefault();
     dispatch(userLogin(loginformdata));
- 
   };
 
   return (
-    <>
+    <Box p={4}  boxShadow="dark-lg"  m={"auto"} width={{md: "95%", sm: "100%"}}>
       <Box
-        width={"40%"}
+        width={{md: "95", sm: "100%"}}
         m="auto"
-        mt={"5rem"}
-        boxShadow="dark-lg"
-        p="4rem"
+        // mt={"5rem"}
+        // boxShadow="dark-lg"
+        p={{md: "1rem", sm: "2rem"}}
         rounded="md"
+        // mt={4}
+        position={"relative"}
+        h="80vh"
+        backgroundImage="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        backgroundRepeat={"no-repeat"}
+        backgroundSize="cover"
+        objectFit="cover"
       >
-        {/* {token ? <Navigate to={"/"} /> : ""} */}
-        <Stack spacing={4} align="stretch">
-          <Text fontSize={"2xl"}> Login</Text>
-          <form onSubmit={logintoportal}>
-            <FormControl isRequired>
-              <FormLabel>Email Address </FormLabel>
-              <Input
-                placeholder=" Enter Email "
-                type="email"
-                onChange={handeldinputs}
-                name="email"
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Password</FormLabel>
-              <Input
-                placeholder="Enter Password"
-                onChange={handeldinputs}
-                name="password"
-                type="password"
-              />
-            </FormControl>
-            <Button type="submit" w="full" mt="1rem">
-              Login
-            </Button>
-          </form>
-        </Stack>
+  
+        <Box
+          w="45%"
+          p={{md: "4rem", sm: "1rem"}}
+          m="auto"
+          mt={14}
+          rounded="md"
+          backdropFilter="auto"
+          backdropBlur="8px"
+          backdropContrast="20%"
+        >
+                <Text 
+          fontSize={"3xl"}>Welcome Back !! </Text>
+          {/* {token ? <Navigate to={"/"} /> : ""} */}
+          <Stack spacing={4} align="stretch">
+            <form onSubmit={logintoportal}>
+              <FormControl isRequired>
+                <FormLabel>Email Address </FormLabel>
+                <Input
+                  placeholder=" Enter Email "
+                  type="email"
+                  onChange={handeldinputs}
+                  name="email"
+                />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Password</FormLabel>
+                <Input
+                  placeholder="Enter Password"
+                  onChange={handeldinputs}
+                  name="password"
+                  type="password"
+                />
+              </FormControl>
+              <Button type="submit" w="full" mt="1rem">
+                Login
+              </Button>
+            </form>
+          </Stack>
+        </Box>
       </Box>
-    </>
+    </Box>
   );
 };
 
