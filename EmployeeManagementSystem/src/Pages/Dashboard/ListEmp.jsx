@@ -33,13 +33,15 @@ const ListEmp = () => {
   let {employeeData, loading, error, msg} = useSelector(
     (store) => store.Storedata
   );
+  console.log(employeeData)
+  let Deleteemployee = (id) => {
+    dispatch(DeleteEmployee(id));
+  };
   useEffect(() => {
     dispatch(AllEmployee());
   }, []);
 
-  let Deleteemployee = (id) => {
-    dispatch(DeleteEmployee(id));
-  };
+
   return (
     <>
       <Heading Size={"sm"} m="1rem">

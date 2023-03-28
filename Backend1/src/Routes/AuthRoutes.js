@@ -52,7 +52,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
           });
           await newEmployee.save();
 
-          res.status(200).send({msg: "Signup Sucessfully"});
+          res.status(200).send({msg: "Signup Sucessfully",data:newEmployee});
         } catch (err) {
           res
             .status(400)

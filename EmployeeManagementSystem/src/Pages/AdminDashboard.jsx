@@ -7,8 +7,8 @@ import DashbordRoutes from "../Routes/DashbordRoutes";
 const AdminDashboard = ({setispanel}) => {
   return (
     <div>
-      <Topbar pannel={setispanel} />
-      <Box w="100%" display={"flex"} justifyContent="space-btween">
+      <Box position={"fixed"} top={0} w='100%' zIndex="14"  bg={"black"}><Topbar pannel={setispanel} /></Box>
+      <Box w="100%" position={"relative"} top={"3.5rem"} display={"flex"} justifyContent="space-btween">
         <Box >
           <Sidebarcompo />
         </Box>

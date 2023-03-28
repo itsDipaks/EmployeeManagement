@@ -91,10 +91,11 @@ export let DeleteEmployee = (id) => async (dispatch) => {
         );
 
         Swal.fire("Removed Sucessfully!", "", "success");
+        console.log(EmData.data)
       }
     });
 
-    dispatch({type: EMPLOYEE_DELETE, payload: {msg: "sucess"}});
+    dispatch({type: EMPLOYEE_GET_SUCESS, payload:EmData.data });
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});
   }

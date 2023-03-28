@@ -90,17 +90,28 @@ const AddprojectDrawer = () => {
 
   return (
     <div>
-      <Button onClick={() => onOpen()}>Add New Project</Button>
+      <Button colorScheme='whatsapp' onClick={() => onOpen()}>Add New Project</Button>
 
-      <Drawer placement={"bottom"} size={"xl"} onClose={onClose} isOpen={isOpen} w="90%">
+      <Drawer
+        placement={"bottom"}
+        size={"xl"}
+        onClose={onClose}
+        isOpen={isOpen}
+        w="90%"
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">
-            <Button onClick={() => onClose()}>Close</Button>
+            <Flex w={"80%"} justifyContent="space-between" alignItems={"center"} m={"auto"}>
+              <Text>Add New Project</Text>
+              <Button colorScheme="red" p={6} onClick={() => onClose()}>
+                Close
+              </Button>
+            </Flex>
           </DrawerHeader>
           <DrawerBody>
             <Box
-              w={"95%"}
+              w={"85%"}
               m="auto"
               p={14}
               pb={14}
@@ -153,7 +164,7 @@ const AddprojectDrawer = () => {
                       </Flex>
                     </VStack>
 
-                    <Box w={"20%"} boxShadow="outline" rounded="md" p={4}>
+                    <Box w={"22%"} boxShadow="outline" rounded="md" p={4}>
                       <Flex
                         gap={2}
                         alignItems="center"
@@ -239,7 +250,7 @@ const AddprojectDrawer = () => {
                         onRemove={onRemove}
                       />
                     </FormControl>
-                    <Button type="submit" colorScheme="messenger">
+                    <Button type="submit" colorScheme="messenger" m={4} p={4}>
                       Add Project
                     </Button>
                   </Box>

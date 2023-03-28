@@ -28,9 +28,9 @@ const Login = () => {
   useEffect(() => {
     if (token != null) {
       if (!isadmin) {
-        navigate("/employdashbord");
+        navigate("/");
       } else {
-        navigate("/Admindashboard");
+        navigate("/");
       }
     } else {
       navigate("/login");

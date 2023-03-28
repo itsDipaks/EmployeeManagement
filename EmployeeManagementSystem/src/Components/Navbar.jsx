@@ -30,6 +30,9 @@ const Navbar = ({setispanel}) => {
       <Box w="100%" 
 boxShadow='lg'
 p={2}
+bg="red.400"
+
+top="0"
       >
         <Flex
           p={"0.51rem"}

@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {AllEmployee} from "../Redux/Employee/Employee.action";
-import {deleteproject, GetAllProjects} from "../Redux/Project/Project.action";
+import {AllEmployee} from "../../Redux/Employee/Employee.action";
+import {deleteproject, GetAllProjects} from "../../Redux/Project/Project.action";
 
 const DisplayProjects = ({triggerdaction}) => {
   let dispatch = useDispatch();

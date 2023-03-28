@@ -25,12 +25,12 @@ const Sidebarcompo = () => {
       icon: <MdDashboardCustomize />,
     },
     {
-      Menuname: "List",
+      Menuname: "Employee",
       linkto: "/employeelist",
       icon: <FaUsers />,
     },
     {
-      Menuname: "Projects",
+      Menuname: "Project",
       linkto: "/addprojects",
       icon: <AiOutlineFundProjectionScreen />,
     },

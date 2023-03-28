@@ -10,7 +10,6 @@ let port = process.env.PORT;
 
 
 
-
 const app = express();
 // ----Imp Middleweare----
 app.use(cors())

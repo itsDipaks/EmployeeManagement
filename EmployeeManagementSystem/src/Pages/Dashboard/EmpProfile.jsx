@@ -35,7 +35,7 @@ const EmpProfile = ({data}) => {
       <Drawer onClose={onClose} isOpen={isOpen} size={"xl"}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
+          <DrawerCloseButton bg={"red.500"} color="white" p={6}/>
           <DrawerHeader>
             {" "}
             <Box w="95%" m={"auto"} pl={2} pr={2}>
@@ -58,18 +58,7 @@ const EmpProfile = ({data}) => {
                   </Text>
                 </Flex>
 
-                <Button
-                  w={"10%"}
-                  p={2}
-                  colorScheme="red"
-                  variant="outline"
-                  fontSize={"xl"}
-                >
-                  <AiOutlineDelete
-                    style={{marginRight: "0.5rem", width: "120px"}}
-                  />{" "}
-                  Delete{" "}
-                </Button>
+               
               </Flex>
             </Box>
           </DrawerHeader>

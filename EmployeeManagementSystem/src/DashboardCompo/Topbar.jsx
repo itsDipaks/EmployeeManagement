@@ -11,7 +11,7 @@ const Topbar = ({pannel}) => {
   return (
     <>
       <Box  boxShadow='lg'
-p={2} zIndex="1" >
+p={2} >
         <Flex alignItems={"center"}>
           <Flex w="20%">Dipak</Flex>
           <Spacer />

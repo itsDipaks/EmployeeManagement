@@ -11,6 +11,7 @@ let initialstate = {
   error: false,
   token: null,
   isadmin: false,
+  msg: null,
 };
 
 export const AuthReducer = (state = initialstate, {type, payload}) => {

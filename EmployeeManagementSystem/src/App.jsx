@@ -5,6 +5,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import CombineRoutes from "./Routes/CombineRoutes";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import { Box } from "@chakra-ui/react";
 function App() {
   let [ispanel, setispanel] = useState(false);
   AOS.init();
@@ -16,8 +17,8 @@ function App() {
         <AdminDashboard setispanel={setispanel} />
       ) : (
         <div>
-          <Navbar ispanel={ispanel} setispanel={setispanel} />
-          <CombineRoutes />
+        <Box position="fixed" top={0} w={"100%"} zIndex="14">  <Navbar ispanel={ispanel} setispanel={setispanel}  /></Box>
+          <Box  position="relative" top={"6rem"}><CombineRoutes /></Box>
         </div>
       )}
     </div>

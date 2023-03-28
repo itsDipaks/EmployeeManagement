@@ -14,14 +14,14 @@ export let addEmployee = (formdata) => async (dispatch) => {
   try {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
     console.log(Employee);
-    dispatch({type: AUTH_GET_SUCESS});
-    Swal.fire("Welcome Back !", "Login success !", "success");
+    dispatch({type: AUTH_GET_SUCESS ,payload:Employee});
+    Swal.fire("Welcome Back !", "Registration success !", "success");
   } catch (err) {
     dispatch({type: AUTH_GET_ERROR});
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Faild ! Please Check Your Credentials !",
+      text: "Faild ! User Already Exist With this Email !",
     });
   }
 };

@@ -49,7 +49,7 @@ const AddEmployee = () => {
 
   return (
     <>
-      <Button onClick={() => onOpen()}>Add Employee</Button>
+      <Button colorScheme='whatsapp' onClick={() => onOpen()}>Add Employee</Button>
       <Drawer onClose={onClose} isOpen={isOpen} size={"lg"}>
         <DrawerOverlay />
         <DrawerContent>
