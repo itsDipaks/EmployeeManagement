@@ -9,9 +9,9 @@ const AdminMassage = () => {
     <div>
       <SimpleGrid
         bg={"#ffffff"}
-        width="70%"
+        width="80%"
         mt={4}
-        pt="3"
+        pt="2"
         pb="5"
         borderRadius="10"
         border={"1px"}
@@ -26,8 +26,8 @@ const AdminMassage = () => {
           display={"flex"}
           gap="25px"
           ml="5"
-          mt={3}
-          pb={4}
+          mt={2}
+          pb={2}
           fontWeight="500"
         >
        Add Post
@@ -38,7 +38,7 @@ const AdminMassage = () => {
           onClick={() => setInput(!input)}
           textAlign={"left"}
           ml="6"
-          mt="4"
+          mt="2"
           w={"90%"}
           fontSize={"24"}
           display={input ? "none" : "block"}
@@ -49,7 +49,7 @@ const AdminMassage = () => {
         <Textarea
           textAlign={"left"}
           ml="6"
-          mt="4"
+          mt="2"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           w={"90%"}
@@ -67,7 +67,7 @@ const AdminMassage = () => {
             gap="8"
             fontSize={"15px"}
             ml="74px"
-            mt={"5"}
+            mt={"2"}
             // className={style.MiddleRow}
           >
             <Input type="file" id="upload" hidden />
@@ -83,10 +83,10 @@ const AdminMassage = () => {
           {/* -----------------------(To: add more) =------------------- */}
           <Box
             display={"flex"}
-            gap="10"
+            gap="4"
             ml="10"
             fontSize={20}
-            mt="5"
+            mt="3"
             alignItems="center"
           >
           
@@ -142,6 +142,7 @@ const AdminMassage = () => {
 
           {/* ----------------------- (Send - Cancel button) ------------------------------- */}
         
+        box should
         </Box>
       </SimpleGrid>
     </div>

@@ -36,6 +36,7 @@ const ListEmp = () => {
   console.log(employeeData)
   let Deleteemployee = (id) => {
     dispatch(DeleteEmployee(id));
+   
   };
   useEffect(() => {
     dispatch(AllEmployee());
