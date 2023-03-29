@@ -9,7 +9,7 @@ const AdminMassage = () => {
     <div>
       <SimpleGrid
         bg={"#ffffff"}
-        width="80%"
+        width="75%"
         mt={4}
         pt="2"
         pb="5"
@@ -139,10 +139,6 @@ const AdminMassage = () => {
           </Box>
             </Box>
           </Box>
-
-          {/* ----------------------- (Send - Cancel button) ------------------------------- */}
-        
-        box should
         </Box>
       </SimpleGrid>
     </div>
