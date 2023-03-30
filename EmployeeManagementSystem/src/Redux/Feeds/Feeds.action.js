@@ -8,7 +8,7 @@ export let AddNewFeed = (Massage,name,email) => async (dispatch) => {
   try {
     let FeedAdd = await axios.post(
       `${Backendurl}/feed/addfeed`,
-      {Massage:Massage,author:name}
+      {Massage,name}
     );
     dispatch({type: FEEDS_GET_SUCESS});
 

@@ -8,7 +8,7 @@ const feedSchema = new mongoose.Schema({
     type: String,
 
   },
-  author: {
+  feedAuthor: {
     type: String,
     required: true
   },

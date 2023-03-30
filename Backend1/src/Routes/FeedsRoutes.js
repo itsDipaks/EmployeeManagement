@@ -10,13 +10,13 @@ FeedsRouter.post("/addfeed",async(req,res)=>{
       } = req.body;
       try {
         let addfeed = new FeedsModel({
-            Massage,name
+            Massage,feedAuthor:name
         });
         
         await addfeed.save();
         res.status(200).json({msg: "Feed Added Sucessfully"});
-      } catch (er) {
-        res.status(500).json({msg: "something wents wrong to uploading the data"});
+      } catch (err) {
+        res.status(500).json({msg: "something wents wrong to uploading the data",err:err});
       }
 
 
