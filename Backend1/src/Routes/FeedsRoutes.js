@@ -1,10 +1,10 @@
-let  { Router } = require("express");
+let {Router} = require("express");
 const { FeedsModel } = require("../model/Feeds.model");
 
 let FeedsRouter=Router()
 
 
-FeedsRouter.post("addfeed",async(req,res)=>{
+FeedsRouter.post("/addfeed",async(req,res)=>{
     let {
     Massage,name,
       } = req.body;
@@ -22,3 +22,5 @@ FeedsRouter.post("addfeed",async(req,res)=>{
 
 
 })
+
+module.exports={FeedsRouter}

@@ -4,6 +4,7 @@ const {Connection} = require("./Config/db");
 const { AuthRouter } = require("./Routes/AuthRoutes");
 const { EmployeeRouter } = require("./Routes/EmployesRoutes");
 const { ProjectRouter } = require("./Routes/ProjectRoute");
+const { FeedsRouter } = require("./Routes/FeedsRoutes");
 // ........Env FileSystem.apply........
 require("dotenv").config();
 let port = process.env.PORT;
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/auth",AuthRouter)
 app.use("/employee",EmployeeRouter)
 app.use("/project",ProjectRouter)
+app.use("/feed",FeedsRouter)
 
 app.get("/",(req,res)=>{
   res.send("yes")

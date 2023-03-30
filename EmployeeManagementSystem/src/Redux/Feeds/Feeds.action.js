@@ -1,7 +1,7 @@
-import {Backendurl} from "../../assets/Urls";
 import { FEEDS_GET_LOADING,FEEDS_GET_SUCESS,FEEDS_GET_ERROR,FEEDS_DELETE } from "./Feeds.type";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Backendurl } from "../../assets/Urls";
 
 export let AddNewFeed = (Massage,name,email) => async (dispatch) => {
   dispatch({type: FEEDS_GET_LOADING});
@@ -12,13 +12,13 @@ export let AddNewFeed = (Massage,name,email) => async (dispatch) => {
     );
     dispatch({type: FEEDS_GET_SUCESS});
 
-    Swal.fire("Sucess!", "Project Added Succesfully !! ", "success");
+    Swal.fire("Sucess!", "Feed Added Succesfully !! ", "success");
   } catch (err) {
     dispatch({type: FEEDS_GET_ERROR});
     Swal.fire({
       icon: "error",
       title: "Faild !! ",
-      text: "Entered Old Password is Wrong !",
+      text: "Something Wents Wrong!",
     });
   }
 };
