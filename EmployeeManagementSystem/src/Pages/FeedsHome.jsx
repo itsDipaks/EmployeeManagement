@@ -1,12 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import AdminMassage from '../Components/FeedsDashbordCompo/AdminMassage'
 import FeedsPost from '../Components/FeedsDashbordCompo/FeedsPost'
 
 const FeedsHome = () => {
+
+
+  let {token , isadmin} = useSelector((store) => store.Auth);
+
   return (
     <div>
-        
-        <AdminMassage/>
+        {isadmin && token ?   <AdminMassage/>:""}
+    
 
 
         {/* =========Feeds============ */}

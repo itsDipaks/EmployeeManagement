@@ -84,6 +84,7 @@ AuthRouter.post("/login", async (req, res) => {
             res.status(200).json({
               token: token,
               isAdmin: isadmincheck,
+              userinfo:{name:Checkuser.firstname + " " +Checkuser.lastname,email:Checkuser.email},
               msg: "Login sucsess",
             });
           } else {

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 const feedSchema = new mongoose.Schema({
-  description: {
+  Massage: {
     type: String,
   },
   imageUrl: {
     type: String,
+
   },
   author: {
     type: String,

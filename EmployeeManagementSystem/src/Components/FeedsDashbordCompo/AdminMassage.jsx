@@ -1,10 +1,20 @@
 import {Box, Button, Input, SimpleGrid, Text, Textarea} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AddNewFeed } from "../../Redux/Feeds/Feeds.action";
 const AdminMassage = () => {
   const [input, setInput] = useState(false);
   const [value, setValue] = useState("");
-  const [message, setMessage] = useState([]);
+  const [massage, setMassage] = useState([]);
   const [filter, setFilter] = useState("");
+
+  let {token , loading, error,isadmin,name,email} = useSelector((store) => store.Auth);
+
+console.log(name)
+  let dispatch=useDispatch()
+  let sendMassage=()=>{
+    dispatch(AddNewFeed(massage,name,email))
+  }
   return (
     <div>
       <SimpleGrid
@@ -50,8 +60,7 @@ const AdminMassage = () => {
           textAlign={"left"}
           ml="6"
           mt="2"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setMassage(e.target.value)}
           w={"90%"}
           display={input ? "block" : "none"}
           fontSize={"1.2rem"}
@@ -118,7 +127,7 @@ const AdminMassage = () => {
 
               <Box display={"flex"} gap="10" >
             <Button
-              //   onClick={handleAdd}
+                onClick={sendMassage}
               bg={"#3bc8f5"}
               color="white"
               fontSize={"1rem"}

@@ -12,6 +12,8 @@ let initialstate = {
   token: null,
   isadmin: false,
   msg: null,
+  name:null,
+  email:null
 };
 
 export const AuthReducer = (state = initialstate, {type, payload}) => {
@@ -32,6 +34,8 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         loading: false,
         token: payload.data.token,
         isadmin: payload.data.isAdmin,
+        name: payload.data.userinfo.name,
+        email: payload.data.userinfo.email
       };
     }
     case AUTH_GET_ERROR: {
