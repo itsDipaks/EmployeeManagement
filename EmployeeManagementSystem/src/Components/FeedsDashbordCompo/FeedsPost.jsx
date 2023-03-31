@@ -36,7 +36,8 @@ const FeedsPost = () => {
   };
 
 let commentmassage=()=>{
-  dispatch(CommentonFeed(CommentMsg,FeedId))
+  dispatch(CommentonFeed(CommentMsg,FeedId,name))
+  console.log("yes")
 }
   return (
     <>
@@ -115,7 +116,6 @@ let commentmassage=()=>{
             </Box>
             <Text
               color={input ? "blue" : "grey"}
-              onClick={commentmassage}
               textDecoration={input ? "underline" : "none"}
               _hover={{
                 color: "blue",
@@ -172,7 +172,7 @@ let commentmassage=()=>{
               />
             </SimpleGrid>
 
-            <Button colorScheme={"messenger"}>Comment</Button>
+            <Button  onClick={commentmassage} colorScheme={"messenger"}>Comment</Button>
           </Grid>
         </Box>
       ))}

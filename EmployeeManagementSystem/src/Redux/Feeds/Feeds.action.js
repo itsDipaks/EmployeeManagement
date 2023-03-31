@@ -46,16 +46,16 @@ export let GetAllFeeds = () => async (dispatch) => {
 
 
 
-export let CommentonFeed = (CommentMsg,FeedId) => async (dispatch) => {
+export let CommentonFeed = (CommentMsg,FeedId,name) => async (dispatch) => {
   dispatch({type: FEEDS_GET_LOADING});
   try {
-    let AddComment = await axios.post(
+    let AddComment = await axios.patch(
       `${Backendurl}/feed/addcomment`,
-      {CommentMsg,FeedId}
+      {CommentMsg,FeedId,name}
     );
     dispatch({type: FEEDS_GET_SUCESS});
 
-    Swal.fire("Sucess!", "Feed Added Succesfully !! ", "success");
+    Swal.fire("Sucess!", "Comment Added Succesfully !! ", "success");
   } catch (err) {
     dispatch({type: FEEDS_GET_ERROR});
     Swal.fire({

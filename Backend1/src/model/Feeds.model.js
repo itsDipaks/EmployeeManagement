@@ -24,7 +24,7 @@ const feedSchema = new mongoose.Schema({
     CommentMasg: {
       type: String,
     },
-    author: {
+    CommentAuthor: {
       type: String,
     },
     createdAt: {
