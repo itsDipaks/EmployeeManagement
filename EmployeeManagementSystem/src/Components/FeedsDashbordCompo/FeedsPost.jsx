@@ -35,10 +35,10 @@ const FeedsPost = () => {
     SetFeedId(el._id);
   };
 
-let commentmassage=()=>{
-  dispatch(CommentonFeed(CommentMsg,FeedId,name))
-  console.log("yes")
-}
+  let commentmassage = () => {
+    dispatch(CommentonFeed(CommentMsg, FeedId, name));
+    console.log("yes");
+  };
   return (
     <>
       {FeedsData?.map((el) => (
@@ -102,7 +102,8 @@ let commentmassage=()=>{
           <Box
             w="50%"
             mt={"5"}
-            ml="85px"
+            mb={"5"}
+            ml="14"
             textAlign={"left"}
             fontSize="14"
             color="grey"
@@ -126,9 +127,57 @@ let commentmassage=()=>{
             <Text color="grey">1</Text>
           </Box>
 
+          {/* ================ Show Comments=================== */}
+
+          <Box>
+            <Grid ml="14" display={"flex"} alignItems="center" gap={4}>
+              <Box fontSize={"23px"} borderRadius="50px" w="40px" ml="5" mt="2">
+                <Image
+                  w="40px"
+                  borderRadius={"50px"}
+                  src={
+                    "https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
+                  }
+                />
+              </Box>
+              <Box w="40%">
+                <Text
+                  fontWeight={500}
+                  fontSize={14}
+                  color="#246ab1"
+                  textAlign={"left"}
+                  cursor="pointer"
+                >
+              {el?.comments?.map((val)=>
+              
+              
+              )}
+                </Text>
+                <Text color={"black"} fontSize={16} textAlign={"left"}>
+                  {/* {day} {time} */}
+                  {el?.createdAt}
+                </Text>
+              </Box>
+
+              {/* -------------------- (Comment Part) --------- */}
+              <SimpleGrid
+                bg={"#ffffff"}
+                width="40%"
+                ml="0px"
+                mt={4}
+                pt="3"
+                pb="5"
+                borderRadius="10"
+              >
+                {/* ------------------- (Input) --------------------- */}
+                <Text></Text>
+              </SimpleGrid>
+            </Grid>
+          </Box>
+
           {/* ==========Commwnt================== */}
 
-          <Grid ml="14" display={"flex"} alignItems="center">
+          <Grid ml="6" display={"flex"} alignItems="center">
             <Box
               fontSize={"23px"}
               borderRadius="50px"
@@ -172,7 +221,9 @@ let commentmassage=()=>{
               />
             </SimpleGrid>
 
-            <Button  onClick={commentmassage} colorScheme={"messenger"}>Comment</Button>
+            <Button onClick={commentmassage} colorScheme={"messenger"}>
+              Comment
+            </Button>
           </Grid>
         </Box>
       ))}
