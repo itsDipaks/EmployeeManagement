@@ -27,6 +27,9 @@ const feedSchema = new mongoose.Schema({
     CommentAuthor: {
       type: String,
     },
+    AutherEmail: {
+      type: String,
+    },
     createdAt: {
       type: Date,
       default: Date.now

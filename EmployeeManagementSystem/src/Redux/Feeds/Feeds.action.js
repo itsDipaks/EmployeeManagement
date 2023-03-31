@@ -40,18 +40,45 @@ export let GetAllFeeds = () => async (dispatch) => {
   }
 };
 
+export const Deletefeed = (FeedId) => (dispatch) => {
+    dispatch({type: FEEDS_GET_LOADING});
+    try {
+      Swal.fire({
+        title: "Are you sure Want To Delete ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          let FeedData = await axios.delete(`${Backendurl}/feed/deletefeed`, {
+            headers:{
+              FeedId: FeedId
+            },
+          });
+  
+          Swal.fire("Removed Sucessfully!", "", "success");
+        }
+      });
+      dispatch({type: FEEDS_GET_SUCESS});
+    } catch (err) {
+      dispatch({type: FEEDS_GET_ERROR});
+    }
+  };
+  
+  
 
 
 
 
 
-
-export let CommentonFeed = (CommentMsg,FeedId,name) => async (dispatch) => {
+export let CommentonFeed = (CommentMsg,FeedId,name,email) => async (dispatch) => {
   dispatch({type: FEEDS_GET_LOADING});
   try {
     let AddComment = await axios.patch(
       `${Backendurl}/feed/addcomment`,
-      {CommentMsg,FeedId,name}
+      {CommentMsg,FeedId,name,email}
     );
     dispatch({type: FEEDS_GET_SUCESS});
 

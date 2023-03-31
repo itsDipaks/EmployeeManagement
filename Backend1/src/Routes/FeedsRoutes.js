@@ -29,16 +29,32 @@ FeedsRouter.get("/allfeeds", async (req, res) => {
   }
 });
 
+
+
+
+
+FeedsRouter.delete("/deletefeed",async (req, res) => {
+  let {feedid} = req.headers;
+  try {
+      let DeletedData = await FeedsModel.findByIdAndDelete({_id: feedid});
+      res.status(200).send({
+        msg:"Feed Data Deleted Sucessfully"
+    });
+  } catch (err) {
+    res.status(400).send({msg: "Something Wents Wrong"});
+  }
+});
+
 // ==========Comment Sections =============
 
 FeedsRouter.patch("/addcomment", async (req, res) => {
-  let {CommentMsg, FeedId,name} = req.body;
+  let {CommentMsg, FeedId,name,email} = req.body;
 
   try {
     let AddComment = await FeedsModel.findOneAndUpdate(
       {_id:FeedId},
       { comments: [
-        {CommentMasg: CommentMsg,CommentAuthor:name}
+        {CommentMasg: CommentMsg,CommentAuthor:name,AutherEmail:email}
       ]}
     );
 
@@ -49,5 +65,9 @@ FeedsRouter.patch("/addcomment", async (req, res) => {
       .json({msg: "something wents wrong to Comment", err: err});
   }
 });
+
+
+
+
 
 module.exports = {FeedsRouter};
