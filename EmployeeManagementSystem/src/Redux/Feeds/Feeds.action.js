@@ -27,15 +27,47 @@ export let GetAllFeeds = () => async (dispatch) => {
   dispatch({type: FEEDS_GET_LOADING});
 
   try {
-    let AllFeeds = await axios.get(`${Backendurl}/feeds/allfeeds`);
+    let AllFeedsData = await axios.get(`${Backendurl}/feed/allfeeds`);
     dispatch({
       type: FEEDS_GET_SUCESS,
-      payload: AllFeeds
+      payload: AllFeedsData.data.Allfeeds
+
     });
+
+    console.log(AllFeeds)
   } catch (err) {
     dispatch({type: FEEDS_GET_ERROR});
   }
 };
+
+
+
+
+
+
+
+export let CommentonFeed = (CommentMsg,FeedId) => async (dispatch) => {
+  dispatch({type: FEEDS_GET_LOADING});
+  try {
+    let AddComment = await axios.post(
+      `${Backendurl}/feed/addcomment`,
+      {CommentMsg,FeedId}
+    );
+    dispatch({type: FEEDS_GET_SUCESS});
+
+    Swal.fire("Sucess!", "Feed Added Succesfully !! ", "success");
+  } catch (err) {
+    dispatch({type: FEEDS_GET_ERROR});
+    Swal.fire({
+      icon: "error",
+      title: "Faild !! ",
+      text: "Something Wents Wrong!",
+    });
+  }
+};
+
+
+
 
 // export let SingleEmployee = (token) => async (dispatch) => {
 //   dispatch({type: EMPLOYEE_GET_LOADING});
@@ -79,3 +111,5 @@ export let GetAllFeeds = () => async (dispatch) => {
 //     dispatch({type: PROJECT_GET_ERROR});
 //   }
 // };
+
+

@@ -7,14 +7,15 @@ const AdminMassage = () => {
   const [value, setValue] = useState("");
   const [massage, setMassage] = useState([]);
   const [filter, setFilter] = useState("");
-
-  let {token , loading, error,isadmin,name,email} = useSelector((store) => store.Auth);
-
-console.log(name)
+  
   let dispatch=useDispatch()
+  let {token , loading , error,isadmin,name,email} = useSelector((store) => store.Auth);
+
   let sendMassage=()=>{
     dispatch(AddNewFeed(massage,name,email))
   }
+
+
   return (
     <div>
       <SimpleGrid
