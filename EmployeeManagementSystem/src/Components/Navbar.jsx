@@ -46,9 +46,9 @@ top="0"
           </Link>
 
           <Flex w="40%" gap={4} justifyContent="space-evenly" alignItems={"center"}>
-            <Link to={"/"}>
-              <Text>Home</Text>
-            </Link>
+          {token?  <Link to={"/feedDashbord"}>
+              <Text>Feeds</Text>
+            </Link>:""}
 
             {token ? (
               isadmin ? (
@@ -58,9 +58,6 @@ top="0"
                 </Link>
               ) : (
                 <Flex gap={4} w="80%" justifyContent="space-evenly">
-                  <Link to={"/employdashbord"}>
-                    <Text>Employee Panel</Text>
-                  </Link>
                   <Link to={"/employdashbord"}>
                     <Text>Project Dashboard</Text>
                   </Link>

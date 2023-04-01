@@ -19,7 +19,6 @@ const AdminMassage = () => {
   return (
     <div>
       <SimpleGrid
-        bg={"#ffffff"}
         width="75%"
         mt={4}
         pt="2"

@@ -13,13 +13,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {CommentonFeed, Deletefeed, GetAllFeeds} from "../../Redux/Feeds/Feeds.action";
 import {CiCircleRemove, CiSquareRemove} from "react-icons/ci"
+import {BiDislike, BiLike} from "react-icons/bi"
+import {AiTwotoneDislike, AiTwotoneLike} from "react-icons/ai"
+import styles from "./Feedspost.module.css"
 const FeedsPost = () => {
   const [input, setInput] = useState(false);
   const [follow, setFollow] = useState(false);
   const [like, setLike] = useState(false);
   const [value, setValue] = useState("");
-  const [CommentMsg, SetCommentMsg] = useState([]);
   let [FeedId, SetFeedId] = useState("");
+
+
+  const [CommentMsg, SetCommentMsg] = useState([]);
+  const [commentlike,setcommentlike]=useState(false)
+  const [commentdislike,setcommentdislike]=useState(true)
   let dispatch = useDispatch();
 
   let {loading, FeedsData} = useSelector((store) => store.FeedsData);
@@ -42,6 +49,8 @@ const FeedsPost = () => {
   let deletefeed=(el)=>{
 dispatch(Deletefeed(el._id))
   }
+
+
   return (
     <>
       {FeedsData?.map((el) => (
@@ -100,13 +109,13 @@ dispatch(Deletefeed(el._id))
           {/* ===========Feed Details========== */}
 
           {/* <Box w={"90%"}>
-        <Image
-          w={"60%"}
-          // h="50vh"
-          src="https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
-          alt="feedimage"
-        />
-      </Box> */}
+      //   <Image
+      //     w={"60%"}
+      //     // h="50vh"
+      //     src="https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
+      //     alt="feedimage"
+      //   />
+      // </Box> */}
 
           <Text w={"90%"} m="auto" mt="4" fontSize={20} textAlign={"start"}>
             {el.Massage}
@@ -183,6 +192,12 @@ dispatch(Deletefeed(el._id))
          {email===val?.AutherEmail ? <CiCircleRemove style={{width:"1.4rem" ,height:"1.4rem"}} cursor={"pointer"} color="red"/>:""}
                 </SimpleGrid>
               </Grid>
+
+              <Box display={"flex"} justifyContent={"space-between"} textAlign={"start"} ml="20" mt={2} w={"10%"}>
+                
+               { commentlike?<BiLike className={styles.unchecked}/>:<AiTwotoneLike className={styles.checked}/>}
+                {commentdislike? <BiDislike className={styles.unchecked}/>:<AiTwotoneDislike className={styles.checked}/>}
+              </Box>
             </Box>
           ))}
 

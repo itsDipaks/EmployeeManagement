@@ -6,7 +6,7 @@ const Topbar = ({pannel}) => {
   let navigate = useNavigate();
   let RedirecttoHome = () => {
     pannel(false);
-    navigate("/");
+    navigate("/feedDashbord");
   };
   return (
     <>
@@ -18,7 +18,7 @@ p={2} >
 
           <Flex alignItems={"center"} w="15%">
             <Button onClick={RedirecttoHome}>
-              <AiTwotoneHome color="green"/>
+              <AiTwotoneHome color="red"/>
             </Button>
             <Spacer />
             <SwitchTheam />

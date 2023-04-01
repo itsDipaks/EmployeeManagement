@@ -1,10 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import EmployePgae from '../Pages/EmployePgae'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
 // ---------DAshboard Routes-------------
-import { AdminPrivate, EmployeePrivate } from './PrivateRoutes'
+import { EmployeePrivate } from './PrivateRoutes'
 import Profilepage from '../Pages/EmployeePages/Profilepage'
 import FeedsHome from '../Pages/FeedsHome'
 const CombineRoutes = () => {
@@ -13,31 +12,25 @@ let EmployeeBoard=[
   {
     id:1,
   name:"Employee dashboard Page",
-  path:"/employdashbord",
-  element:<EmployePgae/>
-},
-  {
-    id:2,
-  name:"Employee dashboard Page",
   path:"/eminfo",
   element:<Profilepage/>
 },
 ]
 let universalroutes=[
   {
-    id:1,
+    id:2,
     name:"Home",
     path:"/",
     element:<Home/>
   },
   {
-    id:2,
+    id:3,
     name:"Login",
     path:"/login",
     element:<Login/>
   },
   {
-    id:3,
+    id:4,
     name:"Feeds",
     path:"/feedDashbord",
     element:<FeedsHome/>
