@@ -40,7 +40,7 @@ const AdminMassage = () => {
           pb={2}
           fontWeight="500"
         >
-       Add Post
+      Add New Feed 
         </Box>
 
         {/* ------------------- (Input) --------------------- */}
@@ -141,7 +141,8 @@ const AdminMassage = () => {
             <Button
               onClick={() => setInput(false)}
               fontSize={"1rem"}
-              color="#373a3d"
+        bg={"red.500"}
+        color={"wheat"}
             >
               Cancel
             </Button>

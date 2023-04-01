@@ -15,7 +15,7 @@ import {CommentonFeed, Deletefeed, GetAllFeeds} from "../../Redux/Feeds/Feeds.ac
 import {CiCircleRemove, CiSquareRemove} from "react-icons/ci"
 import {BiDislike, BiLike} from "react-icons/bi"
 import {AiTwotoneDislike, AiTwotoneLike} from "react-icons/ai"
-import styles from "./Feedspost.module.css"
+import styles from "../../Pages/EmployeePages/Styles/Feed.module.css"
 const FeedsPost = () => {
   const [input, setInput] = useState(false);
   const [follow, setFollow] = useState(false);
@@ -26,6 +26,7 @@ const FeedsPost = () => {
 
   const [CommentMsg, SetCommentMsg] = useState([]);
   const [commentlike,setcommentlike]=useState(false)
+  const [showcommentbox,setshowcommentbox]=useState(false)
   const [commentdislike,setcommentdislike]=useState(true)
   let dispatch = useDispatch();
 
@@ -102,7 +103,7 @@ dispatch(Deletefeed(el._id))
           </Box>
 
           {/* <Button>Delete</Button> */}
-        { isadmin ? <CiSquareRemove style={{width:"2rem" ,height:"2rem"}} color="red" cursor={"pointer"} onClick={()=>deletefeed(el)}/> : ""}
+        { isadmin ? <CiSquareRemove className={styles.removefeedbtn} onClick={()=>deletefeed(el)}/> : ""}
           {/* <CiCircleRemove w={"44rem"} p="1rem" cursor={"pointer"} border={"1px"} h={"17rem"}/> */}
           </Box>
 
@@ -144,6 +145,8 @@ dispatch(Deletefeed(el._id))
               _hover={{
                 color: "blue",
               }}
+
+              onClick={()=>setshowcommentbox(true)}
             >
               Comment
             </Text>
@@ -202,8 +205,8 @@ dispatch(Deletefeed(el._id))
           ))}
 
           {/* ==========Commwnt================== */}
-
-         { !isadmin?<Grid ml="6" display={"flex"} alignItems="center">
+{     showcommentbox? <Box>
+         { !isadmin?<Grid ml="6" display={"flex"} alignItems="center" justifyContent={"space-around"}>
             <Box
               fontSize={"23px"}
               borderRadius="50px"
@@ -223,6 +226,7 @@ dispatch(Deletefeed(el._id))
             <SimpleGrid
               bg={"#ffffff"}
               width="75%"
+              m={"auto"}
               ml="0px"
               mt={4}
               pt="3"
@@ -243,10 +247,22 @@ dispatch(Deletefeed(el._id))
               />
             </SimpleGrid>
 
+            <Box display={"flex"} justifyContent={"space-evenly"} w={"30%"}> 
+
+
             <Button onClick={commentmassage} colorScheme={"messenger"}>
               Comment
             </Button>
+
+            <Button onClick={()=>setshowcommentbox(false)} colorScheme={"red"}>
+              Cancel
+            </Button>
+            </Box>
+
+
+
           </Grid>:""}
+          </Box> :""}
         </Box>
       ))}
     </>

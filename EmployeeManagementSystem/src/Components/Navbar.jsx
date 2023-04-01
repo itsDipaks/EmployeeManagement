@@ -47,19 +47,19 @@ top="0"
 
           <Flex w="40%" gap={4} justifyContent="space-evenly" alignItems={"center"}>
           {token?  <Link to={"/feedDashbord"}>
-              <Text>Feeds</Text>
+              <Button>Feeds</Button>
             </Link>:""}
 
             {token ? (
               isadmin ? (
                 <Link to={"/Admindashboard"}>
                   {" "}
-                  <Text onClick={() => setispanel(true)}>Admin Panel</Text>
+                  <Button onClick={() => setispanel(true)}>Admin Panel</Button>
                 </Link>
               ) : (
                 <Flex gap={4} w="80%" justifyContent="space-evenly">
                   <Link to={"/employdashbord"}>
-                    <Text>Project Dashboard</Text>
+                    <Button>Project Dashboard</Button>
                   </Link>
                 </Flex>
               )

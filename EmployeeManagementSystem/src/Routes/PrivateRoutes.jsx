@@ -31,5 +31,19 @@ const AdminPrivate = ({children}) => {
     return <Navigate to="/login"/>
   }
 }
+const IsLogin = ({children}) => {
+  let {token}=useSelector(store=>store.Auth)
+  if( token){
+    return children
+  }else{
 
-export  {EmployeePrivate,AdminPrivate}
+    Swal.fire({
+      icon: 'error',
+      title: 'Access Denied',
+      text: 'Please Login',
+    })
+    return <Navigate to="/login"/>
+  }
+}
+
+export  {EmployeePrivate,AdminPrivate,IsLogin}

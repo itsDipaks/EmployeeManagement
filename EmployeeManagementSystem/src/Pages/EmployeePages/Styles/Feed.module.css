@@ -1,0 +1,24 @@
+/* ===== Feeds Home ======== */
+
+.Feedpagediv{
+
+}
+
+.checked{
+
+
+}
+.unchecked{
+
+
+}
+
+.removefeedbtn{
+width: 2rem;
+height: 2rem;
+color: rgb(117, 15, 15);
+cursor: pointer;
+}
+
+
+

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
 // ---------DAshboard Routes-------------
-import { EmployeePrivate } from './PrivateRoutes'
+import { EmployeePrivate, IsLogin } from './PrivateRoutes'
 import Profilepage from '../Pages/EmployeePages/Profilepage'
 import FeedsHome from '../Pages/FeedsHome'
 const CombineRoutes = () => {
@@ -29,12 +29,6 @@ let universalroutes=[
     path:"/login",
     element:<Login/>
   },
-  {
-    id:4,
-    name:"Feeds",
-    path:"/feedDashbord",
-    element:<FeedsHome/>
-  }
 ]
   return (
     <div>
@@ -46,6 +40,7 @@ let universalroutes=[
       {EmployeeBoard?.map((el)=>
       <Route  key={el.id} path={el.path} element={<EmployeePrivate>{el.element}</EmployeePrivate>}/>
       )}
+        <Route path={"/feedDashbord"} element={<IsLogin><FeedsHome/></IsLogin>}/>
     </Routes>
     </div>
   )

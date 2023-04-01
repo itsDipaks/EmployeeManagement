@@ -2,22 +2,22 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import AdminMassage from '../Components/FeedsDashbordCompo/AdminMassage'
 import FeedsPost from '../Components/FeedsDashbordCompo/FeedsPost'
-
+import styles from "./EmployeePages/Styles/Feed.module.css"
+import { Box } from '@chakra-ui/react';
 const FeedsHome = () => {
 
 
-  let {token , isadmin} = useSelector((store) => store.Auth);
+  let {token ,loading, isadmin} = useSelector((store) => store.Auth);
 
+  
   return (
-    <div>
+    <>
+      <Box className={styles.Feedpagediv}>
         {isadmin && token ?   <AdminMassage/>:""}
-    
-
-
         {/* =========Feeds============ */}
-    
     <FeedsPost/>
-    </div>
+    </Box>
+    </>
   )
 }
 
