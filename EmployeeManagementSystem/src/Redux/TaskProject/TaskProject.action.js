@@ -1,20 +1,16 @@
-import { TASK_GET_LOADING } from "./TaskProject.type";
+import {TASK_GET_LOADING,TASK_GET_SUCESS,TASK_GET_ERROR} from "./TaskProject.type";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Backendurl } from "../../assets/Urls";
+import {Backendurl} from "../../assets/Urls";
 
-export let AddTaskTodo = (taskform) => async (dispatch) => {
+export let AddTask = (Newtask) => async (dispatch) => {
   dispatch({type: TASK_GET_LOADING});
   try {
-    let AddTask = await axios.post(
-      `${Backendurl}/task/addtask`,
-{taskform}
-    );
-    dispatch({type: TODO_GET_SUCESS});
-
-    Swal.fire("Sucess!", "Feed Added Succesfully !! ", "success");
+    let AddTask = await axios.post(`${Backendurl}/task/addtask`, {Newtask});
+    dispatch({type: TASK_GET_SUCESS});
+    Swal.fire("Sucess!", "Task Added Succesfully !! ", "success");
   } catch (err) {
-    dispatch({type: TODO_GET_ERROR});
+    dispatch({type: TASK_GET_ERROR});
     Swal.fire({
       icon: "error",
       title: "Faild !! ",
@@ -23,24 +19,18 @@ export let AddTaskTodo = (taskform) => async (dispatch) => {
   }
 };
 
-export let GetallMyTodos = () => async (dispatch) => {
+export let GetallTask = () => async (dispatch) => {
   dispatch({type: TASK_GET_LOADING});
 
   try {
-    let AllTodos = await axios.get(`${Backendurl}/todo/alltodos`);
+    let AllTask = await axios.get(`${Backendurl}/task/alltask`);
     dispatch({
-      type: TODO_GET_SUCESS,
-      payload: AllTodos.data.Allfeeds
-
+      type: TASK_GET_SUCESS,
+      payload: AllTask.data.Allfeeds,
     });
 
-    console.log(AllFeeds)
+    console.log(AllTask);
   } catch (err) {
-    dispatch({type: TODO_GET_ERROR});
+    dispatch({type: TASK_GET_ERROR});
   }
 };
-
-
-
-
-

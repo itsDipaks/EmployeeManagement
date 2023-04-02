@@ -4,12 +4,14 @@ const {TaskModel} = require("../model/Task.model");
 let TaskRouter = Router();
 
 TaskRouter.post("/addtask", async (req, res) => {
-  let {EmployeeEmail, Task, DueDate} = req.body;
-  try {
+  let data= req.body;
+  let {     Task,AssignEmployee,DueDate}=data.Newtask
+ 
+//   console.log(AssignEmployee)
+//   console.log(DueDate)
+   try {
     let AddTask = new TaskModel({
-        EmployeeEmail,
-      Task,
-      DueDate,
+        Task,AssignEmployee,DueDate
     });
     await AddTask.save();
     res.status(200).send({msg: "Task Added Sucessfully"});

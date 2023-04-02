@@ -1,21 +1,21 @@
-import { TODO_GET_LOADING,TODO_GET_SUCESS,TODO_GET_ERROR,TODO_DELETE } from "./Todo.type";
+import { TASK_GET_LOADING,TASK_GET_SUCESS,TASK_GET_ERROR } from "./TaskProject.type";
 let initialstate = {
   loading: false,
   error: false,
-  Todos: [],
+  tasks: [],
   msg:{}
 
 };
 
-export const TodoReducer = (state = initialstate, {type, payload}) => {
+export const TaskReducer = (state = initialstate, {type, payload}) => {
   switch (type) {
-    case TODO_GET_LOADING: {
+    case TASK_GET_LOADING: {
       return {
         ...state,
         loading: true,
       };
     }
-    case TODO_GET_SUCESS: {
+    case TASK_GET_SUCESS: {
       // console.log(payload)
       return {
         ...state,
@@ -23,18 +23,18 @@ export const TodoReducer = (state = initialstate, {type, payload}) => {
         FeedsData:payload
       };
     }
-    case TODO_GET_ERROR: {
+    case TASK_GET_ERROR: {
       return {
         ...state,
         loading: false,
       };
     }
-    case TODO_DELETE: {
-      return {
-        ...state,
-        loading: false,
-      };
-    }
+    // case TODO_DELETE: {
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //   };
+    // }
     default:return state
   }
 };

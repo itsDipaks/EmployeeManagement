@@ -1,6 +1,7 @@
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, FormControl, FormLabel, HStack, Input, Select, VStack, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { AddTask } from '../../Redux/TaskProject/TaskProject.action'
 
 const AddProjectTask = () => {
 
@@ -9,7 +10,7 @@ const AddProjectTask = () => {
     const btnRef = React.useRef()
     let {token, email} = useSelector((store) => store.Auth);
   let {ProjectsData} = useSelector((store) => store.ProjectsData);
-
+let dispatch=useDispatch()
 //   let filtereddta=ProjectsData[0]?.AssignedProject?.AssignedTeam.filter((val)=>{
 //     return val.email!==email
 //  })
@@ -17,8 +18,10 @@ let Handeldinputvalue=(e)=>{
     let {name,value}=e.target
     setNewtask({...Newtask,[name]:value})
 }
-let handeldTaskAdd=()=>{
-
+let handeldTaskAdd=(e)=>{
+    e.preventDefault();
+    dispatch(AddTask(Newtask))
+    onClose()
 }
   return (
     <>
@@ -72,22 +75,14 @@ let handeldTaskAdd=()=>{
 
                       <HStack w={"100%"}>
                       <FormControl isRequired>
-                        <FormLabel>  Start Date</FormLabel>
+                        <FormLabel> Due Date</FormLabel>
                         <Input
                           type="date"
-                          name="StartDate"
+                          name="DueDate"
                           onChange={Handeldinputvalue}
                         />
                       </FormControl>
-                      <FormControl isRequired>
-                        <FormLabel>  Start Date</FormLabel>
-                        <Input
-                          type="date"
-                          name="EstimateEndData"
-                          onChange={Handeldinputvalue}
-                        />
-                      </FormControl>
-
+                   
                       </HStack>
                       <Flex w={"100%"} gap={4}>
 
