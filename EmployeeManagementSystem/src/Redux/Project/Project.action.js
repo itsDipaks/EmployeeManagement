@@ -38,26 +38,26 @@ export let GetAllProjects = () => async (dispatch) => {
     console.log(ProjectGetData);
     dispatch({
       type: PROJECT_GET_SUCESS,
-      payload: ProjectGetData.data.GetallProjects,
+      payload:{ data:ProjectGetData.data.GetallProjects,msg:ProjectGetData.data.msg}
     });
   } catch (err) {
     dispatch({type: PROJECT_GET_ERROR});
   }
 };
 
-export let SingleEmployee = (token) => async (dispatch) => {
-  dispatch({type: EMPLOYEE_GET_LOADING});
+export let GetAssignproject = (email) => async (dispatch) => {
+  dispatch({type: PROJECT_GET_LOADING});
 
   try {
-    let EmData = await axios.get(`${Backendurl}/employee/singleemployee`, {
+    let ProjectData = await axios.get(`${Backendurl}/project/assignproject`, {
       headers: {
-        Authorization: token,
+        email: email,
       },
     });
-    // console.log(EmData);
-    dispatch({type: EMPLOYEE_GET_SUCESS, payload: [EmData.data]});
+    console.log(ProjectData);
+    dispatch({type: PROJECT_GET_SUCESS, payload:{data:[ProjectData.data],msg:ProjectData.data.msg}});
   } catch (err) {
-    dispatch({type: EMPLOYEE_GET_ERROR});
+    dispatch({type: PROJECT_GET_ERROR});
   }
 };
 

@@ -103,7 +103,7 @@ const ListEmp = () => {
             <Tbody>
               {employeeData &&
                 employeeData?.map((el, index) => (
-                  <Tr key={index}>
+                  <Tr data-aos="fade-up" key={index}>
                     <Td>{index + 1}</Td>
                     <Td>
                       <Image

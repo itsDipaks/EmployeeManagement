@@ -15,6 +15,7 @@ import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
+
 const Navbar = ({setispanel}) => {
   let dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Navbar = ({setispanel}) => {
       <Box w="100%" 
 boxShadow='lg'
 p={2}
-bg="red.400"
+bg="primaryblue.50"
 
 top="0"
       >
@@ -39,6 +40,7 @@ top="0"
           justifyContent="space-between"
           alignItems={"center"}
           w="100%"
+          color={"black"}
         >
           <Link to={"/"}>
             {" "}
@@ -58,7 +60,7 @@ top="0"
                 </Link>
               ) : (
                 <Flex gap={4} w="80%" justifyContent="space-evenly">
-                  <Link to={"/employdashbord"}>
+                  <Link to={"/projetdashboard"}>
                     <Button>Project Dashboard</Button>
                   </Link>
                 </Flex>

@@ -50,21 +50,19 @@ const Login = () => {
   };
 
   return (
-    <Box p={4}  boxShadow="dark-lg"  m={"auto"} width={{md: "95%", sm: "100%"}} data-aos="zoom-in">
+    <Box p={4}   m={"auto"} width={{md: "95%", sm: "100%"}} data-aos="zoom-in">
       <Box
-        width={{md: "95", sm: "100%"}}
-        m="auto"
-        // mt={"5rem"}
-        // boxShadow="dark-lg"
-        p={{md: "1rem", sm: "2rem"}}
-        rounded="md"
-        // mt={4}
-        position={"relative"}
-        h="80vh"
-        backgroundImage="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        backgroundRepeat={"no-repeat"}
-        backgroundSize="cover"
-        objectFit="cover"
+        // width={{md: "95", sm: "100%"}}
+        // m="auto"
+        // // mt={"5rem"}
+        // // boxShadow="dark-lg"
+        // p={{md: "1rem", sm: "2rem"}}
+        // rounded="md"
+        // // mt={4}
+        // position={"relative"}
+        // h="80vh"
+        // backgroundImage="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  
       >
   
         <Box
@@ -72,10 +70,7 @@ const Login = () => {
           p={{md: "4rem", sm: "1rem"}}
           m="auto"
           mt={14}
-          rounded="md"
-          backdropFilter="auto"
-          backdropBlur="8px"
-          backdropContrast="20%"
+          bg={"primaryblue.50"}
           data-aos="zoom-in"
         >
                 <Text 

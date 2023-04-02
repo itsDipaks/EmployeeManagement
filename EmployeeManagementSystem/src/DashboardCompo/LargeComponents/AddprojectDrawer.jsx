@@ -43,7 +43,6 @@ const AddprojectDrawer = () => {
   );
   let [AssignEmployee, setAssignEmployee] = useState([]);
   const [status, setprojectstatus] = React.useState("1");
-
   const {isOpen, onOpen, onClose} = useDisclosure();
 
   let navigate = useNavigate();
@@ -87,7 +86,7 @@ const AddprojectDrawer = () => {
     dispatch(AllEmployee());
   }, []);
   let {employeeData} = useSelector((store) => store.Storedata);
-
+console.log(employeeData)
   return (
     <div>
       <Button colorScheme='whatsapp' onClick={() => onOpen()}>Add New Project</Button>
@@ -250,6 +249,18 @@ const AddprojectDrawer = () => {
                         onRemove={onRemove}
                       />
                     </FormControl>
+
+                    <FormControl isRequired mt={4}> 
+                        <FormLabel>  Group Leader </FormLabel>
+                        <Select
+                          placeholder="Select group Leader"
+                          name="groupleader"
+                          onChange={Handeldinputvalue}
+                        >
+                        {AssignEmployee?.map((el)=> <option value={el?.email}>{el?.firstname} { el?.lastname}</option> )  }
+                       
+                        </Select>
+                      </FormControl>
                     <Button type="submit" colorScheme="messenger" m={4} p={4}>
                       Add Project
                     </Button>

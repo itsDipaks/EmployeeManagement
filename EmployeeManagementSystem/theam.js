@@ -7,6 +7,23 @@ let mytheam = {
     initialColorMode: "light",
     useSystemColorMode: false,
   },
+  colors: {
+    primaryblue: {
+      20:"#E6E6FA",
+      50:"#CCCCFF",
+      75:"#B0C4DE",
+      100: "#002fa7",
+      500:"#000080",
+
+    },
+  },
+  colorScheme: {
+    primaryblue: {
+      50:"#CCCCFF",
+      100: "#002fa7",
+      500:"#000080",
+    },
+  }
 };
 
 // 3. extend the theme

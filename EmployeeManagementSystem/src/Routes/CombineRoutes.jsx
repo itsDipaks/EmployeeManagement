@@ -6,6 +6,7 @@ import Login from '../Pages/Login'
 import { EmployeePrivate, IsLogin } from './PrivateRoutes'
 import Profilepage from '../Pages/EmployeePages/Profilepage'
 import FeedsHome from '../Pages/FeedsHome'
+import ProjectDashboard from '../Pages/EmployeePages/ProjectDashboard'
 const CombineRoutes = () => {
 
 let EmployeeBoard=[
@@ -14,6 +15,12 @@ let EmployeeBoard=[
   name:"Employee dashboard Page",
   path:"/eminfo",
   element:<Profilepage/>
+},
+  {
+    id:2,
+  name:"Employee Project Dashboard",
+  path:"/projetdashboard",
+  element:<ProjectDashboard/>
 },
 ]
 let universalroutes=[

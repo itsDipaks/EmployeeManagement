@@ -11,11 +11,15 @@ import {
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CommentonFeed, Deletefeed, GetAllFeeds} from "../../Redux/Feeds/Feeds.action";
-import {CiCircleRemove, CiSquareRemove} from "react-icons/ci"
-import {BiDislike, BiLike} from "react-icons/bi"
-import {AiTwotoneDislike, AiTwotoneLike} from "react-icons/ai"
-import styles from "../../Pages/EmployeePages/Styles/Feed.module.css"
+import {
+  CommentonFeed,
+  Deletefeed,
+  GetAllFeeds,
+} from "../../Redux/Feeds/Feeds.action";
+import {CiCircleRemove, CiSquareRemove} from "react-icons/ci";
+import {BiDislike, BiLike} from "react-icons/bi";
+import {AiTwotoneDislike, AiTwotoneLike} from "react-icons/ai";
+import styles from "../../Pages/EmployeePages/Styles/Feed.module.css";
 const FeedsPost = () => {
   const [input, setInput] = useState(false);
   const [follow, setFollow] = useState(false);
@@ -23,11 +27,10 @@ const FeedsPost = () => {
   const [value, setValue] = useState("");
   let [FeedId, SetFeedId] = useState("");
 
-
   const [CommentMsg, SetCommentMsg] = useState([]);
-  const [commentlike,setcommentlike]=useState(false)
-  const [showcommentbox,setshowcommentbox]=useState(false)
-  const [commentdislike,setcommentdislike]=useState(true)
+  const [commentlike, setcommentlike] = useState(false);
+  const [showcommentbox, setshowcommentbox] = useState(false);
+  const [commentdislike, setcommentdislike] = useState(true);
   let dispatch = useDispatch();
 
   let {loading, FeedsData} = useSelector((store) => store.FeedsData);
@@ -44,67 +47,84 @@ const FeedsPost = () => {
   };
 
   let commentmassage = () => {
-    dispatch(CommentonFeed(CommentMsg, FeedId, name,email));
+    dispatch(CommentonFeed(CommentMsg, FeedId, name, email));
   };
 
-  let deletefeed=(el)=>{
-dispatch(Deletefeed(el._id))
-  }
-
+  let deletefeed = (el) => {
+    dispatch(Deletefeed(el._id));
+  };
 
   return (
     <>
       {FeedsData?.map((el) => (
-        <Box m="auto" w={"75%"} mt="4" borderRadius={24} border="1px">
+        <Box
+          data-aos="fade-right"
+          m="auto"
+          w={"75%"}
+          bg="#E6E6FA"
+          mt="4"
+          p={4}
+          borderRadius={24}
+          boxShadow="xl"
+        >
           {/* ==========Intro============ */}
-          <Box   display={"flex"}
-            alignItems="center"
-            justifyContent={"space-between"}
-            pr={4} 
-            >
           <Box
             display={"flex"}
             alignItems="center"
-            gap={"5"}
-            w={"100%"}
-            m="auto"
+            justifyContent={"space-between"}
+            pr={4}
           >
-            <Box fontSize={"28px"} w="45px" ml="5" mt="5">
-              <Image
-                w="45px"
-                borderRadius={"50px"}
-                src={
-                  "https://lh3.googleusercontent.com/a/ALm5wu0n1kkdEi3Dh3wdBxPYmaxA1KpgImRsi_g618RP=s96-c"
-                }
-              />
+            <Box
+              display={"flex"}
+              alignItems="center"
+              gap={"5"}
+              w={"100%"}
+              m="auto"
+            >
+              <Box fontSize={"28px"} w="45px" ml="5" mt="5">
+                <Image
+                  w="45px"
+                  borderRadius={"50px"}
+                  src={
+                    "https://lh3.googleusercontent.com/a/ALm5wu0n1kkdEi3Dh3wdBxPYmaxA1KpgImRsi_g618RP=s96-c"
+                  }
+                />
+              </Box>
+              {/* --------- */}
+              <Box w="100%" mt="6">
+                <Text
+                  fontWeight={500}
+                  fontSize={16}
+                  color="#246ab1"
+                  textAlign={"left"}
+                  cursor="pointer"
+                >
+                  {el?.feedAuthor}
+                  {isadmin ? (
+                    <span style={{color: "grey"}}>{">"} To all employees</span>
+                  ) : (
+                    <span style={{color: "grey", fontSize: "0.81rem"}}>
+                      {" >"} Admin
+                    </span>
+                  )}
+                </Text>
+                <Text color={"grey"} fontSize={13} textAlign={"left"}>
+                  {/* {day} {time} */}
+                  {el?.createdAt}
+                </Text>
+              </Box>
             </Box>
-            {/* --------- */}
-            <Box w="100%" mt="6">
-              <Text
-                fontWeight={500}
-                fontSize={16}
-                color="#246ab1"
-                textAlign={"left"}
-                cursor="pointer"
-              >
-              {el?.feedAuthor
-}
-                {isadmin ? (
-                  <span style={{color: "grey"}}>{">"} To all employees</span>
-                ) : (
-                  <span style={{color: "grey",fontSize:"0.81rem"}}>{" >"} Admin</span>
-                )}
-              </Text>
-              <Text color={"grey"} fontSize={13} textAlign={"left"}>
-                {/* {day} {time} */}
-                {el?.createdAt}
-              </Text>
-            </Box>
-          </Box>
 
-          {/* <Button>Delete</Button> */}
-        { isadmin ? <CiSquareRemove className={styles.removefeedbtn} onClick={()=>deletefeed(el)}/> : ""}
-          {/* <CiCircleRemove w={"44rem"} p="1rem" cursor={"pointer"} border={"1px"} h={"17rem"}/> */}
+            {/* <Button>Delete</Button> */}
+            {isadmin ? (
+              <CiSquareRemove
+                className={styles.removefeedbtn}
+                onClick={() => deletefeed(el)}
+              />
+            ) : (
+              ""
+            )}
+            {/* <CiCircleRemove w={"44rem"} p="1rem" cursor={"pointer"} border={"1px"} h={"17rem"}/> */}
           </Box>
 
           {/* ===========Feed Details========== */}
@@ -137,16 +157,19 @@ dispatch(Deletefeed(el._id))
             cursor={"pointer"}
           >
             <Box>
-              <Text   _hover={{
-                color: "blue",
-              }}>Like</Text>
+              <Text
+                _hover={{
+                  color: "blue",
+                }}
+              >
+                Like
+              </Text>
             </Box>
             <Text
               _hover={{
                 color: "blue",
               }}
-
-              onClick={()=>setshowcommentbox(true)}
+              onClick={() => setshowcommentbox(true)}
             >
               Comment
             </Text>
@@ -155,8 +178,14 @@ dispatch(Deletefeed(el._id))
 
           {/* ================ Show Comments=================== */}
           {el?.comments?.map((val) => (
-            <Box borderBottom={"1px"} borderColor={"gray.200"} w={"50%"} p={1} ml={"14"}>
-              <Grid  display={"flex"} alignItems="center" gap={4} >
+            <Box
+              borderBottom={"1px"}
+              borderColor={"gray.200"}
+              w={"50%"}
+              p={1}
+              ml={"14"}
+            >
+              <Grid display={"flex"} alignItems="center" gap={4}>
                 <Box
                   fontSize={"23px"}
                   borderRadius="50px"
@@ -172,7 +201,7 @@ dispatch(Deletefeed(el._id))
                     }
                   />
                 </Box>
-                <Box w="70%" >
+                <Box w="70%">
                   <Text
                     fontWeight={500}
                     fontSize={14}
@@ -188,81 +217,114 @@ dispatch(Deletefeed(el._id))
                   </Text>
                 </Box>
 
-                <SimpleGrid
-                  bg={"#ffffff"}
-                  
-                >
-         {email===val?.AutherEmail ? <CiCircleRemove style={{width:"1.4rem" ,height:"1.4rem"}} cursor={"pointer"} color="red"/>:""}
+                <SimpleGrid bg={"#ffffff"}>
+                  {email === val?.AutherEmail ? (
+                    <CiCircleRemove
+                      style={{width: "1.4rem", height: "1.4rem"}}
+                      cursor={"pointer"}
+                      color="red"
+                    />
+                  ) : (
+                    ""
+                  )}
                 </SimpleGrid>
               </Grid>
 
-              <Box display={"flex"} justifyContent={"space-between"} textAlign={"start"} ml="20" mt={2} w={"10%"}>
-                
-               { commentlike?<BiLike className={styles.unchecked}/>:<AiTwotoneLike className={styles.checked}/>}
-                {commentdislike? <BiDislike className={styles.unchecked}/>:<AiTwotoneDislike className={styles.checked}/>}
+              <Box
+                display={"flex"}
+                justifyContent={"space-between"}
+                textAlign={"start"}
+                ml="20"
+                mt={2}
+                w={"10%"}
+              >
+                {commentlike ? (
+                  <BiLike className={styles.unchecked} />
+                ) : (
+                  <AiTwotoneLike className={styles.checked} />
+                )}
+                {commentdislike ? (
+                  <BiDislike className={styles.unchecked} />
+                ) : (
+                  <AiTwotoneDislike className={styles.checked} />
+                )}
               </Box>
             </Box>
           ))}
 
           {/* ==========Commwnt================== */}
-{     showcommentbox? <Box>
-         { !isadmin?<Grid ml="6" display={"flex"} alignItems="center" justifyContent={"space-around"}>
-            <Box
-              fontSize={"23px"}
-              borderRadius="50px"
-              w="40px"
-              ml="5"
-              mt="2"
-            >
-              <Image
-                w="45px"
-                borderRadius={"50px"}
-                src={
-                  "https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
-                }
-              />
+          {showcommentbox ? (
+            <Box bg={"#E6E6FA"}     data-aos="fade-down">
+              {!isadmin ? (
+                <Grid
+                  ml="6"
+                  display={"flex"}
+                  alignItems="center"
+                  justifyContent={"space-around"}
+                >
+                  <Box
+                    fontSize={"23px"}
+                    borderRadius="50px"
+                    w="40px"
+                    ml="5"
+                    mt="2"
+                  >
+                    <Image
+                      w="45px"
+                      borderRadius={"50px"}
+                      src={
+                        "https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
+                      }
+                    />
+                  </Box>
+
+                  <SimpleGrid
+                    width="75%"
+                    m={"auto"}
+                    ml="0px"
+                    mt={4}
+                    pt="3"
+                    pb="5"
+                    borderRadius="10"
+                  >
+                    <Input
+                      textAlign={"left"}
+                      onChange={(e) => Commentonfeed(e, el)}
+                      ml="6"
+                      mt="0"
+                      w={"90%"}
+                      fontSize={"17"}
+                      color="#4d545b"
+                      placeholder="Add Comment ..."
+                      borderColor={"grey"}
+                      borderRadius="30"
+                    />
+                  </SimpleGrid>
+
+                  <Box
+                    display={"flex"}
+                    justifyContent={"space-evenly"}
+                    w={"30%"}
+                  >
+                    <Button onClick={commentmassage} colorScheme={"messenger"}>
+                      Comment
+                    </Button>
+
+                    <Button
+                      onClick={() => setshowcommentbox(false)}
+                      colorScheme={"red"}
+                    >
+                      Cancel
+                    </Button>
+                  </Box>
+                </Grid>
+              ) : (
+                ""
+              )}
             </Box>
-
-            <SimpleGrid
-              bg={"#ffffff"}
-              width="75%"
-              m={"auto"}
-              ml="0px"
-              mt={4}
-              pt="3"
-              pb="5"
-              borderRadius="10"
-            >
-              <Input
-                textAlign={"left"}
-                onChange={(e) => Commentonfeed(e, el)}
-                ml="6"
-                mt="0"
-                w={"90%"}
-                fontSize={"17"}
-                color="#4d545b"
-                placeholder="Add Comment ..."
-                borderColor={"grey"}
-                borderRadius="30"
-              />
-            </SimpleGrid>
-
-            <Box display={"flex"} justifyContent={"space-evenly"} w={"30%"}> 
-
-
-            <Button onClick={commentmassage} colorScheme={"messenger"}>
-              Comment
-            </Button>
-
-            <Button onClick={()=>setshowcommentbox(false)} colorScheme={"red"}>
-              Cancel
-            </Button>
-            </Box>
-
-
-
-          </Grid>:""}
-          </Box> :""}
+          ) : (
+            ""
+          )}
         </Box>
       ))}
     </>
