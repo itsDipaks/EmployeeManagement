@@ -1,4 +1,4 @@
-import { Button, Input } from '@chakra-ui/react'
+import { Box, Button, Input } from '@chakra-ui/react'
 import React from 'react'
 import AddProjectTask from './AddProjectTask'
 import { useSelector } from 'react-redux'
@@ -10,11 +10,13 @@ const ProjectTask = () => {
   console.log(ProjectsData)
   return (
     <>
-        
-
+        <Box width={"100%"}>
+          
 {email==ProjectsData[0]?.AssignedProject?.groupleader? <AddProjectTask/>:""}
 
 <Displaytask/>
+        </Box>
+
 
     </>
   )

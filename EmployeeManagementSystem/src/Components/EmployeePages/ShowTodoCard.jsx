@@ -5,7 +5,7 @@ import { BsLightning } from 'react-icons/bs'
 const ShowTodoCard = () => {
   return (
     <>
-<Flex>
+<Flex width={"100%"} justifyContent={"space-between"} border={"1px"} p={1} alignItems={"center"}>
 
     <BsLightning/>
 

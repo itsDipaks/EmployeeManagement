@@ -19,7 +19,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
   return (
     <div>
       <Card
-        w={"75%"}
+        w={"90%"}
         m="auto"
         overflow="hidden"
         boxShadow="dark-lg"

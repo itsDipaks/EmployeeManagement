@@ -22,7 +22,7 @@ const ProjectDashboard = () => {
   return (
     <>
       <Box display={"flex"} p={4}>
-        <Box width={"80%"}>
+        <Box width={"70%"}>
           <DisplayEmployeeProject projectdata={projectval ? projectval : ""} />
           {projectval ? (
             <DisplayEmployeeCard empdata={projectval?.AssignedTeam} />
@@ -31,7 +31,7 @@ const ProjectDashboard = () => {
           )}
         </Box>
 
-        <Box width={"20%"}>
+        <Box width={"30%"}>
           <DisplayProjectTask />
         </Box>
       </Box>
