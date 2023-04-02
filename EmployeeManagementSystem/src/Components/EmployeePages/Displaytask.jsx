@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UpdateprofileModal = () => {
+const Displaytask = () => {
   return (
     <div>
         
@@ -9,4 +9,4 @@ const UpdateprofileModal = () => {
   )
 }
 
-export default UpdateprofileModal
+export default Displaytask

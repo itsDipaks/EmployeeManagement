@@ -30,6 +30,7 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
 //   tasks: [
 //     {
 //       name: {
@@ -58,6 +59,11 @@ const projectSchema = new mongoose.Schema({
 //     type: Schema.Types.ObjectId,
 //     ref: 'User'
 //   },
+
+groupleader: {
+  type: String,
+  required: true
+},
   ProjectCreatedAt: {
     type: Date,
     default: Date.now()
