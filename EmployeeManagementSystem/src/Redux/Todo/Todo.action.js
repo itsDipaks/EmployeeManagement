@@ -3,12 +3,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Backendurl } from "../../assets/Urls";
 
-export let AddTodo = () => async (dispatch) => {
+export let AddTodo = (todoformdata) => async (dispatch) => {
   dispatch({type: TODO_GET_LOADING});
   try {
     let Addtodo = await axios.post(
       `${Backendurl}/todo/addtodo`,
-{}
+{todoformdata}
     );
     dispatch({type: TODO_GET_SUCESS});
 
@@ -40,32 +40,32 @@ export let GetallMyTodos = () => async (dispatch) => {
   }
 };
 
-export const Deletefeed = (FeedId) => (dispatch) => {
-    dispatch({type: FEEDS_GET_LOADING});
-    try {
-      Swal.fire({
-        title: "Are you sure Want To Delete ?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Delete!",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          let FeedData = await axios.delete(`${Backendurl}/feed/deletefeed`, {
-            headers:{
-              FeedId: FeedId
-            },
-          });
+// export const Deletefeed = (FeedId) => (dispatch) => {
+//     dispatch({type: FEEDS_GET_LOADING});
+//     try {
+//       Swal.fire({
+//         title: "Are you sure Want To Delete ?",
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonColor: "#3085d6",
+//         cancelButtonColor: "#d33",
+//         confirmButtonText: "Yes, Delete!",
+//       }).then(async (result) => {
+//         if (result.isConfirmed) {
+//           let FeedData = await axios.delete(`${Backendurl}/feed/deletefeed`, {
+//             headers:{
+//               FeedId: FeedId
+//             },
+//           });
   
-          Swal.fire("Removed Sucessfully!", "", "success");
-        }
-      });
-      dispatch({type: FEEDS_GET_SUCESS});
-    } catch (err) {
-      dispatch({type: FEEDS_GET_ERROR});
-    }
-  };
+//           Swal.fire("Removed Sucessfully!", "", "success");
+//         }
+//       });
+//       dispatch({type: FEEDS_GET_SUCESS});
+//     } catch (err) {
+//       dispatch({type: FEEDS_GET_ERROR});
+//     }
+//   };
   
   
 

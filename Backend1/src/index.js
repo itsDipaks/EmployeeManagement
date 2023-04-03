@@ -6,6 +6,7 @@ const { EmployeeRouter } = require("./Routes/EmployesRoutes");
 const { ProjectRouter } = require("./Routes/ProjectRoute");
 const { FeedsRouter } = require("./Routes/FeedsRoutes");
 const { TaskRouter } = require("./Routes/Task.Route");
+const { TodoRouter } = require("./Routes/TodoRoutes");
 // ........Env FileSystem.apply........
 require("dotenv").config();
 let port = process.env.PORT;
@@ -23,6 +24,7 @@ app.use("/employee",EmployeeRouter)
 app.use("/project",ProjectRouter)
 app.use("/feed",FeedsRouter)
 app.use("/task",TaskRouter)
+app.use("/todo",TodoRouter)
 
 app.get("/",(req,res)=>{
   res.send("yes")
