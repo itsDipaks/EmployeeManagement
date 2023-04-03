@@ -16,11 +16,10 @@ export const TodoReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case TODO_GET_SUCESS: {
-      // console.log(payload)
       return {
         ...state,
         loading: false,
-        FeedsData:payload
+        Todos:payload
       };
     }
     case TODO_GET_ERROR: {

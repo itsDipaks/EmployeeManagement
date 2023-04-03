@@ -5,13 +5,15 @@ import { EmployeeReducer } from "./Employee/Employee.reducer"
 import { ProjectReducer } from "./Project/Project.reducer"
 import { FeedsReducer } from "./Feeds/Feeds.reducer"
 import { TaskReducer } from "./TaskProject/TaskProject.reducer"
+import { TodoReducer } from "./Todo/Todo.reducer"
 
 let RootReducers=combineReducers({
 Auth:AuthReducer,
 Storedata:EmployeeReducer,
 ProjectsData:ProjectReducer,
 FeedsData:FeedsReducer,
-Tasks:TaskReducer
+Tasks:TaskReducer,
+Todo:TodoReducer
 })
 
 const createComposer= compose;

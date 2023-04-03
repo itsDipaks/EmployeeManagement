@@ -6,13 +6,14 @@ let TodoRouter = Router();
 TodoRouter.post("/addtodo", async (req, res) => {
   let data = req.body;
   console.log(data)
-  let {Todo, AssignEmployee, DueDate,Priority} = data.todoformdata;
+  let {Todo, useremail, DueDate,Priority,time} = data.todoformdata;
   try {
     let AddTask = new TodoModel({
       Todo,
-      AssignEmployee,
+      useremail,
       DueDate,
-      Priority
+      Priority,
+      time
     });
     await AddTask.save();
     res.status(200).send({msg: "Task Added Sucessfully"});
@@ -23,9 +24,11 @@ TodoRouter.post("/addtodo", async (req, res) => {
   }
 });
 
-TodoRouter.get("/alltodos", async (req, res) => {
+TodoRouter.get("/myalltodos", async (req, res) => {
+    let {email}=req.headers
+    console.log(email)
   try {
-    let AllTodo = await TodoModel.find();
+    let AllTodo = await TodoModel.find({useremail:email});
     res.status(200).send({msg: "All Todo Data", AllTodo: AllTodo});
   } catch (err) {
     res.status(204).send({msg: "No Todo Found ", err: err});
@@ -33,9 +36,9 @@ TodoRouter.get("/alltodos", async (req, res) => {
 });
 
 TodoRouter.delete("/deletetodo", async (req, res) => {
-  let {todoid} = req.headers;
+  let {todoid,useremail} = req.headers;
   try {
-    let DeletedTodo = await TodoModel.findByIdAndDelete({_id: todoid});
+    let DeletedTodo = await TodoModel.findByIdAndDelete({_id: todoid });
     res.status(200).send({
       msg: "Task Deleted Sucessfully",
       DeletedTodo: DeletedTodo,

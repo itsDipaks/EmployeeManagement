@@ -15,29 +15,49 @@ import {
 import React from "react";
 import TodoColumn from "../../Components/EmployeePages/TodoColumn";
 import {useState} from "react";
-import { useDispatch } from "react-redux";
-import { AddTodo } from "../../Redux/Todo/Todo.action";
+import {useDispatch, useSelector} from "react-redux";
+import {AddTodo, GetallMyTodos} from "../../Redux/Todo/Todo.action";
+import {useEffect} from "react";
 const Todo = () => {
   let [todoformdata, settodoformdata] = useState({});
-let dispatch=useDispatch()
+  let dispatch = useDispatch();
+
+  let {token, email} = useSelector((store) => store.Auth);
+  let {loading, Todos} = useSelector((store) => store.Todo);
+
+  let showmytodos = () => {
+    dispatch(GetallMyTodos(email));
+  };
+
   let handeldtodoinputs = (e) => {
-    e.preventDefault()
-    let {name,value}=e.target
-    settodoformdata({...todoformdata,[name]:value})
+    e.preventDefault();
+    let {name, value} = e.target;
+    settodoformdata({...todoformdata, [name]: value});
   };
 
   let submitTodo = (e) => {
-    e.preventDefault()
-dispatch(AddTodo(todoformdata))
+    e.preventDefault();
+    console.log(todoformdata);
+    dispatch(AddTodo({...todoformdata, useremail: email}));
+    setTimeout(() => {
+      showmytodos();
+    }, 2000);
   };
+
+  useEffect(() => {
+    showmytodos();
+  }, []);
 
   return (
     <>
-      <Heading>Manage My Todos</Heading>
+      <Heading>Manage Todos</Heading>
 
       <Grid templateColumns="repeat(4, 1fr)" gap={6} p={4}>
+     
         <VStack p={4} gap={2} border={"1px"} boxSizing="border-box">
+        <Box width={"100%"} borderBottom={"1px"} p={3} mb={2}>Add New Todo</Box>
           <form onSubmit={submitTodo}>
+
             <FormControl isRequired>
               <FormLabel>Todo </FormLabel>
               <Input
@@ -54,7 +74,6 @@ dispatch(AddTodo(todoformdata))
                   placeholder="Enter Todo"
                   name="DueDate"
                   onChange={handeldtodoinputs}
-                  //   colorScheme={"red"}
                   type="date"
                 />
               </FormControl>
@@ -62,9 +81,8 @@ dispatch(AddTodo(todoformdata))
                 <FormLabel>Time </FormLabel>
                 <Input
                   placeholder="Enter Todo"
-                  name="Todo"
+                  name="time"
                   onChange={handeldtodoinputs}
-                  //   colorScheme={"red"}
                   type="time"
                 />
               </FormControl>
@@ -81,13 +99,13 @@ dispatch(AddTodo(todoformdata))
                 <option value="3">Low</option>
               </Select>
             </FormControl>
-            <Button type="submit">Add Todo</Button>
+            <Button type="submit" mt={4}>Add Todo</Button>
           </form>
         </VStack>
 
-        <TodoColumn />
-        <TodoColumn />
-        <TodoColumn />
+        <TodoColumn Todos={Todos} tabletitle={"Incomplete"} />
+        <TodoColumn tabletitle={"Progress"} />
+        <TodoColumn tabletitle={"completed"} />
       </Grid>
     </>
   );
