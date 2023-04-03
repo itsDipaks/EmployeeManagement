@@ -5,7 +5,7 @@ const TodoColumn = ({Todos, tabletitle}) => {
   console.log(Todos);
   return (
     <>
-      <VStack height={"90vh"} w={"100%"} gap={2} border={"1px"}>
+      <VStack  w={"100%"} gap={2} border={"1px"}>
         <Box width={"100%"} borderBottom={"1px"} p={3}>
           {tabletitle}
         </Box>
@@ -23,8 +23,8 @@ const TodoColumn = ({Todos, tabletitle}) => {
                 <Text fontSize={"0.7rem"}> Date : {el.DueDate}</Text>
               </Flex>
               <Box>
-                <Badge variant="outline" colorScheme="green">
-                  Default
+                <Badge variant="outline" colorScheme={el.Priority=="1"?"green": el.Priority=="2"?"blue":"red"}>
+               {el.Priority=="1"?"High": el.Priority=="Mid"?"blue":"Low"}
                 </Badge>
               </Box>
             </Flex>

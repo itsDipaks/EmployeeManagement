@@ -53,11 +53,11 @@ const Todo = () => {
       <Heading>Manage Todos</Heading>
 
       <Grid templateColumns="repeat(4, 1fr)" gap={6} p={4}>
-     
         <VStack p={4} gap={2} border={"1px"} boxSizing="border-box">
-        <Box width={"100%"} borderBottom={"1px"} p={3} mb={2}>Add New Todo</Box>
+          <Box width={"100%"} borderBottom={"1px"} p={3} mb={2}>
+            Add New Todo
+          </Box>
           <form onSubmit={submitTodo}>
-
             <FormControl isRequired>
               <FormLabel>Todo </FormLabel>
               <Input
@@ -99,7 +99,9 @@ const Todo = () => {
                 <option value="3">Low</option>
               </Select>
             </FormControl>
-            <Button type="submit" mt={4}>Add Todo</Button>
+            <Button type="submit" mt={4}>
+              Add Todo
+            </Button>
           </form>
         </VStack>
 
