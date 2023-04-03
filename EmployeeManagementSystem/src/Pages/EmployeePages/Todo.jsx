@@ -55,7 +55,9 @@ const Todo = () => {
       <Grid templateColumns="repeat(4, 1fr)" gap={6} p={4}>
         <VStack p={4} gap={2} border={"1px"} boxSizing="border-box">
           <Box width={"100%"} borderBottom={"1px"} p={3} mb={2}>
+          <Text fontWeight={"bold"} color={"primaryblue.500"}  fontSize={"1.4rem"}>
             Add New Todo
+        </Text>  
           </Box>
           <form onSubmit={submitTodo}>
             <FormControl isRequired>
@@ -105,9 +107,9 @@ const Todo = () => {
           </form>
         </VStack>
 
-        <TodoColumn Todos={Todos} tabletitle={"Incomplete"} />
+        <TodoColumn Todos={Todos} tabletitle={"Incomplete"}  showmytodos={showmytodos}/>
         <TodoColumn tabletitle={"Progress"} />
-        <TodoColumn tabletitle={"completed"} />
+        <TodoColumn tabletitle={"Completed"} />
       </Grid>
     </>
   );

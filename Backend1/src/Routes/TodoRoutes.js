@@ -38,7 +38,7 @@ TodoRouter.get("/myalltodos", async (req, res) => {
 TodoRouter.delete("/deletetodo", async (req, res) => {
   let {todoid,useremail} = req.headers;
   try {
-    let DeletedTodo = await TodoModel.findByIdAndDelete({_id: todoid });
+    let DeletedTodo = await TodoModel.findByIdAndDelete({_id: todoid,useremail:useremail });
     res.status(200).send({
       msg: "Task Deleted Sucessfully",
       DeletedTodo: DeletedTodo,
