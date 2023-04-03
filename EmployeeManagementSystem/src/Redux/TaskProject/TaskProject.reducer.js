@@ -3,7 +3,7 @@ let initialstate = {
   loading: false,
   error: false,
   tasks: [],
-  msg:{}
+  msg:""
 
 };
 
@@ -20,7 +20,8 @@ export const TaskReducer = (state = initialstate, {type, payload}) => {
       return {
         ...state,
         loading: false,
-        FeedsData:payload
+        tasks:payload.Alltasks,
+        msg:payload.msg
       };
     }
     case TASK_GET_ERROR: {

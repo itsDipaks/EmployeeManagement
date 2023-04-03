@@ -1,7 +1,8 @@
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, FormControl, FormLabel, HStack, Input, Select, VStack, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddTask } from '../../Redux/TaskProject/TaskProject.action'
+import { AddTask, GetallTask } from '../../Redux/TaskProject/TaskProject.action'
+import { useEffect } from 'react'
 
 const AddProjectTask = () => {
 
@@ -14,6 +15,16 @@ let dispatch=useDispatch()
 //   let filtereddta=ProjectsData[0]?.AssignedProject?.AssignedTeam.filter((val)=>{
 //     return val.email!==email
 //  })
+
+useEffect(() => {
+  showtaskdata()
+}, []);
+
+let showtaskdata=()=>{
+  dispatch(GetallTask());
+}
+
+
 let Handeldinputvalue=(e)=>{
     let {name,value}=e.target
     setNewtask({...Newtask,[name]:value})
@@ -22,11 +33,14 @@ let handeldTaskAdd=(e)=>{
     e.preventDefault();
     dispatch(AddTask(Newtask))
     onClose()
+    setTimeout(()=>{
+      showtaskdata()
+    },2000)
 }
   return (
     <>
        <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-     Assign Task
+     Add New Task
       </Button>
 
 

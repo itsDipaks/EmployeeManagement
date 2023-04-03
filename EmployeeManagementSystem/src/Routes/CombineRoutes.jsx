@@ -7,6 +7,7 @@ import { EmployeePrivate, IsLogin } from './PrivateRoutes'
 import Profilepage from '../Pages/EmployeePages/Profilepage'
 import FeedsHome from '../Pages/FeedsHome'
 import ProjectDashboard from '../Pages/EmployeePages/ProjectDashboard'
+import Todo from '../Pages/EmployeePages/Todo'
 const CombineRoutes = () => {
 
 let EmployeeBoard=[
@@ -22,6 +23,12 @@ let EmployeeBoard=[
   path:"/projetdashboard",
   element:<ProjectDashboard/>
 },
+  {
+    id:3,
+  name:"Todo",
+  path:"/todo",
+  element:<Todo/>
+}
 ]
 let universalroutes=[
   {

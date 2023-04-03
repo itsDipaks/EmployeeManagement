@@ -28,8 +28,6 @@ export let SingleEmployee = (id) => async (dispatch) => {
         user_id: id,
       },
     });
-    // console.log(EmData+"em")
-    // arr.push(EmData.data)
     let arr = [];
 
     console.log(EmData.data);
@@ -52,10 +50,7 @@ export let Employeeprofile = (token) => async (dispatch) => {
         token: token,
       },
     });
-    // console.log(EmData+"em")
-    // arr.push(EmData.data)
     let arr = [];
-
     console.log(EmData.data);
     arr.push(EmData.data);
     console.log(arr);
@@ -68,9 +63,7 @@ export let Employeeprofile = (token) => async (dispatch) => {
 
 
 export let DeleteEmployee = (id) => async (dispatch) => {
-  console.log(id);
   dispatch({type: EMPLOYEE_GET_LOADING});
-
   try {
     Swal.fire({
       title: "Are you sure?",
@@ -91,7 +84,6 @@ export let DeleteEmployee = (id) => async (dispatch) => {
         );
 
         Swal.fire("Removed Sucessfully!", "", "success");
-        console.log(EmData.data)
       }
     });
 

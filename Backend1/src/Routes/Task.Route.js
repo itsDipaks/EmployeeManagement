@@ -4,14 +4,13 @@ const {TaskModel} = require("../model/Task.model");
 let TaskRouter = Router();
 
 TaskRouter.post("/addtask", async (req, res) => {
-  let data= req.body;
-  let {     Task,AssignEmployee,DueDate}=data.Newtask
- 
-//   console.log(AssignEmployee)
-//   console.log(DueDate)
-   try {
+  let data = req.body;
+  let {Task, AssignEmployee, DueDate} = data.Newtask;
+  try {
     let AddTask = new TaskModel({
-        Task,AssignEmployee,DueDate
+      Task,
+      AssignEmployee,
+      DueDate,
     });
     await AddTask.save();
     res.status(200).send({msg: "Task Added Sucessfully"});
@@ -25,43 +24,42 @@ TaskRouter.post("/addtask", async (req, res) => {
 TaskRouter.get("/alltask", async (req, res) => {
   try {
     let Alltasks = await TaskModel.find();
-    res.status(200).send({masg: "All Tasks Data", Alltasks: Alltasks});
+    res.status(200).send({msg: "All Tasks Data", Alltasks: Alltasks});
   } catch (err) {
     res.status(204).send({msg: "No Task Found ", err: err});
   }
 });
 
-// TaskRouter.delete("/deletefeed", async (req, res) => {
-//   let {feedid} = req.headers;
-//   try {
-//     let DeletedData = await TaskModel.findByIdAndDelete({_id: feedid});
-//     res.status(200).send({
-//       msg: "Feed Data Deleted Sucessfully",
-//     });
-//   } catch (err) {
-//     res.status(400).send({msg: "Something Wents Wrong"});
-//   }
-// });
+TaskRouter.delete("/deletetask", async (req, res) => {
+  let {taskid} = req.headers;
+  try {
+    let DeletedData = await TaskModel.findByIdAndDelete({_id: taskid});
+    res.status(200).send({
+      msg: "Task Deleted Sucessfully",
+      DeletedTask: DeletedData,
+    });
+  } catch (err) {
+    res.status(400).send({msg: "Something Wents Wrong"});
+  }
+});
 
-// ==========Comment Sections =============
+// ==========Task Status Changed =============
 
-// TaskRouter.patch("/addcomment", async (req, res) => {
-//   let {CommentMsg, FeedId, name, email} = req.body;
-
-//   try {
-//     let AddComment = await TaskModel.findOneAndUpdate(
-//       {_id: FeedId},
-//       {
-//         comments: [
-//           {CommentMasg: CommentMsg, CommentAuthor: name, AutherEmail: email},
-//         ],
-//       }
-//     );
-
-//     res.status(200).json({msg: "Comment Added Sucessfully", data: AddComment});
-//   } catch (err) {
-//     res.status(500).json({msg: "something wents wrong to Comment", err: err});
-//   }
-// });
+TaskRouter.patch("/changestatus", async (req, res) => {
+  const {Status} = req.body;
+  let {taskid} = req.headers;
+  try {
+    let TaskInfo = await TaskModel.findOneAndUpdate(
+      {_id: taskid},
+      {Status: Status}
+    );
+    console.log(TaskInfo);
+    res.status(200).send({
+      msg: `Task Status Changed to ${Status}`,
+    });
+  } catch (err) {
+    res.status(400).send({msg: "Something Wents Wrong"});
+  }
+});
 
 module.exports = {TaskRouter};

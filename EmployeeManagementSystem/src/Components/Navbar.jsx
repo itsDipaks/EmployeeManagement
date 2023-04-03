@@ -63,6 +63,9 @@ top="0"
                   <Link to={"/projetdashboard"}>
                     <Button>Project Dashboard</Button>
                   </Link>
+                  <Link to={"/todo"}>
+                    <Button>Manage Todo</Button>
+                  </Link>
                 </Flex>
               )
             ) : (

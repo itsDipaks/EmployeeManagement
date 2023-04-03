@@ -24,7 +24,7 @@ import {addEmployee} from "../../Redux/Auth/Auth.action";
 import Swal from "sweetalert2";
 import {Link, useNavigate} from "react-router-dom";
 import {BsArrowLeft} from "react-icons/bs";
-const AddEmployee = () => {
+const AddEmployee = ({showdata}) => {
   const {isOpen, onOpen, onClose} = useDisclosure();
   let [formdata, setformdata] = useState({});
 
@@ -44,6 +44,9 @@ const AddEmployee = () => {
     if (!loading) {
       onClose()
     }
+setTimeout(()=>{
+  showdata()
+},1000)
   };
 
 

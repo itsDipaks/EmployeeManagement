@@ -32,13 +32,16 @@ const DisplayProjects = ({triggerdaction}) => {
   console.log(employeeData);
 
   useEffect(() => {
-    dispatch(GetAllProjects());
+   
   }, [msg]);
 
   useEffect(() => {
-    dispatch(AllEmployee());
+    displydata()
   }, []);
-
+let displydata=()=>{
+  dispatch(AllEmployee());
+  dispatch(GetAllProjects());
+}
   //  let {employeeData, loading, error} = useSelector((store) => store.Storedata);
   // console.log(employeeData+"employee")
   // console.log(ProjectsData);
@@ -46,6 +49,9 @@ const DisplayProjects = ({triggerdaction}) => {
   let DeleteProject = ({_id}) => {
     // console.log(el)
     dispatch(deleteproject(_id));
+    setTimeout(()=>{
+displydata()
+    },5000)
   };
   return (
     <div>

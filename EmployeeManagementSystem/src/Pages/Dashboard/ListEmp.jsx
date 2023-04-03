@@ -36,12 +36,18 @@ const ListEmp = () => {
   console.log(employeeData)
   let Deleteemployee = (id) => {
     dispatch(DeleteEmployee(id));
-   
+    setTimeout(()=>{
+      showdata()
+    },1000)
   };
+
   useEffect(() => {
-    dispatch(AllEmployee());
+    showdata()
   }, []);
 
+  let showdata=()=>{
+    dispatch(AllEmployee());
+  }
 
   return (
     <>
@@ -81,7 +87,7 @@ const ListEmp = () => {
               <Input placeholder="Search" />
             </FormControl>
           </HStack>
-          <AddEmployee />
+          <AddEmployee  showdata={showdata}/>
         </Flex>
       </Box>
       <Box mt={"1rem"}>

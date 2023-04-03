@@ -14,7 +14,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const DisplayEmployeeCard = ({empdata}) => {
-
     let {token,email} = useSelector((store) => store.Auth);
 
 let filtereddta=empdata.filter((val)=>{
