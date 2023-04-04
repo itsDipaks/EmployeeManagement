@@ -107,7 +107,7 @@ const Todo = () => {
           </form>
         </VStack>
 
-        <TodoColumn Todos={Todos} tabletitle={"Incomplete"}  showmytodos={showmytodos}/>
+      { Todos? <TodoColumn Todos ={Todos} tabletitle={"Incomplete"}  showmytodos={showmytodos}/>:""}
         <TodoColumn tabletitle={"Progress"} />
         <TodoColumn tabletitle={"Completed"} />
       </Grid>

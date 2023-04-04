@@ -72,7 +72,6 @@ top="0"
               ""
             )}
           </Flex>
-
           <Flex w="20%" justifyContent="space-evenly" alignItems={"center"}>
             {token && !isadmin? (
               <Tooltip

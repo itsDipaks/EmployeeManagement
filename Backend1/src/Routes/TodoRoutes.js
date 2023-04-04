@@ -36,15 +36,17 @@ TodoRouter.get("/myalltodos", async (req, res) => {
 });
 
 TodoRouter.delete("/deletetodo", async (req, res) => {
-  let {todoid,useremail} = req.headers;
+  let {todoid,useremail}= req.headers;
+  // console.log(data)
   try {
     let DeletedTodo = await TodoModel.findByIdAndDelete({_id: todoid,useremail:useremail });
     res.status(200).send({
       msg: "Task Deleted Sucessfully",
       DeletedTodo: DeletedTodo,
     });
+console.log(DeletedTodo)
   } catch (err) {
-    res.status(400).send({msg: "Something Wents Wrong"});
+    res.status(400).send({msg: "Something Wents Wrong",err:err});
   }
 });
 

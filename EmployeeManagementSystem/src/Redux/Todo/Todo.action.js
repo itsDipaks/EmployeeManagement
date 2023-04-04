@@ -48,6 +48,7 @@ export let GetallMyTodos = (email) => async (dispatch) => {
 };
 
 export const DeleteTodo = (todoid,useremail) => (dispatch) => {
+  console.log(todoid)
   dispatch({type: TODO_GET_LOADING});
   try {
     Swal.fire({

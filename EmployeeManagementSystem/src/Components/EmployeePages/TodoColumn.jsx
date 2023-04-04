@@ -11,7 +11,7 @@ const TodoColumn = ({Todos, tabletitle, showmytodos}) => {
   let {token, email} = useSelector((store) => store.Auth);
 
   let RemoveTodo = (el) => {
-    dispatch(DeleteTodo({todoid: el._id, useremail: email}));
+    dispatch(DeleteTodo(el._id,email));
     setTimeout(() => {
       showmytodos();
     }, 5000);
