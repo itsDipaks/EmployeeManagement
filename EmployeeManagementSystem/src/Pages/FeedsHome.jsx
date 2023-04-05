@@ -13,7 +13,7 @@ const FeedsHome = () => {
   return (
     <>
       <Box className={styles.Feedpagediv}>
-        {isadmin && token ?   <AdminMassage/>:""}
+        {isadmin && token ?   <AdminMassage />:""}
         {/* =========Feeds============ */}
     <FeedsPost/>
     </Box>

@@ -38,9 +38,14 @@ const FeedsPost = () => {
   let {token, error, isadmin, name, email} = useSelector((store) => store.Auth);
 
   console.log(FeedsData);
+
   useEffect(() => {
-    dispatch(GetAllFeeds());
+    showfeeds();
   }, []);
+
+  let showfeeds = () => {
+    dispatch(GetAllFeeds());
+  };
   let Commentonfeed = (e, el) => {
     SetCommentMsg(e.target.value);
     SetFeedId(el._id);
@@ -48,10 +53,17 @@ const FeedsPost = () => {
 
   let commentmassage = () => {
     dispatch(CommentonFeed(CommentMsg, FeedId, name, email));
+    setTimeout(() => {
+      showfeeds();
+    }, 1000);
   };
 
   let deletefeed = (el) => {
     dispatch(Deletefeed(el._id));
+
+    setTimeout(() => {
+      showfeeds();
+    }, 1000);
   };
 
   return (
@@ -127,16 +139,6 @@ const FeedsPost = () => {
             {/* <CiCircleRemove w={"44rem"} p="1rem" cursor={"pointer"} border={"1px"} h={"17rem"}/> */}
           </Box>
 
-          {/* ===========Feed Details========== */}
-
-          {/* <Box w={"90%"}>
-      //   <Image
-      //     w={"60%"}
-      //     // h="50vh"
-      //     src="https://bitrix24in.netlify.app/static/media/section_on_premise.jpg.62d1c746871007a2f080.webp"
-      //     alt="feedimage"
-      //   />
-      // </Box> */}
 
           <Text w={"90%"} m="auto" mt="4" fontSize={20} textAlign={"start"}>
             {el.Massage}
@@ -254,7 +256,7 @@ const FeedsPost = () => {
 
           {/* ==========Commwnt================== */}
           {showcommentbox ? (
-            <Box bg={"#E6E6FA"}     data-aos="fade-down">
+            <Box bg={"#E6E6FA"} data-aos="fade-down">
               {!isadmin ? (
                 <Grid
                   ml="6"

@@ -18,7 +18,7 @@ const TodoColumn = ({Todos, tabletitle, showmytodos}) => {
   };
   return (
     <>
-      <VStack w={"100%"} gap={2} border={"1px"}>
+      <VStack w={"100%"} gap={2} border={"1px"} >
         <Box width={"100%"} borderBottom={"1px"} p={3}>
           <Text
             fontWeight={"bold"}
@@ -37,6 +37,7 @@ const TodoColumn = ({Todos, tabletitle, showmytodos}) => {
               m={"auto"}
               p={2}
               rounded={"10px"}
+              data-aos="fade-up"
             >
               <Flex
                 w={"100%"}

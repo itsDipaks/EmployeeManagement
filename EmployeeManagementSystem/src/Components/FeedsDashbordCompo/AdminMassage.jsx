@@ -1,7 +1,7 @@
 import {Box, Button, Input, SimpleGrid, Text, Textarea} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddNewFeed } from "../../Redux/Feeds/Feeds.action";
+import { AddNewFeed, GetAllFeeds } from "../../Redux/Feeds/Feeds.action";
 const AdminMassage = () => {
   const [input, setInput] = useState(false);
   const [value, setValue] = useState("");
@@ -10,9 +10,19 @@ const AdminMassage = () => {
   
   let dispatch=useDispatch()
   let {token , loading , error,isadmin,name,email} = useSelector((store) => store.Auth);
+  useEffect(() => {
+    showfeeds()
+  }, []);
 
+  let showfeeds=()=>{
+    dispatch(GetAllFeeds());
+  }
   let sendMassage=()=>{
     dispatch(AddNewFeed(massage,name,email))
+    setTimeout(()=>{
+      showfeeds()
+    },1000)
+    
   }
 
 

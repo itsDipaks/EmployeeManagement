@@ -9,35 +9,30 @@ import ShowMyAssigntaskcard from "./ShowMyAssigntaskcard";
 const Displaytask = () => {
   let dispatch = useDispatch();
   useEffect(() => {
-    showtaskdata()
+    showtaskdata();
   }, []);
 
-  let showtaskdata=()=>{
+  let showtaskdata = () => {
     dispatch(GetallTask());
-  }
+  };
   let {token, email} = useSelector((store) => store.Auth);
   let {ProjectsData} = useSelector((store) => store.ProjectsData);
 
   let {tasks} = useSelector((store) => store.Tasks);
 
-  console.log(tasks)
+  console.log(tasks);
   // =========For Admin MAnges Task=======
   let adminshowtasks = tasks?.filter((el) => {
     return el.AssignEmployee != email;
   });
-
-// ====For All Employee Except Groupe Leader======
+  // ====For All Employee Except Groupe Leader======
   let MyAssignPpendingTasks = tasks?.filter((el) => {
-    return el.AssignEmployee == email && el.Status=="Incomplete";
+    return el.AssignEmployee == email && el.Status == "Incomplete";
   });
 
   let MyAssignCompletedTasks = tasks?.filter((el) => {
-    return el.AssignEmployee == email && el.Status=="Completed";
+    return el.AssignEmployee == email && el.Status == "Completed";
   });
-
-
-  
-
 
   console.log(tasks);
   return (
@@ -49,7 +44,7 @@ const Displaytask = () => {
           </Text>
           <VStack gap={2}>
             {adminshowtasks?.map((el) => (
-              <ShowProjectTask data={el}  showtaskdata={showtaskdata} />
+              <ShowProjectTask data={el} showtaskdata={showtaskdata} />
             ))}
           </VStack>
         </Box>
@@ -60,32 +55,35 @@ const Displaytask = () => {
       {ProjectsData[0]?.AssignedProject?.groupleader != email ? (
         <Box>
           <Text m={4} fontSize={"2xl"}>
-          Pending Tasks
+            Pending Tasks
           </Text>
 
           <VStack gap={1}>
             {MyAssignPpendingTasks?.map((el) => (
-
-              <ShowMyAssigntaskcard data={el} colorstatus={"red.100"} showtaskdata={showtaskdata}  onclickstatus={"Completed"} iconcolor={"green"}/>
+              <ShowMyAssigntaskcard
+                data={el}
+                colorstatus={"red.100"}
+                showtaskdata={showtaskdata}
+                onclickstatus={"Completed"}
+                iconcolor={"red"}
+              />
             ))}
           </VStack>
-        
-
           <Text m={4} fontSize={"2xl"}>
             Completed
           </Text>
           <VStack gap={1}>
             {MyAssignCompletedTasks?.map((el) => (
-
-              <ShowMyAssigntaskcard data={el} colorstatus={"green.100"} showtaskdata={showtaskdata}  onclickstatus={"Incomplete"} iconcolor={"red"} />
+              <ShowMyAssigntaskcard
+                data={el}
+                colorstatus={"green.100"}
+                showtaskdata={showtaskdata}
+                onclickstatus={"Incomplete"}
+                iconcolor={"green"}
+              />
             ))}
           </VStack>
-
         </Box>
-
-
-
-
       ) : (
         ""
       )}
