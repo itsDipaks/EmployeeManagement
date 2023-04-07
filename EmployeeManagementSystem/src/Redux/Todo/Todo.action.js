@@ -47,8 +47,8 @@ export let GetallMyTodos = (email) => async (dispatch) => {
   }
 };
 
-export const DeleteTodo = (todoid,useremail) => (dispatch) => {
-  console.log(todoid)
+export const DeleteTodo = (todoid, useremail) => (dispatch) => {
+  console.log(todoid);
   dispatch({type: TODO_GET_LOADING});
   try {
     Swal.fire({
@@ -63,7 +63,7 @@ export const DeleteTodo = (todoid,useremail) => (dispatch) => {
         let TodoData = await axios.delete(`${Backendurl}/todo/deletetodo`, {
           headers: {
             todoid: todoid,
-            useremail:useremail
+            useremail: useremail,
           },
         });
 
@@ -71,6 +71,24 @@ export const DeleteTodo = (todoid,useremail) => (dispatch) => {
       }
     });
     dispatch({type: TODO_GET_SUCESS, payload: {msg: "sucess"}});
+  } catch (err) {
+    dispatch({type: TODO_GET_ERROR});
+  }
+};
+
+export let ChangedTodoStatus = (todostatus, todoid) => async (dispatch) => {
+  dispatch({type: TODO_GET_LOADING});
+  try {
+    let Taskdata = await axios.patch(
+      `${Backendurl}/todo/changetodostatus`,
+      {Status: todostatus},
+      {
+        headers: {
+          todoid: todoid,
+        },
+      }
+    );
+    dispatch({type: TODO_GET_SUCESS});
   } catch (err) {
     dispatch({type: TODO_GET_ERROR});
   }

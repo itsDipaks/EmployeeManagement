@@ -30,7 +30,10 @@ import {
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {AddNewProject} from "../../Redux/Project/Project.action";
+import {
+  AddNewProject,
+  GetAllProjects,
+} from "../../Redux/Project/Project.action";
 import {Multiselect} from "multiselect-react-dropdown";
 import {AllEmployee} from "../../Redux/Employee/Employee.action";
 import {useEffect} from "react";
@@ -55,12 +58,17 @@ const AddprojectDrawer = () => {
     setonclickpriview(privewurl);
   };
 
-  console.log(AssignEmployee);
+  useEffect(() => {
+    displydata();
+  }, []);
+  let displydata = () => {
+    dispatch(AllEmployee());
+    dispatch(GetAllProjects());
+  };
 
   let Handeldinput = (e) => {
     setpriviewurl(e.target.value);
   };
-
   let submitform = (e) => {
     e.preventDefault();
     let AllProjectFiledData = {
@@ -69,8 +77,10 @@ const AddprojectDrawer = () => {
       ProjectimaageUrl: privewurl,
       Status: status,
     };
-
     dispatch(AddNewProject(AllProjectFiledData));
+    setTimeout(() => {
+      displydata();
+    }, 2000);
     onClose();
   };
 
@@ -86,10 +96,12 @@ const AddprojectDrawer = () => {
     dispatch(AllEmployee());
   }, []);
   let {employeeData} = useSelector((store) => store.Storedata);
-console.log(employeeData)
+  console.log(employeeData);
   return (
     <div>
-      <Button colorScheme='whatsapp' onClick={() => onOpen()}>Add New Project</Button>
+      <Button colorScheme="whatsapp" onClick={() => onOpen()}>
+        Add New Project
+      </Button>
 
       <Drawer
         placement={"bottom"}
@@ -101,7 +113,12 @@ console.log(employeeData)
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">
-            <Flex w={"80%"} justifyContent="space-between" alignItems={"center"} m={"auto"}>
+            <Flex
+              w={"80%"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              m={"auto"}
+            >
               <Text>Add New Project</Text>
               <Button colorScheme="red" p={6} onClick={() => onClose()}>
                 Close
@@ -250,17 +267,20 @@ console.log(employeeData)
                       />
                     </FormControl>
 
-                    <FormControl isRequired mt={4}> 
-                        <FormLabel>  Group Leader </FormLabel>
-                        <Select
-                          placeholder="Select group Leader"
-                          name="groupleader"
-                          onChange={Handeldinputvalue}
-                        >
-                        {AssignEmployee?.map((el)=> <option value={el?.email}>{el?.firstname} { el?.lastname}</option> )  }
-                       
-                        </Select>
-                      </FormControl>
+                    <FormControl isRequired mt={4}>
+                      <FormLabel> Group Leader </FormLabel>
+                      <Select
+                        placeholder="Select group Leader"
+                        name="groupleader"
+                        onChange={Handeldinputvalue}
+                      >
+                        {AssignEmployee?.map((el) => (
+                          <option value={el?.email}>
+                            {el?.firstname} {el?.lastname}
+                          </option>
+                        ))}
+                      </Select>
+                    </FormControl>
                     <Button type="submit" colorScheme="messenger" m={4} p={4}>
                       Add Project
                     </Button>

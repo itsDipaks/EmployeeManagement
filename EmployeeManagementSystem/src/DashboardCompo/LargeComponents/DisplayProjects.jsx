@@ -51,7 +51,7 @@ let displydata=()=>{
     dispatch(deleteproject(_id));
     setTimeout(()=>{
 displydata()
-    },5000)
+    },2000)
   };
   return (
     <div>
@@ -65,6 +65,7 @@ displydata()
           rounded="md"
           p={4}
           mb={14}
+          data-aos="fade-up"
         >
           <Box display="flex" alignItems={"center"}>
             <Image
