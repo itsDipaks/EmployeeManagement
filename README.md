@@ -6,7 +6,7 @@
 
 
 ```
-$ git clone https://github.com/itsDipaks/Adobe-Assignment.git
+$ git clone https://github.com/itsDipaks/EmployeeManagement.git
 ```
 
 ###  Installation
