@@ -32,7 +32,7 @@ const Todo = () => {
 
 
 
-let ProritySortedTodos=Todos.sort((a,b)=>{
+let ProritySortedTodos=Todos?.sort((a,b)=>{
   return a.Priority-b.Priority
 } )
 
@@ -43,17 +43,17 @@ let ProritySortedTodos=Todos.sort((a,b)=>{
 
   let IncompleteTodo =
     Todos &&
-    Todos.filter((el) => {
+    Todos?.filter((el) => {
       return el.Status == "Incomplete";
     });
   let ProgressTodo =
     Todos &&
-    Todos.filter((el) => {
+    Todos?.filter((el) => {
       return el.Status == "InProgress";
     });
   let CompletedTodod =
     Todos &&
-    Todos.filter((el) => {
+    Todos?.filter((el) => {
       return el.Status == "Completed";
     });
 

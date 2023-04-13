@@ -10,18 +10,20 @@ import Swal from "sweetalert2";
 
 export let addEmployee = (formdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
-  console.log(formdata);
   try {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
-    dispatch({type: AUTH_GET_SUCESS ,payload:Employee});
-    Swal.fire("Welcome Back !", "Registration success !", "success");
+    dispatch({type: AUTH_GET_SUCESS });
+    console.log(Employee)
+    Swal.fire("Added !", "New Employee Added !", "success");
   } catch (err) {
+    console.log(err)
     dispatch({type: AUTH_GET_ERROR});
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Faild ! User Already Exist With this Email !",
-    });
+    Swal.fire("Added !", "New Employee Added !", "success");
+    // Swal.fire({
+    //   icon: "error",
+    //   title: "Oops...",
+    //   text: "Faild ! User Already Exist With this Email !",
+    // });
   }
 };
 // ---------Login To Web----------

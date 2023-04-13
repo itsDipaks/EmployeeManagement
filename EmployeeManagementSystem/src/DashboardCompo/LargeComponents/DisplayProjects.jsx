@@ -29,7 +29,6 @@ const DisplayProjects = ({triggerdaction}) => {
   // }, []);
   let {ProjectsData, msg} = useSelector((store) => store.ProjectsData);
   let {employeeData} = useSelector((store) => store.Storedata);
-  console.log(employeeData);
 
   useEffect(() => {
    

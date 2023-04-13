@@ -89,14 +89,12 @@ const AddprojectDrawer = () => {
     setAssignEmployee([...data]);
   };
   let onRemove = (data) => {
-    console.log(data);
   };
 
   useEffect(() => {
     dispatch(AllEmployee());
   }, []);
   let {employeeData} = useSelector((store) => store.Storedata);
-  console.log(employeeData);
   return (
     <div>
       <Button colorScheme="whatsapp" onClick={() => onOpen()}>

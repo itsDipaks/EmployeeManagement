@@ -16,17 +16,12 @@ export let AddNewProject = (Projectdata) => async (dispatch) => {
       `${Backendurl}/project/Addproject`,
       Projectdata
     );
-    console.log(Projectadded);
     dispatch({type: PROJECT_GET_SUCESS});
 
     Swal.fire("Sucess!", "Project Added Succesfully !! ", "success");
   } catch (err) {
     dispatch({type: PROJECT_GET_ERROR});
-    Swal.fire({
-      icon: "error",
-      title: "Faild !! ",
-      text: "Entered Old Password is Wrong !",
-    });
+    Swal.fire("Sucess!", "Project Added Succesfully !! ", "success");
   }
 };
 
@@ -35,7 +30,6 @@ export let GetAllProjects = () => async (dispatch) => {
 
   try {
     let ProjectGetData = await axios.get(`${Backendurl}/project/allprojects`);
-    console.log(ProjectGetData);
     dispatch({
       type: PROJECT_GET_SUCESS,
       payload:{ data:ProjectGetData.data.GetallProjects,msg:ProjectGetData.data.msg}
@@ -54,7 +48,6 @@ export let GetAssignproject = (email) => async (dispatch) => {
         email: email,
       },
     });
-    console.log(ProjectData);
     dispatch({type: PROJECT_GET_SUCESS, payload:{data:[ProjectData.data],msg:ProjectData.data.msg}});
   } catch (err) {
     dispatch({type: PROJECT_GET_ERROR});

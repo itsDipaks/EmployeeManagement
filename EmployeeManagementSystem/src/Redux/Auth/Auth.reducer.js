@@ -28,7 +28,6 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
       // if (payload.data.token) {
       //   localStorage.setItem("token", JSON.stringify(payload.data.token));
       // }
-      console.log(payload.data);
       return {
         ...state,
         loading: false,

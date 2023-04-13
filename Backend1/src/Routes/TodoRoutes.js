@@ -52,7 +52,7 @@ console.log(DeletedTodo)
 
 // ==========Task Status Changed =============
 
-TodoRouter.patch("/todostatus", async (req, res) => {
+TodoRouter.patch("/changetodostatus", async (req, res) => {
   const {Status} = req.body;
   let {todoid} = req.headers;
   try {

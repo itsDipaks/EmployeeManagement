@@ -18,12 +18,12 @@ const TodoColumn = ({Todos, tabletitle, showmytodos, id}) => {
   };
   return (
     <>
-      <VStack w={"100%"} height={"90vh"}  gap={2} border={"1px"}>
-        <Box width={"100%"} borderBottom={"1px"} p={3}>
+      <VStack w={"100%"} minHeight={"70vh"} roundedBottom={"xl"} bg={"blackAlpha.300"}  gap={2} border={"1px"}>
+        <Box width={"100%"} bg={"blackAlpha.800"} borderBottom={"1px"} p={3}>
           <Text
             fontWeight={"bold"}
             fontSize={"1.4rem"}
-            color={"primaryblue.500"}
+            color={"white"}
           >
             {tabletitle}
           </Text>

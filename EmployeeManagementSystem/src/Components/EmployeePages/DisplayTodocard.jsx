@@ -17,14 +17,14 @@ const DisplayTodocard = ({Todo, el, time, DueDate, Priority, index}) => {
       <Draggable draggableId={`${el._id}`} key={el._id} index={index}>
         {(provided, snapshot) => (
           <Box
-            border={"1px"}
+            // border={"1px"}
             width={"28vw"}
             // m={"auto"}
             m={4}
             p={4}
             rounded={"10px"}
-            data-aos="fade-up"
-            bg={"primaryblue.20"}
+            // data-aos="fade-up"
+            bg={"black"}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -35,7 +35,7 @@ const DisplayTodocard = ({Todo, el, time, DueDate, Priority, index}) => {
               justifyContent={"space-between"}
               alignItems={"center"}
             >
-              <Text fontSize={"1.2rem"} fontWeight={"semibold"}>
+              <Text fontSize={"1.2rem"}  color={"white"} fontWeight={"semibold"}>
                 {Todo}
               </Text>
               <TiDelete
@@ -65,13 +65,12 @@ const DisplayTodocard = ({Todo, el, time, DueDate, Priority, index}) => {
               </Flex>
               <Box>
                 <Badge
-                  variant="outline"
                   bg={
                     Priority == "1"
-                      ? "red"
+                      ? "red.600"
                       : Priority == "2"
-                      ? "primaryblue.100"
-                      : "green"
+                      ? "blue.400"
+                      : "green.700"
                   }
                   color={"white"}
                   pl={2}
