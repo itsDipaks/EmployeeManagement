@@ -1,41 +1,21 @@
 import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Grid,
-  HStack,
-  Heading,
-  Input,
-  Select,
-  Text,
-  VStack,
+  Grid
 } from "@chakra-ui/react";
 import React from "react";
 import TodoColumn from "../../Components/EmployeePages/TodoColumn";
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {ChangedTodoStatus, GetallMyTodos} from "../../Redux/Todo/Todo.action";
 import {useEffect} from "react";
 import AddNewTodo from "../../Components/EmployeePages/AddNewTodo";
 import {DragDropContext} from "react-beautiful-dnd";
-import Dragdrop from "./Dragdrop";
 const Todo = () => {
   let dispatch = useDispatch();
-  const [Progress, setProgress] = useState([]);
-  const [incomplete, setIncomplete] = useState([]);
-  const [completed, setCompleted] = useState([]);
-
   let {email} = useSelector((store) => store.Auth);
   let {Todos} = useSelector((store) => store.Todo);
 
-
-
-let ProritySortedTodos=Todos?.sort((a,b)=>{
-  return a.Priority-b.Priority
-} )
-
+  let ProritySortedTodos = Todos?.sort((a, b) => {
+    return a.Priority - b.Priority;
+  });
 
   let showmytodos = () => {
     dispatch(GetallMyTodos(email));
@@ -59,7 +39,6 @@ let ProritySortedTodos=Todos?.sort((a,b)=>{
 
   const handleDragEnd = (result) => {
     const {destination, source, draggableId} = result;
-    console.log(result);
     if (source.droppableId == destination.droppableId) {
       return;
     } else if (destination.droppableId == "1") {
@@ -86,10 +65,8 @@ let ProritySortedTodos=Todos?.sort((a,b)=>{
 
   return (
     <>
-      <Heading>Manage Todos</Heading>
       <AddNewTodo showmytodos={showmytodos} />
-
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} p={4}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} p={8}>
         <DragDropContext onDragEnd={handleDragEnd}>
           {Todos ? (
             <TodoColumn

@@ -1,24 +1,16 @@
-import {Badge, Box, Flex, Spacer, Tag, Text, VStack} from "@chakra-ui/react";
+import { Box, Text, VStack} from "@chakra-ui/react";
 import React from "react";
-import {TiDelete} from "react-icons/ti";
-import {useDispatch, useSelector} from "react-redux";
-import {DeleteTodo} from "../../Redux/Todo/Todo.action";
+import { useSelector} from "react-redux";
 import {Droppable} from "react-beautiful-dnd";
 import DisplayTodocard from "./DisplayTodocard";
 const TodoColumn = ({Todos, tabletitle, showmytodos, id}) => {
   let MyTodos = Todos ? Todos : [];
-  let dispatch = useDispatch();
-  let {token, email} = useSelector((store) => store.Auth);
+  let {email} = useSelector((store) => store.Auth);
 
-  let RemoveTodo = (el) => {
-    dispatch(DeleteTodo(el._id, email));
-    setTimeout(() => {
-      showmytodos();
-    }, 5000);
-  };
+
   return (
     <>
-      <VStack w={"100%"} minHeight={"70vh"} roundedBottom={"xl"} bg={"blackAlpha.300"}  gap={2} border={"1px"}>
+      <VStack w={"100%"} minHeight={"70vh"} roundedBottom={"xl"} bg={"blackAlpha.300"}  gap={2} >
         <Box width={"100%"} bg={"blackAlpha.800"} borderBottom={"1px"} p={3}>
           <Text
             fontWeight={"bold"}
@@ -39,12 +31,14 @@ const TodoColumn = ({Todos, tabletitle, showmytodos, id}) => {
               {MyTodos &&
                 MyTodos?.map((el, index) => (
                   <DisplayTodocard
-                    Todo={el.Todo}
+                    Todo={el?.Todo}
                     el={el}
-                    time={el.time}
-                    DueDate={el.DueDate}
-                    Priority={el.Priority}
+                    time={el?.time}
+                    DueDate={el?.DueDate}
+                    Priority={el?.Priority}
                     index={index}
+                    email={email}
+                    showmytodos={showmytodos}
                   />
                 ))}
               {provided.placeholder}

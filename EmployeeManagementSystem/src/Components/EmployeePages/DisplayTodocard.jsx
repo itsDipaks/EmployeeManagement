@@ -2,28 +2,39 @@ import React from "react";
 import {Badge, Box, Flex, Spacer, Tag, Text, VStack} from "@chakra-ui/react";
 import {TiDelete} from "react-icons/ti";
 import {Draggable} from "react-beautiful-dnd";
+import {useDispatch} from "react-redux";
+import {DeleteTodo} from "../../Redux/Todo/Todo.action";
 
-const DisplayTodocard = ({Todo, el, time, DueDate, Priority, index}) => {
+const DisplayTodocard = ({
+  Todo,
+  el,
+  time,
+  DueDate,
+  Priority,
+  index,
+  email,
+  showmytodos,
+}) => {
+  let todoid = el?._id;
 
+  let dispatch = useDispatch();
+  let RemoveTodo = () => {
+    dispatch(DeleteTodo(todoid, email));
+    setTimeout(() => {
+      showmytodos();
+    }, 5000);
+  };
 
-
-
-    
-
-
-
-    return (
+  return (
     <>
-      <Draggable draggableId={`${el._id}`} key={el._id} index={index}>
+      <Draggable draggableId={`${el?._id}`} key={el?._id} index={index}>
         {(provided, snapshot) => (
           <Box
-            // border={"1px"}
             width={"28vw"}
-            // m={"auto"}
             m={4}
             p={4}
             rounded={"10px"}
-            // data-aos="fade-up"
+            data-aos="fade-right"
             bg={"black"}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -35,7 +46,7 @@ const DisplayTodocard = ({Todo, el, time, DueDate, Priority, index}) => {
               justifyContent={"space-between"}
               alignItems={"center"}
             >
-              <Text fontSize={"1.2rem"}  color={"white"} fontWeight={"semibold"}>
+              <Text fontSize={"1.2rem"} color={"white"} fontWeight={"semibold"}>
                 {Todo}
               </Text>
               <TiDelete

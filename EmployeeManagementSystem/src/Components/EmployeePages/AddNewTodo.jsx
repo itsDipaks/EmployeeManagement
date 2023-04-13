@@ -43,12 +43,8 @@ const AddNewTodo = ({showmytodos}) => {
   return (
     <div>
         
-        <Box p={4} gap={2} w={"60%"} m={"auto"} boxSizing="border-box">
-          <Box width={"100%"} borderBottom={"1px"} p={3} mb={2}>
-          <Text fontWeight={"bold"} color={"primaryblue.500"}  fontSize={"1.4rem"}>
-            Add New Todo
-        </Text>  
-          </Box>
+        <Box p={8} gap={2}  w={"50%"} boxShadow='dark-lg' m={"auto"} boxSizing="border-box" >
+        
           <form onSubmit={submitTodo}>
             <FormControl isRequired>
               <FormLabel>Todo </FormLabel>
@@ -91,7 +87,7 @@ const AddNewTodo = ({showmytodos}) => {
                 <option value="3">Low</option>
               </Select>
             </FormControl>
-            <Button type="submit" mt={4}>
+            <Button type="submit" bg={"black"} color={"white"} w={"3xs"} mt={4}>
               Add Todo
             </Button>
           </form>
