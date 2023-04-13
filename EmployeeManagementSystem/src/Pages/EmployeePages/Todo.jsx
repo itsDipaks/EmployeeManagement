@@ -13,9 +13,9 @@ const Todo = () => {
   let {email} = useSelector((store) => store.Auth);
   let {Todos} = useSelector((store) => store.Todo);
 
-  let ProritySortedTodos = Todos?.sort((a, b) => {
-    return a.Priority - b.Priority;
-  });
+  // let ProritySortedTodos = Todos && Todo?.sort((a, b) => {
+  //   return a.Priority - b.Priority;
+  // });
 
   let showmytodos = () => {
     dispatch(GetallMyTodos(email));
