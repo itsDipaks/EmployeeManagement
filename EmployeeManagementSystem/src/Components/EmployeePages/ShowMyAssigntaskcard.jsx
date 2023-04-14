@@ -11,7 +11,8 @@ const ShowMyAssigntaskcard = ({
   colorstatus,
   onclickstatus,
   iconcolor,
-  showtaskdata 
+  showtaskdata ,
+  index
 }) => {
   let {AssignEmployee, DueDate, Status, Task, created_at, updated_at, _id} =
     data ? data : "";
@@ -34,9 +35,9 @@ const ShowMyAssigntaskcard = ({
         alignItems={"center"}
         bg={colorstatus}
       >
-        <Box border={"1px"} w={"10%"} p={1} rounded={"full"}>
-          <BsLightning style={{width: "100%"}} />
-          <Text></Text>
+        <Box ml={4}>
+          {/* <BsLightning style={{width: "100%"}} /> */}
+          <Text fontWeight={"bold"} color={"black"}>{index+1}</Text>
         </Box>
 
         <Box width={"75%"} textAlign={"center"}>

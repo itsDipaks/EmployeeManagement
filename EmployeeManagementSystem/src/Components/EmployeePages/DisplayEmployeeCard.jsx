@@ -26,7 +26,7 @@ console.log(filtereddta)
     <Grid width={"80%"} m={"auto"}  templateColumns='repeat(4, 1fr)' gap={6}>
     {/* <Flex width={"70%"} m={"auto"} gap={4}  flexWrap={"wrap"} justifyContent={"space-between"}> */}
  {   
-  filtereddta?.map((el)=> <Box w={"100%"} rounded={"10%"} bg={"primaryblue.20"} boxShadow='xl' m={"auto"}  p={6} pl={8}>
+  filtereddta?.map((el)=> <Box w={"100%"} rounded={"10%"}   bg={"gray.800"} boxShadow='xl' m={"auto"}  p={6} pl={8}>
       <Stack>
         <Avatar
           name="Profile Image"
@@ -36,7 +36,7 @@ console.log(filtereddta)
           <AvatarBadge boxSize="1em" bg="green.500" />
         </Avatar>
         <Box textAlign={"start"}>
-          <Text fontSize={"lg"} color={"black"}>{el.firstname}  {el.lastname}</Text>
+          <Text fontSize={"lg"} color={"white"}>{el.firstname}  {el.lastname}</Text>
           <Text display={"flex"} gap={1} fontSize={"xs"} color={"gray.500"}>
             {" "}
              <Text>{el.position}</Text>
@@ -45,11 +45,11 @@ console.log(filtereddta)
 
         <Box>
           <HStack fontSize={"xs"} gap={2} color={"gray.500"}>
-            <PhoneIcon color={"primaryblue.100"} />
+            <PhoneIcon color={"blue.400"} />
             <Text>+918600405446</Text>
           </HStack>
           <HStack fontSize={"xs"} gap={2} color={"gray.500"}>
-            <EmailIcon color={"primaryblue.100"} />
+            <EmailIcon color={"blue.400"} />
             <Text>{el.email}</Text>
           </HStack>
         </Box>
