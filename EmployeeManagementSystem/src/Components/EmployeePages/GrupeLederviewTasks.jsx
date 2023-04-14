@@ -36,10 +36,9 @@ const GrupeLederviewTasks = () => {
 
   return (
     <div>
-      <Box w={"10vw"}>
+      <Box w={"30vw"} p={4}>
       <ChartSetup data={[pendingTasks.length,CompletedTasks.length] }/>
         </Box> 
-<Text>Task Ration :  {pendingTasks.length} / {tasks.length}</Text>
 <Flex w={"85%"} m={"auto"} gap={4} justifyContent={"space-between"} minH={"20vh"}>
 
 

@@ -1,4 +1,4 @@
-import {Box, Button, useColorModeValue} from "@chakra-ui/react";
+import {Box, Button, Progress, useColorModeValue} from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GetAssignproject} from "../../Redux/Project/Project.action";
@@ -7,6 +7,7 @@ import DisplayEmployeeProject from "../../Components/EmployeePages/DisplayEmploy
 import DisplayProjectTask from "../../Components/EmployeePages/ProjectTask";
 import GrupeLederviewTasks from "../../Components/EmployeePages/GrupeLederviewTasks";
 import AddProjectTask from "../../Components/EmployeePages/AddProjectTask";
+import ProjectProgress from "../../Components/EmployeePages/ProjectProgress";
 const ProjectDashboard = () => {
 
   let dispatch = useDispatch();
@@ -16,11 +17,17 @@ const ProjectDashboard = () => {
   useEffect(() => {
     dispatch(GetAssignproject(email));
   }, []);
+  let {tasks} = useSelector((store) => store.Tasks);
 
+  let CompletedTasks = tasks?.filter((el) => {
+    return el.Status == "Completed";
+  });
   
 
   return (
     <>
+    
+    <DisplayProjectTask />
       {ProjectsData.length > 0 ? (
         <Box display={"flex"} p={4}>
           <Box width={"70%"}>
@@ -36,14 +43,17 @@ const ProjectDashboard = () => {
 
           <Box width={"30%"}>
 
+       
+<ProjectProgress totaltask={tasks.length} completedtask={CompletedTasks.length}/>
 
-            <DisplayProjectTask />
+
+          
           </Box>
+          
         </Box>
       ) : (
         ""
       )}
-
 
 {email==ProjectsData[0]?.AssignedProject?.groupleader? <Box p={4}><AddProjectTask/></Box>:""}
 
