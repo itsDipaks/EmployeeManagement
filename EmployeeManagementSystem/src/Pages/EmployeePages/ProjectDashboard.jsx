@@ -21,7 +21,7 @@ const ProjectDashboard = () => {
 
   return (
     <>
-      <Box display={"flex"} p={4}>
+      { ProjectsData.length>0 ? <Box display={"flex"} p={4}>
         <Box width={"70%"}>
           <DisplayEmployeeProject projectdata={projectval ? projectval : ""} />
           {projectval ? (
@@ -34,7 +34,7 @@ const ProjectDashboard = () => {
         <Box width={"30%"}>
           <DisplayProjectTask />
         </Box>
-      </Box>
+      </Box>:""}
     </>
   );
 };

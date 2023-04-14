@@ -13,27 +13,28 @@ const Todo = () => {
   let {email} = useSelector((store) => store.Auth);
   let {Todos} = useSelector((store) => store.Todo);
 
-  // let ProritySortedTodos = Todos && Todo?.sort((a, b) => {
-  //   return a.Priority - b.Priority;
-  // });
+  let ProritySortedTodos = Todos && Todos?.sort((a, b) => {
+    return a?.Priority - b?.Priority;
+  });
 
   let showmytodos = () => {
     dispatch(GetallMyTodos(email));
   };
 
+  
   let IncompleteTodo =
-    Todos &&
-    Todos?.filter((el) => {
-      return el.Status == "Incomplete";
+  ProritySortedTodos &&
+  ProritySortedTodos?.filter((el) => {
+      return el?.Status == "Incomplete";
     });
   let ProgressTodo =
-    Todos &&
-    Todos?.filter((el) => {
-      return el.Status == "InProgress";
+  ProritySortedTodos &&
+  ProritySortedTodos?.filter((el) => {
+      return el?.Status == "InProgress";
     });
   let CompletedTodod =
-    Todos &&
-    Todos?.filter((el) => {
+  ProritySortedTodos &&
+  ProritySortedTodos?.filter((el) => {
       return el.Status == "Completed";
     });
 
@@ -83,12 +84,15 @@ const Todo = () => {
             Todos={ProgressTodo && ProgressTodo}
             tabletitle={"Progress"}
             showmytodos={showmytodos}
+
+            
           />
           <TodoColumn
             id={"3"}
             Todos={CompletedTodod && CompletedTodod}
             tabletitle={"Completed"}
             showmytodos={showmytodos}
+
           />
         </DragDropContext>
       </Grid>

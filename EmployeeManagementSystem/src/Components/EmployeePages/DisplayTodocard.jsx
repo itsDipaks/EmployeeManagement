@@ -1,6 +1,7 @@
 import React from "react";
 import {Badge, Box, Flex, Spacer, Tag, Text, VStack} from "@chakra-ui/react";
-import {TiDelete} from "react-icons/ti";
+import {TiDelete, TiTick} from "react-icons/ti";
+import {MdPending} from "react-icons/md";
 import {Draggable} from "react-beautiful-dnd";
 import {useDispatch} from "react-redux";
 import {DeleteTodo} from "../../Redux/Todo/Todo.action";
@@ -14,6 +15,7 @@ const DisplayTodocard = ({
   index,
   email,
   showmytodos,
+  tabletitle
 }) => {
   let todoid = el?._id;
 
@@ -34,18 +36,21 @@ const DisplayTodocard = ({
             m={4}
             p={4}
             rounded={"10px"}
-            data-aos="fade-right"
+            // data-aos="fade-right"
             bg={"black"}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
+          { tabletitle=="Completed"? <TiTick style={{color:"green",width:"1.5rem", height:"1.5rem"}}/>:""}
+          { tabletitle=="Progress"? <MdPending style={{color:"white"}}/>:""}
             <Flex
               w={"100%"}
               justifyContent={"space-between"}
               alignItems={"center"}
             >
+              
               <Text fontSize={"1.2rem"} color={"white"} fontWeight={"semibold"}>
                 {Todo}
               </Text>
@@ -87,7 +92,7 @@ const DisplayTodocard = ({
                   pl={2}
                   pr={2}
                 >
-                  {Priority == "1" ? "High" : Priority == "2" ? "Mid" : "Low"}
+                  {Priority == "1" ? "H" : Priority == "2" ? "M" : "L"}
                 </Badge>
               </Box>
             </Flex>

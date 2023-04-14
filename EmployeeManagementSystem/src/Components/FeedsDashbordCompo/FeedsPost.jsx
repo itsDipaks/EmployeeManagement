@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Divider,
   Grid,
   Image,
   Input,
@@ -73,11 +74,10 @@ const FeedsPost = () => {
           data-aos="fade-right"
           m="auto"
           w={"75%"}
-          bg="#E6E6FA"
+          bg="gray.900"
           mt="4"
           p={4}
           borderRadius={24}
-          boxShadow="xl"
         >
           {/* ==========Intro============ */}
           <Box
@@ -120,7 +120,7 @@ const FeedsPost = () => {
                     </span>
                   )}
                 </Text>
-                <Text color={"grey"} fontSize={13} textAlign={"left"}>
+                <Text color={"white"} fontSize={13} textAlign={"left"}>
                   {/* {day} {time} */}
                   {el?.createdAt}
                 </Text>
@@ -130,7 +130,7 @@ const FeedsPost = () => {
             {/* <Button>Delete</Button> */}
             {isadmin ? (
               <CiSquareRemove
-                className={styles.removefeedbtn}
+                // className={styles.removefeedbtn}
                 onClick={() => deletefeed(el)}
               />
             ) : (
@@ -139,8 +139,14 @@ const FeedsPost = () => {
             {/* <CiCircleRemove w={"44rem"} p="1rem" cursor={"pointer"} border={"1px"} h={"17rem"}/> */}
           </Box>
 
-
-          <Text w={"90%"} m="auto" mt="4" fontSize={20} textAlign={"start"}>
+          <Text
+            w={"90%"}
+            m="auto"
+            mt="4"
+            fontSize={20}
+            color={"white"}
+            textAlign={"start"}
+          >
             {el.Massage}
           </Text>
 
@@ -175,16 +181,15 @@ const FeedsPost = () => {
             >
               Comment
             </Text>
-            <Text color="grey">1</Text>
+            <Text color="grey">0</Text>
           </Box>
 
           {/* ================ Show Comments=================== */}
           {el?.comments?.map((val) => (
             <Box
-              borderBottom={"1px"}
+              // border={"1px"}
               borderColor={"gray.200"}
-              w={"50%"}
-              p={1}
+              w={"40%"}
               ml={"14"}
             >
               <Grid display={"flex"} alignItems="center" gap={4}>
@@ -213,18 +218,25 @@ const FeedsPost = () => {
                   >
                     {val?.CommentAuthor}
                   </Text>
-                  <Text color={"black"} fontSize={16} textAlign={"left"} mt={1}>
-                    {/* {day} {time} */}
+                  <Text
+                    color={"whiteAlpha.700"}
+                    fontSize={13}
+                    textAlign={"left"}
+                    mt={1}
+                  >
                     {val?.CommentMasg}
                   </Text>
                 </Box>
 
-                <SimpleGrid bg={"#ffffff"}>
+                <SimpleGrid>
                   {email === val?.AutherEmail ? (
                     <CiCircleRemove
-                      style={{width: "1.4rem", height: "1.4rem"}}
+                      style={{
+                        width: "1.4rem",
+                        height: "1.4rem",
+                        color: "white",
+                      }}
                       cursor={"pointer"}
-                      color="red"
                     />
                   ) : (
                     ""
@@ -232,13 +244,13 @@ const FeedsPost = () => {
                 </SimpleGrid>
               </Grid>
 
-              <Box
+              {/* <Box
                 display={"flex"}
                 justifyContent={"space-between"}
                 textAlign={"start"}
                 ml="20"
                 mt={2}
-                w={"10%"}
+                w={"15%"}
               >
                 {commentlike ? (
                   <BiLike className={styles.unchecked} />
@@ -250,18 +262,20 @@ const FeedsPost = () => {
                 ) : (
                   <AiTwotoneDislike className={styles.checked} />
                 )}
-              </Box>
+              </Box> */}
+              <Divider w="80%" p={"1"} ml="16" />
             </Box>
           ))}
 
           {/* ==========Commwnt================== */}
           {showcommentbox ? (
-            <Box bg={"#E6E6FA"} data-aos="fade-down">
+            <Box>
               {!isadmin ? (
                 <Grid
                   ml="6"
                   display={"flex"}
                   alignItems="center"
+                  bg="black"
                   justifyContent={"space-around"}
                 >
                   <Box
@@ -288,6 +302,7 @@ const FeedsPost = () => {
                     pt="3"
                     pb="5"
                     borderRadius="10"
+                    bg="black"
                   >
                     <Input
                       textAlign={"left"}
@@ -296,7 +311,7 @@ const FeedsPost = () => {
                       mt="0"
                       w={"90%"}
                       fontSize={"17"}
-                      color="#4d545b"
+                      color="white"
                       placeholder="Add Comment ..."
                       borderColor={"grey"}
                       borderRadius="30"

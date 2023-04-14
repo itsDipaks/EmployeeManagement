@@ -5,19 +5,18 @@
 }
 
 .checked{
-
+color: rgb(16, 16, 101);
+cursor: pointer;
 
 }
 .unchecked{
-
-
+color: rgb(223, 218, 218);
+cursor: pointer;
 }
 
 .removefeedbtn{
-width: 2rem;
-height: 2rem;
-color: rgb(117, 15, 15);
 cursor: pointer;
+
 }
 
 
