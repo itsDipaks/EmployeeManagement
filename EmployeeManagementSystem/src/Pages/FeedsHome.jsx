@@ -4,6 +4,7 @@ import AdminMassage from '../Components/FeedsDashbordCompo/AdminMassage'
 import FeedsPost from '../Components/FeedsDashbordCompo/FeedsPost'
 import styles from "./EmployeePages/Styles/Feed.module.css"
 import { Box } from '@chakra-ui/react';
+import ChartSetup from '../Components/Charts/ChartSetup';
 const FeedsHome = () => {
 
 
@@ -16,7 +17,9 @@ const FeedsHome = () => {
         {isadmin && token ?   <AdminMassage />:""}
         {/* =========Feeds============ */}
     <FeedsPost/>
+    <ChartSetup/>
     </Box>
+   
     </>
   )
 }

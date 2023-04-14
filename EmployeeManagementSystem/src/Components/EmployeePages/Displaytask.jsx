@@ -37,7 +37,7 @@ const Displaytask = () => {
   let adminshowtasks = tasks?.filter((el) => {
     return el.AssignEmployee != email;
   });
-  // ====For All Employee Except Groupe Leader======
+  // ====For All Employee ======
   let MyAssignPpendingTasks = tasks?.filter((el) => {
     return el.AssignEmployee == email && el.Status == "Incomplete";
   });
@@ -61,22 +61,23 @@ const Displaytask = () => {
             My Assigned Task{" "}
           </DrawerHeader>
           <DrawerBody>
-            {ProjectsData[0]?.AssignedProject?.groupleader == email ? (
+  
+            {/* {ProjectsData[0]?.AssignedProject?.groupleader == email ? (
               <Box>
                 <Text m={4} fontSize={"md"}>
                   Project Tasks
                 </Text>
                 <VStack gap={2}>
-                  {adminshowtasks?.map((el) => (
+                  {MyAssignPpendingTasks?.map((el) => (
                     <ShowProjectTask data={el} showtaskdata={showtaskdata} />
                   ))}
                 </VStack>
               </Box>
             ) : (
               ""
-            )}
+            )} */}
 
-            {ProjectsData[0]?.AssignedProject?.groupleader != email ? (
+            {ProjectsData[0]?.AssignedProject? (
               <Box>
                 <Box minHeight={"20vh"}>
                   <Text

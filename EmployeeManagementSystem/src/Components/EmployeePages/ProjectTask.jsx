@@ -11,9 +11,6 @@ const ProjectTask = () => {
   return (
     <>
         <Box width={"100%"}>
-          
-{email==ProjectsData[0]?.AssignedProject?.groupleader? <AddProjectTask/>:""}
-
 <Displaytask/>
         </Box>
 
