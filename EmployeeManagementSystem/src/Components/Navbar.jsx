@@ -1,4 +1,6 @@
 import {
+  Avatar,
+  AvatarBadge,
   Box,
   Button,
   CircularProgress,
@@ -21,20 +23,14 @@ const Navbar = ({setispanel}) => {
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
-  let {token , loading, error,isadmin} = useSelector((store) => store.Auth);
+  let {token, loading, error, isadmin} = useSelector((store) => store.Auth);
   let logoutuser = () => {
     dispatch(userLogout());
     navigate("/");
   };
   return (
     <>
-      <Box w="100%" 
-boxShadow='lg'
-p={2}
-bg="Black"
-
-top="0"
-      >
+      <Box w="100%" boxShadow="lg" p={2} bg="Black" top="0">
         <Flex
           p={"0.51rem"}
           justifyContent="space-between"
@@ -47,24 +43,35 @@ top="0"
             <Text>@DevelopWithDipak </Text>
           </Link>
 
-          <Flex w="40%" gap={4} justifyContent="space-evenly" alignItems={"center"}>
-          {token?  <Link to={"/feedDashbord"}>
-              <Button>Feeds</Button>
-            </Link>:""}
+          <Flex
+            w="40%"
+            gap={4}
+            justifyContent="space-evenly"
+            alignItems={"center"}
+          >
+            {token ? (
+              <Link to={"/feedDashbord"}>
+                <Text color={"white"}>Feeds</Text>
+              </Link>
+            ) : (
+              ""
+            )}
 
             {token ? (
               isadmin ? (
                 <Link to={"/Admindashboard"}>
                   {" "}
-                  <Button onClick={() => setispanel(true)}>Admin Panel</Button>
+                  <Text color={"white"} onClick={() => setispanel(true)}>
+                    Admin Panel
+                  </Text>
                 </Link>
               ) : (
                 <Flex gap={4} w="80%" justifyContent="space-evenly">
                   <Link to={"/projetdashboard"}>
-                    <Button>Project Dashboard</Button>
+                    <Text color={"white"}>Project Dashboard</Text>
                   </Link>
                   <Link to={"/todo"}>
-                    <Button>Manage Todo</Button>
+                    <Text color={"white"}>Manage Todo</Text>
                   </Link>
                 </Flex>
               )
@@ -73,7 +80,7 @@ top="0"
             )}
           </Flex>
           <Flex w="20%" justifyContent="space-evenly" alignItems={"center"}>
-            {token && !isadmin? (
+            {token && !isadmin ? (
               <Tooltip
                 hasArrow
                 label=" View Profile"
@@ -81,15 +88,13 @@ top="0"
                 color="black"
               >
                 <Link to={"/eminfo"}>
-                  <Image
-                    cursor={"pointer"}
-                    w="2.5rem"
-                    h="2.5rem"
-                    border={"2px solid white"}
-                    borderRadius={"full"}
-                    src="https://media.istockphoto.com/id/1309084016/photo/a-happy-farmer-talking-on-phone-smiling.jpg?b=1&s=170667a&w=0&k=20&c=pt6DqXyi6JKhaqt8ezKpUbzy8aI9BB-Ef8FwITvf2-8="
-                    alt="profile image"
-                  />
+                  <Avatar src='https://bit.ly/ryan-florence'>
+                    <AvatarBadge
+                    src='https://bit.ly/ryan-florence'
+                      boxSize="1em"
+                      bg="green.500"
+                    />
+                  </Avatar>
                 </Link>
               </Tooltip>
             ) : (
