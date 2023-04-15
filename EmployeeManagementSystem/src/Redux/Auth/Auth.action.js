@@ -26,6 +26,30 @@ export let addEmployee = (formdata) => async (dispatch) => {
     // });
   }
 };
+
+
+
+export let UpDateProfile = (email, updateData) => async (dispatch) => {
+  dispatch({type: AUTH_GET_LOADING});
+  console.log(updateData)
+  try {
+    let EmData = await axios.patch(`${Backendurl}/auth/updateProfile`, updateData, {
+      headers: {
+        email: email,
+      },
+    });
+    dispatch({type: AUTH_GET_SUCESS});
+    Swal.fire("Sucess!", "Password Changed !! ", "success");
+  } catch (err) {
+    Swal.fire({
+      icon: "error",
+      title: "Faild !! ",
+      text: "Entered Old Password is Wrong !",
+    });
+    dispatch({type: AUTH_GET_ERROR});
+  }
+};
+
 // ---------Login To Web----------
 export let userLogin = (loginformdata) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
@@ -88,3 +112,4 @@ export let ChangedPassword = (token, formdata) => async (dispatch) => {
     dispatch({type: AUTH_GET_ERROR});
   }
 };
+

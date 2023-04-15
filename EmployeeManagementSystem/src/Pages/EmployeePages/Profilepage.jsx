@@ -29,9 +29,8 @@ import Swal from "sweetalert2";
 import {getlocalsdata} from "../../assets/Localstorage";
 import AddressDetails from "../../Components/EmployeePages/AddressDetails";
 import InfoField from "../../Components/EmployeePages/InfoField";
-import {ChangedPassword} from "../../Redux/Auth/Auth.action";
+import {ChangedPassword, UpDateProfile} from "../../Redux/Auth/Auth.action";
 import {Employeeprofile} from "../../Redux/Employee/Employee.action";
-
 const Profilepage = () => {
   let [formdata, setformdata] = useState({});
   let [updateform, setupdateform] = useState({});
@@ -49,7 +48,7 @@ const Profilepage = () => {
   let [streataddress, setstreetaddress] = useState("");
 
   let {employeeData, loading} = useSelector((state) => state.Storedata);
-  let {token} = useSelector((store) => store.Auth);
+  let {token,email} = useSelector((store) => store.Auth);
 
   let Handeldinput = (e) => {
     e.preventDefault();
@@ -74,10 +73,6 @@ console.log(Country)
   useEffect(() => {
     dispatch(Employeeprofile(token));
   }, []);
-console.log(Country)
-console.log(state)
-console.log(City)
-console.log(streataddress)
   let udateprofile = () => {
     if (
       Country &&
@@ -98,11 +93,14 @@ console.log(streataddress)
         Linkdin:linkdin,
         StreetAddress:streataddress
       };
-      alert(" fileds")
-      console.log(updateData)
+      dispatch(UpDateProfile(email,updateData))
     }
     else{
-      alert("please fill all fileds")
+      Swal.fire({
+        icon: "error",
+        title: "Faild !! ",
+        text: "Entered Old Password is Wrong !",
+      });
     }
   };
   return (

@@ -52,7 +52,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
           });
           await newEmployee.save();
 
-          res.status(200).send({msg: "Signup Sucessfully",data:newEmployee});
+          res.status(200).send({msg: "Signup Sucessfully", data: newEmployee});
         } catch (err) {
           res
             .status(404)
@@ -84,7 +84,10 @@ AuthRouter.post("/login", async (req, res) => {
             res.status(200).json({
               token: token,
               isAdmin: isadmincheck,
-              userinfo:{name:Checkuser.firstname + " " +Checkuser.lastname,email:Checkuser.email},
+              userinfo: {
+                name: Checkuser.firstname + " " + Checkuser.lastname,
+                email: Checkuser.email,
+              },
               msg: "Login sucsess",
             });
           } else {
@@ -102,7 +105,6 @@ AuthRouter.post("/login", async (req, res) => {
     res.json({msg: "SomeThing Wents Wrong please Try Again"});
   }
 });
-
 
 // ----------------------Edit Employee Password ----------------------------
 
@@ -136,6 +138,23 @@ AuthRouter.patch("/editpass", async (req, res) => {
           }
         });
       }
+    });
+  } catch (err) {
+    res.status(400).send({msg: "Something Wents Wrong"});
+  }
+});
+
+AuthRouter.patch("/updateProfile", async (req, res) => {
+  const {updateData} = req.body;
+  console.log(updateData)
+  let {email} = req.headers;
+  try {
+    let EmployeeInfo = await UserModel.findOneAndUpdate(
+      {email: email},
+      {updateData}
+    );
+    res.status(200).send({
+      msg: "Profile Updated",
     });
   } catch (err) {
     res.status(400).send({msg: "Something Wents Wrong"});
