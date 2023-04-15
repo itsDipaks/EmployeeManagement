@@ -1,40 +1,27 @@
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, FormControl, FormLabel, HStack, Input, Select, VStack, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddTask, GetallTask } from '../../Redux/TaskProject/TaskProject.action'
-import { useEffect } from 'react'
+import { AddTask } from '../../Redux/TaskProject/TaskProject.action'
 
-const AddProjectTask = () => {
+const AddProjectTask = ({getProjectTasks,projectid}) => {
 
     const  [Newtask,setNewtask]= useState({})
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    let {token, email} = useSelector((store) => store.Auth);
+    let { email} = useSelector((store) => store.Auth);
   let {ProjectsData} = useSelector((store) => store.ProjectsData);
 let dispatch=useDispatch()
-//   let filtereddta=ProjectsData[0]?.AssignedProject?.AssignedTeam.filter((val)=>{
-//     return val.email!==email
-//  })
-
-useEffect(() => {
-  showtaskdata()
-}, []);
-
-let showtaskdata=()=>{
-  dispatch(GetallTask());
-}
-
 
 let Handeldinputvalue=(e)=>{
     let {name,value}=e.target
-    setNewtask({...Newtask,[name]:value})
+    setNewtask({...Newtask,[name]:value,Projectid:projectid})
 }
 let handeldTaskAdd=(e)=>{
     e.preventDefault();
     dispatch(AddTask(Newtask))
     onClose()
     setTimeout(()=>{
-      showtaskdata()
+      getProjectTasks()
     },2000)
 }
   return (

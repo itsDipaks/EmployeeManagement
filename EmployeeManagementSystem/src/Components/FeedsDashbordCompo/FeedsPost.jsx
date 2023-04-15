@@ -38,7 +38,6 @@ const FeedsPost = () => {
 
   let {token, error, isadmin, name, email} = useSelector((store) => store.Auth);
 
-  console.log(FeedsData);
 
   useEffect(() => {
     showfeeds();

@@ -124,7 +124,6 @@ AuthRouter.patch("/editpass", async (req, res) => {
                   {_id: user_id},
                   {password: hashedpassword}
                 );
-                console.log(EmployeeInfo);
                 res.status(200).send({
                   msg: "Password Changed Sucess",
                 });

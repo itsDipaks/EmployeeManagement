@@ -17,7 +17,6 @@ const FeedsHome = () => {
         {isadmin && token ?   <AdminMassage />:""}
         {/* =========Feeds============ */}
     <FeedsPost/>
-    <ChartSetup/>
     </Box>
    
     </>

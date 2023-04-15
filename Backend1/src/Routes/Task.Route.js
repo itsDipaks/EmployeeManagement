@@ -5,12 +5,13 @@ let TaskRouter = Router();
 
 TaskRouter.post("/addtask", async (req, res) => {
   let data = req.body;
-  let {Task, AssignEmployee, DueDate} = data.Newtask;
+  let {Task, AssignEmployee, DueDate,Projectid} = data.Newtask;
   try {
     let AddTask = new TaskModel({
       Task,
       AssignEmployee,
       DueDate,
+      Projectid
     });
     await AddTask.save();
     res.status(200).send({msg: "Task Added Sucessfully"});
@@ -21,9 +22,11 @@ TaskRouter.post("/addtask", async (req, res) => {
   }
 });
 
-TaskRouter.get("/alltask", async (req, res) => {
+TaskRouter.get("/alltask/:id", async (req, res) => {
+  let {id} = req.params;
+  console.log(id)
   try {
-    let Alltasks = await TaskModel.find();
+    let Alltasks = await TaskModel.find({Projectid:id});
     res.status(200).send({msg: "All Tasks Data", Alltasks: Alltasks});
   } catch (err) {
     res.status(204).send({msg: "No Task Found ", err: err});

@@ -62,7 +62,7 @@ const AddressDetails = ({
       .then((response) => {
         return response.json();
       })
-      .then((result) => setcitydata(result));
+      .then((result) => setcitydata(result)     );
   };
 
   let counrtyfunc = (e) => {
@@ -91,11 +91,10 @@ const AddressDetails = ({
             <FormLabel> Country </FormLabel>
             <Select
               placeholder="Select Country"
-              name="ProjectType"
               onChange={counrtyfunc}
             >
               {countrydata?.map((el) => (
-                <option value={el.iso2}>{el.name} </option>
+                <option value={el.iso2}  >{el.name} </option>
               ))}
             </Select>
           </FormControl>
@@ -103,7 +102,6 @@ const AddressDetails = ({
             <FormLabel> State </FormLabel>
             <Select
               placeholder="Select State"
-              name="ProjectType"
               onChange={statefunc}
             >
               {statesdata?.map((el) => (
@@ -115,8 +113,7 @@ const AddressDetails = ({
             <FormLabel> City</FormLabel>
             <Select
               placeholder="Select City"
-              name="ProjectType"
-              // onChange={Handeldinputvalue}
+              onChange={cityfunc}
             >
               {citydata?.map((el) => (
                 <option value={el.iso2}>{el.name} </option>
@@ -129,9 +126,7 @@ const AddressDetails = ({
             <FormLabel>Streat Name </FormLabel>
             <Input
               placeholder="Enter Streat/Area/Location"
-              name="conformpassword"
               onChange={(e)=>setstreetaddress(e.target.value)}
-              type="number"
               colorScheme={"red"}
             />
           </FormControl>

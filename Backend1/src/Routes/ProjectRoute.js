@@ -26,7 +26,6 @@ ProjectRouter.get("/assignproject",async (req, res) => {
   let {email}=req.headers;
   try {
       let AssignedProject = await ProjectModel.findOne({AssignedTeam:{$elemMatch:{email:email}}})
-  console.log(AssignedProject)
   if(AssignedProject!=null){
     res
     .status(200)

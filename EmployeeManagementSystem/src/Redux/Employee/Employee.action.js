@@ -30,9 +30,9 @@ export let SingleEmployee = (id) => async (dispatch) => {
     });
     let arr = [];
 
-    console.log(EmData.data);
+    // console.log(EmData.data);
     arr.push(EmData.data);
-    console.log(arr);
+    // console.log(arr);
     dispatch({type: EMPLOYEE_GET_SUCESS, payload: arr});
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});
@@ -51,9 +51,9 @@ export let Employeeprofile = (token) => async (dispatch) => {
       },
     });
     let arr = [];
-    console.log(EmData.data);
+    // console.log(EmData.data);
     arr.push(EmData.data);
-    console.log(arr);
+    // console.log(arr);
     dispatch({type: EMPLOYEE_GET_SUCESS, payload: arr});
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});

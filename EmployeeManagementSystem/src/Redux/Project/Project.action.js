@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 export let AddNewProject = (Projectdata) => async (dispatch) => {
   dispatch({type: PROJECT_GET_LOADING});
-  console.log(Projectdata);
+  // console.log(Projectdata);
   try {
     let Projectadded = await axios.post(
       `${Backendurl}/project/Addproject`,

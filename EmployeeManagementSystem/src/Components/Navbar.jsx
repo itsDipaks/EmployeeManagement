@@ -31,7 +31,7 @@ const Navbar = ({setispanel}) => {
       <Box w="100%" 
 boxShadow='lg'
 p={2}
-bg="primaryblue.50"
+bg="Black"
 
 top="0"
       >

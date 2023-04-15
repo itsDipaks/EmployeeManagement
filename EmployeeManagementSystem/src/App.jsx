@@ -9,6 +9,7 @@ import {Box} from "@chakra-ui/react";
 function App() {
   let [ispanel, setispanel] = useState(false);
   AOS.init();
+  
   return (
     <div className="App">
       {ispanel ? (

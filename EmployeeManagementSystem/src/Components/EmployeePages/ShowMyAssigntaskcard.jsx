@@ -1,9 +1,7 @@
 import {Box, Button, Flex, Text, Tooltip, VStack} from "@chakra-ui/react";
-import React, {useState} from "react";
-import {BsLightning} from "react-icons/bs";
-import {MdDeleteForever} from "react-icons/md";
+import React from "react";
 import {TiTickOutline} from "react-icons/ti";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {ChangedTaskStatus} from "../../Redux/TaskProject/TaskProject.action";
 import {TiTick} from "react-icons/ti";
 const ShowMyAssigntaskcard = ({
@@ -11,18 +9,19 @@ const ShowMyAssigntaskcard = ({
   colorstatus,
   onclickstatus,
   iconcolor,
-  showtaskdata ,
+  getProjectTasks ,
   index
 }) => {
   let {AssignEmployee, DueDate, Status, Task, created_at, updated_at, _id} =
     data ? data : "";
-  let {token, email} = useSelector((store) => store.Auth);
-  let {ProjectsData} = useSelector((store) => store.ProjectsData);
   let dispatch = useDispatch();
 
   let ChangedToCompletes = () => {
     dispatch(ChangedTaskStatus(_id, onclickstatus));
-    showtaskdata()
+    setTimeout(()=>{
+      getProjectTasks()
+    },1000)
+    getProjectTasks()
   };
   return (
     <>
@@ -36,7 +35,6 @@ const ShowMyAssigntaskcard = ({
         bg={colorstatus}
       >
         <Box ml={4}>
-          {/* <BsLightning style={{width: "100%"}} /> */}
           <Text fontWeight={"bold"} color={"black"}>{index+1}</Text>
         </Box>
 

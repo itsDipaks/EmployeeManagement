@@ -22,19 +22,19 @@ export let AddTask = (Newtask) => async (dispatch) => {
 
 
 
-export let GetallTask = () => async (dispatch) => {
+export let GetallTask = (projectid) => async (dispatch) => {
   dispatch({type: TASK_GET_LOADING});
 
   try {
-    let AllTask = await axios.get(`${Backendurl}/task/alltask`);
- console.log(AllTask)
+    let AllTask = await axios.get(`${Backendurl}/task/alltask/${projectid}`);
+//  console.log(AllTask)
     dispatch({
       type: TASK_GET_SUCESS,
       payload: AllTask.data
       ,
     });
 
-    console.log(AllTask);
+    // console.log(AllTask);
   } catch (err) {
     dispatch({type: TASK_GET_ERROR});
   }

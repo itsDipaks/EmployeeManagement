@@ -18,32 +18,15 @@ import {
 } from "@chakra-ui/react";
 import ShowMyAssigntaskcard from "./ShowMyAssigntaskcard";
 
-const Displaytask = () => {
-  let dispatch = useDispatch();
-  useEffect(() => {
-    showtaskdata();
-  }, []);
+const Displaytask = ({AuthEmail,projectval,tasks,getProjectTasks}) => {
 
-  let showtaskdata = () => {
-    dispatch(GetallTask());
-  };
-  let {token, email} = useSelector((store) => store.Auth);
-  let {ProjectsData} = useSelector((store) => store.ProjectsData);
-
-  let {tasks} = useSelector((store) => store.Tasks);
-
-  console.log(tasks);
-  // =========For Admin MAnges Task=======
-  let adminshowtasks = tasks?.filter((el) => {
-    return el.AssignEmployee != email;
-  });
   // ====For All Employee ======
   let MyAssignPpendingTasks = tasks?.filter((el) => {
-    return el.AssignEmployee == email && el.Status == "Incomplete";
+    return el.AssignEmployee == AuthEmail && el.Status == "Incomplete";
   });
 
   let MyAssignCompletedTasks = tasks?.filter((el) => {
-    return el.AssignEmployee == email && el.Status == "Completed";
+    return el.AssignEmployee == AuthEmail && el.Status == "Completed";
   });
 
   const {isOpen, onOpen, onClose} = useDisclosure();
@@ -77,7 +60,7 @@ const Displaytask = () => {
               ""
             )} */}
 
-            {ProjectsData[0]?.AssignedProject? (
+            {projectval? (
               <Box>
                 <Box minHeight={"20vh"}>
                   <Text
@@ -94,7 +77,7 @@ const Displaytask = () => {
                       <ShowMyAssigntaskcard
                         data={el}
                         colorstatus={"red.100"}
-                        showtaskdata={showtaskdata}
+                        getProjectTasks={getProjectTasks}
                         onclickstatus={"Completed"}
                         iconcolor={"red"}
                         index={index}
@@ -122,7 +105,7 @@ const Displaytask = () => {
                       <ShowMyAssigntaskcard
                         data={el}
                         colorstatus={"green.100"}
-                        showtaskdata={showtaskdata}
+                        getProjectTasks={getProjectTasks}
                         onclickstatus={"Incomplete"}
                         iconcolor={"green"}
                         index={index}

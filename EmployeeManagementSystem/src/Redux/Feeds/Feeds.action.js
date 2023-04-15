@@ -34,7 +34,7 @@ export let GetAllFeeds = () => async (dispatch) => {
 
     });
 
-    console.log(AllFeeds)
+    // console.log(AllFeeds)
   } catch (err) {
     dispatch({type: FEEDS_GET_ERROR});
   }

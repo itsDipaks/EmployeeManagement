@@ -42,7 +42,7 @@ const Profilepage = () => {
   // -----Update Address States--------
   let [Country, Setcountry] = useState("IN");
   let [state, setstate] = useState("MH");
-  let [City, Setcity] = useState("");
+  let [City, Setcity] = useState("NA");
   let [mobileno, setmobileno] = useState(0);
   let [github, setgithub] = useState("");
   let [linkdin, setlinkdin] = useState("");
@@ -56,7 +56,7 @@ const Profilepage = () => {
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
-
+console.log(Country)
   let submitChangedPasswor = (e) => {
     e.preventDefault();
     let {newpassword, conformpassword} = formdata;
@@ -74,16 +74,19 @@ const Profilepage = () => {
   useEffect(() => {
     dispatch(Employeeprofile(token));
   }, []);
-
+console.log(Country)
+console.log(state)
+console.log(City)
+console.log(streataddress)
   let udateprofile = () => {
     if (
       Country &&
       state &&
       City &&
       mobileno &&
+      streataddress&&
       github &&
-      linkdin 
-      // streataddress
+      linkdin
     ) {
 
       let updateData = {
@@ -92,10 +95,10 @@ const Profilepage = () => {
         City: City,
         MobileNumber: mobileno,
         github: github,
-        linkdin: linkdin,
-        // streataddress: streataddress,
+        Linkdin:linkdin,
+        StreetAddress:streataddress
       };
-
+      alert(" fileds")
       console.log(updateData)
     }
     else{

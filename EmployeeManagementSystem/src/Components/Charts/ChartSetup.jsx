@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
-import { UserData } from './Data';
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
-const ChartSetup = ({data}) => {
+const ChartSetup = ({data,getProjectTasks}) => {
     const [userData, setUserData] = useState({
         labels:["Pending ","Completed "],
         datasets: [

@@ -15,7 +15,6 @@ import {
 import React from "react";
 
 const DisplayEmployeeProject = ({projectdata}) => {
-    console.log(projectdata)
   return (
     <div>
       <Card
