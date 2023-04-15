@@ -33,11 +33,7 @@ export let UpDateProfile = (email, updateData) => async (dispatch) => {
   dispatch({type: AUTH_GET_LOADING});
   console.log(updateData)
   try {
-    let EmData = await axios.patch(`${Backendurl}/auth/updateProfile`, updateData, {
-      headers: {
-        email: email,
-      },
-    });
+    let EmData = await axios.put(`${Backendurl}/auth/updateProfile`, {updateData,email});
     dispatch({type: AUTH_GET_SUCESS});
     Swal.fire("Sucess!", "Password Changed !! ", "success");
   } catch (err) {

@@ -144,10 +144,9 @@ AuthRouter.patch("/editpass", async (req, res) => {
   }
 });
 
-AuthRouter.patch("/updateProfile", async (req, res) => {
-  const {updateData} = req.body;
-  console.log(updateData)
-  let {email} = req.headers;
+AuthRouter.put("/updateProfile", async (req, res) => {
+  const {updateData,email} = req.body;
+ console.log(updateData)
   try {
     let EmployeeInfo = await UserModel.findOneAndUpdate(
       {email: email},
