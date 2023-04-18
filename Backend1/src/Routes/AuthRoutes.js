@@ -149,9 +149,11 @@ AuthRouter.put("/updateProfile", async (req, res) => {
  console.log(updateData)
   try {
     let EmployeeInfo = await UserModel.findOneAndUpdate(
-      {email: email},
-      {updateData}
+       email,
+      {updateData},
+      { new: true }
     );
+    console.log(EmployeeInfo)
     res.status(200).send({
       msg: "Profile Updated",
     });
