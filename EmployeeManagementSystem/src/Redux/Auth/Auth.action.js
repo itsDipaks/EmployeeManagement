@@ -19,11 +19,6 @@ export let addEmployee = (formdata) => async (dispatch) => {
     console.log(err)
     dispatch({type: AUTH_GET_ERROR});
     Swal.fire("Added !", "New Employee Added !", "success");
-    // Swal.fire({
-    //   icon: "error",
-    //   title: "Oops...",
-    //   text: "Faild ! User Already Exist With this Email !",
-    // });
   }
 };
 
