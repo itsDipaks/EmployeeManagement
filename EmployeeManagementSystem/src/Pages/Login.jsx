@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
   Image,
@@ -50,34 +51,25 @@ const Login = () => {
   };
 
   return (
-    <Box p={4}   m={"auto"} width={{md: "95%", sm: "100%"}} data-aos="zoom-in">
-      <Box
-        // width={{md: "95", sm: "100%"}}
-        // m="auto"
-        // // mt={"5rem"}
-        // // boxShadow="dark-lg"
-        // p={{md: "1rem", sm: "2rem"}}
-        // rounded="md"
-        // // mt={4}
-        // position={"relative"}
-        // h="80vh"
-        // backgroundImage="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-  
-      >
-  
+    <Box alignItems={"center"}  display={"flex"} flexDirection={["row"]} m={"auto"} width={{md: "100%", sm: "100%"}}
+    //  data-aos="zoom-in"
+     >
+  <Box w={"60%"}        display={{md:"block",sm:"none"}}>
+  <Image rounded={14} src="https://images.unsplash.com/photo-1606836559739-7b1d9fbf8a6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"/>
+</Box>
+
         <Box
-          w={{md:"45%",sm:"50%"}}
-          p={{md: "4rem", sm: "1rem"}}
+          w={{md:"40%",sm:"80%",lg:"50%"}}
+          p={{md: "2rem", sm: "1rem"}}
           m="auto"
-          mt={14}
-          bg={"primaryblue.50"}
-          data-aos="zoom-in"
+          mt={{md:"8",sm:"15rem"}}
+          h={"max-content"}
         >
-                <Text 
-          fontSize={"3xl"} pb={4}>Welcome Back !! </Text>
-          {/* {token ? <Navigate to={"/"} /> : ""} */}
-          <Stack spacing={4} align="stretch">
+       <Text p={4} fontSize={"1.8rem"} fontWeight={"semibold"}  bgGradient='linear(to-l, #7928CA, #FF0080)'
+  bgClip='text'
+ >L O G I N</Text>
             <form onSubmit={logintoportal}>
+            <Stack spacing={6} align="stretch">
               <FormControl isRequired>
                 <FormLabel>Email Address </FormLabel>
                 <Input
@@ -96,14 +88,16 @@ const Login = () => {
                   type="password"
                 />
               </FormControl>
-              <Button type="submit" w="full" mt="1rem">
+              <Button type="submit" w="full" color={"white"} bg="blue.400" _hover={{bg:"blue.500",color:"white"}} mt="2rem">
                 Login
               </Button>
+              </Stack>
             </form>
-          </Stack>
+ 
         </Box>
+
+
       </Box>
-    </Box>
   );
 };
 
