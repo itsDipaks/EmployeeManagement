@@ -105,7 +105,7 @@ console.log(Country)
   };
   return (
     <>
-      <Box w={"90%"} m="auto">
+      <Box w={"100%"} m="auto">
         <Flex textAlign={"start"} fontSize="1.5rem" p={2} ml={12} gap={4}>
           Hellow , <Text color={"red.600"}>{employeeData[0]?.firstname}</Text>
         </Flex>
@@ -159,7 +159,7 @@ console.log(Country)
         </Flex>
 
         {showpage ? (
-          <Box>
+          <Box bg={"gray.100"} w={"100%"}  p={14}>
             <form>
               <FormControl isRequired w={"40%"}>
                 <FormLabel>Mobile No: </FormLabel>
@@ -168,6 +168,7 @@ console.log(Country)
                   name="conformpassword"
                   onChange={(e) => setmobileno(e.target.value)}
                   type="number"
+                 border={"1px solid gray"}
                 />
               </FormControl>
 
@@ -211,6 +212,7 @@ console.log(Country)
                     <Input
                       placeholder="Enter Url"
                       onChange={(e) => setgithub(e.target.value)}
+                      border={"1px solid gray"}
                     />
                     <InputRightElement
                       children={<AiOutlineLink color="green" />}
@@ -228,6 +230,7 @@ console.log(Country)
                     <Input
                       placeholder="Enter Url"
                       onChange={(e) => setlinkdin(e.target.value)}
+                      border={"1px solid gray"}
                     />
                     <InputRightElement
                       children={<AiOutlineLink color="green" />}

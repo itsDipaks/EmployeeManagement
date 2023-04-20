@@ -92,6 +92,7 @@ const AddressDetails = ({
             <Select
               placeholder="Select Country"
               onChange={counrtyfunc}
+              border={"1px solid gray"}
             >
               {countrydata?.map((el) => (
                 <option value={el.iso2}  >{el.name} </option>
@@ -103,6 +104,7 @@ const AddressDetails = ({
             <Select
               placeholder="Select State"
               onChange={statefunc}
+              border={"1px solid gray"}
             >
               {statesdata?.map((el) => (
                 <option value={el.iso2}>{el.name} </option>
@@ -114,6 +116,7 @@ const AddressDetails = ({
             <Select
               placeholder="Select City"
               onChange={cityfunc}
+              border={"1px solid gray"}
             >
               {citydata?.map((el) => (
                 <option value={el.iso2}>{el.name} </option>
@@ -128,6 +131,7 @@ const AddressDetails = ({
               placeholder="Enter Streat/Area/Location"
               onChange={(e)=>setstreetaddress(e.target.value)}
               colorScheme={"red"}
+              border={"1px solid gray"}
             />
           </FormControl>
         

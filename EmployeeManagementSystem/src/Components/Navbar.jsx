@@ -30,7 +30,7 @@ const Navbar = ({setispanel}) => {
   };
   return (
     <>
-      <Box w="100%" boxShadow="lg" p={2} bg="Black" top="0">
+      <Box w="100%" boxShadow="lg" p={2} bg="gray.500" top="0">
         <Flex
           p={"0.51rem"}
           justifyContent="space-between"
