@@ -16,6 +16,7 @@ const ProjectDashboard = () => {
 
   let {email} = useSelector((store) => store.Auth);
 
+  console.log(email)
   let getAssignedProject = () => {
     dispatch(GetAssignproject(email));
   };
@@ -52,11 +53,16 @@ const ProjectDashboard = () => {
   return (
     <>
     
-
+    <Displaytask
+        AuthEmail={email}
+        getProjectTasks={getProjectTasks}
+        tasks={tasks}
+        projectval={projectval}
+      />
       {ProjectsData.length > 0 ? (
-        <Box display={"flex"} p={4}>
+        <Box display={"flex"} flexDirection={{lg:"row",sm:"column"}} p={4}>
         
-          <Box width={"70%"}>
+          <Box width={{sm:"98%",lg:"70%"}} >
             <DisplayEmployeeProject
               projectdata={projectval ? projectval : ""}
             />
@@ -69,27 +75,24 @@ const ProjectDashboard = () => {
               ""
             )}
           </Box>
-
-          <VStack width={"30%"}>
-          <Displaytask
-        AuthEmail={email}
-        getProjectTasks={getProjectTasks}
-        tasks={tasks}
-        projectval={projectval}
-      />
-            <ProjectProgress
+         
+          <VStack width={{lg:"30%",sm:"100%"}}>
+       
+           <Box display={"flex"} w={"100%"} mt="4" flexDir={{lg:"column",sm:"row"}}>
+            <ProjectProgress w={"50%"} 
               totaltask={tasks.length}
               completedtask={CompletedTasks.length}
             />
-            <Box w={"20vw"} m={"auto"} p={4}>
+            <Box w={"70%"} m={"auto"} p={4}>
               {AuthEmployeeData?.map((el) => (
                 <SingleEmpBox tasks={tasks} emp={el} />
               ))}
 
-              <ChartSetup
+              {/* <ChartSetup
                 getProjectTasks={getProjectTasks}
                 data={[pendingTasks.length, CompletedTasks.length]}
-              />
+              /> */}
+            </Box>
             </Box>
           </VStack>
         </Box>

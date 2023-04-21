@@ -43,7 +43,7 @@ const AddNewTodo = ({showmytodos}) => {
   return (
     <div>
         
-        <Box p={8} gap={2}  w={"50%"} boxShadow='dark-lg' m={"auto"} boxSizing="border-box" >
+        <Box p={8} gap={2}  w={{lg:"50%",md:"70%",sm:"100%"}} boxShadow='dark-lg' m={"auto"} boxSizing="border-box" >
         
           <form onSubmit={submitTodo}>
             <FormControl isRequired>

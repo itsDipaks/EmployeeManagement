@@ -1,6 +1,6 @@
 
 import {
-  Grid,
+  Grid, SimpleGrid,
 } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -15,12 +15,12 @@ let filtereddta=empdata.filter((val)=>{
   return (
     
     <>
-    <Grid width={"80%"} m={"auto"}  templateColumns='repeat(4, 1fr)' gap={6}>
+    <SimpleGrid  width={"90%"} m={"auto"}  columns={{lg:"4",sm:"2"}}  gap={4}>
     {/* <Flex width={"70%"} m={"auto"} gap={4}  flexWrap={"wrap"} justifyContent={"space-between"}> */}
  {   
   filtereddta?.map((el)=> <SingleEmpBox tasks={tasks} emp={el}/>) }
     {/* </Flex>/ */}
-    </Grid>
+    </SimpleGrid>
     </>
   );
 };

@@ -67,7 +67,7 @@ const Todo = () => {
   return (
     <>
       <AddNewTodo showmytodos={showmytodos} />
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} p={8}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={4} p={{sm:"2",lg:"8"}}>
         <DragDropContext onDragEnd={handleDragEnd}>
           {Todos ? (
             <TodoColumn

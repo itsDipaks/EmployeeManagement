@@ -2,8 +2,10 @@ import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { getlocalsdata } from '../assets/Localstorage';
 const EmployeePrivate = ({children}) => {
-  let {isadmin,token}=useSelector(store=>store.Auth)
+  let {isadmin}=useSelector(store=>store.Auth)
+  let token =getlocalsdata("token")
   if(!isadmin && token){
     return children
   }else{
@@ -18,7 +20,8 @@ const EmployeePrivate = ({children}) => {
 }
 
 const AdminPrivate = ({children}) => {
-  let {isadmin,token}=useSelector(store=>store.Auth)
+  let {isadmin}=useSelector(store=>store.Auth)
+  let token =getlocalsdata("token")
   if(isadmin && token){
     return children
   }else{
@@ -32,7 +35,7 @@ const AdminPrivate = ({children}) => {
   }
 }
 const IsLogin = ({children}) => {
-  let {token}=useSelector(store=>store.Auth)
+  let token =getlocalsdata("token")
   if( token){
     return children
   }else{

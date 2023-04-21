@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useState} from "react";
-import {AiFillLinkedin, AiFillSetting, AiOutlineLink} from "react-icons/ai";
+import {AiFillGithub, AiFillLinkedin, AiFillSetting, AiOutlineLink} from "react-icons/ai";
 import {BsGithub} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
@@ -48,14 +48,16 @@ const Profilepage = () => {
   let [streataddress, setstreetaddress] = useState("");
 
   let {employeeData, loading} = useSelector((state) => state.Storedata);
-  let {token,email} = useSelector((store) => store.Auth);
+  let {token, email} = useSelector((store) => store.Auth);
+
+  console.log(employeeData[0]);
 
   let Handeldinput = (e) => {
     e.preventDefault();
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
-console.log(Country)
+
   let submitChangedPasswor = (e) => {
     e.preventDefault();
     let {newpassword, conformpassword} = formdata;
@@ -79,23 +81,21 @@ console.log(Country)
       state &&
       City &&
       mobileno &&
-      streataddress&&
+      streataddress &&
       github &&
       linkdin
     ) {
-
       let updateData = {
         Country: Country,
         state: state,
         City: City,
         MobileNumber: mobileno,
         github: github,
-        Linkdin:linkdin,
-        StreetAddress:streataddress
+        Linkdin: linkdin,
+        StreetAddress: streataddress,
       };
-      dispatch(UpDateProfile(email,updateData))
-    }
-    else{
+      dispatch(UpDateProfile(email, updateData));
+    } else {
       Swal.fire({
         icon: "error",
         title: "Faild !! ",
@@ -119,21 +119,24 @@ console.log(Country)
         >
           <Box border={2}>
             <Image
-              w={"65%"}
+              w={"90%"}
               m="auto"
-              h={"15rem"}
+              h={"20rem"}
               src="https://loremflickr.com/640/360"
               alt="ProfileImage"
+              rounded={14}
             />
           </Box>
 
           {/* ------------Left Side Box Emploee show info------------ */}
-          <Stack width={"65%"} gap={4}>
+          <Stack width={"75%"} gap={4}>
             <InfoField
               title={"Name "}
-              value={employeeData[0]?.firstname + " " + employeeData[0]?.lastname}
+              value={
+                employeeData[0]?.firstname + " " + employeeData[0]?.lastname
+              }
             />
-            <HStack gap={14}>
+            <HStack gap={24}>
               <InfoField
                 title={"Position / Role "}
                 value={employeeData[0]?.position}
@@ -141,7 +144,68 @@ console.log(Country)
               <InfoField title={"Gender"} value={employeeData[0]?.gender} />
             </HStack>
 
-            <InfoField title={"Email "} value={employeeData[0]?.email} />
+            <HStack gap={24}>
+              <InfoField title={"Email "} value={employeeData[0]?.email} />
+              {employeeData[0]?.MobileNumber ? (
+                <InfoField
+                  title={"Mobile Number "}
+                  value={employeeData[0]?.MobileNumber}
+                />
+              ) : (
+                ""
+              )}
+            </HStack>
+
+            <Flex>
+              {employeeData[0]?.StreetAddress ? (
+                <HStack>
+                  <Text color={"tomato"} fontWeight={"bold"}>
+                    {" "}
+                    Address :{" "}
+                  </Text>
+                  <Text>
+                    {" "}
+                    Street : {employeeData[0]?.StreetAddress} ,City :{" "}
+                    {employeeData[0]?.City}, State : {employeeData[0]?.state} ,
+                    Country : {employeeData[0]?.Country}{" "}
+                  </Text>
+                </HStack>
+              ) : (
+                ""
+              )}
+
+
+            </Flex>
+
+
+            {employeeData[0]?.Linkdin  && employeeData[0]?.github? (
+<HStack gap={18}>
+<a href={employeeData[0]?.Linkdin}>
+<Flex alignItems={"center"} border={"1px"} p={1} px={4} rounded={"10px"} gap={4}>
+<AiFillLinkedin color="blue" />
+<Text>
+Open Linkdin 
+</Text>
+
+</Flex>
+</a>
+<a href={employeeData[0]?.github}>
+<Flex alignItems={"center"} border={"1px"} p={1} px={4} rounded={"10px"} gap={4}>
+<AiFillGithub color="black" />
+<Text>
+Open Github 
+</Text>
+
+</Flex>
+</a>
+
+
+
+
+
+</HStack>
+):""}
+
           </Stack>
         </Flex>
 
@@ -159,7 +223,7 @@ console.log(Country)
         </Flex>
 
         {showpage ? (
-          <Box bg={"gray.100"} w={"100%"}  p={14}>
+          <Box bg={"gray.100"} w={"100%"} p={14}>
             <form>
               <FormControl isRequired w={"40%"}>
                 <FormLabel>Mobile No: </FormLabel>
@@ -168,7 +232,7 @@ console.log(Country)
                   name="conformpassword"
                   onChange={(e) => setmobileno(e.target.value)}
                   type="number"
-                 border={"1px solid gray"}
+                  border={"1px solid gray"}
                 />
               </FormControl>
 

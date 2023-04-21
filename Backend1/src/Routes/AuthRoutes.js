@@ -49,6 +49,13 @@ AuthRouter.post("/addemployee", async (req, res) => {
             email,
             password: hashedpassword,
             isAdmin: admintrue,
+            MobileNumber:"",
+            Country:"",
+            City:"",
+            state:"",
+            StreetAddress:"",
+            github:"",
+            Linkdin:""
           });
           await newEmployee.save();
 
@@ -87,6 +94,7 @@ AuthRouter.post("/login", async (req, res) => {
               userinfo: {
                 name: Checkuser.firstname + " " + Checkuser.lastname,
                 email: Checkuser.email,
+                _id:Checkuser._id
               },
               msg: "Login sucsess",
             });
@@ -144,15 +152,14 @@ AuthRouter.patch("/editpass", async (req, res) => {
   }
 });
 
-AuthRouter.put("/updateProfile", async (req, res) => {
-  const {updateData,email} = req.body;
- console.log(updateData)
+AuthRouter.patch("/:email", async (req, res) => {
+  let {email}=req.params
+  let {updateData}=req.body
   try {
-    let EmployeeInfo = await UserModel.findOneAndUpdate(
-       email,
-      {updateData},
-      { new: true }
-    );
+    let EmployeeInfo = await UserModel.updateOne(
+      { email: email },
+      { $set:{...updateData} })
+   
     console.log(EmployeeInfo)
     res.status(200).send({
       msg: "Profile Updated",

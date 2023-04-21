@@ -11,13 +11,14 @@ const TodoColumn = ({Todos, tabletitle, showmytodos, id}) => {
     <>
       <VStack
         w={"100%"}
-        minHeight={"70vh"}
+        minHeight={{sm:"max-content",md:"50vh",lg:"70vh"}}
         roundedBottom={"xl"}
         bg={"blackAlpha.300"}
         gap={2}
+        borderBottom={"1px"} boxSizing="border-box"
       >
-        <Box width={"100%"} bg={"blackAlpha.800"} borderBottom={"1px"} p={3}>
-          <Text fontWeight={"bold"} fontSize={"1.4rem"} color={"white"}>
+        <Box width={"100%"} bg={"blackAlpha.800"} borderBottom={"1px"} boxSizing="border-box" p={{lg:3,sm:1}}>
+          <Text fontWeight={"bold"} fontSize={{lg:"1.4rem",sm:"1rem"}} color={"white"}>
             {tabletitle}
           </Text>
         </Box>

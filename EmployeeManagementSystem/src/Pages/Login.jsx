@@ -62,7 +62,7 @@ const Login = () => {
           w={{md:"40%",sm:"80%",lg:"50%"}}
           p={{md: "2rem", sm: "1rem"}}
           m="auto"
-          mt={{md:"8",sm:"15rem"}}
+          mt={{md:"8",sm:"2rem"}}
           h={"max-content"}
         >
        <Text p={4} fontSize={"1.8rem"} fontWeight={"semibold"}  bgGradient='linear(to-l, #7928CA, #FF0080)'

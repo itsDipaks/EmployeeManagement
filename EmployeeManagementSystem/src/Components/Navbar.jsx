@@ -23,7 +23,8 @@ const Navbar = ({setispanel}) => {
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
 
-  let {token, loading, error, isadmin} = useSelector((store) => store.Auth);
+  let { loading, error, isadmin} = useSelector((store) => store.Auth);
+  let token =getlocalsdata("token")
   let logoutuser = () => {
     dispatch(userLogout());
     navigate("/");

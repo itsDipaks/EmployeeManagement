@@ -17,7 +17,7 @@ const ProjectProgress = ({totaltask, completedtask}) => {
   let ProgressValue = Math.floor((completedtask / totaltask) * 100);
   return (
     <>
-      <Box w={"90%"} p={4} pt={4} pb={4} rounded={"xl"} border={"1px"}>
+      <Box w={"100%"} p={4} pt={4} pb={4} rounded={"xl"} border={"1px"}>
         <Flex justifyContent={"space-between"}>
           <Text textAlign={"start"} fontSize={"xl"} fontWeight={"semibold"}>
             Project Progress

@@ -9,7 +9,6 @@ const privateKey = process.env.PRIVATEKEY;
 EmployeeRouter.get("/allempolyees", async (req, res) => {
   try {
     let AllEmployeedata = await UserModel.find({isAdmin:false});
-
     res
       .status(200)
       .send({masg: "All Employee Data", Employees: AllEmployeedata});

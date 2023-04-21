@@ -15,7 +15,7 @@ const DisplayTodocard = ({
   index,
   email,
   showmytodos,
-  tabletitle
+  tabletitle,
 }) => {
   let todoid = el?._id;
 
@@ -43,15 +43,28 @@ const DisplayTodocard = ({
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-          { tabletitle=="Completed"? <TiTick style={{color:"green",width:"1.5rem", height:"1.5rem"}}/>:""}
-          { tabletitle=="Progress"? <MdPending style={{color:"white"}}/>:""}
+            {tabletitle == "Completed" ? (
+              <TiTick
+                style={{color: "green", width: "1.5rem", height: "1.5rem"}}
+              />
+            ) : (
+              ""
+            )}
+            {tabletitle == "Progress" ? (
+              <MdPending style={{color: "white"}} />
+            ) : (
+              ""
+            )}
             <Flex
               w={"100%"}
               justifyContent={"space-between"}
               alignItems={"center"}
             >
-              
-              <Text fontSize={"1.2rem"} color={"white"} fontWeight={"semibold"}>
+              <Text
+                fontSize={{lg: "1.2rem", md: "0.8rem", sm: "0.5rem"}}
+                color={"white"}
+                fontWeight={"semibold"}
+              >
                 {Todo}
               </Text>
               <TiDelete
@@ -69,17 +82,23 @@ const DisplayTodocard = ({
               w={"100%"}
               alignItems={"center"}
             >
-              <Flex fontSize={"0.7rem"} gap={4} alignItems={"center"}>
-                <Text fontSize={"0.7rem"} color={"gray"}>
+              <Flex gap={4} alignItems={"center"}>
+                <Text
+                  fontSize={{lg: "0.7rem", sm: "0.2rem", md: "0.5rem"}}
+                  color={"gray"}
+                >
                   {" "}
                   Time : {time}
                 </Text>
-                <Text fontSize={"0.7rem"} color={"gray"}>
+                <Text
+                  fontSize={{lg: "0.7rem", sm: "0.2rem", md: "0.5rem"}}
+                  color={"gray"}
+                >
                   {" "}
                   Date : {DueDate}
                 </Text>
               </Flex>
-              <Box>
+              <Box  boxSizing="border-box">
                 <Badge
                   bg={
                     Priority == "1"
@@ -91,6 +110,7 @@ const DisplayTodocard = ({
                   color={"white"}
                   pl={2}
                   pr={2}
+                  fontSize={{lg: "0.7rem", sm: "0.2rem", md: "0.5rem"}}
                 >
                   {Priority == "1" ? "H" : Priority == "2" ? "M" : "L"}
                 </Badge>
