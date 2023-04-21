@@ -28,6 +28,9 @@ import {
 } from "../../Redux/Employee/Employee.action";
 import AddEmployee from "./AddEmployee";
 import EmpProfile from "./EmpProfile";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { BiEdit } from "react-icons/bi";
+import EditProfileModel from "../../DashboardCompo/EditProfileModel";
 const ListEmp = () => {
   let dispatch = useDispatch();
   let {employeeData, loading, error, msg} = useSelector(
@@ -128,17 +131,24 @@ const ListEmp = () => {
                     <Td>{el.joiningDate}</Td>
                     <Td>Active</Td>
                     <Td>
-                      <HStack>
+                      <HStack gap={4}>
                         {/* <Link to={`/empProfile/${el._id}`}>
                           <Button>View</Button> */}
                         {/* </Link> */}
+                      
                         <EmpProfile data={el} />
-                        <Button
+
+                      
+                     
+                     
+                     <EditProfileModel data={el}/>
+                     
+                     
+                        <AiTwotoneDelete
                           onClick={() => Deleteemployee(el._id)}
-                          colorScheme="red"
-                        >
-                          Delete
-                        </Button>
+                          style={{color:"red",width:"1.5rem",height:"1.5rem",cursor:"pointer"} }
+                        />
+                      
                       </HStack>
                     </Td>
                   </Tr>

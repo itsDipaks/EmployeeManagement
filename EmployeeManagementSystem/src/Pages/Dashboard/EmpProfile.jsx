@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useParams} from "react-router-dom";
 import ProfileIntro from "../../DashboardCompo/ProfileIntro";
 import {SingleEmployee} from "../../Redux/Employee/Employee.action";
-
+import {CgProfile} from "react-icons/cg"
 const EmpProfile = ({data}) => {
   const {isOpen, onOpen, onClose} = useDisclosure();
   let openmodal = () => {
@@ -28,9 +28,9 @@ const EmpProfile = ({data}) => {
   };
   return (
     <div>
-      <Button colorScheme="messenger" onClick={openmodal}>
+      <CgProfile   style={{color:"darkblue",width:"1.5rem",height:"1.5rem" ,cursor:"pointer"} } onClick={openmodal}>
         View
-      </Button>
+      </CgProfile>
 
       <Drawer onClose={onClose} isOpen={isOpen} size={"xl"}>
         <DrawerOverlay />
