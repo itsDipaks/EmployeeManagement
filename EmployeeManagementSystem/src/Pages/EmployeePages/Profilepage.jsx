@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Progress,
   Slider,
   SliderFilledTrack,
   SliderThumb,
@@ -22,7 +23,12 @@ import {
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useState} from "react";
-import {AiFillGithub, AiFillLinkedin, AiFillSetting, AiOutlineLink} from "react-icons/ai";
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillSetting,
+  AiOutlineLink,
+} from "react-icons/ai";
 import {BsGithub} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
@@ -49,8 +55,6 @@ const Profilepage = () => {
 
   let {employeeData, loading} = useSelector((state) => state.Storedata);
   let {token, email} = useSelector((store) => store.Auth);
-
-  console.log(employeeData[0]);
 
   let Handeldinput = (e) => {
     e.preventDefault();
@@ -173,39 +177,40 @@ const Profilepage = () => {
               ) : (
                 ""
               )}
-
-
             </Flex>
 
-
-            {employeeData[0]?.Linkdin  && employeeData[0]?.github? (
-<HStack gap={18}>
-<a href={employeeData[0]?.Linkdin}>
-<Flex alignItems={"center"} border={"1px"} p={1} px={4} rounded={"10px"} gap={4}>
-<AiFillLinkedin color="blue" />
-<Text>
-Open Linkdin 
-</Text>
-
-</Flex>
-</a>
-<a href={employeeData[0]?.github}>
-<Flex alignItems={"center"} border={"1px"} p={1} px={4} rounded={"10px"} gap={4}>
-<AiFillGithub color="black" />
-<Text>
-Open Github 
-</Text>
-
-</Flex>
-</a>
-
-
-
-
-
-</HStack>
-):""}
-
+            {employeeData[0]?.Linkdin && employeeData[0]?.github ? (
+              <HStack gap={18}>
+                <a href={employeeData[0]?.Linkdin}>
+                  <Flex
+                    alignItems={"center"}
+                    border={"1px"}
+                    p={1}
+                    px={4}
+                    rounded={"10px"}
+                    gap={4}
+                  >
+                    <AiFillLinkedin color="blue" />
+                    <Text>Open Linkdin</Text>
+                  </Flex>
+                </a>
+                <a href={employeeData[0]?.github}>
+                  <Flex
+                    alignItems={"center"}
+                    border={"1px"}
+                    p={1}
+                    px={4}
+                    rounded={"10px"}
+                    gap={4}
+                  >
+                    <AiFillGithub color="black" />
+                    <Text>Open Github</Text>
+                  </Flex>
+                </a>
+              </HStack>
+            ) : (
+              ""
+            )}
           </Stack>
         </Flex>
 
