@@ -1,30 +1,30 @@
 import {Box, Button, Input, SimpleGrid, Text, Textarea} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AddNewFeed, GetAllFeeds } from "../../Redux/Feeds/Feeds.action";
+import {useDispatch, useSelector} from "react-redux";
+import {AddNewFeed, GetAllFeeds} from "../../Redux/Feeds/Feeds.action";
 const AdminMassage = () => {
   const [input, setInput] = useState(false);
   const [value, setValue] = useState("");
   const [massage, setMassage] = useState([]);
   const [filter, setFilter] = useState("");
-  
-  let dispatch=useDispatch()
-  let {token , loading , error,isadmin,name,email} = useSelector((store) => store.Auth);
+
+  let dispatch = useDispatch();
+  let {token, loading, error, isadmin, name, email} = useSelector(
+    (store) => store.Auth
+  );
   useEffect(() => {
-    showfeeds()
+    showfeeds();
   }, []);
 
-  let showfeeds=()=>{
+  let showfeeds = () => {
     dispatch(GetAllFeeds());
-  }
-  let sendMassage=()=>{
-    dispatch(AddNewFeed(massage,name,email))
-    setTimeout(()=>{
-      showfeeds()
-    },1000)
-    
-  }
-
+  };
+  let sendMassage = () => {
+    dispatch(AddNewFeed(massage, name, email));
+    setTimeout(() => {
+      showfeeds();
+    }, 1000);
+  };
 
   return (
     <div>
@@ -36,7 +36,6 @@ const AdminMassage = () => {
         borderRadius="10"
         border={"1px solid green"}
         m="auto"
-        
       >
         {/* ----------- (Top text row) -------------------- */}
 
@@ -51,7 +50,7 @@ const AdminMassage = () => {
           fontWeight="700"
           color="green.400"
         >
-      Add New Feed 
+          Add New Feed
         </Box>
 
         {/* ------------------- (Input) --------------------- */}
@@ -109,7 +108,6 @@ const AdminMassage = () => {
             mt="3"
             alignItems="center"
           >
-          
             <Box
               border={"1px solid #7b869190"}
               display="flex"
@@ -118,11 +116,11 @@ const AdminMassage = () => {
               alignItems="center"
               justifyContent={"space-between"}
               p="2"
-            //   pr="50%" 
-            w={"70%"}
-            // m="auto"
+              //   pr="50%"
+              w={"70%"}
+              // m="auto"
               borderRadius={10}
-            > 
+            >
               <Text
                 color={"grey"}
                 bg="#dbf087"
@@ -136,28 +134,28 @@ const AdminMassage = () => {
                 To all employees
               </Text>
 
-              <Box display={"flex"} gap="10" >
-            <Button
-                onClick={sendMassage}
-              bg={"#3bc8f5"}
-              color="white"
-              fontSize={"1rem"}
-              _hover={{
-                bg: "#0cbef9",
-                color: "white",
-              }}
-            >
-              Send
-            </Button>
-            <Button
-              onClick={() => setInput(false)}
-              fontSize={"1rem"}
-        bg={"red.500"}
-        color={"wheat"}
-            >
-              Cancel
-            </Button>
-          </Box>
+              <Box display={"flex"} gap="10">
+                <Button
+                  onClick={sendMassage}
+                  bg={"#3bc8f5"}
+                  color="white"
+                  fontSize={"1rem"}
+                  _hover={{
+                    bg: "#0cbef9",
+                    color: "white",
+                  }}
+                >
+                  Send
+                </Button>
+                <Button
+                  onClick={() => setInput(false)}
+                  fontSize={"1rem"}
+                  bg={"red.500"}
+                  color={"wheat"}
+                >
+                  Cancel
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>

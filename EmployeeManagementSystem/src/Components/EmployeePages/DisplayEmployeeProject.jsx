@@ -22,7 +22,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
         m="auto"
         overflow="hidden"
         boxShadow="dark-lg"
-        rounded="md"
+        rounded="3xl"
         bg={"gray.800"}
         p={[2,2,8]}
         mb={8}
@@ -52,17 +52,17 @@ const DisplayEmployeeProject = ({projectdata}) => {
               <Divider m={2} />
               <Flex w={"100%"} rowGap={2} flexWrap={"wrap"}>
                 <VStack w={{sm:"100%",lg:"30%"}}>
-                  <Text color={"blue.400"} fontSize={{sm:"sm",lg:"xl"}}> Project Status</Text>
+                  <Text color={"green.400"} fontSize={{sm:"sm",lg:"xl"}}> Project Status</Text>
                   <Badge p={"0.3rem 1.2rem 0.3rem 1.2rem"}bg={"green.200"} color={"black"}>{projectdata?.Status}</Badge>
                 </VStack>
                 <VStack w={{sm:"50%",lg:"32%"}}>
-                  <Text fontWeight={"semibold"}  fontSize={{sm:"sm",lg:"xl"}} color={"blue.400"}> Start Date</Text>
+                  <Text fontWeight={"semibold"}  fontSize={{sm:"sm",lg:"xl"}} color={"green.400"}> Start Date</Text>
                  <Text color={"whiteAlpha.800"}>
                  {projectdata?.StartDate}
                   </Text>  
                 </VStack>
                 <VStack w={{sm:"50%",lg:"32%"}}>
-                  <Text fontWeight={"semibold"} fontSize={{sm:"sm",lg:"xl"}} color={"blue.400"}>Estimated End Date</Text>
+                  <Text fontWeight={"semibold"} fontSize={{sm:"sm",lg:"xl"}} color={"green.400"}>Estimated End Date</Text>
                   <Text color={"red.600"}>
                  {projectdata?.EndDate}
                   </Text>  
@@ -73,7 +73,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
           </Stack>
         </Box>
         <Box alignItems={"center"} w={"90%"} m={"auto"}>
-          <Text textAlign={"start"} fontWeight={"bold"}  fontSize={{sm:"sm",lg:"xl"}} color={"blue.400"} >
+          <Text textAlign={"start"} fontWeight={"bold"}  fontSize={{sm:"sm",lg:"xl"}} color={"green.400"} >
             Project Description :{" "}
           </Text>
           <Text py="2" ml={{lg:"14",sm:"4"}}  textAlign={"start"} w={"90%"} color={"whiteAlpha.800"}>

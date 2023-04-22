@@ -33,7 +33,7 @@ const Displaytask = ({AuthEmail,projectval,tasks,getProjectTasks}) => {
 
   return (
     <div>
-      <Button onClick={onOpen}>View My Task</Button>
+      <Button variant='outline' color="green.400" onClick={onOpen}>View My Task</Button>
 
       <Drawer onClose={onClose} placement={"right"} isOpen={isOpen} size={"sm"}>
         <DrawerOverlay />

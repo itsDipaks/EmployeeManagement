@@ -17,8 +17,8 @@ const TodoColumn = ({Todos, tabletitle, showmytodos, id}) => {
         gap={2}
         borderBottom={"1px"} boxSizing="border-box"
       >
-        <Box width={"100%"} bg={"blackAlpha.800"} borderBottom={"1px"} boxSizing="border-box" p={{lg:3,sm:1}}>
-          <Text fontWeight={"bold"} fontSize={{lg:"1.4rem",sm:"1rem"}} color={"white"}>
+        <Box width={"100%"} bg={"green.400"} borderBottom={"1px"} boxSizing="border-box" p={{lg:3,sm:1}}>
+          <Text fontWeight={"bold"} fontSize={{lg:"1.4rem",sm:"1rem"}} color={"black"}>
             {tabletitle}
           </Text>
         </Box>

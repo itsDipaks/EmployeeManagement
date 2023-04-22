@@ -38,7 +38,6 @@ const FeedsPost = () => {
 
   let {token, error, isadmin, name, email} = useSelector((store) => store.Auth);
 
-
   useEffect(() => {
     showfeeds();
   }, []);
@@ -112,7 +111,9 @@ const FeedsPost = () => {
                 >
                   {el?.feedAuthor}
                   {isadmin ? (
-                    <span style={{color: "black",fontSize:"1rem"}}>{">"} To all employees</span>
+                    <span style={{color: "black", fontSize: "1rem"}}>
+                      {">"} To all employees
+                    </span>
                   ) : (
                     <span style={{color: "grey", fontSize: "0.81rem"}}>
                       {"   => "} Admin
@@ -165,32 +166,30 @@ const FeedsPost = () => {
           >
             <Box>
               <Text
-               color="black"
+                color="black"
                 _hover={{
                   color: "white",
                 }}
-                border="2px solid white" 
+                border="2px solid white"
                 px="2"
                 rounded="10px"
-               
               >
                 Like
               </Text>
             </Box>
             <Text
-            color="black"
+              color="black"
               _hover={{
                 color: "white",
               }}
               onClick={() => setshowcommentbox(true)}
-              border="2px solid white" 
+              border="2px solid white"
               px="2"
-       rounded="10px"
-            
+              rounded="10px"
             >
               Comment
             </Text>
-            <Text  color="white">0</Text>
+            <Text color="white">0</Text>
           </Box>
 
           {/* ================ Show Comments=================== */}
@@ -227,12 +226,7 @@ const FeedsPost = () => {
                   >
                     {val?.CommentAuthor}
                   </Text>
-                  <Text
-                    color={"white"}
-                    fontSize={13}
-                    textAlign={"left"}
-                    mt={1}
-                  >
+                  <Text color={"white"} fontSize={13} textAlign={"left"} mt={1}>
                     {val?.CommentMasg}
                   </Text>
                 </Box>
@@ -284,7 +278,7 @@ const FeedsPost = () => {
                   ml="6"
                   display={"flex"}
                   alignItems="center"
-                  bg="black"
+                  bg="green.400"
                   justifyContent={"space-around"}
                 >
                   <Box
@@ -311,7 +305,7 @@ const FeedsPost = () => {
                     pt="3"
                     pb="5"
                     borderRadius="10"
-                    bg="black"
+                    bg="green.400"
                   >
                     <Input
                       textAlign={"left"}
@@ -322,7 +316,7 @@ const FeedsPost = () => {
                       fontSize={"17"}
                       color="white"
                       placeholder="Add Comment ..."
-                      borderColor={"grey"}
+                      borderColor={"black"}
                       borderRadius="30"
                     />
                   </SimpleGrid>

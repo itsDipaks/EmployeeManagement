@@ -62,7 +62,7 @@ const Todo = () => {
 
   useEffect(() => {
     showmytodos();
-  }, []);
+  }, [])
 
   return (
     <>
