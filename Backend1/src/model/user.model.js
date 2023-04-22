@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
   github: { type: String },
   Linkdin: { type: String },
   joiningDate: { type: String },
+  Status: { type: String,enum:["Active" ,"Inactive"],default:"Inactive" },
   gender: { type: String,enum:["male","female","Unspecifide"],required: true,default:"male"},
   isAdmin:{type:Boolean,enum:[true,false],required:true,default:false}
 });

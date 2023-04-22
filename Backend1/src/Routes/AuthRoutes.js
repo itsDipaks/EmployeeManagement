@@ -11,6 +11,7 @@ const privateKey = process.env.PRIVATEKEY;
 
 AuthRouter.post("/addemployee", async (req, res) => {
   let {email} = req.body;
+  console.log(req.body)
   let isexist = await UserModel.findOne({email});
   if (isexist) {
     res
@@ -55,7 +56,8 @@ AuthRouter.post("/addemployee", async (req, res) => {
             state:"",
             StreetAddress:"",
             github:"",
-            Linkdin:""
+            Linkdin:"",
+            Status:"Inactive"
           });
           await newEmployee.save();
 
@@ -63,7 +65,7 @@ AuthRouter.post("/addemployee", async (req, res) => {
         } catch (err) {
           res
             .status(404)
-            .send({msg: "something wents wrong to uploading the data"});
+            .send({msg: "something wents wrong to uploading the data",err});
         }
       }
     });
@@ -87,6 +89,7 @@ AuthRouter.post("/login", async (req, res) => {
         const user_id = Checkuser._id;
         bcrypt.compare(password, hashedpassword, function (err, result) {
           if (result) {
+           UserModel.findOneAndUpdate({_id:Checkuser._id},{ $set:{Status:"Active"} })
             var token = jwt.sign({user_id: user_id}, privateKey);
             res.status(200).json({
               token: token,
@@ -159,8 +162,6 @@ AuthRouter.patch("/:email", async (req, res) => {
     let EmployeeInfo = await UserModel.updateOne(
       { email: email },
       { $set:{...updateData} })
-   
-    console.log(EmployeeInfo)
     res.status(200).send({
       msg: "Profile Updated",
     });
