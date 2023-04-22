@@ -19,7 +19,7 @@ import {
   Flex,
   Heading,
 } from "@chakra-ui/react";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {
@@ -36,7 +36,9 @@ const ListEmp = () => {
   let {employeeData, loading, error, msg} = useSelector(
     (store) => store.Storedata
   );
-  console.log(employeeData)
+
+  let [employees,setemployees]=useState([...employeeData])
+  console.log(employees)
   let Deleteemployee = (id) => {
     dispatch(DeleteEmployee(id));
     setTimeout(()=>{
@@ -52,6 +54,18 @@ const ListEmp = () => {
     dispatch(AllEmployee());
   }
 
+let sortemployeeby=(e)=>{
+  let val=e.target.value
+  if(val){
+    let data=employeeData.filter((el)=>{
+      return el.position==val
+       })
+       setemployees(data)
+  }else{
+    setemployees(employeeData)
+  }
+
+}
   return (
     <>
       <Heading Size={"sm"} m="1rem">
@@ -67,27 +81,28 @@ const ListEmp = () => {
           Employee List
         </Text>
         <Flex align={"center"} justifyContent="space-between" w={"95%"}>
-          <HStack w="40%">
+          <HStack w="60%">
             <FormControl>
               <FormLabel fontSize={"sm"}> Filter Position </FormLabel>
-              <Select placeholder="Select Position">
-                <option value="hr">HR (Human resource )</option>
-                <option value="frontend">Frontend Developer</option>
-                <option value="backend">Backend Developer</option>
-                <option value="fullstack">Full stack Developer</option>
-                <option value="node">Nodejs Developer</option>
+              <Select placeholder="Select Position" onChange={sortemployeeby}>
+                <option value="HR (Human resource )">HR (Human resource )</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+                <option value="Full stack Developer">Full stack Developer</option>
+                <option value="Nodejs Developer">Nodejs Developer</option>
               </Select>
             </FormControl>
             <FormControl>
-              <FormLabel fontSize={"sm"}> Sort Name </FormLabel>
-              <Select placeholder="Select Position">
-                <option value="hr">A to Z</option>
-                <option value="hr">Z to A</option>
+              <FormLabel fontSize={"sm"}> Sort By   </FormLabel>
+              <Select placeholder="Select Field">
+                <option value="joinrecet">Joining Date (Recent)</option>
+                <option value="active">Status (Active)</option>
+                <option value="inactive">Status (Inactive)</option>
               </Select>
             </FormControl>
             <FormControl>
-              <FormLabel fontSize={"sm"}> Serch Name </FormLabel>
-              <Input placeholder="Search" />
+              <FormLabel fontSize={"sm"}> Find By Name </FormLabel>
+              <Input placeholder="Enter Name" />
             </FormControl>
           </HStack>
           <AddEmployee  showdata={showdata}/>
@@ -110,8 +125,8 @@ const ListEmp = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {employeeData &&
-                employeeData?.map((el, index) => (
+              {employees &&
+                employees?.map((el, index) => (
                   <Tr  key={index}>
                     <Td>{index + 1}</Td>
                     <Td>
@@ -146,7 +161,7 @@ const ListEmp = () => {
                      
                         <AiTwotoneDelete
                           onClick={() => Deleteemployee(el._id)}
-                          style={{color:"red",width:"1.5rem",height:"1.5rem",cursor:"pointer"} }
+                          style={{color:"darkred",width:"1.5rem",height:"1.5rem",cursor:"pointer"} }
                         />
                       
                       </HStack>

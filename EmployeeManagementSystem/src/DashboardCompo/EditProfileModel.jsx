@@ -25,7 +25,7 @@ const EditProfileModel = ({data}) => {
       <BiEdit
         onClick={onOpen}
         style={{
-          color: "red",
+          color: "gray",
           width: "1.5rem",
           height: "1.5rem",
           cursor: "pointer",
