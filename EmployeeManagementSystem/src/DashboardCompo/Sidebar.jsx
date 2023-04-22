@@ -45,7 +45,7 @@ const Sidebarcompo = () => {
             fontSize: "1.1rem",
           }}
           collapsedWidth="70px"
-          backgroundColor="rgb(6,9,14)"
+          backgroundColor="#1CAC78"
         >
           <Menu>
             {sidebarmenu?.map((el) => (

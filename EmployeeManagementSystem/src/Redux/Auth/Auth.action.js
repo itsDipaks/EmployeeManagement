@@ -13,10 +13,12 @@ export let addEmployee = (formdata) => async (dispatch) => {
   try {
     let Employee = await axios.post(`${Backendurl}/auth/addemployee`, formdata);
     dispatch({type: AUTH_GET_SUCESS });
-    console.log(Employee)
+    // console.log(Employee)
     Swal.fire("Added !", "New Employee Added !", "success");
   } catch (err) {
-    console.log(err)
+    
+    // console.log(err)
+
     dispatch({type: AUTH_GET_ERROR});
     Swal.fire("Added !", "New Employee Added !", "success");
   }

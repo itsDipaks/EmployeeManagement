@@ -39,19 +39,20 @@ const ListEmp = () => {
 
   let [employees, setemployees] = useState([...employeeData]);
 
-  console.log(employees);
+  console.log(employeeData);
+
+
   let Deleteemployee = (id) => {
     dispatch(DeleteEmployee(id));
-
     setTimeout(() => {
       showdata();
-      setemployees([...employeeData]);
+      setemployees(employeeData);
     }, 1000);
   };
 
   useEffect(() => {
     showdata();
-  }, []);
+  }, [dispatch]);
 
   let showdata = () => {
     dispatch(AllEmployee());

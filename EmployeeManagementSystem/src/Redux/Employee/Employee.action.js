@@ -14,6 +14,7 @@ export let AllEmployee = () => async (dispatch) => {
     let EmData = await axios.get(`${Backendurl}/employee/allempolyees`);
 
     dispatch({type: EMPLOYEE_GET_SUCESS, payload: EmData.data.Employees});
+    
   } catch (err) {
     dispatch({type: EMPLOYEE_GET_ERROR});
   }
