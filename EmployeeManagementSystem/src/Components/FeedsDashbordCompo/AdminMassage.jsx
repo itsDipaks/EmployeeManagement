@@ -32,9 +32,9 @@ const AdminMassage = () => {
         width="75%"
         mt={4}
         pt="2"
-        pb="5"
+        pb="2"
         borderRadius="10"
-        border={"1px"}
+        border={"1px solid green"}
         m="auto"
         
       >
@@ -42,13 +42,14 @@ const AdminMassage = () => {
 
         <Box
           borderBottom={"1px solid #7b8691c1"}
-          fontSize={18}
+          fontSize={20}
           display={"flex"}
           gap="25px"
           ml="5"
           mt={2}
           pb={2}
-          fontWeight="500"
+          fontWeight="700"
+          color="green.400"
         >
       Add New Feed 
         </Box>
@@ -73,7 +74,7 @@ const AdminMassage = () => {
           onChange={(e) => setMassage(e.target.value)}
           w={"90%"}
           display={input ? "block" : "none"}
-          fontSize={"1.2rem"}
+          fontSize={"1rem"}
           color="#4d545b"
           placeholder="Send message ..."
           borderColor={"transparent"}

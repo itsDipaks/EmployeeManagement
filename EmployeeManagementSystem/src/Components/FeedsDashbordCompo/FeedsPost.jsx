@@ -73,7 +73,7 @@ const FeedsPost = () => {
           data-aos="fade-right"
           m="auto"
           w={"75%"}
-          bg="gray.900"
+          bg={"green.400"}
           mt="4"
           p={4}
           borderRadius={24}
@@ -104,18 +104,18 @@ const FeedsPost = () => {
               {/* --------- */}
               <Box w="100%" mt="6">
                 <Text
-                  fontWeight={500}
-                  fontSize={16}
-                  color="#246ab1"
+                  fontWeight={600}
+                  fontSize={20}
+                  color="black"
                   textAlign={"left"}
                   cursor="pointer"
                 >
                   {el?.feedAuthor}
                   {isadmin ? (
-                    <span style={{color: "grey"}}>{">"} To all employees</span>
+                    <span style={{color: "black",fontSize:"1rem"}}>{">"} To all employees</span>
                   ) : (
                     <span style={{color: "grey", fontSize: "0.81rem"}}>
-                      {" >"} Admin
+                      {"   => "} Admin
                     </span>
                   )}
                 </Text>
@@ -165,22 +165,32 @@ const FeedsPost = () => {
           >
             <Box>
               <Text
+               color="black"
                 _hover={{
-                  color: "blue",
+                  color: "white",
                 }}
+                border="2px solid white" 
+                px="2"
+                rounded="10px"
+               
               >
                 Like
               </Text>
             </Box>
             <Text
+            color="black"
               _hover={{
-                color: "blue",
+                color: "white",
               }}
               onClick={() => setshowcommentbox(true)}
+              border="2px solid white" 
+              px="2"
+       rounded="10px"
+            
             >
               Comment
             </Text>
-            <Text color="grey">0</Text>
+            <Text  color="white">0</Text>
           </Box>
 
           {/* ================ Show Comments=================== */}
@@ -211,14 +221,14 @@ const FeedsPost = () => {
                   <Text
                     fontWeight={500}
                     fontSize={14}
-                    color="#246ab1"
+                    color="black"
                     textAlign={"left"}
                     cursor="pointer"
                   >
                     {val?.CommentAuthor}
                   </Text>
                   <Text
-                    color={"whiteAlpha.700"}
+                    color={"white"}
                     fontSize={13}
                     textAlign={"left"}
                     mt={1}
