@@ -19,6 +19,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AllEmployee} from "../../Redux/Employee/Employee.action";
 import {deleteproject, GetAllProjects} from "../../Redux/Project/Project.action";
+import NotFound from "../../Components/DispalyError/NotFound";
 
 const DisplayProjects = ({triggerdaction}) => {
   let dispatch = useDispatch();
@@ -54,7 +55,9 @@ displydata()
   };
   return (
     <div>
-      {ProjectsData?.map((el) => (
+      {ProjectsData.length>0 ? 
+      
+      ProjectsData?.map((el) => (
         <Card
           w={"95%"}
           m="auto"
@@ -162,7 +165,9 @@ displydata()
             </Text>
           </Flex>
         </Card>
-      ))}
+      )):<NotFound title={"No Project"} desc={"Please Add Project"}/>
+    }
+    
     </div>
   );
 };
