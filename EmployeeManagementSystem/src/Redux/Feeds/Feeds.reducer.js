@@ -16,7 +16,6 @@ export const FeedsReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case FEEDS_GET_SUCESS: {
-      // console.log(payload)
       return {
         ...state,
         LoadFeed: false,

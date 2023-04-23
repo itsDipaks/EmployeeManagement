@@ -31,10 +31,7 @@ export let GetAllFeeds = () => async (dispatch) => {
     dispatch({
       type: FEEDS_GET_SUCESS,
       payload: AllFeedsData.data.Allfeeds
-
     });
-
-    // console.log(AllFeeds)
   } catch (err) {
     dispatch({type: FEEDS_GET_ERROR});
   }

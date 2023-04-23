@@ -10,7 +10,6 @@ const privateKey = process.env.PRIVATEKEY;
 ProjectRouter.get("/allprojects",async (req, res) => {
     try {
         let AllProjectsData = await ProjectModel.find();
-    
         res
           .status(200)
           .send({msg: "All Employee Data", GetallProjects: AllProjectsData});

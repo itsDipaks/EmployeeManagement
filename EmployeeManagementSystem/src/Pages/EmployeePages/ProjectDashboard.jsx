@@ -28,7 +28,7 @@ const ProjectDashboard = () => {
     dispatch(GetAssignproject(email));
   };
 
-  let {ProjectsData, loading} = useSelector((store) => store.ProjectsData);
+  let {ProjectsData, LoadProject} = useSelector((store) => store.ProjectsData);
   let projectval = ProjectsData[0]?.AssignedProject;
 
   let getProjectTasks = () => {
@@ -43,7 +43,7 @@ const ProjectDashboard = () => {
     getProjectTasks();
   }, []);
 
-  let {tasks} = useSelector((store) => store.Tasks);
+  let {tasks,LoadTask} = useSelector((store) => store.Tasks);
   // =====Groupe Leader View Dashboard=====
   let CompletedTasks = tasks?.filter((el) => {
     return el.Status == "Completed";
@@ -76,6 +76,7 @@ const ProjectDashboard = () => {
               <DisplayEmployee
                 empdata={projectval?.AssignedTeam}
                 tasks={tasks}
+                LoadTask={LoadTask}
               />
             ) : (
               ""
