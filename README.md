@@ -42,7 +42,7 @@ $ npm run dev
 > - *Manage Project Details Create New Project, Assign Project To Employee , Assign Groupe Leader Of that project*
 > - *Filter Employee Data By Position, Sort By Salary, Search By Employee Name*
 
- #### Home
+ #### Feed
 > - *Here Only Admin Can Post Any Feed*
 > - *Employee can Comment, like On feed/post*
 
