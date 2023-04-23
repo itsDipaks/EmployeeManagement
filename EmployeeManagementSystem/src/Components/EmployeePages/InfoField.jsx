@@ -14,10 +14,10 @@ const InfoField = ({title, value}) => {
         w="max-content"
         // rounded={"10px"}
     >
-        <Text color={"tomato"} fontWeight={700}>
+        <Text color={"green.400"} fontSize={"1.2rem"} fontWeight={700}>
           {title} :{" "}
         </Text>
-        <Text  >{value}</Text>
+        <Text fontSize={"1.2rem"}   >{value}</Text>
       </Flex>
     </>
   );

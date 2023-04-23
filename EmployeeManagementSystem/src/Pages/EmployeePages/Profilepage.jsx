@@ -30,6 +30,7 @@ import {
   AiOutlineLink,
 } from "react-icons/ai";
 import {BsGithub} from "react-icons/bs";
+import {FiLink} from "react-icons/fi";
 import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
 import {getlocalsdata} from "../../assets/Localstorage";
@@ -43,7 +44,6 @@ const Profilepage = () => {
   let dispatch = useDispatch();
   // ----------For Show Update profile or not--------
   let [showpage, setshowpage] = useState(false);
-
   // -----Update Address States--------
   let [Country, Setcountry] = useState("IN");
   let [state, setstate] = useState("MH");
@@ -61,7 +61,6 @@ const Profilepage = () => {
     let {value, name} = e.target;
     setformdata({...formdata, [name]: value});
   };
-
   let submitChangedPasswor = (e) => {
     e.preventDefault();
     let {newpassword, conformpassword} = formdata;
@@ -110,8 +109,8 @@ const Profilepage = () => {
   return (
     <>
       <Box w={"100%"} m="auto">
-        <Flex textAlign={"start"} fontSize="1.5rem" p={2} ml={12} gap={4}>
-          Hellow , <Text color={"red.600"}>{employeeData[0]?.firstname}</Text>
+        <Flex textAlign={"start"} fontSize="1.2rem" p={1} ml={12} gap={4}>
+          Hellow , <Text color={"green.400"} fontSize={"1.5rem"} fontWeight={500}>{employeeData[0]?.firstname}</Text>
         </Flex>
         <Divider w={"90%"} m={4} />
         <Flex
@@ -135,7 +134,7 @@ const Profilepage = () => {
           {/* ------------Left Side Box Emploee show info------------ */}
           <Stack width={"75%"} gap={4}>
             <InfoField
-              title={"Name "}
+              title={"Name"}
               value={
                 employeeData[0]?.firstname + " " + employeeData[0]?.lastname
               }
@@ -160,14 +159,15 @@ const Profilepage = () => {
               )}
             </HStack>
 
+
             <Flex>
               {employeeData[0]?.StreetAddress ? (
                 <HStack>
-                  <Text color={"tomato"} fontWeight={"bold"}>
+                  <Text color={"green.400"} fontSize={"1.2rem"} fontWeight={700}>
                     {" "}
                     Address :{" "}
                   </Text>
-                  <Text>
+                  <Text  fontSize={"1.2rem"}>
                     {" "}
                     Street : {employeeData[0]?.StreetAddress} ,City :{" "}
                     {employeeData[0]?.City}, State : {employeeData[0]?.state} ,
@@ -180,31 +180,35 @@ const Profilepage = () => {
             </Flex>
 
             {employeeData[0]?.Linkdin && employeeData[0]?.github ? (
-              <HStack gap={18}>
+              <HStack gap={18}w={"full"}>
                 <a href={employeeData[0]?.Linkdin}>
+
                   <Flex
                     alignItems={"center"}
                     border={"1px"}
-                    p={1}
-                    px={4}
+                    p={2}
+                    px={5}
                     rounded={"10px"}
                     gap={4}
+                    w={"8vw"}
+                    justifyContent={"space-between"}
                   >
-                    <AiFillLinkedin color="blue" />
-                    <Text>Open Linkdin</Text>
+                    <AiFillLinkedin color="blue"  style={{width:"1.25rem",height:"1.25rem"}}/>
+                   <FiLink/>
                   </Flex>
+                
                 </a>
                 <a href={employeeData[0]?.github}>
                   <Flex
                     alignItems={"center"}
                     border={"1px"}
-                    p={1}
-                    px={4}
+                    p={2}
+                    px={5}
                     rounded={"10px"}
                     gap={4}
                   >
-                    <AiFillGithub color="black" />
-                    <Text>Open Github</Text>
+                    <AiFillGithub color="black" style={{width:"1.25rem",height:"1.25rem"}}/>
+                           <FiLink/>
                   </Flex>
                 </a>
               </HStack>
@@ -214,18 +218,22 @@ const Profilepage = () => {
           </Stack>
         </Flex>
 
+
+
         <Divider w={"90%"} m={2} mt={8} />
+
 
         {/* --------------Update Profile------------ */}
         <Flex>
           <Button
             colorScheme="messenger"
             onClick={() => (showpage ? setshowpage(false) : setshowpage(true))}
-            m={4}
-          >
+            m={4}>
             Complete Profile
           </Button>
         </Flex>
+
+
 
         {showpage ? (
           <Box bg={"gray.100"} w={"100%"} p={14}>
@@ -318,14 +326,11 @@ const Profilepage = () => {
         )}
         <Divider w={"90%"} m={4} mt={14} />
         {/* --------------Setting------------ */}
-
         <Flex alignItems={"center"} ml={14} gap={4} w={"40%"} p={2}>
           <AiFillSetting />
           <Text fontSize={"1.2rem"}> SETTING </Text>
         </Flex>
-
         <Divider w={"90%"} m={2} />
-
         {/* --------------Conform Password------------ */}
         <form onSubmit={submitChangedPasswor}>
           <Flex
@@ -364,7 +369,6 @@ const Profilepage = () => {
                 />
               </FormControl>
             </Stack>
-
             <Button type="submit">Change Password</Button>
           </Flex>
         </form>

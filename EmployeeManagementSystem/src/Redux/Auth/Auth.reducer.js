@@ -7,6 +7,7 @@ import {
 } from "./Auth.type";
 const token = JSON.parse(localStorage.getItem("token")) || null
 const isadmin = JSON.parse(localStorage.getItem("isadmin")) || false
+const email = JSON.parse(localStorage.getItem("email")) || false
 let initialstate = {
   loading: false,
   error: false,
@@ -14,7 +15,7 @@ let initialstate = {
   isadmin: isadmin,
   msg: null,
   name:null,
-  email:null
+  email:email
 };
 
 export const AuthReducer = (state = initialstate, {type, payload}) => {
@@ -29,6 +30,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
       if (payload.data.token) {
         localStorage.setItem("token", JSON.stringify(payload?.data?.token));
         localStorage.setItem("isadmin", JSON.stringify(payload?.data?.isAdmin));
+        localStorage.setItem("email", JSON.stringify(payload?.data?.userinfo.email));
       }
       return {
         ...state,
@@ -50,6 +52,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
     case AUTH_LOGOUT: {
       localStorage.removeItem("token")
       localStorage.removeItem("isadmin")
+      localStorage.removeItem("email")
       return {
         ...state,
         token: null,

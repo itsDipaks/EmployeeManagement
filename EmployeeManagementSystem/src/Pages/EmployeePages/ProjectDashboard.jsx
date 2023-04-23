@@ -11,6 +11,8 @@ import Displaytask from "../../Components/EmployeePages/Displaytask";
 import ChartSetup from "../../Components/Charts/ChartSetup";
 import DisplayEmployee from "../../Components/EmployeePages/DisplayEmployee";
 import SingleEmpBox from "../../Components/EmployeePages/SingleEmpBox";
+import NoProject from "../../Components/DispalyError/NotFound";
+import NotFound from "../../Components/DispalyError/NotFound";
 const ProjectDashboard = () => {
   let dispatch = useDispatch();
 
@@ -37,34 +39,29 @@ const ProjectDashboard = () => {
   }, []);
 
   let {tasks} = useSelector((store) => store.Tasks);
-
   // =====Groupe Leader View Dashboard=====
   let CompletedTasks = tasks?.filter((el) => {
     return el.Status == "Completed";
   });
-
   let pendingTasks = tasks?.filter((el) => {
     return el.Status == "Incomplete";
   });
-
   let AuthEmployeeData = projectval?.AssignedTeam.filter((val) => {
     return val.email == email;
   });
   return (
     <>
-    
-    <Displaytask
+         {ProjectsData.length > 0 ? <Displaytask
         AuthEmail={email}
         getProjectTasks={getProjectTasks}
         tasks={tasks}
         projectval={projectval}
-      />
+      />:""}
       {ProjectsData.length > 0 ? (
         <Box display={"flex"} flexDirection={{lg:"row",sm:"column"}} p={4}>
-        
           <Box width={{sm:"98%",lg:"70%"}} >
             <DisplayEmployeeProject
-              projectdata={projectval ? projectval : ""}
+              projectdata={projectval ? projectval : null}
             />
             {projectval ? (
               <DisplayEmployee
@@ -75,9 +72,7 @@ const ProjectDashboard = () => {
               ""
             )}
           </Box>
-         
           <VStack width={{lg:"30%",sm:"100%"}}>
-       
            <Box display={"flex"} w={"100%"} mt="4" flexDir={{lg:"column",sm:"row"}}>
             <ProjectProgress w={"50%"} 
               totaltask={tasks.length}
@@ -87,7 +82,6 @@ const ProjectDashboard = () => {
               {AuthEmployeeData?.map((el) => (
                 <SingleEmpBox tasks={tasks} emp={el} />
               ))}
-
               {/* <ChartSetup
                 getProjectTasks={getProjectTasks}
                 data={[pendingTasks.length, CompletedTasks.length]}
@@ -96,11 +90,9 @@ const ProjectDashboard = () => {
             </Box>
           </VStack>
         </Box>
-      ) : (
-        ""
-      )}
+      ) :<NotFound title={"No Project To Assigned "} desc={"No Project Is Assigned "}/>}
 
-      {email == projectval?.groupleader ? (
+      { ProjectsData.length > 0 &&  email == projectval?.groupleader ? (
         <Box p={4}>
           <AddProjectTask
             getProjectTasks={getProjectTasks}
@@ -113,7 +105,7 @@ const ProjectDashboard = () => {
 
       <Box pb={1}>
 
-      {projectval?.groupleader == email ? (
+      {ProjectsData.length > 0 && projectval?.groupleader == email && CompletedTasks.length>0 || pendingTasks.length>0   ? (
         <GrupeLederviewTasks
           getProjectTasks={getProjectTasks}
           AuthEmail={email}
@@ -122,9 +114,7 @@ const ProjectDashboard = () => {
           CompletedTasks={CompletedTasks}
           pendingTasks={pendingTasks}
         />
-      ) : (
-        ""
-      )}
+      ) :<NotFound title={"No Tasks Added"} desc={"Notask Is Added here"}/>}
       </Box>
     </>
   );

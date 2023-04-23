@@ -6,7 +6,6 @@ const feedSchema = new mongoose.Schema({
   },
   imageUrl: {
     type: String,
-
   },
   feedAuthor: {
     type: String,
