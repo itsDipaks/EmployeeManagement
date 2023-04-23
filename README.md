@@ -40,6 +40,7 @@ $ npm run dev
  #### Admin Dashboard 
 > - *Manage Employee Details like, Add, Delete, Edit Employee Data*
 > - *Manage Project Details Create New Project, Assign Project To Employee , Assign Groupe Leader Of that project*
+> - *Filter Employee Data By Position, Sort By Salary, Search By Employee Name*
 
  #### Home
 > - *Here Only Admin Can Post Any Feed*
@@ -51,8 +52,7 @@ $ npm run dev
 > - *Project Dashboard - Employee Can See Their Assigned Project and Assigned Project Task Here*
 
 
-## Pending Features
-#### Filtering ,Soriting, Searching In admin Dashboard..  
+<!-- ## Pending Features -->
 
 ## Author
 ### 😊 Dipak Pawar
