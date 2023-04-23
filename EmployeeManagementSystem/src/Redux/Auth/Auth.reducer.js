@@ -9,7 +9,7 @@ const token = JSON.parse(localStorage.getItem("token")) || null
 const isadmin = JSON.parse(localStorage.getItem("isadmin")) || false
 const email = JSON.parse(localStorage.getItem("email")) || false
 let initialstate = {
-  loading: false,
+  LoadAuth: false,
   error: false,
   token: token,
   isadmin: isadmin,
@@ -23,7 +23,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
     case AUTH_GET_LOADING: {
       return {
         ...state,
-        loading: true,
+        LoadAuth: true,
       };
     }
     case AUTH_GET_SUCESS: {
@@ -34,7 +34,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
       }
       return {
         ...state,
-        loading: false,
+        LoadAuth: false,
         token: payload.data.token,
         isadmin: payload.data.isAdmin,
         name: payload.data.userinfo.name,
@@ -44,7 +44,7 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
     case AUTH_GET_ERROR: {
       return {
         ...state,
-        loading: false,
+        LoadAuth: false,
         isuser: false,
         error: true,
       };
@@ -57,8 +57,8 @@ export const AuthReducer = (state = initialstate, {type, payload}) => {
         ...state,
         token: null,
         email:null,
-        name:null
-
+        name:null,
+        LoadAuth:false
       };
     }
     default:

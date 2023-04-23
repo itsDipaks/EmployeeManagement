@@ -1,7 +1,7 @@
 import { PROJECT_GET_SUCESS,PROJECT_GET_ERROR,PROJECT_GET_LOADING, PROJECT_DELETE } from "./Project.type";
 
 let initialstate = {
-  loading: false,
+  LoadProject: false,
   error: false,
   ProjectsData: [],
 
@@ -13,27 +13,27 @@ export const ProjectReducer = (state = initialstate, {type, payload}) => {
     case PROJECT_GET_LOADING: {
       return {
         ...state,
-        loading: true,
+        LoadProject: true,
       };
     }
     case PROJECT_GET_SUCESS: {
       // console.log(payload)
       return {
         ...state,
-        loading: false,
+        LoadProject: false,
         ProjectsData:payload.data
       };
     }
     case PROJECT_GET_ERROR: {
       return {
         ...state,
-        loading: false,
+        LoadProject: false,
       };
     }
     case PROJECT_DELETE: {
       return {
         ...state,
-        loading: false,
+        LoadProject: false,
         msg:payload
       };
     }

@@ -1,6 +1,6 @@
 import { FEEDS_GET_LOADING,FEEDS_GET_SUCESS,FEEDS_GET_ERROR,FEEDS_DELETE } from "./Feeds.type";
 let initialstate = {
-  loading: false,
+  LoadFeed: false,
   error: false,
   FeedsData: [],
   msg:{}
@@ -12,27 +12,27 @@ export const FeedsReducer = (state = initialstate, {type, payload}) => {
     case FEEDS_GET_LOADING: {
       return {
         ...state,
-        loading: true,
+        LoadFeed: true,
       };
     }
     case FEEDS_GET_SUCESS: {
       // console.log(payload)
       return {
         ...state,
-        loading: false,
+        LoadFeed: false,
         FeedsData:payload
       };
     }
     case FEEDS_GET_ERROR: {
       return {
         ...state,
-        loading: false,
+        LoadFeed: false,
       };
     }
     case FEEDS_DELETE: {
       return {
         ...state,
-        loading: false,
+        LoadFeed: false,
         // msg:payload
       };
     }

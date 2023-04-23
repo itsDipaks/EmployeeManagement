@@ -1,6 +1,6 @@
 import { TASK_GET_LOADING,TASK_GET_SUCESS,TASK_GET_ERROR } from "./TaskProject.type";
 let initialstate = {
-  loading: false,
+  loadTask: false,
   error: false,
   tasks: [],
   msg:""
@@ -12,14 +12,14 @@ export const TaskReducer = (state = initialstate, {type, payload}) => {
     case TASK_GET_LOADING: {
       return {
         ...state,
-        loading: true,
+        loadTask: true,
       };
     }
     case TASK_GET_SUCESS: {
       // console.log(payload)
       return {
         ...state,
-        loading: false,
+        loadTask: false,
         tasks:payload.Alltasks,
         msg:payload.msg
       };
@@ -27,7 +27,7 @@ export const TaskReducer = (state = initialstate, {type, payload}) => {
     case TASK_GET_ERROR: {
       return {
         ...state,
-        loading: false,
+        loadTask: false,
       };
     }
     // case TODO_DELETE: {

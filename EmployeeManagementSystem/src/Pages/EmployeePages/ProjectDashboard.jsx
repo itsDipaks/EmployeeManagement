@@ -1,4 +1,10 @@
-import {Box, Button, Progress, VStack, useColorModeValue} from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Progress,
+  VStack,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GetAssignproject} from "../../Redux/Project/Project.action";
@@ -18,12 +24,11 @@ const ProjectDashboard = () => {
 
   let {email} = useSelector((store) => store.Auth);
 
-  console.log(email)
   let getAssignedProject = () => {
     dispatch(GetAssignproject(email));
   };
 
-  let {ProjectsData} = useSelector((store) => store.ProjectsData);
+  let {ProjectsData, loading} = useSelector((store) => store.ProjectsData);
   let projectval = ProjectsData[0]?.AssignedProject;
 
   let getProjectTasks = () => {
@@ -51,15 +56,19 @@ const ProjectDashboard = () => {
   });
   return (
     <>
-         {ProjectsData.length > 0 ? <Displaytask
-        AuthEmail={email}
-        getProjectTasks={getProjectTasks}
-        tasks={tasks}
-        projectval={projectval}
-      />:""}
       {ProjectsData.length > 0 ? (
-        <Box display={"flex"} flexDirection={{lg:"row",sm:"column"}} p={4}>
-          <Box width={{sm:"98%",lg:"70%"}} >
+        <Displaytask
+          AuthEmail={email}
+          getProjectTasks={getProjectTasks}
+          tasks={tasks}
+          projectval={projectval}
+        />
+      ) : (
+        ""
+      )}
+      {ProjectsData.length > 0 ? (
+        <Box display={"flex"} flexDirection={{lg: "row", sm: "column"}} p={4}>
+          <Box width={{sm: "98%", lg: "70%"}}>
             <DisplayEmployeeProject
               projectdata={projectval ? projectval : null}
             />
@@ -72,27 +81,38 @@ const ProjectDashboard = () => {
               ""
             )}
           </Box>
-          <VStack width={{lg:"30%",sm:"100%"}}>
-           <Box display={"flex"} w={"100%"} mt="4" flexDir={{lg:"column",sm:"row"}}>
-            <ProjectProgress w={"50%"} 
-              totaltask={tasks.length}
-              completedtask={CompletedTasks.length}
-            />
-            <Box w={"70%"} m={"auto"} p={4}>
-              {AuthEmployeeData?.map((el) => (
-                <SingleEmpBox tasks={tasks} emp={el} />
-              ))}
-              {/* <ChartSetup
+          <VStack width={{lg: "30%", sm: "100%"}}>
+            <Box
+              display={"flex"}
+              w={"100%"}
+              mt="4"
+              flexDir={{lg: "column", sm: "row"}}
+            >
+              <ProjectProgress
+                w={"50%"}
+                totaltask={tasks.length}
+                completedtask={CompletedTasks.length}
+              />
+              <Box w={"70%"} m={"auto"} p={4}>
+                {AuthEmployeeData?.map((el) => (
+                  <SingleEmpBox tasks={tasks} emp={el} />
+                ))}
+                {/* <ChartSetup
                 getProjectTasks={getProjectTasks}
                 data={[pendingTasks.length, CompletedTasks.length]}
               /> */}
-            </Box>
+              </Box>
             </Box>
           </VStack>
         </Box>
-      ) :<NotFound title={"No Project To Assigned "} desc={"No Project Is Assigned "}/>}
+      ) : (
+        <NotFound
+          title={"No Project To Assigned "}
+          desc={"No Project Is Assigned "}
+        />
+      )}
 
-      { ProjectsData.length > 0 &&  email == projectval?.groupleader ? (
+      {ProjectsData.length > 0 && email == projectval?.groupleader ? (
         <Box p={4}>
           <AddProjectTask
             getProjectTasks={getProjectTasks}
@@ -104,17 +124,21 @@ const ProjectDashboard = () => {
       )}
 
       <Box pb={1}>
-
-      {ProjectsData.length > 0 && projectval?.groupleader == email && CompletedTasks.length>0 || pendingTasks.length>0   ? (
-        <GrupeLederviewTasks
-          getProjectTasks={getProjectTasks}
-          AuthEmail={email}
-          projectval={projectval}
-          tasks={tasks?.tasks}
-          CompletedTasks={CompletedTasks}
-          pendingTasks={pendingTasks}
-        />
-      ) :<NotFound title={"No Tasks Added"} desc={"Notask Is Added here"}/>}
+        {(ProjectsData.length > 0 &&
+          projectval?.groupleader == email &&
+          CompletedTasks.length > 0) ||
+        pendingTasks.length > 0 ? (
+          <GrupeLederviewTasks
+            getProjectTasks={getProjectTasks}
+            AuthEmail={email}
+            projectval={projectval}
+            tasks={tasks?.tasks}
+            CompletedTasks={CompletedTasks}
+            pendingTasks={pendingTasks}
+          />
+        ) : (
+          <NotFound title={"No Tasks Added"} desc={"Notask Is Added here"} />
+        )}
       </Box>
     </>
   );
