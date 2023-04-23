@@ -17,7 +17,8 @@ import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
-
+import weblogo from "../assets/WebLogo.png"
+import Logo from "./Logo";
 const Navbar = ({setispanel}) => {
   let dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,7 +42,8 @@ const Navbar = ({setispanel}) => {
         >
           <Link to={"/"}>
             {" "}
-            <Text>@DevelopWithDipak </Text>
+           <Logo/>
+
           </Link>
 
           <Flex

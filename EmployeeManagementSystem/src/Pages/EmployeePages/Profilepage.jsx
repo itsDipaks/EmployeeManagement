@@ -239,13 +239,13 @@ const Profilepage = () => {
           <Box bg={"gray.100"} w={"100%"} p={14}>
             <form>
               <FormControl isRequired w={"40%"}>
-                <FormLabel>Mobile No: </FormLabel>
+                <FormLabel color={"blue.700"}>Mobile No: </FormLabel>
                 <Input
                   placeholder="Enter Nobile Number"
                   name="conformpassword"
                   onChange={(e) => setmobileno(e.target.value)}
                   type="number"
-                  border={"1px solid gray"}
+                  border={"1px solid green"}
                 />
               </FormControl>
 

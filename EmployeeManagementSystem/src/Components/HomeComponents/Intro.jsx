@@ -15,11 +15,11 @@ import {Link} from "react-router-dom";
 const Intro = () => {
   return (
     <div>
-      <Container maxW={"3xl"}>
+      <Container maxW={"4xl"}>
         <Stack
           as={Box}
           textAlign={"center"}
-          spacing={{base: 8, md: 14}}
+          spacing={{base: 8, md: 12}}
           py={{base: 20, md: 36}}
         >
           <Heading
@@ -29,7 +29,7 @@ const Intro = () => {
           >
             Welcome To <br />
             <Text as={"span"} color={"green.400"}>
-              Employee Managment
+              Employee Managment System
             </Text>
           </Heading>
           <Text color={"gray.500"}>

@@ -72,6 +72,7 @@ export const Deletefeed = (FeedId) => (dispatch) => {
 
 export let CommentonFeed = (CommentMsg,FeedId,name,email) => async (dispatch) => {
   dispatch({type: FEEDS_GET_LOADING});
+  console.log(email)
   try {
     let AddComment = await axios.patch(
       `${Backendurl}/feed/addcomment`,

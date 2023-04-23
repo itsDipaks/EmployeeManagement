@@ -37,8 +37,9 @@ const FeedsPost = () => {
 
   let {LoadFeed, FeedsData} = useSelector((store) => store.FeedsData);
 
-  let {token, error, isadmin, name, email} = useSelector((store) => store.Auth);
-
+  let { isadmin} = useSelector((store) => store.Auth);
+  const email = JSON.parse(localStorage.getItem("email")) || false
+  const name = JSON.parse(localStorage.getItem("name")) || false
   useEffect(() => {
     showfeeds();
   }, []);
@@ -66,7 +67,7 @@ const FeedsPost = () => {
     }, 1000);
   };
 
-  console.log(LoadFeed,"loadfeedss")
+  console.log(FeedsData,"loadfeedss")
   return (
     <>
 
@@ -93,10 +94,14 @@ const FeedsPost = () => {
             display={"flex"}
             alignItems="center"
             gap={"5"}
-            w={"100%"}
-            m="auto"
+            w={"30%"}
+            // m="auto"
+            p={1}
+            bg={"green.500"}
+            rounded={"full"}
+           
           >
-            <Box fontSize={"28px"} w="45px" ml="5" mt="5">
+            <Box fontSize={"28px"} w="45px" ml="5" >
               <Image
                 w="45px"
                 borderRadius={"50px"}
@@ -106,7 +111,7 @@ const FeedsPost = () => {
               />
             </Box>
             {/* --------- */}
-            <Box w="100%" mt="6">
+            <Box w="100%">
               <Text
                 fontWeight={600}
                 fontSize={20}
@@ -120,8 +125,8 @@ const FeedsPost = () => {
                     {">"} To all employees
                   </span>
                 ) : (
-                  <span style={{color: "grey", fontSize: "0.81rem"}}>
-                    {"   => "} Admin
+                  <span style={{color: "black", fontSize: "0.81rem"}}>
+                    {"   > "} Admin
                   </span>
                 )}
               </Text>
@@ -175,7 +180,7 @@ const FeedsPost = () => {
               _hover={{
                 color: "white",
               }}
-              border="2px solid white"
+              // border="2px solid white"
               px="2"
               rounded="10px"
             >
@@ -188,30 +193,29 @@ const FeedsPost = () => {
               color: "white",
             }}
             onClick={() => setshowcommentbox(true)}
-            border="2px solid white"
+            // border="2px solid white"
             px="2"
             rounded="10px"
           >
             Comment
           </Text>
-          <Text color="white">0</Text>
+          <Text color="white">1</Text>
         </Box>
 
         {/* ================ Show Comments=================== */}
         {el?.comments?.map((val) => (
           <Box
-            // border={"1px"}
-            borderColor={"gray.200"}
             w={"40%"}
             ml={"14"}
           >
-            <Grid display={"flex"} alignItems="center" gap={4}>
+            <Grid display={"flex"} alignItems="center" gap={4}py={1}  rounded={"full"}  bg={"green.500"}>
               <Box
                 fontSize={"23px"}
                 borderRadius="50px"
                 w="40px"
                 ml="5"
                 mt="2"
+             
               >
                 <Image
                   w="35px"
@@ -221,7 +225,7 @@ const FeedsPost = () => {
                   }
                 />
               </Box>
-              <Box w="70%">
+              <Box w="70%" >
                 <Text
                   fontWeight={500}
                   fontSize={14}
@@ -271,7 +275,6 @@ const FeedsPost = () => {
                 <AiTwotoneDislike className={styles.checked} />
               )}
             </Box> */}
-            <Divider w="80%" p={"1"} ml="16" />
           </Box>
         ))}
 

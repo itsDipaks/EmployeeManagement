@@ -7,6 +7,7 @@ import {
   PinInput,
   PinInputField,
   Select,
+  Textarea,
   VStack,
 } from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
@@ -88,11 +89,12 @@ const AddressDetails = ({
       <Flex w={"100%"} flexDirection="column" gap={4}>
         <Flex mt={2} gap={8}>
           <FormControl isRequired>
-            <FormLabel> Country </FormLabel>
+            <FormLabel  color={"blue.700"}> Country </FormLabel>
             <Select
               placeholder="Select Country"
               onChange={counrtyfunc}
-              border={"1px solid gray"}
+              border={"1px"}
+              borderColor={"blue.400"}
             >
               {countrydata?.map((el) => (
                 <option value={el.iso2}  >{el.name} </option>
@@ -100,11 +102,12 @@ const AddressDetails = ({
             </Select>
           </FormControl>
           <FormControl isRequired>
-            <FormLabel> State </FormLabel>
+            <FormLabel  color={"blue.700"}> State </FormLabel>
             <Select
               placeholder="Select State"
               onChange={statefunc}
-              border={"1px solid gray"}
+              border={"1px"}
+              borderColor={"blue.400"}
             >
               {statesdata?.map((el) => (
                 <option value={el.iso2}>{el.name} </option>
@@ -112,11 +115,12 @@ const AddressDetails = ({
             </Select>
           </FormControl>
           <FormControl isRequired>
-            <FormLabel> City</FormLabel>
+            <FormLabel  color={"blue.700"}> City</FormLabel>
             <Select
               placeholder="Select City"
               onChange={cityfunc}
-              border={"1px solid gray"}
+              border={"1px "}
+              borderColor={"blue.400"}
             >
               {citydata?.map((el) => (
                 <option value={el.iso2}>{el.name} </option>
@@ -124,14 +128,15 @@ const AddressDetails = ({
             </Select>
           </FormControl>
         </Flex>
-        <Flex gap={14}>
+        <Flex gap={14}     w={"50%"}> 
           <FormControl isRequired>
-            <FormLabel>Streat Name </FormLabel>
-            <Input
+            <FormLabel  color={"blue.700"}>Streat Name </FormLabel>
+            <Textarea
               placeholder="Enter Streat/Area/Location"
               onChange={(e)=>setstreetaddress(e.target.value)}
               colorScheme={"red"}
-              border={"1px solid gray"}
+              border={"1px"}
+              borderColor={"blue.400"}
             />
           </FormControl>
         
