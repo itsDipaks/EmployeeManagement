@@ -38,7 +38,7 @@ $ npm run dev
 
 ## Implemented Features
  #### Admin Dashboard 
-> - *Manage Employee Details like, Add, Delete, Edit*
+> - *Manage Employee Details like, Add, Delete, Edit Employee Data*
 > - *Manage Project Details Create New Project, Assign Project To Employee , Assign Groupe Leader Of that project*
 
  #### Home
@@ -51,7 +51,7 @@ $ npm run dev
 > - *Project Dashboard - Employee Can See Their Assigned Project and Assigned Project Task Here*
 
 
-## UpComing Features
+## Pending Features
 #### Filtering ,Soriting, Searching In admin Dashboard..  
 
 ## Author
