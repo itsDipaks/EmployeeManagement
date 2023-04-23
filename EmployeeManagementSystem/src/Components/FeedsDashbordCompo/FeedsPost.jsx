@@ -122,7 +122,7 @@ const FeedsPost = () => {
                 {el?.feedAuthor}
                 {isadmin ? (
                   <span style={{color: "black", fontSize: "1rem"}}>
-                    {">"} To all employees
+                    {">"} To All
                   </span>
                 ) : (
                   <span style={{color: "black", fontSize: "0.81rem"}}>
