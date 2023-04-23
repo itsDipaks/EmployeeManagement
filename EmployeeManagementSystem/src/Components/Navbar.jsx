@@ -10,21 +10,19 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import React, {useEffect} from "react";
-import {Link, NavLink, Navigate, useNavigate} from "react-router-dom";
+import React from "react";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import {useDispatch, useSelector} from "react-redux";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogout} from "../Redux/Auth/Auth.action";
-import weblogo from "../assets/WebLogo.png"
 import Logo from "./Logo";
 const Navbar = ({setispanel}) => {
   let dispatch = useDispatch();
   const navigate = useNavigate();
   // -----If tiken avilable in local storqge that defins user login in sysytem-----
-
-  let { loading, error, isadmin} = useSelector((store) => store.Auth);
+  let { isadmin} = useSelector((store) => store.Auth);
   let token =getlocalsdata("token")
   let logoutuser = () => {
     dispatch(userLogout());
@@ -40,10 +38,9 @@ const Navbar = ({setispanel}) => {
           w="100%"
           color={"black"}
         >
+          {/* ======= Website Logo ========= */}
           <Link to={"/"}>
-            {" "}
            <Logo/>
-
           </Link>
 
           <Flex
@@ -66,7 +63,6 @@ const Navbar = ({setispanel}) => {
             ) : (
               ""
             )}
-
             {token ? (
               isadmin ? (
                 <Link to={"/Admindashboard"}>
