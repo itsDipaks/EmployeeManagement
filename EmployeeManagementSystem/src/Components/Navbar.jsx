@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import React, {useEffect} from "react";
-import {Link, Navigate, useNavigate} from "react-router-dom";
+import {Link, NavLink, Navigate, useNavigate} from "react-router-dom";
 import SwitchTheam from "./SwitchTheam";
 import {BiLogInCircle, BiLogOutCircle} from "react-icons/bi";
 import {useDispatch, useSelector} from "react-redux";
@@ -53,9 +53,16 @@ const Navbar = ({setispanel}) => {
             alignItems={"center"}
           >
             {token ? (
-              <Link to={"/feedDashbord"}>
-                <Text color={"white"}>Feeds</Text>
-              </Link>
+              <NavLink  style={({ isActive, isPending }) => {
+                return {
+                  fontWeight:"600",
+                  color: isActive ? "white" : "black",
+              borderBottom:isActive?"2px solid white":""
+                };
+              }}
+            to={"/feedDashbord"}>
+              Feed
+              </NavLink>
             ) : (
               ""
             )}
@@ -70,12 +77,26 @@ const Navbar = ({setispanel}) => {
                 </Link>
               ) : (
                 <Flex gap={4} w="80%" justifyContent="space-evenly">
-                  <Link to={"/projetdashboard"}>
-                    <Text color={"white"}>Project Dashboard</Text>
-                  </Link>
-                  <Link to={"/todo"}>
-                    <Text color={"white"}>Manage Todo</Text>
-                  </Link>
+                  <NavLink  style={({ isActive, isPending }) => {
+                return {
+                  fontWeight:"600",
+                  color: isActive ? "white" : "black",
+                  borderBottom:isActive?"2px solid white":""
+                };
+              }}
+               to={"/projetdashboard"}>
+                 Project Dashboard
+                  </NavLink>
+                  <NavLink to={"/todo"}  style={({ isActive, isPending }) => {
+                return {
+                  fontWeight:"600",
+                  color: isActive ? "white" : "black",
+                  borderBottom:isActive?"2px solid white":""
+                };
+              }}
+              >
+                   Todo
+                  </NavLink>
                 </Flex>
               )
             ) : (
@@ -90,7 +111,8 @@ const Navbar = ({setispanel}) => {
                 bg="gray.300"
                 color="black"
               >
-                <Link to={"/eminfo"}>
+                <NavLink to={"/eminfo"} 
+             >
                   <Avatar src='https://bit.ly/ryan-florence'>
                     <AvatarBadge
                     src='https://bit.ly/ryan-florence'
@@ -98,7 +120,7 @@ const Navbar = ({setispanel}) => {
                       bg="green.500"
                     />
                   </Avatar>
-                </Link>
+                </NavLink>
               </Tooltip>
             ) : (
               ""
@@ -109,12 +131,13 @@ const Navbar = ({setispanel}) => {
                 Logout <BiLogOutCircle />
               </Button>
             ) : (
-              <Link to="/login">
+              <NavLink to="/login" 
+               >
                 {" "}
                 <Button>
                   Login <BiLogInCircle style={{marginLeft: "0.5rem"}} />
                 </Button>{" "}
-              </Link>
+              </NavLink>
             )}
             <SwitchTheam />
           </Flex>
