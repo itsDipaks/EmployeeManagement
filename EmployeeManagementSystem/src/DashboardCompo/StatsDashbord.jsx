@@ -2,8 +2,10 @@
 
 import {
     Box,
+    Card,
     chakra,
     Flex,
+    Icon,
     SimpleGrid,
     Stat,
     StatLabel,
@@ -15,7 +17,9 @@ import {
   import { FiServer } from 'react-icons/fi';
   import { GoLocation } from 'react-icons/go';
   
-
+  import {
+    FcCollaboration, FcGallery,
+  } from 'react-icons/fc';
   function StatsCard( StatsCardProps) {
     const { title, stat, icon } = StatsCardProps;
     return (
@@ -24,11 +28,11 @@ import {
         py={'5'}
         shadow={'xl'}
         border={'1px solid'}
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
+        borderColor={useColorModeValue('green.400', 'green.500')}
         rounded={'lg'}>
         <Flex justifyContent={'space-between'}>
           <Box pl={{ base: 2, md: 4 }}>
-            <StatLabel fontWeight={'medium'} isTruncated>
+            <StatLabel fontWeight={'600'} fontSize={"lg"} isTruncated>
               {title}
             </StatLabel>
             <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
@@ -41,12 +45,14 @@ import {
             alignContent={'center'}>
             {icon}
           </Box>
+         
         </Flex>
       </Stat>
     );
   }
   
-  export default function StatsDashbord() {
+  export default function StatsDashbord({employeeData}) {
+    
     return (
       <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
         <chakra.h1
@@ -58,14 +64,14 @@ import {
         </chakra.h1>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
           <StatsCard
-            title={'Users'}
-            stat={'5,000'}
-            icon={<BsPerson size={'3em'} />}
+            title={'Employee'}
+            stat={employeeData.length}
+            icon={<FcCollaboration size={'3em'} />}
           />
           <StatsCard
-            title={'Servers'}
+            title={'Projects '}
             stat={'1,000'}
-            icon={<FiServer size={'3em'} />}
+            icon={<FcGallery size={'3em'} />}
           />
           <StatsCard
             title={'Datacenters'}

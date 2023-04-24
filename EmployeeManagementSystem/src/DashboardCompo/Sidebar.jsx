@@ -21,7 +21,7 @@ const Sidebarcompo = () => {
   let sidebarmenu = [
     {
       Menuname: "Dashboard",
-      linkto: "/dashpanel",
+      linkto: "/",
       icon: <MdDashboardCustomize />,
     },
     {

@@ -164,7 +164,7 @@ const ListEmp = () => {
                 <Th>Employee Name</Th>
                 <Th>Email</Th>
                 <Th>Position</Th>
-                <Th>Joining Date</Th>
+                {/* <Th>Joining Date</Th> */}
                 <Th>Status</Th>
                 <Th>Salary</Th>
                 <Th textAlign={"center"}>Action </Th>
@@ -189,7 +189,7 @@ const ListEmp = () => {
                     </Td>
                     <Td>{el.email}</Td>
                     <Td>{el.position}</Td>
-                    <Td>{el.joiningDate}</Td>
+                    {/* <Td>{el.joiningDate}</Td> */}
                     <Td>{el.Status}</Td>
                     <Td>{el.salary}</Td>
                     <Td>
