@@ -1,1 +1,1 @@
-export let Backendurl =" http://localhost:8000"
+export let Backendurl ="https://gold-hermit-crab-garb.cyclic.app"
