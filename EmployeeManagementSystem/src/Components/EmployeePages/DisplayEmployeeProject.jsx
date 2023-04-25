@@ -25,10 +25,10 @@ const DisplayEmployeeProject = ({projectdata}) => {
         overflow="hidden"
         boxShadow="dark-lg"
         rounded="3xl"
-        bg={"gray.800"}
+  
         p={[2, 2, 8]}
         mb={8}
-        color={"black"}
+        
       >
         <Box
           display="flex"
@@ -50,7 +50,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
                 <Text
                   fontSize={{sm: "md", lg: "2xl"}}
                   fontWeight="semibold"
-                  color={"white"}
+                   
                 >
                   {projectdata?.ProjectTitle}
                 </Text>
@@ -83,7 +83,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
                     {" "}
                     Start Date
                   </Text>
-                  <Text color={"whiteAlpha.800"}>{projectdata?.StartDate}</Text>
+                  <Text  >{projectdata?.StartDate}</Text>
                 </VStack>
                 <VStack w={{sm: "50%", lg: "32%"}}>
                   <Text
@@ -114,7 +114,7 @@ const DisplayEmployeeProject = ({projectdata}) => {
             ml={{lg: "14", sm: "4"}}
             textAlign={"start"}
             w={"90%"}
-            color={"whiteAlpha.800"}
+       
           >
             {projectdata?.Description}
           </Text>

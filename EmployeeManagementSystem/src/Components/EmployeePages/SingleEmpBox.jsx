@@ -36,7 +36,7 @@ let getPercentage=Math.floor(CompletedTasks.length/getMyAlltask.length*100)
        
        :
        
-       <Box minWidth={"max-content"} rounded={"10%"}   bg={"gray.800"} boxShadow='xl' m={"auto"}  p={6} >
+       <Box minWidth={"max-content"} rounded={"10%"}     boxShadow='dark-lg' m={"auto"}  p={6} >
        <Stack>
          <Avatar
            name="Profile Image"
@@ -46,7 +46,7 @@ let getPercentage=Math.floor(CompletedTasks.length/getMyAlltask.length*100)
            <AvatarBadge boxSize="1em" bg="green.500" />
          </Avatar>
          <Box textAlign={"start"}>
-           <Text fontSize={{lg:"lg",sm:"md"}} color={"white"}>{emp?.firstname}  {emp?.lastname}</Text>
+           <Text fontSize={{lg:"lg",sm:"md"}}  >{emp?.firstname}  {emp?.lastname}</Text>
            <Text display={"flex"} gap={1} fontSize={"xs"} color={"gray.500"}>
              {" "}
               <Text>{emp?.position}</Text>
@@ -66,9 +66,9 @@ let getPercentage=Math.floor(CompletedTasks.length/getMyAlltask.length*100)
        </Stack>
  <Flex mt={4} gap={1} justifyContent={"space-between"} alignItems={"center"}>
  
-       {getMyAlltask.length>0? <Text color={"whiteAlpha.800"} fontSize={"sm"}>Tasks :  {CompletedTasks.length} / {getMyAlltask.length} </Text>:<Text fontSize={"sm"} color={"red.700"}>No Task </Text>}
+       {getMyAlltask.length>0? <Text    fontSize={"sm"}>Tasks :  {CompletedTasks.length} / {getMyAlltask.length} </Text>:<Text fontSize={"sm"} color={"red.700"}>No Task </Text>}
        <CircularProgress value={getPercentage || 0} color='green.400'>
-   <CircularProgressLabel  color={"white"}>{getPercentage || 0}%</CircularProgressLabel>
+   <CircularProgressLabel  >{getPercentage || 0}%</CircularProgressLabel>
  </CircularProgress>
  </Flex>
        {/* <Button w={"40%"} m={"auto"} fontSize={"xs"} mt={4}>View Profile</Button> */}

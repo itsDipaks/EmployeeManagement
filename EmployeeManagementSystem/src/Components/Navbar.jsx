@@ -36,7 +36,7 @@ const Navbar = ({setispanel}) => {
           justifyContent="space-between"
           alignItems={"center"}
           w="100%"
-          color={"black"}
+          
         >
           {/* ======= Website Logo ========= */}
           <Link to={"/"}>

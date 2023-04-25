@@ -1,31 +1,35 @@
 import {
   Box,
+  Text,
   Button,
+  Checkbox,
   Flex,
   FormControl,
   FormLabel,
-  Image,
-  Input,
-  Stack,
   Heading,
-  Text,
+  Input,
+  Link,
+  InputRightElement,
+  InputGroup,
+  Stack,
+  Image
 } from "@chakra-ui/react";
+
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate, useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import {getlocalsdata} from "../assets/Localstorage";
 import {userLogin} from "../Redux/Auth/Auth.action";
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
-const Login = () => {
-  // ----Hooks----
+export default function Login() {
 
-  // const islogin = getlocalsdata("token");
-  // console.log(islogin);
+  const [showPassword, setShowPassword] = useState(false); 
   let [loginformdata, setloginformdata] = useState({});
   let dispatch = useDispatch();
   const navigate = useNavigate();
-  let {token, loading, error, isadmin} = useSelector((store) => store.Auth);
+  let {token, LoadAuth, error, isadmin} = useSelector((store) => store.Auth);
 
   useEffect(() => {
     if (token != null) {
@@ -52,72 +56,67 @@ const Login = () => {
   };
 
   return (
-    <Box
-      alignItems={"center"}
-      display={"flex"}
-      flexDirection={["row"]}
-      m={"auto"}
-      width={{md: "100%", sm: "100%"}}
-      //  data-aos="zoom-in"
-    >
-      <Box w={"60%"} display={{md: "block", sm: "none"}}>
+    <Flex minH={'100vh'} justifiyContent="space-between" alignItem="center" flexdirection={{ base: 'column', md: 'row' }}>
+            <Flex w={{ base: '100%', md: '50%' }} flex={1}>
         <Image
-          rounded={14}
-          src="https://images.unsplash.com/photo-1606836559739-7b1d9fbf8a6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt={'Login Image'}
+          objectFit={'cover'}
+          src={
+            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+          }
         />
-      </Box>
-
-      <Box
-        w={{md: "40%", sm: "80%", lg: "50%"}}
-        p={{md: "2rem", sm: "1rem"}}
-        m="auto"
-        mt={{md: "8", sm: "2rem"}}
-        h={"max-content"}
-      >
-        <Heading
-          p={4}
-          lineHeight={1.1}
-          fontWeight={700}
-          fontSize={{ base: 'xl', sm: '2xl', lg: '4xl' }}
-         color="green.400"
-        >
-          L O G I N
-        </Heading>
-        <form onSubmit={logintoportal}>
-          <Stack spacing={4} align="stretch">
-            <FormControl isRequired>
-              <FormLabel>Email Address </FormLabel>
-              <Input
-                placeholder=" Enter Email "
+      </Flex>
+      <Box mt="14" w={{ base: '100%', md: '40%' }}>
+      <form onSubmit={logintoportal}>
+      <Flex   p={8}  w="100%"  align={'center'} justify={'center'}>
+        <Stack spacing={4} w={'full'} maxW={'md'}>
+          <Heading fontSize={'4xl'}>Login</Heading>
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input         placeholder=" Enter Email"
                 type="email"
                 onChange={handeldinputs}
-                name="email"
-              />
-            </FormControl>
-            <FormControl isRequired>
+                name="email" />
+          </FormControl>
+          <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
-              <Input
-                placeholder="Enter Password"
+              <InputGroup>
+                <Input type={showPassword ? 'text' : 'password'}   
                 onChange={handeldinputs}
                 name="password"
-                type="password"
-              />
+                placeholder=" Enter Password  "
+             />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
-            <Button
-              type="submit"
-              w="full"
-              color={"white"}
-              bg="green.400"
-              _hover={{bg: "green.500", color: "white"}}
-              mt="2rem"
-            >
-              Login
+          <Stack spacing={6}>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              align={'start'}
+              justify={'space-between'}>
+              <Checkbox>Remember me</Checkbox>
+              {/* <Link color={'blue.500'}>Forgot password?</Link> */}
+            </Stack>
+            <Button colorScheme={'green'}   type="submit" variant={'solid'}>
+              Sign in
             </Button>
           </Stack>
-        </form>
-      </Box>
-    </Box>
-  );
-};
+        </Stack>
+      </Flex>
 
-export default Login;
+      </form>
+
+      </Box>
+  
+
+    </Flex>
+  );
+}
