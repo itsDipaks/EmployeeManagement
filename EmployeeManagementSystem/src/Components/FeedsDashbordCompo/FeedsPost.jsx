@@ -78,10 +78,12 @@ const FeedsPost = () => {
         data-aos="fade-right"
         m="auto"
         w={"75%"}
-        bg={"green.400"}
-        mt="4"
+        boxShadow='dark-lg'
+        mt="14"
+       
         p={4}
         borderRadius={24}
+    border={"0.5px"}
       >
         {/* ==========Intro============ */}
         <Box
@@ -95,9 +97,9 @@ const FeedsPost = () => {
             alignItems="center"
             gap={"5"}
             w={"30%"}
-            // m="auto"
+           
             p={1}
-            bg={"green.500"}
+            bg={"green.300"}
             rounded={"full"}
            
           >
@@ -130,7 +132,7 @@ const FeedsPost = () => {
                   </span>
                 )}
               </Text>
-              <Text color={"white"} fontSize={13} textAlign={"left"}>
+              <Text color={"white"}  fontSize={13} textAlign={"left"}>
                 {/* {day} {time} */}
                 {el?.createdAt}
               </Text>
@@ -154,7 +156,7 @@ const FeedsPost = () => {
           m="auto"
           mt="4"
           fontSize={20}
-          color={"white"}
+         
           textAlign={"start"}
         >
           {el.Massage}
@@ -176,9 +178,9 @@ const FeedsPost = () => {
         >
           <Box>
             <Text
-              color="black"
+             
               _hover={{
-                color: "white",
+                color: "green",
               }}
               // border="2px solid white"
               px="2"
@@ -188,9 +190,9 @@ const FeedsPost = () => {
             </Text>
           </Box>
           <Text
-            color="black"
+       
             _hover={{
-              color: "white",
+              color: "green",
             }}
             onClick={() => setshowcommentbox(true)}
             // border="2px solid white"
@@ -208,7 +210,7 @@ const FeedsPost = () => {
             w={"40%"}
             ml={"14"}
           >
-            <Grid display={"flex"} alignItems="center" gap={4}py={1}  rounded={"full"}  bg={"green.500"}>
+            <Grid display={"flex"} alignItems="center" gap={4}py={1}  rounded={"full"}  bg={"green.200"}>
               <Box
                 fontSize={"23px"}
                 borderRadius="50px"
@@ -235,7 +237,7 @@ const FeedsPost = () => {
                 >
                   {val?.CommentAuthor}
                 </Text>
-                <Text color={"white"} fontSize={13} textAlign={"left"} mt={1}>
+                <Text  fontSize={13} textAlign={"left"} mt={1}>
                   {val?.CommentMasg}
                 </Text>
               </Box>
@@ -244,9 +246,9 @@ const FeedsPost = () => {
                 {email === val?.AutherEmail ? (
                   <CiCircleRemove
                     style={{
-                      width: "1.4rem",
-                      height: "1.4rem",
-                      color: "white",
+                      width: "1.2rem",
+                      height: "1.2rem",
+                      color: "darkred",
                     }}
                     cursor={"pointer"}
                   />
@@ -286,7 +288,7 @@ const FeedsPost = () => {
                 ml="6"
                 display={"flex"}
                 alignItems="center"
-                bg="green.400"
+                
                 justifyContent={"space-around"}
               >
                 <Box
@@ -313,7 +315,7 @@ const FeedsPost = () => {
                   pt="3"
                   pb="5"
                   borderRadius="10"
-                  bg="green.400"
+              
                 >
                   <Input
                     textAlign={"left"}
@@ -322,7 +324,7 @@ const FeedsPost = () => {
                     mt="0"
                     w={"90%"}
                     fontSize={"17"}
-                    color="white"
+                   
                     placeholder="Add Comment ..."
                     borderColor={"black"}
                     borderRadius="30"
