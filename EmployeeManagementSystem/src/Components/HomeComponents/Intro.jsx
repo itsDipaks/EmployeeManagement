@@ -33,9 +33,12 @@ const Intro = () => {
             </Text>
           </Heading>
           <Text color={"gray.500"}>
-            Monetize your content by charging your most loyal readers and reward
-            them loyalty points. Give back to your loyal readers by granting
-            them access to your pre-releases and sneak-peaks.
+            The employee management dashboard app is a web-based application
+            designed to help organizations manage their employees' data and
+            activities in one central location. The primary objective of the
+            application is to increase the efficiency and productivity of
+            Employee, team leads and manager involved in employee management.
+            management.
           </Text>
           <Stack
             direction={"column"}
