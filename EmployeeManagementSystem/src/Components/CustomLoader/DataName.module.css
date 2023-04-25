@@ -1,8 +1,8 @@
 .loader {
     position: absolute;
     display: flex;
-top: 30vh;
-left: 50vw;
+top: 20vh;
+left: 40vw;
   }
   .loader:before , .loader:after {
       content: '';

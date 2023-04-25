@@ -1,6 +1,7 @@
 import {useState} from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import Fotter from "./Components/Fotter";
 import AdminDashboard from "./Pages/AdminDashboard";
 import CombineRoutes from "./Routes/CombineRoutes";
 import AOS from "aos";
@@ -23,6 +24,7 @@ function App() {
           <Box position="relative" top={"6rem"}>
             <CombineRoutes />
           </Box>
+          <Fotter/>
         </div>
       )}
 

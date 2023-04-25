@@ -70,7 +70,7 @@ const FeedsPost = () => {
   console.log(FeedsData,"loadfeedss")
   return (
     <>
-
+<Box minheight="44">
     {LoadFeed ?<DataNameLoading/> :
     
     FeedsData?.map((el) => (
@@ -358,7 +358,7 @@ const FeedsPost = () => {
       </Box>
     ))}
     
-     
+    </Box>
     </>
   );
 };

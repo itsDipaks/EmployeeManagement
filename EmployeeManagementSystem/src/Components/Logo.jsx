@@ -18,7 +18,6 @@ const Logo = () => {
       `;
   return (
     <div>
-        
         <Flex
       justifyContent="center"
       alignItems="center"
@@ -26,7 +25,6 @@ const Logo = () => {
       w="full"
       p={2}
       overflow="hidden">
-        
       {/* Ideally, only the box should be used. The <Flex /> is used to style the preview. */}
       <Box
         as="div"
