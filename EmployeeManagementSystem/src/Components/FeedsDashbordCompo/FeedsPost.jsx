@@ -96,7 +96,7 @@ const FeedsPost = () => {
                   display={"flex"}
                   alignItems="center"
                   gap={"5"}
-                  w={"30%"}
+                  w={["100%","80%","30%"]}
                   p={1}
                   bg={"green.300"}
                   rounded={"full"}
@@ -114,7 +114,7 @@ const FeedsPost = () => {
                   <Box w="100%">
                     <Text
                       fontWeight={600}
-                      fontSize={20}
+                      fontSize={[14,14,20]}
                       color="black"
                       textAlign={"left"}
                       cursor="pointer"
@@ -130,7 +130,7 @@ const FeedsPost = () => {
                         </span>
                       )}
                     </Text>
-                    <Text color={"white"} fontSize={13} textAlign={"left"}>
+                    <Text color={"white"} fontSize={13} display={["block","none","block"]} textAlign={"left"}>
                       {/* {day} {time} */}
                       {el?.createdAt}
                     </Text>
@@ -195,7 +195,7 @@ const FeedsPost = () => {
 
               {/* ================ Show Comments=================== */}
               {el?.comments?.map((val) => (
-                <Box w={"40%"} ml={"14"}>
+                <Box w={["20%","80%","30%"]}  ml={"14"}>
                   <Grid
                     display={"flex"}
                     alignItems="center"
