@@ -68,6 +68,7 @@ const ShowProjectTask = ({data, getProjectTasks, index}) => {
           </Box>
           <Box boxShadow="xl" p={1} rounded={"full"} cursor={"pointer"}>
             <MdDeleteForever
+            
               onClick={DeleteThisTask}
               style={{color:"darkred",width:"1.2rem", height:"1.2rem"}}
             />

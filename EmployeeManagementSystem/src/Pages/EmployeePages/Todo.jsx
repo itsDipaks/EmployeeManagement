@@ -10,7 +10,7 @@ import AddNewTodo from "../../Components/EmployeePages/AddNewTodo";
 import {DragDropContext} from "react-beautiful-dnd";
 const Todo = () => {
   let dispatch = useDispatch();
-  let {Todos} = useSelector((store) => store.Todo);
+  let {Todos,LoadTodo} = useSelector((store) => store.Todo);
   const email = JSON.parse(localStorage.getItem("email")) || false
 
   let ProritySortedTodos = Todos && Todos?.sort((a, b) => {
@@ -66,7 +66,7 @@ const Todo = () => {
 
   return (
     <>
-      <AddNewTodo showmytodos={showmytodos} />
+      <AddNewTodo showmytodos={showmytodos}  LoadTodo={LoadTodo} />
 
       
       <Grid templateColumns="repeat(3, 1fr)" gap={4} p={{sm:"2",lg:"8"}}>

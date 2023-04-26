@@ -25,7 +25,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {AddTodo} from "../../Redux/Todo/Todo.action";
 
-const AddNewTodo = ({showmytodos}) => {
+const AddNewTodo = ({showmytodos,LoadTodo}) => {
   let [todoformdata, settodoformdata] = useState({});
   const {isOpen, onOpen, onClose} = useDisclosure();
   let dispatch = useDispatch();
@@ -112,7 +112,7 @@ const AddNewTodo = ({showmytodos}) => {
               <Button colorScheme="red" w={"20%"} mr={4} onClick={onClose}>
           Cancel
               </Button>
-              <Button type="submit" colorScheme="green" w={"20%"}>
+              <Button isLoading={LoadTodo ? true :false} type="submit" colorScheme="green" w={"20%"}>
                 {" "}
                 Add
               </Button>
