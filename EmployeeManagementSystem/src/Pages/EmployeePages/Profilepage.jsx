@@ -119,6 +119,7 @@ const Profilepage = () => {
           alignItems="center"
           gap={14}
           m={"auto"}
+          flexDirection={["row","column","row"]}
         >
           <Box border={2}>
             <Image
@@ -139,15 +140,15 @@ const Profilepage = () => {
                 employeeData[0]?.firstname + " " + employeeData[0]?.lastname
               }
             />
-            <HStack gap={24}>
+            <Flex   gap={4} flexDirection={["row","column","row"]} >
               <InfoField
                 title={"Position / Role "}
                 value={employeeData[0]?.position}
               />
               <InfoField title={"Gender"} value={employeeData[0]?.gender} />
-            </HStack>
+            </Flex>
 
-            <HStack gap={24}>
+            <Flex   flexDirection={["row","column","row"]} gap={4}>
               <InfoField title={"Email "} value={employeeData[0]?.email} />
               {employeeData[0]?.MobileNumber ? (
                 <InfoField
@@ -157,7 +158,7 @@ const Profilepage = () => {
               ) : (
                 ""
               )}
-            </HStack>
+            </Flex>
 
 
             <Flex>
@@ -180,7 +181,7 @@ const Profilepage = () => {
             </Flex>
 
             {employeeData[0]?.Linkdin && employeeData[0]?.github ? (
-              <HStack gap={18}w={"full"}>
+              <Flex gap={18}w={"full"}>
                 <a href={employeeData[0]?.Linkdin}>
 
                   <Flex
@@ -190,7 +191,7 @@ const Profilepage = () => {
                     px={5}
                     rounded={"10px"}
                     gap={4}
-                    w={"8vw"}
+                    w={["8vw","10vw","30vw"]}
                     justifyContent={"space-between"}
                   >
                     <AiFillLinkedin color="blue"  style={{width:"1.25rem",height:"1.25rem"}}/>
@@ -211,7 +212,7 @@ const Profilepage = () => {
                            <FiLink/>
                   </Flex>
                 </a>
-              </HStack>
+              </Flex>
             ) : (
               ""
             )}
@@ -335,12 +336,14 @@ const Profilepage = () => {
         <form onSubmit={submitChangedPasswor}>
           <Flex
             alignItems={"center"}
-            w={"60%"}
+            w={["60%","60%","60%"]}
             m="auto"
+            gap={4}
+         flexDirection={["row","column","row"]}
             justifyContent={"space-between"}
             p={4}
           >
-            <Stack w={"65%"} gap={2}>
+            <Stack w={["65%","65%","full"]} gap={2}>
               <FormControl isRequired>
                 <FormLabel> Enter Old Password : </FormLabel>
                 <Input

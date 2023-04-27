@@ -2,6 +2,8 @@ import {
   Box,
   Button,
   Progress,
+  Spinner,
+  Text,
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -19,6 +21,7 @@ import DisplayEmployee from "../../Components/EmployeePages/DisplayEmployee";
 import SingleEmpBox from "../../Components/EmployeePages/SingleEmpBox";
 import NoProject from "../../Components/DispalyError/NotFound";
 import NotFound from "../../Components/DispalyError/NotFound";
+import DataNameLoading from "../../Components/CustomLoader/DataNameLoading";
 const ProjectDashboard = () => {
   let dispatch = useDispatch();
 
@@ -67,6 +70,8 @@ const ProjectDashboard = () => {
         ""
       )}
       {ProjectsData.length > 0 ? (
+
+LoadProject ?  <Spinner color='red.500' />:
         <Box display={"flex"} flexDirection={{lg: "row", sm: "column"}} p={4}>
           <Box width={{sm: "98%", lg: "70%"}}>
             <DisplayEmployeeProject
@@ -106,7 +111,11 @@ const ProjectDashboard = () => {
             </Box>
           </VStack>
         </Box>
-      ) : (
+      )
+      
+      
+      
+      : (
         <NotFound
           title={"No Project To Assigned "}
           desc={"No Project Is Assigned "}
