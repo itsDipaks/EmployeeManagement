@@ -20,9 +20,7 @@ const feedSchema = new mongoose.Schema({
     default: 0
   },
   comments: [{
-    CommentMasg: {
-      type: String,
-    },
+      Text: String,
     CommentAuthor: {
       type: String,
     },

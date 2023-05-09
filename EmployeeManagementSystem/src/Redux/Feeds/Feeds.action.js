@@ -74,7 +74,7 @@ export let CommentonFeed = (CommentMsg,FeedId,name,email) => async (dispatch) =>
   dispatch({type: FEEDS_GET_LOADING});
   console.log(email)
   try {
-    let AddComment = await axios.patch(
+    let AddComment = await axios.put(
       `${Backendurl}/feed/addcomment`,
       {CommentMsg,FeedId,name,email}
     );

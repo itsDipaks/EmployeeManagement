@@ -47,15 +47,13 @@ FeedsRouter.delete("/deletefeed",async (req, res) => {
 
 // ==========Comment Sections =============
 
-FeedsRouter.patch("/addcomment", async (req, res) => {
+FeedsRouter.put("/addcomment", async (req, res) => {
   let {CommentMsg, FeedId,name,email} = req.body;
 
   try {
     let AddComment = await FeedsModel.findOneAndUpdate(
       {_id:FeedId},
-      { comments: [
-        {CommentMasg: CommentMsg,CommentAuthor:name,AutherEmail:email}
-      ]}
+      {$push:{comments:{Text:CommentMsg,CommentAuthor:name,AutherEmail:email}}}
     );
 
     res.status(200).json({msg: "Comment Added Sucessfully",data:AddComment});

@@ -194,8 +194,10 @@ const FeedsPost = () => {
               </Box>
 
               {/* ================ Show Comments=================== */}
+
+              <Box h={"30vh"} overflowWrap={"break-word"} >
               {el?.comments?.map((val) => (
-                <Box w={["20%","80%","30%"]}  ml={"14"}>
+                <Box w={["20%","80%","30%"]}  ml={"14"} m={"4"}>
                   <Grid
                     display={"flex"}
                     alignItems="center"
@@ -230,7 +232,7 @@ const FeedsPost = () => {
                         {val?.CommentAuthor}
                       </Text>
                       <Text fontSize={13} textAlign={"left"} mt={1}>
-                        {val?.CommentMasg}
+                        {val?.Text}
                       </Text>
                     </Box>
 
@@ -271,6 +273,10 @@ const FeedsPost = () => {
             </Box> */}
                 </Box>
               ))}
+
+
+              </Box>
+            
 
               {/* ==========Commwnt================== */}
               {showcommentbox ? (
