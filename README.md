@@ -9,7 +9,7 @@ $ git clone https://github.com/itsDipaks/EmployeeManagement.git
 ```
 
 ### Installation
-
+ 
 ```
 $ cd EmployeeManagementSystem
 $ npm install
@@ -18,12 +18,14 @@ $ npm install
 ```
 $ cd Backend1
 $ npm install
+
 ```
 
 ## To Run
 
 ```
 $ npm run dev
+
 ```
 
 #### For Admin Login Use
